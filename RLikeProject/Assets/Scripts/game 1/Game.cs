@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 {
     public Text soldiersUI;
     public Text citizensUI;
-    public Text totalCitizensUI;
+    public Text populationUI;
     public Text moneyUI;
     public Text turnsUI;
     Player player = new Player(); // non contiene soldati
@@ -20,10 +20,29 @@ public class Game : MonoBehaviour
     
     bool isFirstTurn = true;
     bool isLastTurn = false;
-    int currentTurn = 1;
 
-    void Start()
+    public void functiontest()
     {
-        
+        changeSoldiersUIText();
+    }
+
+    public void Update()
+    {
+        void changeSoldiersUIText()
+        {
+            soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens());
+        }
+        void changePopulationUIText()
+        {
+            populationUI.text = "" + player.countTotalCitizens(player, swordsmen, archers, riders);
+        }
+        void changeMoneyUIText()
+        {
+            moneyUI.text = "" + player.getMoney();
+        }
+        void changeTurnsUIText()
+        {
+            turnsUI.text = "" + player.getTurn();
+        }
     }
 }

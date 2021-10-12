@@ -23,7 +23,8 @@ public class Soldiers : MonoBehaviour
         //modifica totale spadaccini
         public void setTotal()
         {
-            total_swordsmen = temp_total_swordsmen;
+            total_swordsmen = total_swordsmen + temp_total_swordsmen;
+            temp_total_swordsmen = 0;
         }
         public int getTempTotal()
         {
@@ -41,7 +42,8 @@ public class Soldiers : MonoBehaviour
         // modifica atk spadaccini
         public void setAtk()
         {
-            atk_swordsmen = temp_atk_swordsmen;
+            atk_swordsmen = atk_swordsmen + temp_atk_swordsmen;
+            temp_atk_swordsmen = 0;
         }
         public int getTempAtk()
         {
@@ -59,7 +61,8 @@ public class Soldiers : MonoBehaviour
         // modifica def spadaccini
         public void setDef()
         {
-            def_swordsmen = temp_def_swordsmen;
+            def_swordsmen = def_swordsmen + temp_def_swordsmen;
+            temp_def_swordsmen = 0;
         }
         public int getTempDef()
         {
@@ -98,7 +101,8 @@ public class Soldiers : MonoBehaviour
         //modifica totale arcieri
         public void setTotal(int modifier)
         {
-            total_archers = temp_total_archers;
+            total_archers = total_archers + temp_total_archers;
+            temp_total_archers = 0;
         }
         public int getTempTotal()
         {
@@ -116,7 +120,8 @@ public class Soldiers : MonoBehaviour
         // modifica atk arcieri
         public void setAtk()
         {
-            atk_archers = temp_atk_archers;
+            atk_archers = atk_archers + temp_atk_archers;
+            temp_atk_archers = 0;
         }
         public int getTempAtk()
         {
@@ -134,7 +139,8 @@ public class Soldiers : MonoBehaviour
         // modifica def arcieri
         public void setDef()
         {
-            def_archers = temp_def_archers;
+            def_archers = def_archers + temp_def_archers;
+            temp_def_archers = 0;
         }
         public int getTempDef()
         {
@@ -172,7 +178,8 @@ public class Soldiers : MonoBehaviour
         //modifica totale riders
         public void setTotal(int modifier)
         {
-            total_riders = temp_total_riders;
+            total_riders = total_riders + temp_total_riders;
+            temp_total_riders = 0;
         }
         public int getTempTotal()
         {
@@ -190,7 +197,8 @@ public class Soldiers : MonoBehaviour
         // modifica atk riders
         public void setAtk(int modifier)
         {
-            atk_riders = temp_atk_riders;
+            atk_riders = atk_riders + temp_atk_riders;
+            temp_atk_riders = 0;
         }
         public int getTempAtk()
         {
@@ -208,7 +216,8 @@ public class Soldiers : MonoBehaviour
         // modifica def riders
         public void setDef(int modifier)
         {
-            def_riders = temp_def_riders;
+            def_riders = def_riders + temp_def_riders;
+            temp_def_riders = 0;
         }
         public int getTempDef()
         {

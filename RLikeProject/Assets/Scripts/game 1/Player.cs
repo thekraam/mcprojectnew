@@ -9,6 +9,22 @@ public class Player : MonoBehaviour
     int temp_player_citizens = 0;
     int player_money = 100;
     int temp_player_money = 0;
+    public int player_turn = 1;
+
+
+    public int getTurn()
+    {
+        return player_turn;
+    }
+
+    public void nextTurn()
+    {
+        player_turn++;
+    }
+    public void setTurn(int modifier)
+    {
+        player_turn += modifier;
+    }
 
     // funzione di conteggio da spostare
     public float countTotalCitizens(Player p, Soldiers.Swordsmen a, Soldiers.Archers b, Soldiers.Riders c)
@@ -22,9 +38,9 @@ public class Player : MonoBehaviour
         return player_citizens;
     }
 
-    public void setCitizens(int modifier)
+    public void setCitizens()
     {
-        player_citizens = temp_player_citizens;
+        player_citizens = player_citizens + temp_player_citizens;
         temp_player_citizens = 0;
     }
 
@@ -43,7 +59,7 @@ public class Player : MonoBehaviour
 
     public void setMoney()
     {
-        player_money = temp_player_money;
+        player_money = player_money + temp_player_money;
         temp_player_money = 0;
     }
     public int getTempMoney()
