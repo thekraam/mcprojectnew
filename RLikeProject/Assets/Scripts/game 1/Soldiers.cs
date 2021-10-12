@@ -8,8 +8,11 @@ public class Soldiers : MonoBehaviour
    public class Swordsmen
     {
         int total_swordsmen = 0;
+        int temp_total_swordsmen = 0;
         int atk_swordsmen = 4;
+        int temp_atk_swordsmen = 0;
         int def_swordsmen = 8;
+        int temp_def_swordsmen = 0;
         float bonus_swordsmen = 0;
         
         // num totale spadaccini
@@ -18,9 +21,17 @@ public class Soldiers : MonoBehaviour
             return total_swordsmen;
         }
         //modifica totale spadaccini
-        public void setTotal(int modifier)
+        public void setTotal()
         {
-            total_swordsmen = total_swordsmen + modifier;
+            total_swordsmen = temp_total_swordsmen;
+        }
+        public int getTempTotal()
+        {
+            return temp_total_swordsmen;
+        }
+        public void setTempTotal(int modifier)
+        {
+            temp_total_swordsmen = temp_total_swordsmen + modifier;
         }
         // atk spadaccini
         public int getAtk()
@@ -28,9 +39,17 @@ public class Soldiers : MonoBehaviour
             return atk_swordsmen;
         }
         // modifica atk spadaccini
-        public void setAtk(int modifier)
+        public void setAtk()
         {
-            atk_swordsmen = atk_swordsmen + modifier;
+            atk_swordsmen = temp_atk_swordsmen;
+        }
+        public int getTempAtk()
+        {
+            return temp_atk_swordsmen;
+        }
+        public void setTempAtk(int modifier)
+        {
+            temp_atk_swordsmen = temp_atk_swordsmen + modifier;
         }
         // def spadaccini
         public int getDef()
@@ -38,9 +57,17 @@ public class Soldiers : MonoBehaviour
             return def_swordsmen;
         }
         // modifica def spadaccini
-        public void setDef(int modifier)
+        public void setDef()
         {
-            def_swordsmen = def_swordsmen + modifier;
+            def_swordsmen = temp_def_swordsmen;
+        }
+        public int getTempDef()
+        {
+            return temp_def_swordsmen;
+        }
+        public void setTempDef(int modifier)
+        {
+            temp_def_swordsmen = temp_def_swordsmen + modifier;
         }
         // bonus per soldato - generale
         public float getBonus()
@@ -56,8 +83,11 @@ public class Soldiers : MonoBehaviour
    public class Archers
     {
         int total_archers = 0;
+        int temp_total_archers = 0;
         int atk_archers = 9;
+        int temp_atk_archers = 9;
         int def_archers = 3;
+        int temp_def_archers = 3;
         float bonus_archers = 0;
 
         // dammi num totale arcieri
@@ -68,7 +98,15 @@ public class Soldiers : MonoBehaviour
         //modifica totale arcieri
         public void setTotal(int modifier)
         {
-            total_archers = total_archers + modifier;
+            total_archers = temp_total_archers;
+        }
+        public int getTempTotal()
+        {
+            return temp_total_archers;
+        }
+        public void setTempTotal(int modifier)
+        {
+            temp_total_archers = temp_total_archers + modifier;
         }
         // dammi atk arcieri
         public int getAtk()
@@ -76,9 +114,17 @@ public class Soldiers : MonoBehaviour
             return atk_archers;
         }
         // modifica atk arcieri
-        public void setAtk(int modifier)
+        public void setAtk()
         {
-            atk_archers = atk_archers + modifier;
+            atk_archers = temp_atk_archers;
+        }
+        public int getTempAtk()
+        {
+            return temp_atk_archers;
+        }
+        public void setTempAtk(int modifier)
+        {
+            temp_atk_archers = temp_atk_archers + modifier;
         }
         // dammi def arcieri
         public int getDef()
@@ -86,9 +132,17 @@ public class Soldiers : MonoBehaviour
             return def_archers;
         }
         // modifica def arcieri
-        public void setDef(int modifier)
+        public void setDef()
         {
-            def_archers = def_archers + modifier;
+            def_archers = temp_def_archers;
+        }
+        public int getTempDef()
+        {
+            return temp_def_archers;
+        }
+        public void setTempDef(int modifier)
+        {
+            temp_def_archers = temp_def_archers + modifier;
         }
         // bonus per arcieri - generale
         public float getBonus()
@@ -103,8 +157,11 @@ public class Soldiers : MonoBehaviour
    public class Riders
     {
         int total_riders = 0;
+        int temp_total_riders = 0;
         int atk_riders = 8;
+        int temp_atk_riders = 8;
         int def_riders = 5;
+        int temp_def_riders = 5;
         float bonus_riders = 0;
 
         // dammi num totale riders
@@ -115,7 +172,15 @@ public class Soldiers : MonoBehaviour
         //modifica totale riders
         public void setTotal(int modifier)
         {
-            total_riders = total_riders + modifier;
+            total_riders = temp_total_riders;
+        }
+        public int getTempTotal()
+        {
+            return temp_total_riders;
+        }
+        public void setTempTotal(int modifier)
+        {
+            temp_total_riders = temp_total_riders + modifier;
         }
         // dammi atk riders
         public int getAtk()
@@ -125,7 +190,15 @@ public class Soldiers : MonoBehaviour
         // modifica atk riders
         public void setAtk(int modifier)
         {
-            atk_riders = atk_riders + modifier;
+            atk_riders = temp_atk_riders;
+        }
+        public int getTempAtk()
+        {
+            return temp_atk_riders;
+        }
+        public void setTempAtk(int modifier)
+        {
+            temp_atk_riders = temp_atk_riders + modifier;
         }
         // dammi def riders
         public int getDef()
@@ -135,7 +208,15 @@ public class Soldiers : MonoBehaviour
         // modifica def riders
         public void setDef(int modifier)
         {
-            def_riders = def_riders + modifier;
+            def_riders = temp_def_riders;
+        }
+        public int getTempDef()
+        {
+            return temp_def_riders;
+        }
+        public void setTempDef(int modifier)
+        {
+            temp_def_riders = temp_def_riders + modifier;
         }
         // bonus per riders - generale
         public float getBonus()
@@ -148,11 +229,4 @@ public class Soldiers : MonoBehaviour
         }
     }
 
-    public int totalSoldiers()
-    {
-        Soldiers.Swordsmen swordsmen = new Soldiers.Swordsmen();
-        Soldiers.Archers archers = new Soldiers.Archers();
-        Soldiers.Riders riders = new Soldiers.Riders();
-        return swordsmen.getTotal() + archers.getTotal() + riders.getTotal();
-    }
 }
