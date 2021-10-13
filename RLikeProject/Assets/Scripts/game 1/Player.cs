@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     int player_citizens = 10;
     int temp_player_citizens = 0;
     int player_money = 100;
-    int temp_player_money = 0;
+    int skip_player_money = 0;
     public int player_turn = 1;
 
 
@@ -57,18 +57,23 @@ public class Player : MonoBehaviour
         return player_money;
     }
 
+    public void setRapidMoney(int modifier)
+    {
+        player_money += modifier;
+    }
+
     public void setMoney()
     {
-        player_money = player_money + temp_player_money;
-        temp_player_money = 0;
+        player_money = player_money + skip_player_money;
+        skip_player_money = 0;
     }
-    public int getTempMoney()
+    public int getSkipMoney()
     {
-        return temp_player_money;
+        return skip_player_money;
     }
-    public void setTempMoney(int modifier)
+    public void setSkipMoney(int modifier)
     {
-        temp_player_money = temp_player_money + modifier;
+        skip_player_money = skip_player_money + modifier;
     }
     // prova swordsmen generica
     /* Soldiers.Swordsmen swordsmen = new Soldiers.Swordsmen();

@@ -14,7 +14,16 @@ public class Soldiers : MonoBehaviour
         int def_swordsmen = 8;
         int temp_def_swordsmen = 0;
         float bonus_swordsmen = 0;
-        
+      
+        public void passamiplayer(Player pippo)
+        {
+            int x = pippo.getMoney();
+            Debug.Log(x);
+            pippo.setSkipMoney(10);
+            pippo.setMoney();
+        }
+
+
         // num totale spadaccini
         public int getTotal()
         {
@@ -99,7 +108,7 @@ public class Soldiers : MonoBehaviour
             return total_archers;
         }
         //modifica totale arcieri
-        public void setTotal(int modifier)
+        public void setTotal()
         {
             total_archers = total_archers + temp_total_archers;
             temp_total_archers = 0;
@@ -176,7 +185,7 @@ public class Soldiers : MonoBehaviour
             return total_riders;
         }
         //modifica totale riders
-        public void setTotal(int modifier)
+        public void setTotal()
         {
             total_riders = total_riders + temp_total_riders;
             temp_total_riders = 0;
