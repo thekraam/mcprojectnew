@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 namespace TryEz
 {
-    public class Cambia : MonoBehaviour
+    public class ChangeScene : MonoBehaviour
     {
-        public string menutest;
+        public string ChangeToScene;
 
-        public void CaricaScena()
+        public void LoadScene()
         {
-            SceneManager.LoadScene(menutest);
+            SceneManager.LoadScene(ChangeToScene);
         }
     }
 }

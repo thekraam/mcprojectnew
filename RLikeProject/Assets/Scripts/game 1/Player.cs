@@ -58,19 +58,16 @@ public class Player : MonoBehaviour
     public int getCitizensMax()
     {
         return player_citizensMAX;
-
     }
 
-    public int setCitizensMax()
+    public void setCitizensMax()
     {
         player_citizensMAX = player_citizensMAX + temp_player_citizensMAX;
-        return player_citizensMAX;
     }
 
-    public int setTempCitizensMax(int modifier)
+    public void setTempCitizensMax(int modifier)
     {
         temp_player_citizensMAX = temp_player_citizensMAX + modifier;
-        return temp_player_citizensMAX;
     }
 
 
