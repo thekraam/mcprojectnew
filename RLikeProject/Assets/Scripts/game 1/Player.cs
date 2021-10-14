@@ -7,10 +7,11 @@ public class Player : MonoBehaviour
 {
     int player_citizens = 10;
     int temp_player_citizens = 0;
+    int player_citizensMAX = 100;
     int player_money = 100;
     int skip_player_money = 0;
     public int player_turn = 1;
-
+    
 
     public int getTurn()
     {
@@ -79,4 +80,17 @@ public class Player : MonoBehaviour
     /* Soldiers.Swordsmen swordsmen = new Soldiers.Swordsmen();
     int x = swordsmen.getTotal();*/
 
+
+    //---------------------------------edifici--------------------------------
+    Fattoria fattoria = new Fattoria();
+    Miniera miniera = new Miniera();
+    Fabbro fabbro = new Fabbro();
+    Caserma caserma = new Caserma();
+    riepilogoturnorisorse riepilogo = new riepilogoturnorisorse();
+    public void riepilogorisorse ()
+    {
+        temp_player_citizens = riepilogo.cittadiniRiep(fattoria);
+        skip_player_money = riepilogo.goldRiep(fattoria, miniera, player_citizens, fabbro);
+        player_citizensMAX = riepilogo.cittadiniMAXRiep(fattoria);
+    }
 }
