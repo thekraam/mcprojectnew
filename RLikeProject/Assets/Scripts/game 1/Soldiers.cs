@@ -90,7 +90,7 @@ public class Soldiers : MonoBehaviour
         {
             bonus_swordsmen = bonus_swordsmen + modifier;
         }
-
+        
     }
    public class Archers
     {

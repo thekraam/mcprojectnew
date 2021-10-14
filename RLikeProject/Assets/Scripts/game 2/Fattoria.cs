@@ -16,39 +16,28 @@ public class Fattoria : MonoBehaviour
         lvl = lvl + 1;
         if (lvl == 2)
         {
-            aumentaAbitantiMax(100);
-            aumentaCrescitaAbitanti(5);
+            abitantiMax = 200;
+            crescitaAbitanti = 20;
             gold = 20;
         }
         else if (lvl == 3)
         {
-            aumentaAbitantiMax(100);
-            aumentaCrescitaAbitanti(10);
+            abitantiMax = 300;
+            crescitaAbitanti= 25;
             gold = 40;
         }
         else if (lvl == 4)
         {
-            aumentaAbitantiMax(100);
-            aumentaCrescitaAbitanti(20);
+            abitantiMax = 400;
+            crescitaAbitanti = 30;
             gold = 80;
         }
         else if (lvl == 5)
         {
-            aumentaAbitantiMax(100);
-            aumentaCrescitaAbitanti(25);
+            abitantiMax = 500;
+            crescitaAbitanti = 40;
             gold = 160;
         }
-    }
-    //---------------------------------------------------------
-
-    public void aumentaAbitantiMax(int x)
-    {
-        abitantiMax = abitantiMax + x;
-    }
-
-    public void aumentaCrescitaAbitanti(int x)
-    {
-        crescitaAbitanti = crescitaAbitanti + x;
     }
 
     //----------------------------getters--------------------------
