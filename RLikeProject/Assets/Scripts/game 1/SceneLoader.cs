@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TryEz;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -9,30 +10,16 @@ public class SceneLoader : MonoBehaviour
     public GameObject loadingPanel;
     public CanvasGroup canvasGroup;
 
-    public string sceneName;
     // Start is called before the first frame update
     void Start()
     {
-
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(loadingPanel.transform.parent);
-
-    }
-    
-    // Update is called once per frame
-    void Update()
-    {
-        if (onPressButton())
-        {
-
-        }
     }
 
-    public bool onPressButton()
+    public void onPressButton(string sceneName)
     {
         StartCoroutine(LoadScene(sceneName));
-        return true;
-   
     }
     
 
@@ -40,15 +27,19 @@ public class SceneLoader : MonoBehaviour
     {
         loadingPanel.SetActive(true);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
         while (!operation.isDone)
         {
-            yield return new WaitForSeconds(2);
+            yield return null;
         }
-        StartCoroutine(LoadingScreenFadeOut(2f));
+        StartCoroutine(LoadingScreenFadeOut(0.8f));
     }
 
     IEnumerator LoadingScreenFadeOut(float duration)
     {
+        float test = Random.Range(1.5f, 3.5f);
+        yield return new WaitForSeconds(test);
+
         float timePassed = 0f;
         float startAlpha = canvasGroup.alpha;
 
@@ -56,7 +47,7 @@ public class SceneLoader : MonoBehaviour
         {
             timePassed += Time.deltaTime;
             canvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, timePassed / duration);
-            yield return new WaitForSeconds(2);
+            yield return null;
         }
         loadingPanel.SetActive(false);
         canvasGroup.alpha = 1f;

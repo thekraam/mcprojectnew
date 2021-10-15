@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    GameObject provaz;
     /* dichiarazione elementi di UI tramite oggetto Text in UnityEngine.UI */
     public Text soldiersUI;
     public Text citizensUI;
@@ -23,11 +24,16 @@ public class Game : MonoBehaviour
     Caserma caserma = new Caserma();
     Fabbro fabbro = new Fabbro();
 
-
     public List<Text> UIelements; 
     
     bool isFirstTurn = true;
     bool isLastTurn = false;
+
+    public void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
 
     public void Update()
     {
@@ -58,6 +64,7 @@ public class Game : MonoBehaviour
 
         riders.setTotal(); // idem
     }
+
 
 
 

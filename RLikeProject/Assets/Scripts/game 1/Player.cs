@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     int player_citizens = 10;
+    int player_population = 10;
     int temp_player_citizens = 0;
     int player_citizensMAX = 100;
     int temp_player_citizensMAX = 0;
@@ -29,10 +30,16 @@ public class Player : MonoBehaviour
     }
 
     // funzione di conteggio da spostare
-    public float countTotalCitizens(Player p, Soldiers.Swordsmen a, Soldiers.Archers b, Soldiers.Riders c)
+    public int getPopulation()
     {
-        return p.getCitizens() + a.getTotal() + b.getTotal() + c.getTotal();
+        return player_population;
     }
+
+    public void setPopulation(int modifier)
+    {
+        player_population += modifier;
+    }
+
 
 
     public float getCitizens()

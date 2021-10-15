@@ -40,6 +40,10 @@ public class Fattoria : MonoBehaviour
         }
     }
 
+
+
+
+
     //----------------------------getters--------------------------
 
     public int getLvlFattoria()
