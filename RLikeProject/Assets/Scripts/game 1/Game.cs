@@ -5,7 +5,16 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
-    GameObject provaz;
+    
+    
+    
+    /* Dichiarazione object di controllo visibilita pannelli */
+    public GameObject gamePanel; // pannello all'avvio partita
+    public GameObject farmPanel;
+    public GameObject fabbroPanel;
+    public GameObject casermaPanel;
+    public GameObject guildPanel;
+
     /* dichiarazione elementi di UI tramite oggetto Text in UnityEngine.UI */
     public Text soldiersUI;
     public Text citizensUI;
@@ -31,7 +40,12 @@ public class Game : MonoBehaviour
 
     public void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        // disattivo pannelli non di game, 'nse sa mai
+        gamePanel.SetActive(true); //
+        farmPanel.SetActive(false);
+        casermaPanel.SetActive(false);
+        guildPanel.SetActive(false);
+        casermaPanel.SetActive(false);
     }
 
 
@@ -65,7 +79,49 @@ public class Game : MonoBehaviour
         riders.setTotal(); // idem
     }
 
+    // metodi per nascondere o visualizzare i pannelli di gioco
+    public void onTapVillage()
+    {
+        gamePanel.SetActive(true); //
+        farmPanel.SetActive(false);
+        casermaPanel.SetActive(false);
+        guildPanel.SetActive(false);
+        fabbroPanel.SetActive(false);
+    }
 
+    public void onTapFarm()
+    {
+        gamePanel.SetActive(true);
+        farmPanel.SetActive(true); // 
+        casermaPanel.SetActive(false);
+        guildPanel.SetActive(false);
+        fabbroPanel.SetActive(false);
+    }
+    public void onTapCaserma()
+    {
+        gamePanel.SetActive(false);
+        farmPanel.SetActive(false); 
+        casermaPanel.SetActive(true); //
+        guildPanel.SetActive(false);
+        fabbroPanel.SetActive(false);
+    }
 
+    public void onTapGuild()
+    {
+        gamePanel.SetActive(false);
+        farmPanel.SetActive(false); 
+        casermaPanel.SetActive(false);
+        guildPanel.SetActive(true); //
+        fabbroPanel.SetActive(false);
+    }
+
+    public void onTapFabbro()
+    {
+        gamePanel.SetActive(false);
+        farmPanel.SetActive(false);
+        casermaPanel.SetActive(false);
+        guildPanel.SetActive(false);
+        fabbroPanel.SetActive(true); //
+    }
 
 }
