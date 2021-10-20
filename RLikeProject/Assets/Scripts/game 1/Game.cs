@@ -53,7 +53,7 @@ public class Game : MonoBehaviour
     {
         // soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens()); // mostra il nuovo totale dei soldati appena lo trovi
 
-        // populationUI.text = "" + player.countTotalCitizens(player, swordsmen, archers, riders); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
+        populationUI.text = "" + player.getPopulation(); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
 
         moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
@@ -65,18 +65,24 @@ public class Game : MonoBehaviour
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2*fattoria.getLvlFattoria()+20*fabbro.zappa*fattoria.getLvlFattoria() + 20*fabbro.zappa2*fattoria.getLvlFattoria());
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
-
+        Debug.Log(player.getPopulation());
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
+        Debug.Log(player.getPopulation());
         player.setTempCitizens(fattoria.getCrescitaAbitanti());
-
-        player.setCitizensMax();
-        player.setTempCitizensMax(fattoria.getAbitantiMax());
+        Debug.Log(player.getPopulation());
+        player.setCitizensMax(fattoria.getAbitantiMax());
 
         swordsmen.setTotal(); // idem
 
         archers.setTotal(); // idem
 
         riders.setTotal(); // idem
+        Debug.Log(player.getCitizens()+"cittadini");
+        Debug.Log(swordsmen.getTotal());
+        Debug.Log(archers.getTotal());
+        Debug.Log(riders.getTotal());
+        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal());
+        Debug.Log(player.getPopulation());
     }
 
     // metodi per nascondere o visualizzare i pannelli di gioco

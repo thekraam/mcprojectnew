@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    int player_citizens = 10;
-    int player_population = 10;
-    int temp_player_citizens = 0;
+    int player_citizens = 40;
+    int player_population = 40;
+    int temp_player_citizens = 15;
     int player_citizensMAX = 100;
     int temp_player_citizensMAX = 0;
     int player_money = 100;
     int skip_player_money = 0;
     public int player_turn = 1;
     
-
+    //------------------turni---------------------
     public int getTurn()
     {
         return player_turn;
@@ -29,28 +29,34 @@ public class Player : MonoBehaviour
         player_turn += modifier;
     }
 
-    // funzione di conteggio da spostare
-    public int getPopulation()
+    //-------------------popolazione-------------------
+    public float getPopulation()
     {
         return player_population;
     }
 
     public void setPopulation(int modifier)
     {
+        player_population = 0;
         player_population += modifier;
     }
 
 
-
-    public float getCitizens()
+    public int getCitizens()
     {
         return player_citizens;
     }
 
     public void setCitizens()
     {
+        int x = player_citizensMAX-player_population;
+        if (temp_player_citizens>x)
+        {
+            temp_player_citizens = x;
+        }
         player_citizens = player_citizens + temp_player_citizens;
         temp_player_citizens = 0;
+        Debug.Log(player_citizens + " set");
     }
 
     public int getTempCitizens()
@@ -67,17 +73,13 @@ public class Player : MonoBehaviour
         return player_citizensMAX;
     }
 
-    public void setCitizensMax()
+    public void setCitizensMax(int x)
     {
-        player_citizensMAX = player_citizensMAX + temp_player_citizensMAX;
+        player_citizensMAX = x;
+
     }
 
-    public void setTempCitizensMax(int modifier)
-    {
-        temp_player_citizensMAX = temp_player_citizensMAX + modifier;
-    }
-
-
+    //--------------------golds----------------------------
     public int getMoney()
     {
         return player_money;
