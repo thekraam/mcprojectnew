@@ -63,7 +63,7 @@ public class Game : MonoBehaviour
     public void onSkipTurn()
     {
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
-        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2*fattoria.getLvlFattoria()+20*fabbro.zappa*fattoria.getLvlFattoria() + 20*fabbro.zappa2*fattoria.getLvlFattoria());
+        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2*player.getCitizens() + 20*fabbro.zappa*fattoria.getLvlFattoria() + 20*fabbro.zappa2*fattoria.getLvlFattoria());
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
        
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
