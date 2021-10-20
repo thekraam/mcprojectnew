@@ -65,11 +65,10 @@ public class Game : MonoBehaviour
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2*fattoria.getLvlFattoria()+20*fabbro.zappa*fattoria.getLvlFattoria() + 20*fabbro.zappa2*fattoria.getLvlFattoria());
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
-        Debug.Log(player.getPopulation());
+       
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
-        Debug.Log(player.getPopulation());
         player.setTempCitizens(fattoria.getCrescitaAbitanti());
-        Debug.Log(player.getPopulation());
+
         player.setCitizensMax(fattoria.getAbitantiMax());
 
         swordsmen.setTotal(); // idem
@@ -77,12 +76,7 @@ public class Game : MonoBehaviour
         archers.setTotal(); // idem
 
         riders.setTotal(); // idem
-        Debug.Log(player.getCitizens()+"cittadini");
-        Debug.Log(swordsmen.getTotal());
-        Debug.Log(archers.getTotal());
-        Debug.Log(riders.getTotal());
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal());
-        Debug.Log(player.getPopulation());
     }
 
     // metodi per nascondere o visualizzare i pannelli di gioco
@@ -128,6 +122,25 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(true); //
+    }
+
+
+    //----------------------------pulsanti reclutamento------------------------
+
+     public void onRecruitSwordsmen (int x)
+    {
+        caserma.reclutaSwordman(swordsmen, x);
+        player.setRapidMoney(-20);
+    }
+    public void onRecruitArchers(int x)
+    {
+        caserma.reclutaArchers(archers, x);
+        player.setRapidMoney(-20);
+    }
+    public void onRecruitRiders(int x)
+    {
+        caserma.reclutaRiders(riders, x);
+        player.setRapidMoney(-30);
     }
 
 }

@@ -8,6 +8,15 @@ public class Caserma : MonoBehaviour
     public void reclutaSwordman (Soldiers.Swordsmen swordman, int x)
     {
         swordman.setTempTotal(x);
-
     }
+    public void reclutaArchers(Soldiers.Archers archer, int x)
+    {
+        archer.setTempTotal(x);
+    }
+    public void reclutaRiders(Soldiers.Riders  rider, int x)
+    {
+        rider.setTempTotal(x);
+    }
+
+
 }

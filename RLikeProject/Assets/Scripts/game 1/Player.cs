@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
         }
         player_citizens = player_citizens + temp_player_citizens;
         temp_player_citizens = 0;
-        Debug.Log(player_citizens + " set");
     }
 
     public int getTempCitizens()
