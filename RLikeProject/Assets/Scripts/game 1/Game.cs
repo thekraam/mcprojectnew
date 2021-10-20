@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     
-    
-    
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject gamePanel; // pannello all'avvio partita
     public GameObject farmPanel;
@@ -53,7 +51,7 @@ public class Game : MonoBehaviour
     {
         // soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens()); // mostra il nuovo totale dei soldati appena lo trovi
 
-        populationUI.text = "" + player.getPopulation(); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
+        // populationUI.text = "" + player.getPopulation(); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
 
         moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
