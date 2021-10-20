@@ -1076,8 +1076,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -345, y: -100.07001}
-  m_SizeDelta: {x: -814.9, y: 165.40002}
+  m_AnchoredPosition: {x: -284.77002, y: -100.07001}
+  m_SizeDelta: {x: -694.44, y: 165.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273150500
 MonoBehaviour:
@@ -1331,6 +1331,7 @@ GameObject:
   - component: {fileID: 308870034}
   - component: {fileID: 308870033}
   - component: {fileID: 308870032}
+  - component: {fileID: 308870035}
   m_Layer: 5
   m_Name: Upgrade Farm
   m_TagString: Untagged
@@ -1401,7 +1402,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 308870033}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 308870035}
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &308870033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1440,6 +1453,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308870030}
   m_CullTransparentMesh: 1
+--- !u!114 &308870035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308870030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1665390402}
 --- !u!1 &312063618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,6 +1799,7 @@ GameObject:
   - component: {fileID: 353047424}
   - component: {fileID: 353047423}
   - component: {fileID: 353047425}
+  - component: {fileID: 353047426}
   m_Layer: 5
   m_Name: dd
   m_TagString: Untagged
@@ -1881,7 +1908,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 610763512}
+      - m_Target: {fileID: 353047426}
         m_TargetAssemblyTypeName: Game, Assembly-CSharp
         m_MethodName: onTapVillage
         m_Mode: 1
@@ -1893,6 +1920,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &353047426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353047421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14f60dc0c7ef4b4a9d647fa09c8f452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePanel: {fileID: 610763506}
+  farmPanel: {fileID: 273150498}
+  fabbroPanel: {fileID: 0}
+  casermaPanel: {fileID: 0}
+  guildPanel: {fileID: 0}
+  soldiersUI: {fileID: 0}
+  citizensUI: {fileID: 0}
+  populationUI: {fileID: 0}
+  moneyUI: {fileID: 0}
+  turnsUI: {fileID: 0}
+  UIelements: []
 --- !u!1 &353185241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,7 +2297,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 52.92, y: 1.63}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3180,7 +3230,6 @@ GameObject:
   - component: {fileID: 610763507}
   - component: {fileID: 610763511}
   - component: {fileID: 610763513}
-  - component: {fileID: 610763512}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3281,29 +3330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a647a8c690ac70c4581ec708b82eeda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &610763512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610763506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d14f60dc0c7ef4b4a9d647fa09c8f452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gamePanel: {fileID: 0}
-  farmPanel: {fileID: 273150498}
-  fabbroPanel: {fileID: 0}
-  casermaPanel: {fileID: 0}
-  guildPanel: {fileID: 0}
-  soldiersUI: {fileID: 0}
-  citizensUI: {fileID: 0}
-  populationUI: {fileID: 0}
-  moneyUI: {fileID: 1616846604}
-  turnsUI: {fileID: 1941132387}
-  UIelements: []
 --- !u!114 &610763513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3634,6 +3660,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681178744}
+  m_CullTransparentMesh: 1
+--- !u!1 &685307167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685307168}
+  - component: {fileID: 685307170}
+  - component: {fileID: 685307169}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &685307168
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685307167}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0106881, y: 1.0106881, z: 1.0106881}
+  m_Children:
+  - {fileID: 1665390403}
+  m_Father: {fileID: 1962769334}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 291.78003, y: -332.29004}
+  m_SizeDelta: {x: 165.84991, y: 406.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &685307169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685307167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &685307170
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685307167}
   m_CullTransparentMesh: 1
 --- !u!1 &707038886
 GameObject:
@@ -4980,6 +5082,7 @@ GameObject:
   - component: {fileID: 913631986}
   - component: {fileID: 913631985}
   - component: {fileID: 913631984}
+  - component: {fileID: 913631987}
   m_Layer: 5
   m_Name: Spadaccini
   m_TagString: Untagged
@@ -5050,7 +5153,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 913631985}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 913631987}
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &913631985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5089,6 +5204,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913631982}
   m_CullTransparentMesh: 1
+--- !u!114 &913631987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913631982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 685307167}
 --- !u!1 &964431148
 GameObject:
   m_ObjectHideFlags: 0
@@ -5573,7 +5701,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 610763512}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Game, Assembly-CSharp
         m_MethodName: onSkipTurn
         m_Mode: 1
@@ -5951,6 +6079,7 @@ GameObject:
   - component: {fileID: 1083642812}
   - component: {fileID: 1083642811}
   - component: {fileID: 1083642810}
+  - component: {fileID: 1083642813}
   m_Layer: 5
   m_Name: VaiAFattoria
   m_TagString: Untagged
@@ -6021,7 +6150,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 610763512}
+      - m_Target: {fileID: 1083642813}
         m_TargetAssemblyTypeName: Game, Assembly-CSharp
         m_MethodName: onTapFarm
         m_Mode: 1
@@ -6071,6 +6200,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083642808}
   m_CullTransparentMesh: 1
+--- !u!114 &1083642813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083642808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d14f60dc0c7ef4b4a9d647fa09c8f452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePanel: {fileID: 610763506}
+  farmPanel: {fileID: 273150498}
+  fabbroPanel: {fileID: 0}
+  casermaPanel: {fileID: 0}
+  guildPanel: {fileID: 0}
+  soldiersUI: {fileID: 0}
+  citizensUI: {fileID: 0}
+  populationUI: {fileID: 0}
+  moneyUI: {fileID: 0}
+  turnsUI: {fileID: 0}
+  UIelements: []
 --- !u!1 &1137070771
 GameObject:
   m_ObjectHideFlags: 0
@@ -7306,7 +7458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 419.30005, y: -82.70002}
+  m_AnchoredPosition: {x: 343.84006, y: -82.69999}
   m_SizeDelta: {x: 486.3, y: 93.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365534287
@@ -8751,7 +8903,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9497,16 +9649,16 @@ RectTransform:
   m_GameObject: {fileID: 1665390402}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0106882, y: 1.0106882, z: 1.0106882}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1674551253}
   - {fileID: 1912242638}
-  m_Father: {fileID: 1962769334}
-  m_RootOrder: 16
+  m_Father: {fileID: 685307168}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 58.429993, y: -414.99}
+  m_AnchoredPosition: {x: -316.275, y: -286.14996}
   m_SizeDelta: {x: 632.55, y: 572.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665390404
@@ -9862,7 +10014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 79.77008, y: -412.6243}
+  m_AnchoredPosition: {x: 79.77008, y: -412.62433}
   m_SizeDelta: {x: 156.22998, y: 97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717730913
@@ -10693,7 +10845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 941.5604, y: -412.6243}
+  m_AnchoredPosition: {x: 941.5604, y: -412.62433}
   m_SizeDelta: {x: 138.30005, y: 97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1854072444
@@ -11400,7 +11552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1962769334
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11428,7 +11580,7 @@ RectTransform:
   - {fileID: 984519376}
   - {fileID: 1613599623}
   - {fileID: 1375804056}
-  - {fileID: 1665390403}
+  - {fileID: 685307168}
   m_Father: {fileID: 635479748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
