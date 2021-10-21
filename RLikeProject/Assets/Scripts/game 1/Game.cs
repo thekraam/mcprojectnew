@@ -46,7 +46,6 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
     }
 
-
     public void Update()
     {
         // soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens()); // mostra il nuovo totale dei soldati appena lo trovi
@@ -60,8 +59,9 @@ public class Game : MonoBehaviour
 
     public void onSkipTurn()
     {
+        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + 20 * fabbro.zappa * fattoria.getLvlFattoria() + 20 * fabbro.zappa2 * fattoria.getLvlFattoria());
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
-        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2*player.getCitizens() + 20*fabbro.zappa*fattoria.getLvlFattoria() + 20*fabbro.zappa2*fattoria.getLvlFattoria());
+        
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
        
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
@@ -97,7 +97,7 @@ public class Game : MonoBehaviour
     }
     public void onTapCaserma()
     {
-        gamePanel.SetActive(false);
+        gamePanel.SetActive(true);
         farmPanel.SetActive(false); 
         casermaPanel.SetActive(true); //
         guildPanel.SetActive(false);
@@ -106,7 +106,7 @@ public class Game : MonoBehaviour
 
     public void onTapGuild()
     {
-        gamePanel.SetActive(false);
+        gamePanel.SetActive(true);
         farmPanel.SetActive(false); 
         casermaPanel.SetActive(false);
         guildPanel.SetActive(true); //
@@ -115,7 +115,7 @@ public class Game : MonoBehaviour
 
     public void onTapFabbro()
     {
-        gamePanel.SetActive(false);
+        gamePanel.SetActive(true);
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
