@@ -38,6 +38,7 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LoadingScreenFadeOut(float duration)
     {
         float test = Random.Range(1.5f, 3.5f);
+  
         yield return new WaitForSeconds(test);
 
         float timePassed = 0f;

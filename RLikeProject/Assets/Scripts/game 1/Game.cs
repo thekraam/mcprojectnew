@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Game : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Game : MonoBehaviour
     public Text populationUI;
     public Text moneyUI;
     public Text turnsUI;
+    public TextMeshProUGUI turno;
     Player player = new Player(); // oggetto player partita - non contiene soldati
 
     /* classi di tipo soldato.classesoldato */
@@ -52,9 +54,9 @@ public class Game : MonoBehaviour
 
         // populationUI.text = "" + player.getPopulation(); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
 
-        moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
+        // moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
-        turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
+        turno.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
     }
 
     public void onSkipTurn()
