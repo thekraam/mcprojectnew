@@ -1683,7 +1683,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 332721391}
-        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
         m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
@@ -1741,10 +1741,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 332721386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d050be26e610e734582f4a92ad10b42d, type: 3}
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelO: {fileID: 1919448216}
+  panel: {fileID: 1919448216}
 --- !u!1 &332792642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,7 +1829,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 332792647}
-        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
         m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
@@ -1887,10 +1887,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 332792642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d050be26e610e734582f4a92ad10b42d, type: 3}
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelO: {fileID: 1665390402}
+  panel: {fileID: 1665390402}
 --- !u!1 &353047421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6366,7 +6366,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 964431153}
-        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
         m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
@@ -6424,10 +6424,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 964431148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d050be26e610e734582f4a92ad10b42d, type: 3}
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelO: {fileID: 1665390402}
+  panel: {fileID: 1665390402}
 --- !u!1 &971526726
 GameObject:
   m_ObjectHideFlags: 0
@@ -10900,10 +10900,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411938664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d050be26e610e734582f4a92ad10b42d, type: 3}
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelO: {fileID: 1286236913}
+  panel: {fileID: 1286236913}
 --- !u!114 &1411938667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10949,7 +10949,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1411938666}
-        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
         m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
@@ -12063,10 +12063,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1553051502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d050be26e610e734582f4a92ad10b42d, type: 3}
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelO: {fileID: 1919448216}
+  panel: {fileID: 1919448216}
 --- !u!114 &1553051505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12112,7 +12112,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1553051504}
-        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
         m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
@@ -12786,7 +12786,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1618985333}
-        m_TargetAssemblyTypeName: Panel, Assembly-CSharp
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
         m_MethodName: OpenPanel
         m_Mode: 1
         m_Arguments:
@@ -12844,10 +12844,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1618985328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d050be26e610e734582f4a92ad10b42d, type: 3}
+  m_Script: {fileID: 11500000, guid: a8eee3fffa1ff724aa4002f305a0490e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelO: {fileID: 1286236913}
+  panel: {fileID: 1286236913}
 --- !u!1 &1629734051
 GameObject:
   m_ObjectHideFlags: 0
