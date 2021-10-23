@@ -169,7 +169,81 @@ public class Captain1 : MonoBehaviour
         }
 
 
+        public void aumentaAtk(int x)
+        {
+        atk = atk + x;
+        }
+        public void aumentaDef(int x)
+        {
+        def = def + x;
+        }
+
+    //----------------------------------------------getters------------------------------------------
+
+    public string getName ()
+    {
+        return nome;
     }
+
+    public int getAtk()
+    {
+        return atk;
+    }
+    public int getDef()
+    {
+        return def;
+    }
+    public int getLvl()
+    {
+        return lvl;
+    }
+
+    public float getBonusBattle()
+    {
+        return bonusBattle;
+    }
+    public float getBonusWall()
+    {
+        return bonusWall;
+    }
+    public float getBonusCity()
+    {
+        return bonusCity;
+    }
+    public float getBonusFar()
+    {
+        return bonusFar;
+    }
+    public float getBonusDemoniac()
+    {
+        return bonusDemoniac;
+    }
+
+    public string getPerk1 ()
+    {
+        return perk1;
+    }
+    public string getPerk2()
+    {
+        return perk2;
+    }
+    public string getPerk3()
+    {
+        return perk3;
+    }
+    public string getPerk1comment()
+    {
+        return perk1comment;
+    }
+    public string getPerk2comment()
+    {
+        return perk2comment;
+    }
+    public string getPerk3comment()
+    {
+        return perk3comment;
+    }
+}
 
 
 
