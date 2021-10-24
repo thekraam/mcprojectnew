@@ -125,6 +125,10 @@ public class Game : MonoBehaviour
     }
 
 
+
+
+
+
     //----------------------------pulsanti reclutamento------------------------
 
      public void onRecruitSwordsmen (int x)
@@ -142,5 +146,9 @@ public class Game : MonoBehaviour
         caserma.reclutaRiders(riders, x);
         player.setRapidMoney(-30);
     }
+
+    //-------------------------------aggiunta capitani (beta testing)-----------------------
+    Captain1 capitano = new Captain1();
+    Captain2 enemyCapitano = new Captain2();
 
 }
