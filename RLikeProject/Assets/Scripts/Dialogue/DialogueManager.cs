@@ -17,19 +17,13 @@ public class DialogueManager : MonoBehaviour {
 		sentences = new Queue<string>();
 	}
 
-	public void StartDialogue (Dialogue dialogue)
+	public void StartDialogue (string name, string[] stringhe)
 	{
 		animator.SetBool("IsOpen", true);
 
-		nameText.text = dialogue.name;
+		nameText.text = "" + name;
 
-		sentences.Clear();
-
-		int x = 3;
-
-		Debug.Log(x);
-
-		foreach (string sentence in dialogue.sentences)
+		foreach (string sentence in stringhe)
 		{
 			sentences.Enqueue(sentence);
 		}
