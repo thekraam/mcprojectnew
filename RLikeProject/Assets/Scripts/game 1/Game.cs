@@ -6,6 +6,14 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
+
+    /* dichiarazione contatore eventi casuali non progressivi e booleana eventi speciali*/
+    private int eventCounter = 0;
+    private bool attendingSpecialEvent = false;
+    private bool attendingGuildEvent = false;
+
+    /* Dichiarazione dialogue */
+    public Dialogue dialogue = new Dialogue();
     
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject gamePanel; // pannello all'avvio partita
@@ -34,9 +42,6 @@ public class Game : MonoBehaviour
     Fabbro fabbro = new Fabbro();
 
     public List<Text> UIelements; 
-    
-    bool isFirstTurn = true;
-    bool isLastTurn = false;
 
     public void Start()
     {
@@ -48,6 +53,7 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
     }
 
+    // ---------------------------- aggiornamento in real time texts ----------------------------
     public void Update()
     {
         // soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens()); // mostra il nuovo totale dei soldati appena lo trovi
@@ -62,27 +68,70 @@ public class Game : MonoBehaviour
     public void onSkipTurn()
     {
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + 20 * fabbro.zappa * fattoria.getLvlFattoria() + 20 * fabbro.zappa2 * fattoria.getLvlFattoria());
-        player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
-        
-        player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
+        player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
        
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
         player.setTempCitizens(fattoria.getCrescitaAbitanti());
 
         player.setCitizensMax(fattoria.getAbitantiMax());
 
-        swordsmen.setTotal(); // idem
+        swordsmen.setTotal(); // ricalcolo tot spadaccini
+        archers.setTotal(); // ricalcolo tot arcieri
+        riders.setTotal(); // ricalcolo tot cavalieri
 
-        archers.setTotal(); // idem
+        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal()); // ricalcolo popolazione attuale
 
-        riders.setTotal(); // idem
-        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal());
+        player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
+
+        this.attendingGuildEvent = false;
+        eventStarter(player.getTurn(), false);
     }
 
-    // metodi per nascondere o visualizzare i pannelli di gioco
+
+
+    // ---------------------------- avviatore eventi ----------------------------
+    public void eventStarter(int turn, bool selectingGuildEvent)
+    {
+        if (!selectingGuildEvent && turn > 1)
+        { 
+            float isEventHappening = Random.Range(0f, 1f);
+            if (attendingSpecialEvent)
+            {
+                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento conseguenza
+                attendingSpecialEvent = false;
+            }
+            else if (isEventHappening >= 0f  &&
+                     isEventHappening < 0.2f &&
+                     this.eventCounter < 10    )
+            {
+                dialogue.TriggerDialogue(player, swordsmen, archers, riders); // avvia evento passivo, senza scelta
+                this.eventCounter++;
+            }
+            else if (isEventHappening >= 0.2f &&
+                     isEventHappening < 0.3f    )
+            {
+                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento che scatena conseguenza, con scelta
+                attendingSpecialEvent = true;
+            } 
+        }
+        else
+        {
+            if (!this.attendingGuildEvent)
+            {
+                dialogue.TriggerGuildDialogue(player, swordsmen, archers, riders);
+                attendingGuildEvent = true;
+            }
+            else
+            {
+                dialogue.TriggerGuildErrorDialogue(player, swordsmen, archers, riders);
+            }
+        }
+    }
+
+    // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
     {
-        gamePanel.SetActive(true); //
+        gamePanel.SetActive(true); // sempre true
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
@@ -91,7 +140,7 @@ public class Game : MonoBehaviour
 
     public void onTapFarm()
     {
-        gamePanel.SetActive(true);
+        gamePanel.SetActive(true); // sempre true
         farmPanel.SetActive(true); // 
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
@@ -99,7 +148,7 @@ public class Game : MonoBehaviour
     }
     public void onTapCaserma()
     {
-        gamePanel.SetActive(true);
+        gamePanel.SetActive(true); // sempre true
         farmPanel.SetActive(false); 
         casermaPanel.SetActive(true); //
         guildPanel.SetActive(false);
@@ -108,7 +157,7 @@ public class Game : MonoBehaviour
 
     public void onTapGuild()
     {
-        gamePanel.SetActive(true);
+        gamePanel.SetActive(true); // sempre true
         farmPanel.SetActive(false); 
         casermaPanel.SetActive(false);
         guildPanel.SetActive(true); //
@@ -117,7 +166,7 @@ public class Game : MonoBehaviour
 
     public void onTapFabbro()
     {
-        gamePanel.SetActive(true);
+        gamePanel.SetActive(true); // sempre true
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
