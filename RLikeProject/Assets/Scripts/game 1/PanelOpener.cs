@@ -29,6 +29,21 @@ public class PanelOpener : MonoBehaviour
             }
         }
     }
+    public void ClosePanelAnimator()
+    {
+
+        if (panel != null)
+        {
+            panel.SetActive(false);
+            Animator animator = panel.GetComponent<Animator>();
+            if (animator != null)
+            {
+                bool isOpen = animator.GetBool("open");
+
+                animator.SetBool("close", !isOpen);
+            }
+        }
+    }
 
     public void ClosePanel()
     {
