@@ -84,13 +84,13 @@ public class Game : MonoBehaviour
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
 
         this.attendingGuildEvent = false;
-        eventStarter(player.getTurn(), false);
+        //eventStarter(player.getTurn(), false);
     }
 
 
 
     // ---------------------------- avviatore eventi ----------------------------
-    public void eventStarter(int turn, bool selectingGuildEvent)
+    /*public void eventStarter(int turn, bool selectingGuildEvent)
     {
         if (!selectingGuildEvent && turn > 1)
         { 
@@ -127,7 +127,7 @@ public class Game : MonoBehaviour
             }
         }
     }
-
+    */
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
     {

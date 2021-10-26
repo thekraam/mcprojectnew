@@ -8,22 +8,29 @@ public class DialogueManager : MonoBehaviour {
 	public Text nameText;
 	public Text dialogueText;
 
+	private bool isInteractiveDM = false;
+
 	public Animator animator;
 
 	private Queue<string> sentences;
+
+	public GameObject interactivePanel;
+	public GameObject continuePanel;
 
 	// Use this for initialization
 	void Start () {
 		sentences = new Queue<string>();
 	}
 
-	public void StartDialogue (string name, string[] stringhe)
+	public void StartDialogue (bool isInteractive, string name, string[] eventStrings)
 	{
+		isInteractiveDM = isInteractive;
+
 		animator.SetBool("IsOpen", true);
 
 		nameText.text = "" + name;
 
-		foreach (string sentence in stringhe)
+		foreach (string sentence in eventStrings)
 		{
 			sentences.Enqueue(sentence);
 		}
@@ -33,8 +40,18 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
+        if (isInteractiveDM)
+        {	
+			if (sentences.Count == 1)
+			{
+				interactivePanel.SetActive(true);
+				continuePanel.SetActive(false);
+			}	
+		}
 		if (sentences.Count == 0)
 		{
+			interactivePanel.SetActive(false);
+			continuePanel.SetActive(true);
 			EndDialogue();
 			return;
 		}

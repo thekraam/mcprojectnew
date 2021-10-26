@@ -9344,6 +9344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14f60dc0c7ef4b4a9d647fa09c8f452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogue: {fileID: 0}
   gamePanel: {fileID: 0}
   farmPanel: {fileID: 0}
   fabbroPanel: {fileID: 0}
@@ -19590,6 +19591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14f60dc0c7ef4b4a9d647fa09c8f452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogue: {fileID: 0}
   gamePanel: {fileID: 610763506}
   farmPanel: {fileID: 273150498}
   fabbroPanel: {fileID: 1471107679}
