@@ -38,7 +38,7 @@ public class PanelOpener : MonoBehaviour
             Animator animator = panel.GetComponent<Animator>();
             if (animator != null)
             {
-                bool isOpen = animator.GetBool("open");
+                bool isOpen = animator.GetBool("close");
 
                 animator.SetBool("close", !isOpen);
             }
