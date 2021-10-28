@@ -6,6 +6,15 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
+    float startTime = 0;
+    float startTimeController = 0;
+    bool isTurnDone = false;
+
+    SceneLoader sceneloader = new SceneLoader();
+    public SpriteRenderer horserender;
+    public GameObject horse;
+    public GameObject loadingPanel;
+    public CanvasGroup canvasGroupHorse;
 
     /* dichiarazione contatore eventi casuali non progressivi e booleana eventi speciali*/
     private int eventCounter = 0;
@@ -56,6 +65,16 @@ public class Game : MonoBehaviour
     // ---------------------------- aggiornamento in real time texts ----------------------------
     public void Update()
     {
+        
+        startTime = startTime + Time.deltaTime;
+        startTimeController = startTimeController + Time.deltaTime;
+
+        if(startTimeController > 2 && !isTurnDone)
+        {
+            startTime = 0;
+        }
+
+        waitForUpdate();
         // soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens()); // mostra il nuovo totale dei soldati appena lo trovi
 
         // populationUI.text = "" + player.getPopulation(); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
@@ -63,6 +82,22 @@ public class Game : MonoBehaviour
         // moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
         turno.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
+
+     
+    }
+
+    public void onTapNextSeason()
+    {
+        isTurnDone = true;
+    }
+
+    public void waitForUpdate()
+    {
+        if(startTime > 2)
+        {
+            onSkipTurn();
+            isTurnDone = false;
+        }
     }
 
     public void onSkipTurn()
