@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour {
 
 	public void StartDialogue (bool isInteractive, string name, string[] eventStrings)
 	{
+		continuePanel.SetActive(true);
+
 		isInteractiveDM = isInteractive;
 
 		animator.SetBool("IsOpen", true);
@@ -51,7 +53,6 @@ public class DialogueManager : MonoBehaviour {
 		if (sentences.Count == 0)
 		{
 			interactivePanel.SetActive(false);
-			continuePanel.SetActive(true);
 			EndDialogue();
 			return;
 		}

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
 
-    private string a = "a";
+    private string a = "Guild Master";
 
 
 

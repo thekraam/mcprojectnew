@@ -6,15 +6,10 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    float startTime = 0;
-    float startTimeController = 0;
-    bool isTurnDone = false;
-
-    SceneLoader sceneloader = new SceneLoader();
-    public SpriteRenderer horserender;
-    public GameObject horse;
-    public GameObject loadingPanel;
-    public CanvasGroup canvasGroupHorse;
+    /* variabili di controllo tempo di aggiornamento allo skipturn */
+    private float startTime = 0;
+    private float startTimeController = 0;
+    private bool isTurnDone = false;
 
     /* dichiarazione contatore eventi casuali non progressivi e booleana eventi speciali*/
     private int eventCounter = 0;
@@ -32,12 +27,23 @@ public class Game : MonoBehaviour
     public GameObject guildPanel;
 
     /* dichiarazione elementi di UI tramite oggetto Text in UnityEngine.UI */
+    // FARM
+    public Text farmlvlUI;
+    public Text farmnextlvlUI;
+    public Text farmmaxpopulationUI;
+    public Text farmnextmaxpopulationUI;
+    public Text farmcitizensperturnUI;
+    public Text farmnextcitizensperturnUI;
+    public Text farmgoldperturnUI;
+    public Text farmnextgoldperturnUI;
+    public Text farmupgradecostUI;
+    // GENERAL
     public Text soldiersUI;
     public Text citizensUI;
     public Text populationUI;
     public Text moneyUI;
-    public Text turnsUI;
-    public TextMeshProUGUI turno;
+    public Text maxRecruitableUI;
+    public TextMeshProUGUI turnsUI;
     Player player = new Player(); // oggetto player partita - non contiene soldati
 
     /* classi di tipo soldato.classesoldato */
@@ -65,7 +71,7 @@ public class Game : MonoBehaviour
     // ---------------------------- aggiornamento in real time texts ----------------------------
     public void Update()
     {
-        
+        // --------------------------- controller tempo per aggiornamento sync ---------------------------
         startTime = startTime + Time.deltaTime;
         startTimeController = startTimeController + Time.deltaTime;
 
@@ -74,30 +80,46 @@ public class Game : MonoBehaviour
             startTime = 0;
         }
 
-        waitForUpdate();
+        if (startTime > 2)
+        {
+            onSkipTurn();
+            isTurnDone = false;
+        }
+
+        // --------------------------- updater generale ---------------------------
+
         // soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens()); // mostra il nuovo totale dei soldati appena lo trovi
 
         // populationUI.text = "" + player.getPopulation(); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
 
         // moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
-        turno.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
+        // maxRecruitableUI.text = "" + caserma.getMaxRecruitable();
 
-     
+        turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
+
+        // --------------------------- updater dati fattoria - tempo reale ---------------------------
+
+        farmlvlUI.text = "" + fattoria.getLvlFattoria();
+        farmnextlvlUI.text = "" + fattoria.getNextLvlFattoria();
+
+        farmmaxpopulationUI.text = "" + fattoria.getAbitantiMax();
+        farmnextmaxpopulationUI.text = "" + fattoria.getNextAbitantiMax();
+
+        farmcitizensperturnUI.text = "" + fattoria.getCrescitaAbitanti();
+        farmnextcitizensperturnUI.text = "" + fattoria.getNextCrescitaAbitanti();
+
+        farmgoldperturnUI.text = "" + fattoria.getGoldFattoria();
+        farmnextgoldperturnUI.text = "" + fattoria.getNextGoldFattoria();
+
+        // farmupgradecostUI.text = "" + fattoria.getCostoLvlUp();
+
+
     }
 
     public void onTapNextSeason()
     {
         isTurnDone = true;
-    }
-
-    public void waitForUpdate()
-    {
-        if(startTime > 2)
-        {
-            onSkipTurn();
-            isTurnDone = false;
-        }
     }
 
     public void onSkipTurn()

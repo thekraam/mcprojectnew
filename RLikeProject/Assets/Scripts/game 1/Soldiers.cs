@@ -196,7 +196,7 @@ public class Soldiers : MonoBehaviour
             return atk_riders;
         }
         // modifica atk riders
-        public void setAtk(int modifier)
+        public void setAtk()
         {
             atk_riders = atk_riders + temp_atk_riders;
             temp_atk_riders = 0;
@@ -215,7 +215,7 @@ public class Soldiers : MonoBehaviour
             return def_riders;
         }
         // modifica def riders
-        public void setDef(int modifier)
+        public void setDef()
         {
             def_riders = def_riders + temp_def_riders;
             temp_def_riders = 0;

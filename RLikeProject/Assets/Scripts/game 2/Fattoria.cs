@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Fattoria : MonoBehaviour
 {
-    int lvl = 1;
-    int abitantiMax = 100;
+    private int lvl = 1;
+    private int abitantiMax = 100;
     public int crescitaAbitanti = 15;
     public int gold = 0;
 
@@ -44,7 +44,7 @@ public class Fattoria : MonoBehaviour
 
 
 
-    //----------------------------getters--------------------------
+    //----------------------------getters fattoria reale--------------------------
 
     public int getLvlFattoria()
     {
@@ -62,4 +62,27 @@ public class Fattoria : MonoBehaviour
     {
         return gold;
     }
+
+    //----------------------------getters fattoria PROSSIMO LIVELLO--------------------------
+
+    public int getNextLvlFattoria()
+    {
+        return lvl+1;
+    }
+    public int getNextAbitantiMax()
+    {
+        return abitantiMax + 100;
+    }
+    public int getNextCrescitaAbitanti()
+    {
+        if (lvl + 1 == 5)
+            return 40;
+        else
+            return crescitaAbitanti + 5;
+    }
+    public int getNextGoldFattoria()
+    {
+        return gold*2;
+    }
+
 }
