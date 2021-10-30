@@ -83,6 +83,7 @@ public class Game : MonoBehaviour
 
         if (startTime > 2 && isTurnDone)
         {
+            //da aggiungere controllo presenza capitano
             isTurnDone = false;
             onSkipTurn();
             startTimeController = 0;
