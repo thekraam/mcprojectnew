@@ -82,7 +82,10 @@ public class Fattoria : MonoBehaviour
     }
     public int getNextGoldFattoria()
     {
-        return gold*2;
+        if (lvl == 1)
+            return 20;
+        else
+            return gold*2;
     }
 
 }
