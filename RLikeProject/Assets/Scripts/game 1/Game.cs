@@ -78,12 +78,15 @@ public class Game : MonoBehaviour
         if(startTimeController > 2 && !isTurnDone)
         {
             startTime = 0;
+            startTimeController = 0;
         }
 
-        if (startTime > 2)
+        if (startTime > 2 && isTurnDone)
         {
-            onSkipTurn();
             isTurnDone = false;
+            onSkipTurn();
+            startTimeController = 0;
+            startTime = 0;
         }
 
         // --------------------------- updater generale ---------------------------
