@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Soldiers : MonoBehaviour
 {
-   public class Swordsmen
+    public class Swordsmen
     {
         int total_swordsmen = 0;
         int temp_total_swordsmen = 0;
@@ -26,6 +26,10 @@ public class Soldiers : MonoBehaviour
         {
             total_swordsmen = total_swordsmen + temp_total_swordsmen;
             temp_total_swordsmen = 0;
+        }
+        public void setRapidTotal(int modifier)
+        {
+            total_swordsmen = total_swordsmen + modifier;
         }
         public int getTempTotal()
         {
@@ -82,9 +86,9 @@ public class Soldiers : MonoBehaviour
         {
             bonus_swordsmen = bonus_swordsmen + modifier;
         }
-        
+
     }
-   public class Archers
+    public class Archers
     {
         int total_archers = 0;
         int temp_total_archers = 0;
@@ -104,6 +108,10 @@ public class Soldiers : MonoBehaviour
         {
             total_archers = total_archers + temp_total_archers;
             temp_total_archers = 0;
+        }
+        public void setRapidTotal(int modifier)
+        {
+            total_archers = total_archers + modifier;
         }
         public int getTempTotal()
         {
@@ -161,7 +169,7 @@ public class Soldiers : MonoBehaviour
             bonus_archers = bonus_archers + modifier;
         }
     }
-   public class Riders
+    public class Riders
     {
         int total_riders = 0;
         int temp_total_riders = 0;
@@ -181,6 +189,10 @@ public class Soldiers : MonoBehaviour
         {
             total_riders = total_riders + temp_total_riders;
             temp_total_riders = 0;
+        }
+        public void setRapidTotal(int modifier)
+        {
+            total_riders = total_riders + modifier;
         }
         public int getTempTotal()
         {

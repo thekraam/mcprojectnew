@@ -17,8 +17,8 @@ public class Enemy : MonoBehaviour
         public void lvlup()
         {
             atk_swordsmen = atk_swordsmen + 1;
-            def_swordsmen = def_swordsmen +1;
-            bonus_swordsmen = bonus_swordsmen +1;
+            def_swordsmen = def_swordsmen + 1;
+            bonus_swordsmen = bonus_swordsmen + 1;
         }
         public void reset()
         {
@@ -36,6 +36,10 @@ public class Enemy : MonoBehaviour
         public void setTotal(int x)
         {
             total_swordsmen = total_swordsmen + x;
+        }
+        public void setRapidTotal(int modifier)
+        {
+            total_swordsmen = total_swordsmen + modifier;
         }
         public int getAtk()
         {
@@ -96,6 +100,10 @@ public class Enemy : MonoBehaviour
         {
             total_archers = total_archers + x;
         }
+        public void setRapidTotal(int modifier)
+        {
+            total_archers = total_archers + modifier;
+        }
         public int getAtk()
         {
             return atk_archers;
@@ -127,24 +135,24 @@ public class Enemy : MonoBehaviour
 
 
     public class ERiders
+    {
+        int total_riders = 0;
+        int atk_riders = 8;
+        int def_riders = 5;
+        float bonus_riders = 0;
+        public void lvlup()
         {
-            int total_riders = 0;
-            int atk_riders = 8;
-            int def_riders = 5;
-            float bonus_riders = 0;
-            public void lvlup()
-            {
-                atk_riders = atk_riders + 1;
-                def_riders = def_riders + 1;
-                bonus_riders = bonus_riders + 1;
-            }
-            public void reset()
-            {
-                total_riders = 0;
-                atk_riders = 8;
-                def_riders = 5;
-                bonus_riders = 0;
-            }
+            atk_riders = atk_riders + 1;
+            def_riders = def_riders + 1;
+            bonus_riders = bonus_riders + 1;
+        }
+        public void reset()
+        {
+            total_riders = 0;
+            atk_riders = 8;
+            def_riders = 5;
+            bonus_riders = 0;
+        }
 
         public int getTotal()
         {
@@ -154,6 +162,10 @@ public class Enemy : MonoBehaviour
         public void setTotal(int x)
         {
             total_riders = total_riders + x;
+        }
+        public void setRapidTotal(int modifier)
+        {
+            total_riders = total_riders + modifier;
         }
         public int getAtk()
         {
@@ -223,8 +235,8 @@ public class Enemy : MonoBehaviour
         swordman.setTotal(swordmen);
         archer.setTotal(archers);
         rider.setTotal(riders);
-        
+
     }
-    
+
 
 }
