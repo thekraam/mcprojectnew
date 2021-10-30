@@ -109,11 +109,11 @@ public class Game : MonoBehaviour
         farmmaxpopulationUI.text = "" + fattoria.getAbitantiMax();
         farmnextmaxpopulationUI.text = "" + fattoria.getNextAbitantiMax();
 
-        farmcitizensperturnUI.text = "" + fattoria.getCrescitaAbitanti();
-        farmnextcitizensperturnUI.text = "" + fattoria.getNextCrescitaAbitanti();
+        farmcitizensperturnUI.text = "+" + fattoria.getCrescitaAbitanti();
+        farmnextcitizensperturnUI.text = "+" + fattoria.getNextCrescitaAbitanti();
 
-        farmgoldperturnUI.text = "" + fattoria.getGoldFattoria();
-        farmnextgoldperturnUI.text = "" + fattoria.getNextGoldFattoria();
+        farmgoldperturnUI.text = "+" + fattoria.getGoldFattoria();
+        farmnextgoldperturnUI.text = "+" + fattoria.getNextGoldFattoria();
 
         // farmupgradecostUI.text = "" + fattoria.getCostoLvlUp();
 
