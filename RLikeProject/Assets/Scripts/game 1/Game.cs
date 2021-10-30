@@ -256,8 +256,53 @@ public class Game : MonoBehaviour
         player.setRapidMoney(-30);
     }
 
-    //-------------------------------aggiunta capitani (beta testing)-----------------------
+    //------------------------------------------ sistema di battaglia (beta testing)-----------------------
     Captain1 capitano = new Captain1();
     Captain2 enemyCapitano = new Captain2();
+    Enemy enemy = new Enemy();
+    battle1 battle = new battle1();
+    Enemy.ESwordsmen eswordsmen = new Enemy.ESwordsmen();
+    Enemy.EArchers earchers = new Enemy.EArchers();
+    Enemy.ERiders eriders = new Enemy.ERiders();
+
+    public void makeEnemy(int totale, int livello, int swordmen, int archers, int riders, int lvlcapitano)
+    {
+        enemy.creazione(totale, livello, swordmen, archers, riders, lvlcapitano, enemyCapitano, eswordsmen, earchers, eriders);
+    }
+    public void makeCaptain(int lvl)
+    {
+        capitano.resetCaptain();
+        capitano.lvlUpRapid(lvl);
+
+    }
+
+        public int newBattle(float terri, float bonusETerri, float bonusEnemy)
+    {
+        int esito = 0;
+        float bonusTerri = 0;
+        if (terri == 1)
+        {
+            bonusTerri = player.getBonusWall();
+        }
+        if (terri == 2)
+        {
+            bonusTerri = player.getBonusCity();
+        }
+        if (terri == 3)
+        {
+            bonusTerri = player.getBonusFar();
+        }
+        if (terri == 4)
+        {
+            bonusTerri = player.getBonusDemoniac();
+        }
+        float bonusSoldier = player.getBonusBattle() + caserma.getBonusBarrack();
+
+        esito = battle.battaglia(capitano, enemyCapitano, swordsmen, archers, riders, eswordsmen, earchers, eriders, terri, bonusTerri, bonusETerri, bonusSoldier, bonusEnemy); ;
+
+        return esito;
+    }
+
+
 
 }

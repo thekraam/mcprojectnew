@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     int skip_player_money = 0;
     public int player_turn = 1;
 
-    //bonus territoriali
+    //bonus battaglia e territoriali
+    float bonusBattle = 0;
     float bonusWall = 0;
     float bonusCity = 0;
     float bonusFar = 0;
@@ -136,6 +137,9 @@ public class Player : MonoBehaviour
     {
         return bonusDemoniac;
     }
-
+    public float getBonusBattle()
+    {
+        return bonusBattle;
+    }
 
 }

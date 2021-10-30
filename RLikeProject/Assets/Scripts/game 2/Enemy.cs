@@ -206,13 +206,13 @@ public class Enemy : MonoBehaviour
 
 
     //------------------------------------------------------creazione-----------------------------------------------------------------
-    public void creazione(int totale, int livello, int swordmen, int archers, int riders, int lvlcapitano, Captain2 enemyCapitano)
+    public void creazione(int totale, int livello, int swordmen, int archers, int riders, int lvlcapitano, Captain2 enemyCapitano, ESwordsmen swordman, EArchers archer, ERiders rider)
     {
         totalSoldier = totale;
         lvl = livello;
-        ESwordsmen swordman = new ESwordsmen();
-        EArchers archer = new EArchers();
-        ERiders rider = new ERiders();
+        swordman.reset();
+        archer.reset();
+        rider.reset();
         enemyCapitano.resetCaptain();
         enemyCapitano.lvlUpRapid(livello);
 
