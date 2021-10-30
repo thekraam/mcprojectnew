@@ -236,26 +236,6 @@ public class Game : MonoBehaviour
 
 
 
-
-
-    //----------------------------pulsanti reclutamento------------------------
-
-     public void onRecruitSwordsmen (int x)
-    {
-        caserma.reclutaSwordman(swordsmen, x);
-        player.setRapidMoney(-20);
-    }
-    public void onRecruitArchers(int x)
-    {
-        caserma.reclutaArchers(archers, x);
-        player.setRapidMoney(-20);
-    }
-    public void onRecruitRiders(int x)
-    {
-        caserma.reclutaRiders(riders, x);
-        player.setRapidMoney(-30);
-    }
-
     //------------------------------------------ sistema di battaglia (beta testing)-----------------------
     Captain1 capitano = new Captain1();
     Captain2 enemyCapitano = new Captain2();

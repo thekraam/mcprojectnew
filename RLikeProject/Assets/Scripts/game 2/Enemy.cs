@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
         archer.reset();
         rider.reset();
         enemyCapitano.resetCaptain();
-        enemyCapitano.lvlUpRapid(livello);
+        enemyCapitano.lvlUpRapid(lvlcapitano);
 
         if (livello == 2)
         {
