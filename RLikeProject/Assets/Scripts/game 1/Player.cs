@@ -13,8 +13,18 @@ public class Player : MonoBehaviour
     int player_money = 100;
     int skip_player_money = 0;
     public int player_turn = 1;
+
+    //bonus territoriali
+    float bonusWall = 0;
+    float bonusCity = 0;
+    float bonusFar = 0;
+    float bonusDemoniac = 0;
+
+
+
+
     
-    //------------------turni---------------------
+    //------------------------------------------turni---------------------
     public int getTurn()
     {
         return player_turn;
@@ -29,7 +39,7 @@ public class Player : MonoBehaviour
         player_turn += modifier;
     }
 
-    //-------------------popolazione-------------------
+    //----------------------------------------popolazione-------------------
     public float getPopulation()
     {
         return player_population;
@@ -78,7 +88,7 @@ public class Player : MonoBehaviour
 
     }
 
-    //--------------------golds----------------------------
+    //--------------------------------------------golds----------------------------
     public int getMoney()
     {
         return player_money;
@@ -105,5 +115,27 @@ public class Player : MonoBehaviour
     // prova swordsmen generica
     /* Soldiers.Swordsmen swordsmen = new Soldiers.Swordsmen();
     int x = swordsmen.getTotal();*/
+
+
+    public float getBonusWall ()
+    {
+        return bonusWall;
+    }
+
+    public float getBonusCity()
+    {
+        return bonusCity;
+    }
+
+    public float getBonusFar()
+    {
+        return bonusFar;
+    }
+
+    public float getBonusDemoniac()
+    {
+        return bonusDemoniac;
+    }
+
 
 }

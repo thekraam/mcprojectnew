@@ -8,14 +8,14 @@ using UnityEngine;
 
 public class battle1 : MonoBehaviour
 {
-    int fine = 0;
-    int rapporto1 = 0;
-    int rapporto2 = 0;
 
 
 
     public int battaglia(Captain1 capitano1, Captain2 capitano2, Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider, Enemy.ESwordsmen eswordman, Enemy.EArchers earcher, Enemy.ERiders erider, float terri, float bonusTerri, float bonusETerri, float bonusSoldier, float bonusEnemy)
     {
+        int fine = 0;
+        int rapporto1 = 0;
+        int rapporto2 = 0;
         int turno = 1;
         //------------------------------------calcolo bonus---------------------------------
         float bonuscaptain = 0;
