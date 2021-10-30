@@ -78,12 +78,15 @@ public class Game : MonoBehaviour
         if(startTimeController > 2 && !isTurnDone)
         {
             startTime = 0;
+            startTimeController = 0;
         }
 
-        if (startTime > 2)
+        if (startTime > 2 && isTurnDone)
         {
-            onSkipTurn();
             isTurnDone = false;
+            onSkipTurn();
+            startTimeController = 0;
+            startTime = 0;
         }
 
         // --------------------------- updater generale ---------------------------
@@ -106,11 +109,11 @@ public class Game : MonoBehaviour
         farmmaxpopulationUI.text = "" + fattoria.getAbitantiMax();
         farmnextmaxpopulationUI.text = "" + fattoria.getNextAbitantiMax();
 
-        farmcitizensperturnUI.text = "" + fattoria.getCrescitaAbitanti();
-        farmnextcitizensperturnUI.text = "" + fattoria.getNextCrescitaAbitanti();
+        farmcitizensperturnUI.text = "+" + fattoria.getCrescitaAbitanti();
+        farmnextcitizensperturnUI.text = "+" + fattoria.getNextCrescitaAbitanti();
 
-        farmgoldperturnUI.text = "" + fattoria.getGoldFattoria();
-        farmnextgoldperturnUI.text = "" + fattoria.getNextGoldFattoria();
+        farmgoldperturnUI.text = "+" + fattoria.getGoldFattoria();
+        farmnextgoldperturnUI.text = "+" + fattoria.getNextGoldFattoria();
 
         // farmupgradecostUI.text = "" + fattoria.getCostoLvlUp();
 
