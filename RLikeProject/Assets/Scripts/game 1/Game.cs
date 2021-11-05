@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class Game : MonoBehaviour
 {
     /* variabili di controllo tempo di aggiornamento allo skipturn */
@@ -143,7 +144,7 @@ public class Game : MonoBehaviour
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal()); // ricalcolo popolazione attuale
 
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
-
+        Debug.LogError(player.getTurn());
         this.attendingGuildEvent = false;
         //eventStarter(player.getTurn(), false);
     }
@@ -235,6 +236,19 @@ public class Game : MonoBehaviour
     }
 
 
+    /*----------------save------load------------------*/
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame(player);
+    }
+
+    public void LoadGame()
+    {
+        GameData data = SaveSystem.LoadGame();
+        player.player_turn = data.player_turn;
+
+    }
 
 
     //------------------------------------------ sistema di battaglia (beta testing)-----------------------

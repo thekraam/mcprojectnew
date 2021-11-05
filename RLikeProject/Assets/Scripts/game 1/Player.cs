@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
 
 
 
-    
     //------------------------------------------turni---------------------
     public int getTurn()
     {
