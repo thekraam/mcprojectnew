@@ -18,8 +18,11 @@ public class Game : MonoBehaviour
     private bool attendingGuildEvent = false;
 
     /* Dichiarazione dialogue */
-    public Dialogue dialogue = new Dialogue();
-    
+    public Dialogue gameDialogue = new Dialogue();
+
+    /* Dichiarazione EventList */
+    public Events events = new Events();
+
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject gamePanel; // pannello all'avvio partita
     public GameObject farmPanel;
@@ -152,14 +155,14 @@ public class Game : MonoBehaviour
 
 
     // ---------------------------- avviatore eventi ----------------------------
-    /*public void eventStarter(int turn, bool selectingGuildEvent)
+    /*public void eventStarter(int turn, bool selectingGuildEvent) // parametro provenienza evento - attualmente implementato solo la gilda
     {
         if (!selectingGuildEvent && turn > 1)
         { 
             float isEventHappening = Random.Range(0f, 1f);
             if (attendingSpecialEvent)
             {
-                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento conseguenza
+                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento conseguenza di un evento precedente, con scelta
                 attendingSpecialEvent = false;
             }
             else if (isEventHappening >= 0f  &&
@@ -174,7 +177,13 @@ public class Game : MonoBehaviour
             {
                 dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento che scatena conseguenza, con scelta
                 attendingSpecialEvent = true;
-            } 
+            }
+            else if (isEventHappening >= 0.3f &&
+                     isEventHappening < 0.4f    )
+            {
+                gameDialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento che scatena conseguenza, con scelta
+                attendingSpecialEvent = true;
+            }
         }
         else
         {
@@ -188,8 +197,8 @@ public class Game : MonoBehaviour
                 dialogue.TriggerGuildErrorDialogue(player, swordsmen, archers, riders);
             }
         }
-    }
-    */
+    }*/
+    
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
     {
@@ -298,6 +307,9 @@ public class Game : MonoBehaviour
         return esito;
     }
 
+
+
+    /* Variabili di */
 
 
 }

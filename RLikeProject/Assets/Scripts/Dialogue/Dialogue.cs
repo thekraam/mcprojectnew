@@ -19,15 +19,16 @@ public class Dialogue : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////////
 
     // funzione per far apparire il dialogue, va su un tasto o una situazione
-    public void TriggerDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void TriggerDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, string [] message)
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(false, a, pickRandomEvent(player, swordsmen, archers, riders));
+        FindObjectOfType<DialogueManager>().StartDialogue(false, a, message);
     }
 
     // funzione per far apparire un dialogue con scelta finale (si/no)
-    public void TriggerInteractiveDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public bool TriggerInteractiveDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, string[] message)
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(true, a, pickProgressiveEvent(player, swordsmen, archers, riders));
+        FindObjectOfType<DialogueManager>().StartDialogue(true, a, message);
+        return FindObjectOfType<DialogueManager>().getResponse();
     }
 
 

@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour {
 	public Text dialogueText;
 
 	private bool isInteractiveDM = false;
+	private bool responseToInteractiveDialogue = false;
+	private bool DialogueIsResetting = false;
 
 	public Animator animator;
 
@@ -22,8 +24,28 @@ public class DialogueManager : MonoBehaviour {
 		sentences = new Queue<string>();
 	}
 
+	public void PositiveResponseToInteractiveDialogue()
+    {
+		this.responseToInteractiveDialogue = true;
+	}
+	public void NegativeResponseToInteractiveDialogue()
+	{
+		this.responseToInteractiveDialogue = false;
+	}
+
+	public bool getResponse()
+    {
+		DialogueIsResetting = true;
+		return this.responseToInteractiveDialogue;
+    }
+
 	public void StartDialogue (bool isInteractive, string name, string[] eventStrings)
 	{
+        if (DialogueIsResetting)
+        {
+			responseToInteractiveDialogue = false;
+			DialogueIsResetting = false;
+        }
 		continuePanel.SetActive(true);
 
 		isInteractiveDM = isInteractive;
