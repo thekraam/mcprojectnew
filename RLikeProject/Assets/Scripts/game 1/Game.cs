@@ -21,6 +21,7 @@ public class Game : MonoBehaviour
     public Events events = new Events();
 
     /* Dichiarazione object di controllo visibilita pannelli */
+    public GameObject mainMenuPanel;
     public GameObject gamePanel; // pannello all'avvio partita
     public GameObject farmPanel;
     public GameObject fabbroPanel;
@@ -62,6 +63,7 @@ public class Game : MonoBehaviour
     public void Start()
     {
         // disattivo pannelli non di game, 'nse sa mai
+        mainMenuPanel.SetActive(true);
         gamePanel.SetActive(false); //
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);

@@ -31,6 +31,7 @@ public class DialogueManager : MonoBehaviour {
 	public void NegativeResponseToInteractiveDialogue()
 	{
 		this.responseToInteractiveDialogue = 0;
+		Debug.LogError(this.responseToInteractiveDialogue);
 	}
 
 	public int getResponse()
