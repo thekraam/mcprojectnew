@@ -17,9 +17,6 @@ public class Game : MonoBehaviour
     private bool attendingSpecialEvent = false;
     private bool attendingGuildEvent = false;
 
-    /* Dichiarazione dialogue */
-    public Dialogue gameDialogue = new Dialogue();
-
     /* Dichiarazione EventList */
     public Events events = new Events();
 
@@ -65,7 +62,7 @@ public class Game : MonoBehaviour
     public void Start()
     {
         // disattivo pannelli non di game, 'nse sa mai
-        gamePanel.SetActive(true); //
+        gamePanel.SetActive(false); //
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
@@ -132,6 +129,8 @@ public class Game : MonoBehaviour
 
     public void onSkipTurn()
     {
+        
+
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + 20 * fabbro.zappa * fattoria.getLvlFattoria() + 20 * fabbro.zappa2 * fattoria.getLvlFattoria());
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
        
@@ -139,6 +138,8 @@ public class Game : MonoBehaviour
         player.setTempCitizens(fattoria.getCrescitaAbitanti());
 
         player.setCitizensMax(fattoria.getAbitantiMax());
+
+
 
         swordsmen.setTotal(); // ricalcolo tot spadaccini
         archers.setTotal(); // ricalcolo tot arcieri
@@ -148,57 +149,12 @@ public class Game : MonoBehaviour
 
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
         Debug.LogError(player.getTurn());
-        this.attendingGuildEvent = false;
-        //eventStarter(player.getTurn(), false);
+
+        
+
+
+
     }
-
-
-
-    // ---------------------------- avviatore eventi ----------------------------
-    /*public void eventStarter(int turn, bool selectingGuildEvent) // parametro provenienza evento - attualmente implementato solo la gilda
-    {
-        if (!selectingGuildEvent && turn > 1)
-        { 
-            float isEventHappening = Random.Range(0f, 1f);
-            if (attendingSpecialEvent)
-            {
-                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento conseguenza di un evento precedente, con scelta
-                attendingSpecialEvent = false;
-            }
-            else if (isEventHappening >= 0f  &&
-                     isEventHappening < 0.2f &&
-                     this.eventCounter < 10    )
-            {
-                dialogue.TriggerDialogue(player, swordsmen, archers, riders); // avvia evento passivo, senza scelta
-                this.eventCounter++;
-            }
-            else if (isEventHappening >= 0.2f &&
-                     isEventHappening < 0.3f    )
-            {
-                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento che scatena conseguenza, con scelta
-                attendingSpecialEvent = true;
-            }
-            else if (isEventHappening >= 0.3f &&
-                     isEventHappening < 0.4f    )
-            {
-                gameDialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders); // avvia evento che scatena conseguenza, con scelta
-                attendingSpecialEvent = true;
-            }
-        }
-        else
-        {
-            if (!this.attendingGuildEvent)
-            {
-                dialogue.TriggerGuildDialogue(player, swordsmen, archers, riders);
-                attendingGuildEvent = true;
-            }
-            else
-            {
-                dialogue.TriggerGuildErrorDialogue(player, swordsmen, archers, riders);
-            }
-        }
-    }*/
-    
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
     {
@@ -280,7 +236,7 @@ public class Game : MonoBehaviour
 
     }
 
-        public int newBattle(float terri, float bonusETerri, float bonusEnemy)
+    public int newBattle(float terri, float bonusETerri, float bonusEnemy)
     {
         int esito = 0;
         float bonusTerri = 0;

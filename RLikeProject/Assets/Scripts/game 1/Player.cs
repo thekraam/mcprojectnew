@@ -9,19 +9,17 @@ public class Player : MonoBehaviour
     int player_population = 40;
     int temp_player_citizens = 15;
     int player_citizensMAX = 100;
-    int temp_player_citizensMAX = 0;
+    public int temp_player_citizensMAX = 0;
     int player_money = 100;
     int skip_player_money = 0;
     public int player_turn = 1;
 
     //bonus battaglia e territoriali
-    float bonusBattle = 0;
-    float bonusWall = 0;
-    float bonusCity = 0;
-    float bonusFar = 0;
-    float bonusDemoniac = 0;
-
-
+    public float bonusBattle = 0;
+    public float bonusWall = 0;
+    public float bonusCity = 0;
+    public float bonusFar = 0;
+    public float bonusDemoniac = 0;
 
 
     //------------------------------------------turni---------------------
@@ -36,7 +34,7 @@ public class Player : MonoBehaviour
     }
     public void setTurn(int modifier)
     {
-        player_turn += modifier;
+        player_turn = modifier;
     }
 
     //----------------------------------------popolazione-------------------
@@ -47,8 +45,7 @@ public class Player : MonoBehaviour
 
     public void setPopulation(int modifier)
     {
-        player_population = 0;
-        player_population += modifier;
+        player_population = modifier;
     }
 
 
@@ -82,9 +79,9 @@ public class Player : MonoBehaviour
         return player_citizensMAX;
     }
 
-    public void setCitizensMax(int x)
+    public void setCitizensMax(int modifier)
     {
-        player_citizensMAX = x;
+        player_citizensMAX = modifier;
 
     }
 
