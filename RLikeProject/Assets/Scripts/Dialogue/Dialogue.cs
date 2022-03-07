@@ -25,10 +25,9 @@ public class Dialogue : MonoBehaviour
     }
 
     // funzione per far apparire un dialogue con scelta finale (si/no)
-    public int TriggerInteractiveDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, string[] message)
+    public void TriggerInteractiveDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, string[] message)
     {
         FindObjectOfType<DialogueManager>().StartDialogue(true, a, message);
-        return FindObjectOfType<DialogueManager>().getResponse();
     }
 
 

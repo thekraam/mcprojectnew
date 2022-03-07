@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Events : MonoBehaviour
 {
-    private Dialogue dialogue = new Dialogue();
+    Dialogue dialogue = new Dialogue();
+
+
+    /* stringa messaggi */
+    string[] message = new string[10];
 
     /* variabili malus cittadini */
     private int citizensMalus1 = 0;
@@ -50,7 +54,7 @@ public class Events : MonoBehaviour
     /* variabili countdown EFFETTI TEMPORANEI evento secondario, grande numero di default */
     int aqueductMalusTurnsLeft = 999999;
 
-
+    /* decrementatore turni per il prossimo evento secondario */
     public void eventTurnsDecreaser()
     {
         if (aqueductTurnsLeft > 0) aqueductTurnsLeft--;
@@ -86,36 +90,40 @@ public class Events : MonoBehaviour
 
     public void secondaryEventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
-        if (aqueductSecondary == 1 && attendingSecondaryEvent)
+        if (aqueductSecondary == 1 && attendingSecondaryEvent && aqueductTurnsLeft == 0)
         {
             aqueductEffectMalus = true;
+
+            aqueductSecondary = 0;
+            attendingSecondaryEvent = false;
+
             string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens per turn, for 3 turns]";
 
-            string[] message = new string[] { eventString1 };
+            string[] message = { eventString1 };
+
             dialogue.TriggerDialogue(player, swordsmen, archers, riders, message);
         }
     }
 
     /* avviatore eventi, la funzione sceglie un evento casuale e non gia' avvenuto sulla base di alcuni criteri */
-    public void eventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders) 
+    public void eventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         bool eventPicked = false;
         float eventChooser = 0;
-        while (!eventPicked && !attendingSecondaryEvent)
+
+        eventChooser = Random.Range(0f, 1f);
+        eventChooser = 0.5f;
+        if (eventChooser >= 0 && eventChooser < 1f)
         {
-            eventChooser = Random.Range(0f, 1f);
-            if (eventChooser >= 0 && eventChooser < 0.1f)
+            if (aqueduct == 0 /*&& player.getMoney() >= 400*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
             {
-                if (aqueduct == 0 && player.getMoney() >= 400) // evento non avviabile qualora il giocatore non abbia i fondi necessari
-                {
-                    triggerAqueductEvent(player, swordsmen, archers, riders);
-                    eventPicked = true;
-                }
-                else if (citydefenseproject == 0 && player.getMoney() >= 1000) // evento non avviabile qualora il giocatore non abbia i fondi necessari
-                {
-                    triggerCityDefenseProjectEvent(player, swordsmen, archers, riders);
-                    eventPicked = true;
-                }
+                triggerAqueductEvent(player, swordsmen, archers, riders);
+                eventPicked = true;
+            }
+            else if (citydefenseproject == 0 /*&& player.getMoney() >= 1000*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
+            {
+                //triggerCityDefenseProjectEvent(player, swordsmen, archers, riders);
+                eventPicked = true;
             }
         }
     }
@@ -125,14 +133,15 @@ public class Events : MonoBehaviour
     {
         aqueduct = 1;
         float aqueductValue = Random.Range(0f, 1f); // probabilita di verifica evento secondario
-
+        aqueductValue = 0.5f;
         string eventString1 = "A certain group of citizens complains about the lack of drinking water.";
         string eventString2 = "They would like you to finance a new aqueduct in the city.";
         string eventString3 = "Are you accepting their request?\n[Cost: 400 Gold]";
 
-        string[] message = new string[] { eventString1, eventString2, eventString3 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
-        int response = dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+        int response = 0;
 
         if (response == 1)
         {
@@ -160,11 +169,11 @@ public class Events : MonoBehaviour
         string eventString3 = "... bunch of woodden lookout turrets, and paid guards in every single road that gives access to the city.";
         string eventString4 = "Would you like to finance this project?\n[Cost: 1000 Gold]";
 
-        string[] message = new string[] { eventString1, eventString2, eventString3, eventString4 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
-        int response = dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
-
-        if(response == 1)
+        //int response = dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+        int response = 0;
+        if (response == 1)
         {
             player.setRapidMoney(-1000);
             player.bonusWall = 1;

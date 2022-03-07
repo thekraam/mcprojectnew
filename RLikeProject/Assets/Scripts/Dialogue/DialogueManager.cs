@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour {
 	public Text nameText;
 	public Text dialogueText;
 
+	int endingdialogue = 0;
+
 	private bool isInteractiveDM = false;
 	private int responseToInteractiveDialogue = 0;
 	private int DialogueIsResetting = 0;
@@ -27,6 +29,8 @@ public class DialogueManager : MonoBehaviour {
 	public void PositiveResponseToInteractiveDialogue()
     {
 		this.responseToInteractiveDialogue = 1;
+		Debug.LogError("risposta si");
+		Debug.LogError(this.responseToInteractiveDialogue);
 	}
 	public void NegativeResponseToInteractiveDialogue()
 	{
@@ -99,5 +103,7 @@ public class DialogueManager : MonoBehaviour {
 	{
 		animator.SetBool("IsOpen", false);
 	}
+
+
 
 }

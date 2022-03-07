@@ -13,7 +13,7 @@ public class Game : MonoBehaviour
     private bool isTurnDone = false;
 
     /* Dichiarazione EventList */
-    public Events events = new Events();
+    Events events = new Events();
 
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject mainMenuPanel;
@@ -126,13 +126,13 @@ public class Game : MonoBehaviour
 
     public void onSkipTurn()
     {
-        
 
-        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + 20 * fabbro.zappa * fattoria.getLvlFattoria() + 20 * fabbro.zappa2 * fattoria.getLvlFattoria() + events.goldMalusEffects(player, swordsmen, archers, riders));
+
+        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + 20 * fabbro.zappa * fattoria.getLvlFattoria() + 20 * fabbro.zappa2 * fattoria.getLvlFattoria() - events.goldMalusEffects(player, swordsmen, archers, riders));
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
-       
+
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
-        player.setTempCitizens(fattoria.getCrescitaAbitanti() + events.citizensMalusEffects(player, swordsmen, archers, riders));
+        player.setTempCitizens(fattoria.getCrescitaAbitanti() - events.citizensMalusEffects(player, swordsmen, archers, riders));
 
         player.setCitizensMax(fattoria.getAbitantiMax());
 
@@ -147,11 +147,10 @@ public class Game : MonoBehaviour
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
         Debug.LogError(player.getTurn());
 
-        events.eventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
+        events.eventTurnsDecreaser();
         events.secondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
-
-
-
+        events.eventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
+        
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
