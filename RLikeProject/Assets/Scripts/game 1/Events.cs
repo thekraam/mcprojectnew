@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Events : MonoBehaviour
 {
-    Dialogue dialogue = new Dialogue();
+    /* variabile di controllo risposta avvenuta decisione giocatore, [0] contenente la risposta (0 o 1), [1] contenente l'avvenuto check (1 se si, 0 altrimenti) */
+    int[] response = new int[2];
 
+
+    Dialogue dialogue = new Dialogue();
 
     /* stringa messaggi */
     string[] message = new string[10];
@@ -54,6 +57,19 @@ public class Events : MonoBehaviour
     /* variabili countdown EFFETTI TEMPORANEI evento secondario, grande numero di default */
     int aqueductMalusTurnsLeft = 999999;
 
+
+    /* controllore di response (decisione giocatore) sull'oggetto dialoguemanager */
+    IEnumerator ResponseUpdater()
+    {
+        response[1] = 0; // check deve essere 0 prima di controllarlo
+        while (response[1] == 0)
+        {
+            response = FindObjectOfType<DialogueManager>().InvokedChecker();
+            yield return new WaitForSeconds(0.5f);
+        }
+        yield return true;
+    }
+
     /* decrementatore turni per il prossimo evento secondario */
     public void eventTurnsDecreaser()
     {
@@ -64,11 +80,11 @@ public class Events : MonoBehaviour
     {
 
     }
-    public int goldMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public int GoldMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9;
     }
-    public int citizensMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public int CitizensMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         if (aqueductEffectMalus && aqueductTurnsLeft == 0)
         {
@@ -88,7 +104,7 @@ public class Events : MonoBehaviour
         return citizensMalus1 + citizensMalus2 + citizensMalus3 + citizensMalus4 + citizensMalus5 + citizensMalus6 + citizensMalus7 + citizensMalus8 + citizensMalus9;
     }
 
-    public void secondaryEventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void SecondaryEventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         if (aqueductSecondary == 1 && attendingSecondaryEvent && aqueductTurnsLeft == 0)
         {
@@ -106,30 +122,26 @@ public class Events : MonoBehaviour
     }
 
     /* avviatore eventi, la funzione sceglie un evento casuale e non gia' avvenuto sulla base di alcuni criteri */
-    public void eventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void EventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
-        bool eventPicked = false;
         float eventChooser = 0;
 
         eventChooser = Random.Range(0f, 1f);
-        eventChooser = 0.5f;
         if (eventChooser >= 0 && eventChooser < 1f)
         {
             if (aqueduct == 0 /*&& player.getMoney() >= 400*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
             {
-                triggerAqueductEvent(player, swordsmen, archers, riders);
-                eventPicked = true;
+                StartCoroutine(TriggerAqueductEvent(player, swordsmen, archers, riders));
             }
             else if (citydefenseproject == 0 /*&& player.getMoney() >= 1000*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
             {
-                //triggerCityDefenseProjectEvent(player, swordsmen, archers, riders);
-                eventPicked = true;
+                StartCoroutine(TriggerCityDefenseProjectEvent(player, swordsmen, archers, riders));
             }
         }
     }
 
     /* evento primario aquedotto */
-    private void triggerAqueductEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    IEnumerator TriggerAqueductEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         aqueduct = 1;
         float aqueductValue = Random.Range(0f, 1f); // probabilita di verifica evento secondario
@@ -141,9 +153,14 @@ public class Events : MonoBehaviour
         string[] message = { eventString1, eventString2, eventString3 };
 
         dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
-        int response = 0;
 
-        if (response == 1)
+        StartCoroutine(ResponseUpdater());
+        yield return new WaitUntil(() => response[1] == 1);
+
+
+        Debug.LogError("il vero response è");
+        Debug.LogError(response[0]);
+        if (response[0] == 1)
         {
             player.setRapidMoney(-400);
             aqueductValue = 0;
@@ -158,9 +175,8 @@ public class Events : MonoBehaviour
             aqueductSecondary = 0; // conferma logica dell'algoritmo, inutile
     }
 
-
     /* evento primario aumento delle difese della citta' */
-    private void triggerCityDefenseProjectEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    IEnumerator TriggerCityDefenseProjectEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         citydefenseproject = 1;
 
@@ -171,9 +187,12 @@ public class Events : MonoBehaviour
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
-        //int response = dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
-        int response = 0;
-        if (response == 1)
+        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+
+        StartCoroutine(ResponseUpdater());
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
         {
             player.setRapidMoney(-1000);
             player.bonusWall = 1;

@@ -29,13 +29,10 @@ public class DialogueManager : MonoBehaviour {
 	public void PositiveResponseToInteractiveDialogue()
     {
 		this.responseToInteractiveDialogue = 1;
-		Debug.LogError("risposta si");
-		Debug.LogError(this.responseToInteractiveDialogue);
 	}
 	public void NegativeResponseToInteractiveDialogue()
 	{
 		this.responseToInteractiveDialogue = 0;
-		Debug.LogError(this.responseToInteractiveDialogue);
 	}
 
 	public int getResponse()
@@ -46,11 +43,10 @@ public class DialogueManager : MonoBehaviour {
 
 	public void StartDialogue (bool isInteractive, string name, string[] eventStrings)
 	{
+		endingdialogue = 0;
+		responseToInteractiveDialogue = 0;
         if (DialogueIsResetting == 1)
-        {
-			responseToInteractiveDialogue = 0;
 			DialogueIsResetting = 0;
-        }
 		continuePanel.SetActive(true);
 
 		isInteractiveDM = isInteractive;
@@ -69,13 +65,10 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
-        if (isInteractiveDM)
-        {	
-			if (sentences.Count == 1)
-			{
-				interactivePanel.SetActive(true);
-				continuePanel.SetActive(false);
-			}	
+        if (isInteractiveDM && sentences.Count == 1)
+		{
+			interactivePanel.SetActive(true);
+			continuePanel.SetActive(false);	
 		}
 		if (sentences.Count == 0)
 		{
@@ -99,11 +92,25 @@ public class DialogueManager : MonoBehaviour {
 		}
 	}
 
-	void EndDialogue()
+	public void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
+		endingdialogue = 1;
 	}
 
+	public int[] InvokedChecker()
+    {
+		int[] container = new int[2]; // array di appoggio
 
+		container[0] = 0;
+		container[1] = 0;
+
+		if (endingdialogue == 1) // controllo sul fatto che il dialogue sia completato
+        {
+			container[0] = this.responseToInteractiveDialogue; // effettiva risposta giocatore
+			container[1] = 1; // checkResponse
+        }
+		return container; // ritorna l'array di appoggio a prescindere
+	}
 
 }
