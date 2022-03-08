@@ -213,6 +213,14 @@ public class Game : MonoBehaviour
     }
 
 
+
+
+
+
+
+
+
+
     //------------------------------------------ sistema di battaglia (beta testing)-----------------------
     Captain1 capitano = new Captain1();
     Captain2 enemyCapitano = new Captain2();
@@ -265,4 +273,23 @@ public class Game : MonoBehaviour
     /* Variabili di */
 
 
+
+
+
+
+
+
+    //-------------------------------- betatesting e debugging --------------------------------
+    /*
+    public Text nomeECap;
+    public void creaECapitano ()
+    {
+        makeEnemy(10, 1, 7, 3, 0, 1);
+        enemyCapitano.lvlUpRapid(6);
+
+    }
 }
+
+    */
+//nomeECap.text = "nome = " + enemyCapitano.getName() + " perk 1 " + enemyCapitano.getPerk1() + " commento : " + enemyCapitano.getPerk1comment() + "\n perk 2 : " + enemyCapitano.getPerk2() + " commento : " + enemyCapitano.getPerk2comment() + "\n perk 3 : " + enemyCapitano.getPerk3() + " commento : " + enemyCapitano.getPerk3comment();
+// nomeECap.text = "attacco : " + enemyCapitano.getAtk() + " difesa : " + enemyCapitano.getDef() + " bonus : " + enemyCapitano.getBonusBattle();     
