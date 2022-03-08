@@ -53,7 +53,7 @@ public class Game : MonoBehaviour
     Caserma caserma = new Caserma();
     Fabbro fabbro = new Fabbro();
 
-    public List<Text> UIelements; 
+    public List<Text> UIelements;
 
     public void Start()
     {
@@ -73,7 +73,7 @@ public class Game : MonoBehaviour
         startTime = startTime + Time.deltaTime;
         startTimeController = startTimeController + Time.deltaTime;
 
-        if(startTimeController > 2 && !isTurnDone)
+        if (startTimeController > 2 && !isTurnDone)
         {
             startTime = 0;
             startTimeController = 0;
@@ -150,7 +150,7 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
         FindObjectOfType<Events>().EventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
-        
+
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
@@ -173,7 +173,7 @@ public class Game : MonoBehaviour
     public void onTapCaserma()
     {
         gamePanel.SetActive(true); // sempre true
-        farmPanel.SetActive(false); 
+        farmPanel.SetActive(false);
         casermaPanel.SetActive(true); //
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(false);
@@ -182,7 +182,7 @@ public class Game : MonoBehaviour
     public void onTapGuild()
     {
         gamePanel.SetActive(true); // sempre true
-        farmPanel.SetActive(false); 
+        farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(true); //
         fabbroPanel.SetActive(false);
@@ -268,7 +268,7 @@ public class Game : MonoBehaviour
         return esito;
     }
 
-
+}
 
     /* Variabili di */
 
