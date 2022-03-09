@@ -202,13 +202,19 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(player);
+        SaveSystem.SaveGame(player,FindObjectOfType<Events>());
     }
 
     public void LoadGame()
     {
         GameData data = SaveSystem.LoadGame();
         player.player_turn = data.player_turn;
+        FindObjectOfType<Events>().setEventAqueduct(data.aqueduct);
+        FindObjectOfType<Events>().setEventResponse(data.response);
+        FindObjectOfType<Events>().setEventCitydefenseproject(data.citydefenseproject);
+        FindObjectOfType<Events>().setEventAqueductSecondary(data.aqueductSecondary);
+        FindObjectOfType<Events>().setEventAqueductTurnsLeft(data.aqueductTurnsLeft);
+        FindObjectOfType<Events>().setEventAttendingSecondaryEvent(data.attendingSecondaryEvent);
 
     }
 

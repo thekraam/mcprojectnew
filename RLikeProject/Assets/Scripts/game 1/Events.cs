@@ -50,12 +50,69 @@ public class Events : MonoBehaviour
     int aqueduct = 0;
     int citydefenseproject = 0;
 
-
     /* variabili countdown evento secondario, grande numero di default */
     int aqueductTurnsLeft = 999999;
 
     /* variabili countdown EFFETTI TEMPORANEI evento secondario, grande numero di default */
     int aqueductMalusTurnsLeft = 999999;
+
+    /* getter e setter */
+    public bool getEventAttendingSecondaryEvent()
+    {
+        return attendingSecondaryEvent;
+    }
+    public void setEventAttendingSecondaryEvent(bool modifier)
+    {
+        this.attendingSecondaryEvent = modifier;
+    }
+    //
+    public int getEventAqueduct()
+    {
+        return aqueduct;
+    }
+    public void setEventAqueduct(int modifier)
+    {
+        this.aqueduct = modifier;
+    }
+    //
+    public int getEventCitydefenseproject()
+    {
+        return citydefenseproject;
+    }
+    public void setEventCitydefenseproject(int modifier)
+    {
+        this.citydefenseproject = modifier;
+    }
+    //
+    public int getEventResponse()
+    {
+        return response[0];
+    }
+    public void setEventResponse(int modifier)
+    {
+        this.response[0] = modifier;
+    }
+
+    //
+    public int getEventAqueductSecondary()
+    {
+        return aqueductSecondary;
+    }
+    public void setEventAqueductSecondary(int modifier)
+    {
+        this.aqueductSecondary = modifier;
+    }
+    //
+    public int getEventAqueductTurnsLeft()
+    {
+        return aqueductTurnsLeft;
+    }
+    public void setEventAqueductTurnsLeft(int modifier)
+    {
+        this.aqueductTurnsLeft = modifier;
+    }
+
+
 
 
     /* controllore di response (decisione giocatore) sull'oggetto dialoguemanager */
