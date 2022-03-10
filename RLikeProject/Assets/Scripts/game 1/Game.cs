@@ -114,8 +114,13 @@ public class Game : MonoBehaviour
         farmgoldperturnUI.text = "+" + fattoria.getGoldFattoria();
         farmnextgoldperturnUI.text = "+" + fattoria.getNextGoldFattoria();
 
-        // farmupgradecostUI.text = "" + fattoria.getCostoLvlUp();
-
+        if (fattoria.getLvlFattoria() < 5)
+            farmupgradecostUI.text = "Costo: " + fattoria.getLvlUpCost();
+        else
+        {
+            farmupgradecostUI.text = "Max level reached";
+            farmupgradecostUI.color = new Color(135f, 1f, 1f);
+        }
 
     }
 
@@ -200,7 +205,8 @@ public class Game : MonoBehaviour
 
     public void onUpgradeFarm()
     {
-        fattoria.lvlUpFattoria();
+        if(fattoria.getLvlFattoria() < 5)
+            fattoria.lvlUpFattoria();
     }
 
     /*----------------save------load------------------*/
