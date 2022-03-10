@@ -88,18 +88,20 @@ public class battle1 : MonoBehaviour
         float deadeswordman = 0;
         float deadearcher = 0;
         float deaderider = 0;
-
-
+        
+        
+        //swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider()
+        
         while (turno < 6)
         {
             //----------------------------------calcoli iniziali del ciclo----------------------------------------
-            ATK = (swordman.getAtk() * swordman.getTotal()) + (archer.getAtk() * archer.getTotal()) + (rider.getAtk() * rider.getTotal());
-            DEF = (swordman.getDef() * swordman.getTotal()) + (archer.getDef() * archer.getTotal()) + (rider.getDef() * rider.getTotal());
+            ATK = (swordman.getAtk() * swordman.getMomentSwordman()) + (archer.getAtk() * archer.getMomentArcher()) + (rider.getAtk() * rider.getMomentRider());
+            DEF = (swordman.getDef() * swordman.getMomentSwordman()) + (archer.getDef() * archer.getMomentArcher()) + (rider.getDef() * rider.getMomentRider());
             EATK = (eswordman.getAtk() * eswordman.getTotal()) + (earcher.getAtk() * earcher.getTotal()) + (erider.getAtk() * erider.getTotal());
             EDEF = (eswordman.getDef() * eswordman.getTotal()) + (earcher.getDef() * earcher.getTotal()) + (erider.getDef() * erider.getTotal());
-            percswordman = (100 * (swordman.getDef() * swordman.getTotal())) / DEF;
-            percarcher = (100 * (archer.getDef() * archer.getTotal())) / DEF;
-            percrider = (100 * (rider.getDef() * rider.getTotal())) / DEF;
+            percswordman = (100 * (swordman.getDef() * swordman.getMomentSwordman())) / DEF;
+            percarcher = (100 * (archer.getDef() * archer.getMomentArcher())) / DEF;
+            percrider = (100 * (rider.getDef() * rider.getMomentRider())) / DEF;
             percEswordman = (100 * (eswordman.getDef() * eswordman.getTotal())) / EDEF;
             percEarcher = (100 * (earcher.getDef() * earcher.getTotal())) / EDEF;
             percErider = (100 * (erider.getDef() * erider.getTotal())) / EDEF;
@@ -152,7 +154,7 @@ public class battle1 : MonoBehaviour
             rapporto2 = (int)(rapporto2 + z2);
             // Debug.LogError("rapporto 2 " + rapporto2);
             //-----------------------------passaggio 2 ===>  morte soldati -----------------------------------------------------------
-            totalsoldiers = swordman.getTotal() + archer.getTotal() + rider.getTotal();
+            totalsoldiers = swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider();
             totalEsoldiers = eswordman.getTotal() + earcher.getTotal() + erider.getTotal();
 
             deadsoldier = (int)((totalsoldiers / 100) * z2);
@@ -161,10 +163,13 @@ public class battle1 : MonoBehaviour
             // Debug.LogError("deadEsoldier " + deadEsoldier);
             deadswordman = (int)((deadsoldier / 100) * percswordman);
             //  Debug.LogError("deadswordman " + deadswordman);
+            swordman.setMomentDeadSwordman ((int)deadswordman);
             deadarcher = (int)((deadsoldier / 100) * percarcher);
             //   Debug.LogError("deadarcher " + deadarcher);
+            archer.setMomentDeadArcher((int)deadarcher);
             deadrider = (int)((deadsoldier / 100) * percrider);
             //   Debug.LogError("deadrider " + deadrider);
+            rider.setMomentDeadRider((int)deadrider);
             deadeswordman = (int)((deadEsoldier / 100) * percEswordman);
             //  Debug.LogError("deadEswordman " + deadeswordman);
             deadearcher = (int)((deadEsoldier / 100) * percEarcher);
@@ -172,20 +177,20 @@ public class battle1 : MonoBehaviour
             deaderider = (int)((deadEsoldier / 100) * percErider);
             //  Debug.LogError("deadErider " + deaderider);
 
-            swordman.setRapidTotal((int)-deadswordman);
-            if (swordman.getTotal() < 0)
+            swordman.setMomentSwordman((int)-deadswordman);
+            if (swordman.getMomentSwordman() < 0)
             {
-                swordman.setRapidTotal(-swordman.getTotal());
+                swordman.setMomentSwordman(-swordman.getMomentSwordman());
             }
-            archer.setRapidTotal((int)-deadarcher);
-            if (archer.getTotal() < 0)
+            archer.setMomentArcher((int)-deadarcher);
+            if (archer.getMomentArcher() < 0)
             {
-                archer.setRapidTotal(-archer.getTotal());
+                archer.setMomentArcher(-archer.getMomentArcher());
             }
-            rider.setRapidTotal((int)-deadrider);
-            if (rider.getTotal() < 0)
+            rider.setMomentRider((int)-deadrider);
+            if (rider.getMomentRider() < 0)
             {
-                rider.setRapidTotal(-rider.getTotal());
+                rider.setMomentRider(-rider.getMomentRider());
             }
             eswordman.setRapidTotal((int)-deadeswordman);
             if (eswordman.getTotal() < 0)
