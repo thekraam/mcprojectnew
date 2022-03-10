@@ -15,6 +15,8 @@ public class Soldiers : MonoBehaviour
         int temp_def_swordsmen = 0;
         float bonus_swordsmen = 0;
 
+        int momentswordman = 0;
+        int momentDeadswordman = 0;
 
         // num totale spadaccini
         public int getTotal()
@@ -87,7 +89,24 @@ public class Soldiers : MonoBehaviour
             bonus_swordsmen = bonus_swordsmen + modifier;
         }
 
+        public int getMomentSwordman()
+        {
+            return momentswordman;
+        }
+        public void setMomentSwordman(int x)
+        {
+            momentswordman = x;
+        }
+        public int getMomentDeadSwordman()
+        {
+            return momentDeadswordman;
+        }
+        public void setMomentDeadSwordman(int x)
+        {
+            momentDeadswordman = x;
+        }
     }
+    //--------------------------------------------------Archers---------------------------------------------
     public class Archers
     {
         int total_archers = 0;
@@ -97,6 +116,9 @@ public class Soldiers : MonoBehaviour
         int def_archers = 3;
         int temp_def_archers = 3;
         float bonus_archers = 0;
+
+        int momentarcher = 0;
+        int momentDeadArcher = 0;
 
         // dammi num totale arcieri
         public int getTotal()
@@ -168,7 +190,24 @@ public class Soldiers : MonoBehaviour
         {
             bonus_archers = bonus_archers + modifier;
         }
+        public int getMomentArcher()
+        {
+            return momentarcher;
+        }
+        public void setMomentArcher(int x)
+        {
+            momentarcher = x;
+        }
+        public int getMomentDeadArcher()
+        {
+            return momentDeadArcher;
+        }
+        public void setMomentDeadArcher(int x)
+        {
+            momentDeadArcher = x;
+        }
     }
+    //--------------------------------------------------Riders---------------------------------------------
     public class Riders
     {
         int total_riders = 0;
@@ -178,6 +217,9 @@ public class Soldiers : MonoBehaviour
         int def_riders = 5;
         int temp_def_riders = 5;
         float bonus_riders = 0;
+
+        int momentrider = 0;
+        int momentDeadRider = 0;
 
         // dammi num totale riders
         public int getTotal()
@@ -249,6 +291,28 @@ public class Soldiers : MonoBehaviour
         {
             bonus_riders = bonus_riders + modifier;
         }
+     
+        public int getMomentRider()
+        {
+            return momentrider;
+        }
+        public void setMomentRider(int x)
+        {
+            momentrider = x;
+        }
+        public int getMomentDeadRider()
+        {
+            return momentDeadRider;
+        }
+        public void setMomentDeadRider(int x)
+        {
+            momentDeadRider = x;
+        }
     }
+
+
+
+
+
 
 }
