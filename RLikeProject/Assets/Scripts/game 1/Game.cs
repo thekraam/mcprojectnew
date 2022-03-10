@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject mainMenuPanel;
     public GameObject gamePanel; // pannello all'avvio partita
+    public GameObject cityPanel;
     public GameObject farmPanel;
     public GameObject fabbroPanel;
     public GameObject casermaPanel;
@@ -59,7 +60,8 @@ public class Game : MonoBehaviour
     {
         // disattivo pannelli non di game, 'nse sa mai
         mainMenuPanel.SetActive(true);
-        gamePanel.SetActive(false); //
+        cityPanel.SetActive(true);
+        gamePanel.SetActive(false); 
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
@@ -118,8 +120,9 @@ public class Game : MonoBehaviour
             farmupgradecostUI.text = "Costo: " + fattoria.getLvlUpCost();
         else
         {
+            Color32 darkred = new Color32(92, 0, 0, 255);
             farmupgradecostUI.text = "Max level reached";
-            farmupgradecostUI.color = new Color(135f, 1f, 1f);
+            farmupgradecostUI.color = darkred;
         }
 
     }
@@ -161,6 +164,7 @@ public class Game : MonoBehaviour
     public void onTapVillage()
     {
         gamePanel.SetActive(true); // sempre true
+        cityPanel.SetActive(true); //
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
@@ -170,6 +174,7 @@ public class Game : MonoBehaviour
     public void onTapFarm()
     {
         gamePanel.SetActive(true); // sempre true
+        cityPanel.SetActive(false); //
         farmPanel.SetActive(true); // 
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
@@ -178,6 +183,7 @@ public class Game : MonoBehaviour
     public void onTapCaserma()
     {
         gamePanel.SetActive(true); // sempre true
+        cityPanel.SetActive(false); //
         farmPanel.SetActive(false);
         casermaPanel.SetActive(true); //
         guildPanel.SetActive(false);
@@ -187,6 +193,7 @@ public class Game : MonoBehaviour
     public void onTapGuild()
     {
         gamePanel.SetActive(true); // sempre true
+        cityPanel.SetActive(false); //
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(true); //
@@ -196,6 +203,7 @@ public class Game : MonoBehaviour
     public void onTapFabbro()
     {
         gamePanel.SetActive(true); // sempre true
+        cityPanel.SetActive(false); //
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
