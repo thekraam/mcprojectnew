@@ -196,7 +196,12 @@ public class Game : MonoBehaviour
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(true); //
     }
+    // tasti fattoria
 
+    public void onUpgradeFarm()
+    {
+        fattoria.lvlUpFattoria();
+    }
 
     /*----------------save------load------------------*/
 
