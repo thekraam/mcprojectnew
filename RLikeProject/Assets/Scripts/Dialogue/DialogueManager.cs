@@ -105,6 +105,7 @@ public class DialogueManager : MonoBehaviour {
 	{
 		animator.SetBool("IsOpen", false);
 		FindObjectOfType<AudioManager>().RandomSoundEffect(OpenAndCloseSounds);
+		FindObjectOfType<Game>().dialogueInterfaceBlocker.SetActive(false);
 		endingdialogue = 1;
 	}
 

@@ -25,6 +25,10 @@ public class Game : MonoBehaviour
     public GameObject casermaPanel;
     public GameObject guildPanel;
 
+    /* pannelli blocker */
+    public GameObject skipTurnBlocker;
+    public GameObject dialogueInterfaceBlocker;
+
     /* dichiarazione elementi di UI tramite oggetto Text in UnityEngine.UI */
     // FARM
     public Text farmlvlUI;
@@ -37,7 +41,9 @@ public class Game : MonoBehaviour
     public Text farmnextgoldperturnUI;
     public Text farmupgradecostUI;
     // GENERAL
-    public Text soldiersUI;
+    public Text SwordsmenUI;
+    public Text ArchersUI;
+    public Text RidersUI;
     public Text citizensUI;
     public Text populationUI;
     public Text moneyUI;
@@ -60,10 +66,12 @@ public class Game : MonoBehaviour
     public void Start()
     {
         // musica on
-        FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
+        //FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
 
         // disattivo pannelli non di game, 'nse sa mai
         mainMenuPanel.SetActive(true);
+        skipTurnBlocker.SetActive(false);
+        dialogueInterfaceBlocker.SetActive(false);
         cityPanel.SetActive(true);
         gamePanel.SetActive(false); 
         farmPanel.SetActive(false);
@@ -79,30 +87,34 @@ public class Game : MonoBehaviour
         startTime = startTime + Time.deltaTime;
         startTimeController = startTimeController + Time.deltaTime;
 
-        if (startTimeController > 2 && !isTurnDone)
+        if (!isTurnDone)
         {
             startTime = 0;
-            startTimeController = 0;
         }
 
-        if (startTime > 2 && isTurnDone)
+        if (startTimeController > 1.5f) skipTurnBlocker.SetActive(false);
+
+        if (startTime > 1.5f && isTurnDone)
         {
             //da aggiungere controllo presenza capitano
             isTurnDone = false;
             onSkipTurn();
+            skipTurnBlocker.SetActive(true);
             startTimeController = 0;
             startTime = 0;
         }
 
+        if (FindObjectOfType<DialogueManager>().animator.GetBool("IsOpen")) dialogueInterfaceBlocker.SetActive(true);
+
         // --------------------------- updater generale ---------------------------
 
-        // soldiersUI.text = "" + (player.countTotalCitizens(player, swordsmen, archers, riders) - player.getCitizens()); // mostra il nuovo totale dei soldati appena lo trovi
+        SwordsmenUI.text = "" + swordsmen.getTotal();
+        ArchersUI.text = "" + archers.getTotal();
+        RidersUI.text = "" + riders.getTotal();
 
-        // populationUI.text = "" + player.getPopulation(); // mostra il nuovo totale della popolazione totale come somma di soldati e civili appena la trovi
-
-        // moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
-
-        // maxRecruitableUI.text = "" + caserma.getMaxRecruitable();
+        populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); // mostra il nuovo totale della popolazione totale appena la trovi
+    
+        moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
         turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
 
