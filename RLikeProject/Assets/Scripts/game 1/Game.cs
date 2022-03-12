@@ -15,6 +15,13 @@ public class Game : MonoBehaviour
     /* Dichiarazione Musica di gioco */
     public AudioClip[] GameMusic;
     public AudioClip newTurnSound;
+    public AudioClip village_mapUnfold;
+    public AudioClip farm_cowbells;
+    public AudioClip blacksmith_Anvil;
+    public AudioClip guild_paperwork;
+    public AudioClip guild_expeditionCompleted;
+    public AudioClip barracks_swordFight;
+    public AudioClip cave_mining;
 
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject mainMenuPanel;
@@ -180,6 +187,8 @@ public class Game : MonoBehaviour
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
     {
+        FindObjectOfType<AudioManager>().PlayEffectFaded(village_mapUnfold);
+
         gamePanel.SetActive(true); // sempre true
         cityPanel.SetActive(true); //
         farmPanel.SetActive(false);
@@ -190,6 +199,8 @@ public class Game : MonoBehaviour
 
     public void onTapFarm()
     {
+        FindObjectOfType<AudioManager>().PlayEffectFaded(farm_cowbells);
+
         gamePanel.SetActive(true); // sempre true
         cityPanel.SetActive(false); //
         farmPanel.SetActive(true); // 
@@ -199,6 +210,8 @@ public class Game : MonoBehaviour
     }
     public void onTapCaserma()
     {
+        FindObjectOfType<AudioManager>().PlayEffect(barracks_swordFight);
+
         gamePanel.SetActive(true); // sempre true
         cityPanel.SetActive(false); //
         farmPanel.SetActive(false);
@@ -209,6 +222,8 @@ public class Game : MonoBehaviour
 
     public void onTapGuild()
     {
+        FindObjectOfType<AudioManager>().PlayEffectFaded(guild_paperwork);
+
         gamePanel.SetActive(true); // sempre true
         cityPanel.SetActive(false); //
         farmPanel.SetActive(false);
@@ -219,6 +234,8 @@ public class Game : MonoBehaviour
 
     public void onTapFabbro()
     {
+        FindObjectOfType<AudioManager>().PlayEffectFaded(blacksmith_Anvil);
+
         gamePanel.SetActive(true); // sempre true
         cityPanel.SetActive(false); //
         farmPanel.SetActive(false);

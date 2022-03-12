@@ -27,6 +27,14 @@ public class AudioManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
+	public void ResetAudio()
+    {
+		MusicSource.Stop();
+		EffectsSource.Stop();
+		MusicSource.volume = 1;
+		EffectsSource.volume = 1;
+	}
+
 	public void PlayMusic(AudioClip clip)
 	{
 		MusicSource.clip = clip;
@@ -68,19 +76,24 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayEffect(AudioClip clip)
 	{
-		
+		StopAllCoroutines();
+		ResetAudio();
 		EffectsSource.clip = clip;
 		EffectsSource.Play();
 	}
 
 	public void PlayEffectFaded(AudioClip clip)
     {
+		StopAllCoroutines();
+		ResetAudio();
 		PlayEffect(clip);
 		StartCoroutine(FadeOut(false, clip));
     }
 
 	public void RandomSoundEffect(params AudioClip[] clips)
 	{
+		StopAllCoroutines();
+		ResetAudio();
 		int randomIndex = Random.Range(0, clips.Length);
 		EffectsSource.clip = clips[randomIndex];
 
@@ -89,6 +102,8 @@ public class AudioManager : MonoBehaviour
 	}
 	public void RandomMusic(params AudioClip[] clips)
 	{
+		StopAllCoroutines();
+		ResetAudio();
 		int randomIndex = Random.Range(0, clips.Length);
 		MusicSource.clip = clips[randomIndex];
 
