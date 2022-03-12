@@ -210,7 +210,7 @@ public class Game : MonoBehaviour
     }
     public void onTapCaserma()
     {
-        FindObjectOfType<AudioManager>().PlayEffect(barracks_swordFight);
+        FindObjectOfType<AudioManager>().PlayEffectFaded(barracks_swordFight);
 
         gamePanel.SetActive(true); // sempre true
         cityPanel.SetActive(false); //
