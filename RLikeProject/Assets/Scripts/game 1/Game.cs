@@ -12,8 +12,9 @@ public class Game : MonoBehaviour
     private float startTimeController = 0;
     private bool isTurnDone = false;
 
-    /* Dichiarazione EventList */
-    //Events events = new Events();
+    /* Dichiarazione Musica di gioco */
+    public AudioClip[] GameMusic;
+    public AudioClip newTurnSound;
 
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject mainMenuPanel;
@@ -58,6 +59,9 @@ public class Game : MonoBehaviour
 
     public void Start()
     {
+        // musica on
+        FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
+
         // disattivo pannelli non di game, 'nse sa mai
         mainMenuPanel.SetActive(true);
         cityPanel.SetActive(true);
@@ -130,8 +134,9 @@ public class Game : MonoBehaviour
     public void onTapNextSeason()
     {
         isTurnDone = true;
+        FindObjectOfType<AudioManager>().PlayEffectFaded(newTurnSound);
     }
-
+    
     public void onSkipTurn()
     {
 

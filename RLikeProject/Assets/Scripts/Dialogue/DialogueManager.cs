@@ -5,23 +5,30 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
 
+	// interlocutore e testo
 	public Text nameText;
 	public Text dialogueText;
 
-	int endingdialogue = 0;
-
+	// booleane varie
 	private bool isInteractiveDM = false;
 	private int responseToInteractiveDialogue = 0;
 	private int DialogueIsResetting = 0;
+	int endingdialogue = 0;
 
+	// animazione apertura e chiusura
 	public Animator animator;
 
+	// suoni interazione
+	public AudioClip[] OpenAndCloseSounds;
+	public AudioClip[] FlippingPagesSounds;
+
+	// frasi da accodare
 	private Queue<string> sentences;
 
+	// pannello interattivo con si e no e oannello con tasto continua
 	public GameObject interactivePanel;
 	public GameObject continuePanel;
 
-	// Use this for initialization
 	void Start () {
 		sentences = new Queue<string>();
 	}
@@ -51,6 +58,7 @@ public class DialogueManager : MonoBehaviour {
 
 		isInteractiveDM = isInteractive;
 
+		FindObjectOfType<AudioManager>().RandomSoundEffect(OpenAndCloseSounds);
 		animator.SetBool("IsOpen", true);
 
 		nameText.text = "" + name;
@@ -65,7 +73,8 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence ()
 	{
-        if (isInteractiveDM && sentences.Count == 1)
+		FindObjectOfType<AudioManager>().RandomSoundEffect(FlippingPagesSounds);
+		if (isInteractiveDM && sentences.Count == 1)
 		{
 			interactivePanel.SetActive(true);
 			continuePanel.SetActive(false);	
@@ -95,6 +104,7 @@ public class DialogueManager : MonoBehaviour {
 	public void EndDialogue()
 	{
 		animator.SetBool("IsOpen", false);
+		FindObjectOfType<AudioManager>().RandomSoundEffect(OpenAndCloseSounds);
 		endingdialogue = 1;
 	}
 

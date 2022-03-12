@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f6eb7cea62926414283f7fcff6680e60
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - EffectsSource: {instanceID: 0}
+  - MusicSource: {instanceID: 0}
+  - oldMusicClip: {fileID: 8300000, guid: 7de1e2cd3b6d44548abe90965289e659, type: 3}
+  - oldEffectClip: {fileID: 8300000, guid: 5d6fb177f7c8b9045a92ece3dfddf284, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,10 +11,13 @@ public class SceneLoader : MonoBehaviour
     public GameObject loadingPanel;
     public CanvasGroup canvasGroup;
 
+    public AudioClip MainMenuMusic;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioManager>().PlayMusic(MainMenuMusic);
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(loadingPanel.transform.parent);
     }
@@ -22,6 +25,7 @@ public class SceneLoader : MonoBehaviour
 
     public void onPressButton(string sceneName)
     {
+        FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
         StartCoroutine(LoadScene(sceneName));
     }
 
