@@ -80,7 +80,7 @@ public class Game : MonoBehaviour
         skipTurnBlocker.SetActive(false);
         dialogueInterfaceBlocker.SetActive(false);
         cityPanel.SetActive(true);
-        gamePanel.SetActive(false); 
+        gamePanel.SetActive(true); 
         farmPanel.SetActive(false);
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
