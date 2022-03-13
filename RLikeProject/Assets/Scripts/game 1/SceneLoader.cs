@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TryEz;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -11,22 +10,20 @@ public class SceneLoader : MonoBehaviour
     public GameObject loadingPanel;
     public CanvasGroup canvasGroup;
 
-    public AudioClip MainMenuMusic;
-
+    public float waitTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<AudioManager>().PlayMusic(MainMenuMusic);
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(loadingPanel.transform.parent);
     }
 
 
-    public void onPressButton(string sceneName)
+    public void onPressButton()
     {
-        FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
-        StartCoroutine(LoadScene(sceneName));
+        loadingPanel.SetActive(true);
+        StartCoroutine(LoadingScreenFadeOut(0.8f));
     }
 
     /*
@@ -35,34 +32,11 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LoadingScreenFadeOut());
     }*/
 
-    IEnumerator LoadScene(string sceneName)
+    IEnumerator LoadingScreenFadeOut(float duration)
     {
+        waitTime = Random.Range(1.25f, 2.5f);
 
-        loadingPanel.SetActive(true);
-        if (sceneName == "0")
-            StartCoroutine(LoadingScreenFadeOut(0.8f, true));
-        else
-        {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
-
-            while (!operation.isDone)
-            {
-                yield return null;
-            }
-            StartCoroutine(LoadingScreenFadeOut(0.8f, false));
-        }
-
-    }
-
-    IEnumerator LoadingScreenFadeOut(float duration, bool isSkippingTurn)
-    {
-        float test;
-        if (isSkippingTurn)
-            test = 1f;
-        else
-            test = Random.Range(1.5f, 3.5f);
-
-        yield return new WaitForSeconds(test);
+        yield return new WaitForSeconds(waitTime);
 
         float timePassed = 0f;
         float startAlpha = canvasGroup.alpha;

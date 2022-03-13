@@ -36,8 +36,11 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayMusic(AudioClip clip)
 	{
-		MusicSource.clip = clip;
-		MusicSource.Play();
+		if (!MusicSource.isPlaying)
+		{
+			MusicSource.clip = clip;
+			MusicSource.Play();
+		}
 	}
 
 	public void StopMusic(AudioClip clip)
@@ -70,18 +73,24 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayEffect(AudioClip clip)
 	{
-		StopAllCoroutines();
-		ResetAudio();
-		EffectsSource.clip = clip;
-		EffectsSource.Play();
+		if (!EffectsSource.isPlaying)
+		{
+			StopAllCoroutines();
+			ResetAudio();
+			EffectsSource.clip = clip;
+			EffectsSource.Play();
+		}
 	}
 
 	public void PlayEffectFaded(AudioClip clip)
 	{
-		StopAllCoroutines();
-		ResetAudio();
-		PlayEffect(clip);
-		StartCoroutine(FadeOut(false, clip));
+		if (!EffectsSource.isPlaying)
+		{
+			StopAllCoroutines();
+			ResetAudio();
+			PlayEffect(clip);
+			StartCoroutine(FadeOut(false, clip));
+		}
 	}
 
 	public void RandomSoundEffect(params AudioClip[] clips)

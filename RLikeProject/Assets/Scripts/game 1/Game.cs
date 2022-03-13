@@ -13,7 +13,7 @@ public class Game : MonoBehaviour
     private bool isTurnDone = false;
 
     /* Dichiarazione Musica di gioco */
-    public AudioClip[] GameMusic;
+    //public AudioClip[] GameMusic;
     public AudioClip newTurnSound;
     public AudioClip village_mapUnfold;
     public AudioClip farm_cowbells;
@@ -101,7 +101,7 @@ public class Game : MonoBehaviour
 
         if (startTimeController > 1.5f) skipTurnBlocker.SetActive(false);
 
-        if (startTime > 1.5f && isTurnDone)
+        if (startTime > 0.5f + FindObjectOfType<SceneLoader>().waitTime && isTurnDone)
         {
             //da aggiungere controllo presenza capitano
             isTurnDone = false;
