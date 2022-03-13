@@ -10,18 +10,20 @@ public class SceneLoader : MonoBehaviour
     public GameObject loadingPanel;
     public CanvasGroup canvasGroup;
 
-    public float waitTime = 0f;
+    public AudioClip MainMenuMusic;
+
+    public float waitTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(loadingPanel.transform.parent);
+        FindObjectOfType<AudioManager>().PlayMusic(MainMenuMusic);
     }
 
 
-    public void onPressButton()
+    public void onPressButton(string sceneName)
     {
+        FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
         loadingPanel.SetActive(true);
         StartCoroutine(LoadingScreenFadeOut(0.8f));
     }
