@@ -7,6 +7,10 @@ public class GameData
 {
 
     public int player_turn;
+    public float player_population;
+    public int player_money;
+    public int skip_player_money;
+
     public int aqueduct;
     public int response;
     public int citydefenseproject;
@@ -24,6 +28,11 @@ public class GameData
     public GameData (Player player , Events events , Fattoria fattoria)
     {
         player_turn = player.getTurn();
+        player_population = player.getPopulation();
+        player_money = player.getMoney();
+        skip_player_money = player.getSkipMoney();
+
+
 
         aqueduct = events.getEventAqueduct();
 

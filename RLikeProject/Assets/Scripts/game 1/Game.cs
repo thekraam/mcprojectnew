@@ -263,6 +263,9 @@ public class Game : MonoBehaviour
     {
         GameData data = SaveSystem.LoadGame();
         player.player_turn = data.player_turn;
+        player.player_population = (int)data.player_population;
+        player.player_money = player.player_money;
+
         FindObjectOfType<Events>().setEventAqueduct(data.aqueduct);
         FindObjectOfType<Events>().setEventResponse(data.response);
         FindObjectOfType<Events>().setEventCitydefenseproject(data.citydefenseproject);

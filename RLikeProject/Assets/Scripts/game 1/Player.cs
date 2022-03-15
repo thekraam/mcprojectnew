@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     int player_citizens = 40;
-    int player_population = 40;
+    public int player_population = 40;
     int temp_player_citizens = 15;
     int player_citizensMAX = 100;
     public int temp_player_citizensMAX = 0;
-    int player_money = 100;
+    public int player_money = 100;
     int skip_player_money = 0;
     public int player_turn = 1;
 
