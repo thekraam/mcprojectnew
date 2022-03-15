@@ -14,7 +14,14 @@ public class GameData
     public int aqueductTurnsLeft;
     public bool attendingSecondaryEvent;
 
-    public GameData (Player player , Events events)
+    /*fattoria*/
+    public int farmLvl;
+    public int abitantiMax;
+    public int crescitaAbitanti;
+    public int farmGold;
+    public int farmLvlUpCost;
+
+    public GameData (Player player , Events events , Fattoria fattoria)
     {
         player_turn = player.getTurn();
 
@@ -29,6 +36,12 @@ public class GameData
         aqueductTurnsLeft = events.getEventAqueductTurnsLeft();
 
         attendingSecondaryEvent = events.getEventAttendingSecondaryEvent();
+
+        farmLvl = fattoria.getLvlFattoria();
+        abitantiMax = fattoria.getAbitantiMax();
+        crescitaAbitanti = fattoria.getCrescitaAbitanti();
+        farmGold = fattoria.getGoldFattoria();
+        farmLvlUpCost = fattoria.getLvlUpCost();
 
     }
 

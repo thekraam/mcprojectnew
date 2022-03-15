@@ -109,6 +109,7 @@ public class Game : MonoBehaviour
             skipTurnBlocker.SetActive(true);
             startTimeController = 0;
             startTime = 0;
+            
         }
 
         if (FindObjectOfType<DialogueManager>().animator.GetBool("IsOpen")) dialogueInterfaceBlocker.SetActive(true);
@@ -147,7 +148,7 @@ public class Game : MonoBehaviour
             farmupgradecostUI.text = "Max level reached";
             farmupgradecostUI.color = darkred;
         }
-
+        
     }
 
     public void onTapNextSeason()
@@ -182,7 +183,7 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
         FindObjectOfType<Events>().EventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
-
+        SaveGame();
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
     public void onTapVillage()
@@ -255,7 +256,7 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(player,FindObjectOfType<Events>());
+        SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria);
     }
 
     public void LoadGame()
@@ -268,6 +269,11 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().setEventAqueductSecondary(data.aqueductSecondary);
         FindObjectOfType<Events>().setEventAqueductTurnsLeft(data.aqueductTurnsLeft);
         FindObjectOfType<Events>().setEventAttendingSecondaryEvent(data.attendingSecondaryEvent);
+        fattoria.setLvlFattoria(data.farmLvl);
+        fattoria.setAbitantiMax(data.abitantiMax);
+        fattoria.setCrescitaAbitanti(data.crescitaAbitanti);
+        fattoria.setGoldFattoria(data.farmGold);
+        fattoria.setLvlUpCost(data.farmLvlUpCost);
 
     }
 

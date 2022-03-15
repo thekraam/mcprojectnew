@@ -68,6 +68,27 @@ public class Fattoria : MonoBehaviour
         return gold;
     }
 
+    public void setLvlFattoria(int modifier)
+    {
+        lvl = modifier;
+    }
+    public void setAbitantiMax(int modifier)
+    {
+        abitantiMax = modifier;
+    }
+    public void setCrescitaAbitanti(int modifier)
+    {
+        crescitaAbitanti = modifier;
+    }
+    public void setGoldFattoria(int modifier)
+    {
+        gold = modifier;
+    }
+    public void setLvlUpCost(int modifier)
+    {
+        farmLvlUpCost = modifier;
+    }
+    
     //----------------------------getters fattoria PROSSIMO LIVELLO--------------------------
 
     public int getLvlUpCost()
