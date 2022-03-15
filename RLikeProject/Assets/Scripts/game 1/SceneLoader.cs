@@ -10,6 +10,8 @@ public class SceneLoader : MonoBehaviour
     public GameObject loadingPanel;
     public CanvasGroup canvasGroup;
 
+    public GameObject IntroExecutionPanel;
+
     public AudioClip MainMenuMusic;
 
     public float waitTime;
@@ -21,11 +23,19 @@ public class SceneLoader : MonoBehaviour
     }
 
 
-    public void onPressButton(string sceneName)
+    public void onPressButton(bool NewGame)
     {
         FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
-        loadingPanel.SetActive(true);
-        StartCoroutine(LoadingScreenFadeOut(0.8f));
+        if (NewGame)
+        {
+            IntroExecutionPanel.SetActive(true);
+            FindObjectOfType<IntroExecution>().StartExecution();
+        }
+        else
+        {
+            loadingPanel.SetActive(true);
+            StartCoroutine(LoadingScreenFadeOut(0.8f));
+        }
     }
 
     /*
