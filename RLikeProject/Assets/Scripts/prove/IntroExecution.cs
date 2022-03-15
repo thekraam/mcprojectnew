@@ -14,11 +14,13 @@ public class IntroExecution : MonoBehaviour
     public CanvasGroup IntroSequence;
 
     bool skipIsPressed = false;
+    bool skip = false;
 
     public void StartExecution()
     {
         StartCoroutine(FadeSequence());
     }
+
 
     public void Skipping()
     {
@@ -47,8 +49,6 @@ public class IntroExecution : MonoBehaviour
             {
                 firstLine.alpha = 1f;
                 timePassed = 1f;
-
-                skipIsPressed = false;
             }
             else
             {
@@ -57,8 +57,15 @@ public class IntroExecution : MonoBehaviour
                 yield return new WaitForSeconds(0.007f);
             }
         }
-
-        yield return new WaitForSeconds(1.5f);
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
         timePassed = 0f;
 
         /* fadeOut */
@@ -113,8 +120,6 @@ public class IntroExecution : MonoBehaviour
             {
                 secondLine.alpha = 1f;
                 timePassed3 = 1f;
-
-                skipIsPressed = false;
             }
             else
             {
@@ -124,7 +129,15 @@ public class IntroExecution : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(1.5f);
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
         timePassed3 = 0f;
 
         /* fadeOut */
@@ -143,8 +156,6 @@ public class IntroExecution : MonoBehaviour
                 secondLine.alpha = 0f;
                 thirdLine.alpha = 0f;
                 timePassed3 = 1f;
-
-                skipIsPressed = false;
             }
             else
             {
@@ -156,61 +167,151 @@ public class IntroExecution : MonoBehaviour
             }
         }
 
-
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
 
         /////////////////////////////////////* walltext *//////////////////////////////////////
 
         float timePassed4 = 0f;
         while (timePassed4 < 0.6f)
         {
-            timePassed4 += Time.deltaTime;
-            fourthLine.alpha = Mathf.Lerp(0f, 1f, timePassed4 / 0.6f); // da 0f a 1f si accende, da 1f a 0f si spegne
-            stars.alpha = Mathf.Lerp(0f, 1f, timePassed4 / 0.6f);
-            yield return new WaitForSeconds(0.025f);
+            if (skipIsPressed)
+            {
+                timePassed4 = 1f;
+                fourthLine.alpha = 1f;
+                stars.alpha = 1f;
+            }
+            else
+            {
+                timePassed4 += Time.deltaTime;
+                fourthLine.alpha = Mathf.Lerp(0f, 1f, timePassed4 / 0.6f); // da 0f a 1f si accende, da 1f a 0f si spegne
+                stars.alpha = Mathf.Lerp(0f, 1f, timePassed4 / 0.6f);
+                yield return new WaitForSeconds(0.025f);
+            }
         }
 
         timePassed4 = 0f;
 
-        yield return new WaitForSeconds(2.5f); // attesa per fadeout
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(2.5f);
+        }
 
         while (timePassed4 < 0.8f) // fadeout fourthline
         {
-            timePassed4 += Time.deltaTime;
-            fourthLine.alpha = Mathf.Lerp(1f, 0f, timePassed4 / 0.8f);
-            yield return new WaitForSeconds(0.025f);
+            if (skipIsPressed)
+            {
+                timePassed4 = 1;
+                fourthLine.alpha = 0f;
+            }
+            else
+            {
+                timePassed4 += Time.deltaTime;
+                fourthLine.alpha = Mathf.Lerp(1f, 0f, timePassed4 / 0.8f);
+                yield return new WaitForSeconds(0.025f);
+            }
         }
 
-        yield return new WaitForSeconds(1f);
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(2.5f);
+        }
 
         float timePassed5 = 0f;
 
         while (timePassed5 < 0.6f)
         {
-            timePassed5 += Time.deltaTime;
-            fifthLine.alpha = Mathf.Lerp(0f, 1f, timePassed5 / 0.6f);
-            yield return new WaitForSeconds(0.025f);
+            if (skipIsPressed)
+            {
+                timePassed5 = 1f;
+                fifthLine.alpha = 1f;
+            }
+            else
+            {
+                timePassed5 += Time.deltaTime;
+                fifthLine.alpha = Mathf.Lerp(0f, 1f, timePassed5 / 0.6f);
+                yield return new WaitForSeconds(0.025f);
+            }
         }
+
         timePassed5 = 0f;
-        yield return new WaitForSeconds(2.5f);
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(2.5f);
+        }
 
         while (timePassed5 < 0.6f) // fadeout fifthline
         {
-            timePassed5 += Time.deltaTime;
-            fifthLine.alpha = Mathf.Lerp(1f, 0f, timePassed5 / 0.6f);
-            yield return new WaitForSeconds(0.025f);
+            if (skipIsPressed)
+            {
+                timePassed5 = 1f;
+                fifthLine.alpha = 0f;
+            }
+            else
+            {
+                timePassed5 += Time.deltaTime;
+                fifthLine.alpha = Mathf.Lerp(1f, 0f, timePassed5 / 0.6f);
+                yield return new WaitForSeconds(0.025f);
+            }
         }
 
-        yield return new WaitForSeconds(1f);
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+        }
 
         float timePassed6 = 0f;
         while (timePassed6 < 0.6f)
         {
-            timePassed6 += Time.deltaTime;
-            sixthLine.alpha = Mathf.Lerp(0f, 1f, timePassed6 / 0.6f);
-            yield return new WaitForSeconds(0.025f);
+            if (skipIsPressed)
+            {
+                timePassed6 = 1f;
+                sixthLine.alpha = 1f;
+            }
+            else
+            {
+                timePassed6 += Time.deltaTime;
+                sixthLine.alpha = Mathf.Lerp(0f, 1f, timePassed6 / 0.6f);
+                yield return new WaitForSeconds(0.025f);
+            }
         }
 
-        yield return new WaitForSeconds(2.5f);
+        if (skipIsPressed)
+        {
+            yield return null;
+            skipIsPressed = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(2.5f);
+        }
         timePassed6 = 0f;
 
         while (timePassed6 < 0.6f) // fadeout sixthline
