@@ -89,34 +89,73 @@ public class Fattoria : MonoBehaviour
         farmLvlUpCost = modifier;
     }
     
-    //----------------------------getters fattoria PROSSIMO LIVELLO--------------------------
+    //---------------------------------------------------getters fattoria PROSSIMO LIVELLO----------------------------------------------
 
     public int getLvlUpCost()
     {
         return farmLvlUpCost;
     }
 
-    public int getNextLvlFattoria()
-    {
-        return lvl+1;
-    }
-    public int getNextAbitantiMax()
-    {
-        return abitantiMax + 100;
-    }
-    public int getNextCrescitaAbitanti()
-    {
-        if (lvl + 1 == 5)
-            return 40;
-        else
-            return crescitaAbitanti + 5;
-    }
-    public int getNextGoldFattoria()
+    public string getNextLvlFattoria()
     {
         if (lvl == 1)
-            return 20;
+            return "2";
+        if (lvl == 2)
+            return "3";
+        if (lvl == 3)
+            return "4";
+        if (lvl == 4)
+            return "5";
+        if (lvl == 5)
+            return "max";
         else
-            return gold*2;
+            return "";
     }
+    public string getNextAbitantiMax()
+    {
+        if (lvl == 1)
+            return "+200";
+        if (lvl == 2)
+            return "+300";
+        if (lvl == 3)
+            return "+400";
+        if (lvl == 4)
+            return "+500";
+        if (lvl == 5)
+            return "MAX";
+        else
+            return "";
+    }
+    public string getNextCrescitaAbitanti()
+    {
+        if (lvl == 1)
+            return "+20";
+        if (lvl == 2)
+            return "+25";
+        if (lvl == 3)
+            return "+30";
+        if (lvl == 4)
+            return "+40";
+        if (lvl == 5)
+            return "MAX";
+        else
+            return "";
+    }
+    public string getNextGoldFattoria()
+    {
+        if (lvl == 1)
+            return "+20";
+        if (lvl == 2)
+            return "+40";
+        if (lvl == 3)
+            return "+80";
+        if (lvl == 4)
+            return "+160";
+        if (lvl == 5)
+            return "MAX";
+        else
+            return "";
+    }
+    
 
 }

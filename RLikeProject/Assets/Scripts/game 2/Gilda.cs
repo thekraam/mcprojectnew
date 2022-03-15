@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Gilda : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public  void lvlUPWall(Player player)
     {
-        
+        player.bonusWall = player.bonusWall + 5;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void lvlupCity (Player player)
     {
-        
+        player.bonusCity = player.bonusCity + 5;
     }
+
+    public void cambiaCapitano (Captain1 capitano)
+    {
+        capitano.resetCaptain();
+    }
+
+
+
+
+
 }

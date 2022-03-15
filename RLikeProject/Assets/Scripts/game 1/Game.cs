@@ -67,6 +67,7 @@ public class Game : MonoBehaviour
     Miniera miniera = new Miniera();
     Caserma caserma = new Caserma();
     Fabbro fabbro = new Fabbro();
+    Gilda gilda = new Gilda();
 
     public List<Text> UIelements;
 
@@ -132,13 +133,13 @@ public class Game : MonoBehaviour
         farmnextlvlUI.text = "" + fattoria.getNextLvlFattoria();
 
         farmmaxpopulationUI.text = "" + fattoria.getAbitantiMax();
-        farmnextmaxpopulationUI.text = "" + fattoria.getNextAbitantiMax();
+        farmnextmaxpopulationUI.text = fattoria.getNextAbitantiMax();
 
         farmcitizensperturnUI.text = "+" + fattoria.getCrescitaAbitanti();
-        farmnextcitizensperturnUI.text = "+" + fattoria.getNextCrescitaAbitanti();
+        farmnextcitizensperturnUI.text = fattoria.getNextCrescitaAbitanti();
 
         farmgoldperturnUI.text = "+" + fattoria.getGoldFattoria();
-        farmnextgoldperturnUI.text = "+" + fattoria.getNextGoldFattoria();
+        farmnextgoldperturnUI.text = fattoria.getNextGoldFattoria();
 
         if (fattoria.getLvlFattoria() < 5)
             farmupgradecostUI.text = "Costo: " + fattoria.getLvlUpCost();
@@ -161,7 +162,7 @@ public class Game : MonoBehaviour
     {
 
 
-        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + 20 * fabbro.zappa * fattoria.getLvlFattoria() + 20 * fabbro.zappa2 * fattoria.getLvlFattoria() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
+        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
 
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
@@ -263,9 +264,6 @@ public class Game : MonoBehaviour
     {
         GameData data = SaveSystem.LoadGame();
         player.player_turn = data.player_turn;
-        player.player_population = (int)data.player_population;
-        player.player_money = player.player_money;
-
         FindObjectOfType<Events>().setEventAqueduct(data.aqueduct);
         FindObjectOfType<Events>().setEventResponse(data.response);
         FindObjectOfType<Events>().setEventCitydefenseproject(data.citydefenseproject);

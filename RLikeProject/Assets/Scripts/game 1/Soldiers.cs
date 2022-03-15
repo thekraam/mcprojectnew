@@ -60,6 +60,10 @@ public class Soldiers : MonoBehaviour
         {
             temp_atk_swordsmen = temp_atk_swordsmen + modifier;
         }
+        public void setRapidAtk(int modifier)
+        {
+            atk_swordsmen = atk_swordsmen + modifier;
+        }
         // def spadaccini
         public int getDef()
         {
@@ -80,6 +84,10 @@ public class Soldiers : MonoBehaviour
             temp_def_swordsmen = temp_def_swordsmen + modifier;
         }
         // bonus per soldato - generale
+        public void setRapidDef (int modifier)
+        {
+            def_swordsmen = def_swordsmen + modifier;
+        }
         public float getBonus()
         {
             return bonus_swordsmen;
@@ -162,6 +170,12 @@ public class Soldiers : MonoBehaviour
         {
             temp_atk_archers = temp_atk_archers + modifier;
         }
+
+        public void setRapidAtk (int modifier)
+        {
+            atk_archers = atk_archers + modifier;
+        }
+
         // dammi def arcieri
         public int getDef()
         {
@@ -182,6 +196,10 @@ public class Soldiers : MonoBehaviour
             temp_def_archers = temp_def_archers + modifier;
         }
         // bonus per arcieri - generale
+        public void setRapidDef(int modifier)
+        {
+            def_archers = def_archers + modifier;
+        }
         public float getBonus()
         {
             return bonus_archers;
@@ -263,6 +281,10 @@ public class Soldiers : MonoBehaviour
         {
             temp_atk_riders = temp_atk_riders + modifier;
         }
+        public void setRapidAtk(int modifier)
+        {
+            atk_riders = atk_riders + modifier;
+        }
         // dammi def riders
         public int getDef()
         {
@@ -283,6 +305,11 @@ public class Soldiers : MonoBehaviour
             temp_def_riders = temp_def_riders + modifier;
         }
         // bonus per riders - generale
+
+        public void setRapidDef (int modifier)
+        {
+            def_riders = def_riders + modifier;
+        }
         public float getBonus()
         {
             return bonus_riders;

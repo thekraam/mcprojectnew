@@ -6,30 +6,111 @@ using UnityEngine;
 public class Fabbro : MonoBehaviour
 {
     //------------------ soldati ------------------------
-    public void powerUPSword(Soldiers.Swordsmen swordman)
+    int armi = 0;
+    int armature = 0;
+    public int getArmi ()
     {
-        int x = swordman.getAtk() + 1;     //una singola funzione che viene richiamata ogni qual volta viene fatto un lvl up che aumenta di 1 l'ATK
+        return armi;
     }
-    public void powerUPBow(Soldiers.Archers archer)
+    public int getArmature()
     {
-        int x = archer.getAtk() + 1;      //una singola funzione che viene richiamata ogni qual volta viene fatto un lvl up che aumenta di 1 l'ATK
+        return armature;
     }
-    public void powerUPSaddle(Soldiers.Riders rider)
+    public void powerUPArmi(Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider)
     {
-        int x = rider.getAtk() + 1;       //una singola funzione che viene richiamata ogni qual volta viene fatto un lvl up che aumenta di 1 l'ATK
+        armi = armi + 1;
+        swordman.setRapidAtk(1);
+        archer.setRapidAtk(1);
+        rider.setRapidAtk(1);
+    }
+
+    public void powerUPArmature(Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider)
+    {
+        armature = armature + 1;
+        swordman.setRapidDef(1);
+        archer.setRapidDef(1);
+        rider.setRapidDef(1);
     }
 
     //----------------economia-------------------------
 
     public int zappa = 0;
-    public int zappa2 = 0;
-    public void powerUPZappa ()
+    public int goldzappa = 0;
+    public void powerUPZappa (Fattoria fattoria)
     {
-        zappa = 1;
-    }
-    public void powerUPZappa2()
-    {
-        zappa2 = 1;
+        zappa = zappa + 1;
+        int lvlfattoria = fattoria.getLvlFattoria();
+            if (lvlfattoria == 1)
+        {
+            goldzappa = 0;
+        }
+            if (lvlfattoria == 2)
+        {
+            goldzappa = 2;
+        }
+            if (lvlfattoria == 3)
+        {
+            goldzappa = 4;
+        }
+            if (lvlfattoria == 4)
+        {
+            goldzappa = 8;
+        }
+            if (lvlfattoria == 5)
+        {
+            goldzappa = 16;
+        }
     }
 
+    public int getZappa()
+    {
+        return zappa;
+    }
+    public int getSoldiZappa()
+    {
+        return goldzappa * zappa;
+    }
+    
+    
+    
+    public int piccone = 0;
+    public int goldpiccone = 0;
+
+    public void powerUPPiccone(Miniera miniera)
+    {
+        piccone = piccone + 1;
+        int lvlminiera = miniera.getLvlMiniera();
+        if (lvlminiera == 1)
+        {
+            goldpiccone = 5;
+        }
+        if (lvlminiera == 2)
+        {
+            goldpiccone = 10;
+        }
+        if (lvlminiera == 3)
+        {
+            goldpiccone = 20;
+        }
+        if (lvlminiera == 4)
+        {
+            goldpiccone = 30;
+        }
+        if (lvlminiera == 5)
+        {
+            goldpiccone = 50;
+        }
+    }
+    public int getSoldiPiccone()
+    {
+        return goldpiccone * piccone;
+    }
+    public void powerUPPiccone()
+    {
+        piccone = piccone + 1;
+    }
+    public int getPiccone()
+    {
+        return piccone;
+    }
 }
