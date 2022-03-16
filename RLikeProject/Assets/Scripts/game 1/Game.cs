@@ -269,9 +269,11 @@ public class Game : MonoBehaviour
         player.player_turn = data.player_turn;
         player.setPopulation(data.player_population);
         player.player_citizens = data.player_citizens;
-        player.setCitizens();
         player.setCitizensMax(data.player_citizensMAX);
-        player.setTempCitizens(data.temp_player_citizens);
+        player.setCitizens();
+        
+        player.temp_player_citizens = data.temp_player_citizens;
+        //player.setTempCitizens(data.temp_player_citizens);
         player.player_money = data.player_money;
 
 
@@ -284,10 +286,14 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().setEventAttendingSecondaryEvent(data.attendingSecondaryEvent);*/
         FindObjectOfType<Events>().aqueduct = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;
+        FindObjectOfType<Events>().aqueductMalusTurnsLeft = data.aqueductMalusTurnsLeft;
+        FindObjectOfType<Events>().aqueductEffectMalus = data.aqueductEffectMalus;
         FindObjectOfType<Events>().citydefenseproject = data.citydefenseproject;
         FindObjectOfType<Events>().aqueductSecondary = data.aqueductSecondary;
         FindObjectOfType<Events>().aqueductTurnsLeft = data.aqueductTurnsLeft;
+        
         FindObjectOfType<Events>().attendingSecondaryEvent = data.attendingSecondaryEvent;
+
 
         fattoria.setLvlFattoria(data.farmLvl);
         fattoria.setAbitantiMax(data.abitantiMax);
