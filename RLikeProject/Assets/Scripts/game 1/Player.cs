@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    int player_citizens = 40;
+    public int player_citizens = 40;
     public int player_population = 40;
-    int temp_player_citizens = 15;
+    public int temp_player_citizens = 0;
     int player_citizensMAX = 100;
     public int temp_player_citizensMAX = 0;
     public int player_money = 100;
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     }
 
     //----------------------------------------popolazione-------------------
-    public float getPopulation()
+    public int getPopulation()
     {
         return player_population;
     }

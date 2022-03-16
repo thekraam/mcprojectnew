@@ -26,7 +26,7 @@ public class Miniera : MonoBehaviour
         else if (lvl == 5)
         {
             gold = 1000;
-            bool carboneHigh = true;
+ //           bool carboneHigh = true;
         }
     }
 

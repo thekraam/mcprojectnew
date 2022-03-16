@@ -7,9 +7,11 @@ public class GameData
 {
 
     public int player_turn;
-    public float player_population;
+    public int player_population;
     public int player_money;
-    public int skip_player_money;
+    public int player_citizens;
+    public int player_citizensMAX;
+    public int temp_player_citizens;
 
     public int aqueduct;
     public int response;
@@ -30,7 +32,9 @@ public class GameData
         player_turn = player.getTurn();
         player_population = player.getPopulation();
         player_money = player.getMoney();
-        skip_player_money = player.getSkipMoney();
+        player_citizens = player.getCitizens();
+        player_citizensMAX = player.getCitizensMax();
+        temp_player_citizens = player.getTempCitizens();
 
 
 

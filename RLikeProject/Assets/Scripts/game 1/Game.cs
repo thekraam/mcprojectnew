@@ -129,6 +129,8 @@ public class Game : MonoBehaviour
 
         // --------------------------- updater dati fattoria - tempo reale ---------------------------
 
+        player.setCitizensMax(fattoria.getAbitantiMax());
+
         farmlvlUI.text = "" + fattoria.getLvlFattoria();
         farmnextlvlUI.text = "" + fattoria.getNextLvlFattoria();
 
@@ -165,10 +167,11 @@ public class Game : MonoBehaviour
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
 
-        player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
         player.setTempCitizens(fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects(player, swordsmen, archers, riders));
+        player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
+        
 
-        player.setCitizensMax(fattoria.getAbitantiMax());
+        //player.setCitizensMax(fattoria.getAbitantiMax());
 
 
 
@@ -264,6 +267,15 @@ public class Game : MonoBehaviour
     {
         GameData data = SaveSystem.LoadGame();
         player.player_turn = data.player_turn;
+        player.setPopulation(data.player_population);
+        player.player_citizens = data.player_citizens;
+        player.setCitizens();
+        player.setCitizensMax(data.player_citizensMAX);
+        player.setTempCitizens(data.temp_player_citizens);
+        player.player_money = data.player_money;
+
+
+
         FindObjectOfType<Events>().setEventAqueduct(data.aqueduct);
         FindObjectOfType<Events>().setEventResponse(data.response);
         FindObjectOfType<Events>().setEventCitydefenseproject(data.citydefenseproject);
