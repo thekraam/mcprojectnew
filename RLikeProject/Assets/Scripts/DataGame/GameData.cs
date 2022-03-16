@@ -18,7 +18,9 @@ public class GameData
     public int citydefenseproject;
     public int aqueductSecondary;
     public int aqueductTurnsLeft;
+    public int aqueductMalusTurnsLeft;
     public bool attendingSecondaryEvent;
+    public bool aqueductEffectMalus;
 
     /*fattoria*/
     public int farmLvl;
@@ -60,6 +62,8 @@ public class GameData
         aqueductTurnsLeft = events.aqueductTurnsLeft;
 
         attendingSecondaryEvent = events.attendingSecondaryEvent;
+        aqueductMalusTurnsLeft = events.aqueductMalusTurnsLeft;
+        aqueductEffectMalus = events.aqueductEffectMalus;
 
         farmLvl = fattoria.getLvlFattoria();
         abitantiMax = fattoria.getAbitantiMax();

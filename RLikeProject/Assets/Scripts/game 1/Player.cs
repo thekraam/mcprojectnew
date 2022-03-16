@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public int player_citizens = 40;
     public int player_population = 40;
     public int temp_player_citizens = 0;
-    int player_citizensMAX = 100;
+    public int player_citizensMAX = 100;
     public int temp_player_citizensMAX = 0;
     public int player_money = 100;
     int skip_player_money = 0;
