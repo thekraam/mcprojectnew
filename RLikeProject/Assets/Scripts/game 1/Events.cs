@@ -141,7 +141,7 @@ public class Events : MonoBehaviour
     {
         return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9;
     }
-    public int CitizensMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public int CitizensMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, Fattoria fattoria)
     {
         if (aqueductEffectMalus && aqueductTurnsLeft == 0)
         {
@@ -154,7 +154,7 @@ public class Events : MonoBehaviour
             }
             else
             {
-                citizensMalus1 = (int)0.4 * player.getTempCitizens(); // -40% popolazione
+                citizensMalus1 = (int)(0.4 * (float)fattoria.getCrescitaAbitanti()); // -40% popolazione
                 aqueductMalusTurnsLeft--;
             }
         }
