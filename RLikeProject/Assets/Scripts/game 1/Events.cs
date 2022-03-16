@@ -13,6 +13,9 @@ public class Events : MonoBehaviour
     /* stringa messaggi */
     string[] message = new string[10];
 
+    /* variabile territorio attuale di battaglia */
+    public int terri = -1;
+
     /* variabili malus cittadini */
     private int citizensMalus1 = 0;
     private int citizensMalus2 = 0;
@@ -145,7 +148,6 @@ public class Events : MonoBehaviour
     {
         if (aqueductEffectMalus && aqueductTurnsLeft == 0)
         {
-            aqueductMalusTurnsLeft = 3;
             if (aqueductMalusTurnsLeft == 0)
             {
                 citizensMalus1 = 0;
@@ -169,6 +171,7 @@ public class Events : MonoBehaviour
 
             aqueductSecondary = 0;
             attendingSecondaryEvent = false;
+            aqueductMalusTurnsLeft = 3;
 
             string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens per turn, for 3 turns]";
 

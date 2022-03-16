@@ -13,6 +13,11 @@ public class battle1 : MonoBehaviour
 
     public int battaglia(Captain1 capitano1, Captain2 capitano2, Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider, Enemy.ESwordsmen eswordman, Enemy.EArchers earcher, Enemy.ERiders erider, float terri, float bonusTerri, float bonusETerri, float bonusSoldier, float bonusEnemy)
     {
+        //------------------------------------reset morti-----------------------------------
+        swordman.setMomentDeadSwordman(0);
+        archer.setMomentDeadArcher(0);
+        rider.setMomentDeadRider(0);
+        //----------------------------------------------------------------------------------
         int fine = 0;
         int rapporto1 = 0;
         int rapporto2 = 0;

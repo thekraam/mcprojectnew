@@ -162,7 +162,7 @@ public class Game : MonoBehaviour
     
     public void onSkipTurn()
     {
-
+        FindObjectOfType<OldSoldiersManager>().CheckBattleStatus(false, player, swordsmen, archers, riders, FindObjectOfType<Events>().terri); 
 
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
