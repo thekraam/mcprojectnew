@@ -5,7 +5,7 @@ using UnityEngine;
 public class Events : MonoBehaviour
 {
     /* variabile di controllo risposta avvenuta decisione giocatore, [0] contenente la risposta (0 o 1), [1] contenente l'avvenuto check (1 se si, 0 altrimenti) */
-    int[] response = new int[2];
+    public int[] response = new int[2];
 
 
     Dialogue dialogue = new Dialogue();
@@ -37,26 +37,26 @@ public class Events : MonoBehaviour
 
 
     /* booleane effetti */
-    bool aqueductEffectMalus = false;
+    public bool aqueductEffectMalus = false;
 
 
     /* booleane eventi secondari */
-    bool attendingSecondaryEvent = false; // generico, stabilisce se si sta partecipando gia' ad un evento secondario
+    public bool attendingSecondaryEvent = false; // generico, stabilisce se si sta partecipando gia' ad un evento secondario
 
-    int aqueductSecondary = 0; // evento secondario acquedotto
+    public int aqueductSecondary = 0; // evento secondario acquedotto
 
 
     /* booleane di avvenuto evento, 0 di default */
-    int aqueduct = 0;
-    int citydefenseproject = 0;
+    public int aqueduct = 0;
+    public int citydefenseproject = 0;
 
     /* variabili countdown evento secondario, grande numero di default */
-    int aqueductTurnsLeft = 999999;
+    public int aqueductTurnsLeft = 999999;
 
     /* variabili countdown EFFETTI TEMPORANEI evento secondario, grande numero di default */
-    int aqueductMalusTurnsLeft = 999999;
+    public int aqueductMalusTurnsLeft = 999999;
 
-    /* getter e setter */
+    /* getter e setter 
     public bool getEventAttendingSecondaryEvent()
     {
         return attendingSecondaryEvent;
@@ -111,7 +111,7 @@ public class Events : MonoBehaviour
     {
         this.aqueductTurnsLeft = modifier;
     }
-
+    */
 
 
 

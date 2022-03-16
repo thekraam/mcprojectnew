@@ -37,7 +37,7 @@ public class GameData
         temp_player_citizens = player.getTempCitizens();
 
 
-
+        /*
         aqueduct = events.getEventAqueduct();
 
         response = events.getEventResponse();
@@ -48,7 +48,18 @@ public class GameData
 
         aqueductTurnsLeft = events.getEventAqueductTurnsLeft();
 
-        attendingSecondaryEvent = events.getEventAttendingSecondaryEvent();
+        attendingSecondaryEvent = events.getEventAttendingSecondaryEvent();*/
+        aqueduct = events.aqueduct;
+
+        response = events.response[0];
+
+        citydefenseproject = events.citydefenseproject;
+
+        aqueductSecondary = events.aqueductSecondary;
+
+        aqueductTurnsLeft = events.aqueductTurnsLeft;
+
+        attendingSecondaryEvent = events.attendingSecondaryEvent;
 
         farmLvl = fattoria.getLvlFattoria();
         abitantiMax = fattoria.getAbitantiMax();
