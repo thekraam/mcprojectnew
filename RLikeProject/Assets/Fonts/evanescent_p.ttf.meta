@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 96e124a1dda78d0468b3089e54f42289
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Evanescent
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 05fe6c932e9ff5d438416118903d17dd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
