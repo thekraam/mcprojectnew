@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
+    public AudioClip RecruitmentSound;
+
     public Slider swordsmenSlider;
     public Slider archersSlider;
     public Slider ridersSlider;
@@ -94,6 +96,7 @@ public class SliderController : MonoBehaviour
             player.player_citizens -= (int)ridersSlider.value;
             riders.setTempTotal((int)ridersSlider.value);
         }
+        FindObjectOfType<AudioManager>().PlayEffect(RecruitmentSound);
     }
 
     public void ClosingPanels()
