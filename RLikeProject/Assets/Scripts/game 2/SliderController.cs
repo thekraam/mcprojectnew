@@ -26,24 +26,28 @@ public class SliderController : MonoBehaviour
     public Text maxRidersUI;
     public GameObject noCitizensAvailableRiders;
 
-    public void RealTimeSliders(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void RealTimeSliders(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, Caserma caserma)
     {
-        if(player.getCitizens() != 0)
+        if(calcoloMax(player, swordsmen, archers, riders, caserma, 1) != 0)
         {
             minSwordsmenUI.text = "1";
-            maxSwordsmenUI.text = "" + player.getCitizens();
+            maxSwordsmenUI.text = "" + calcoloMax(player, swordsmen, archers, riders, caserma, 1);
             swordsmenSlider.minValue = 1;
-            swordsmenSlider.maxValue = player.getCitizens();
+            swordsmenSlider.maxValue = calcoloMax(player, swordsmen, archers, riders, caserma, 1);
 
             minArchersUI.text = "1";
-            maxArchersUI.text = "" + player.getCitizens();
+            maxArchersUI.text = "" + calcoloMax(player, swordsmen, archers, riders, caserma, 1);
             archersSlider.minValue = 1;
-            archersSlider.maxValue = player.getCitizens();
+            archersSlider.maxValue = calcoloMax(player, swordsmen, archers, riders, caserma, 1);
 
             minRidersUI.text = "1";
-            maxRidersUI.text = "" + player.getCitizens();
+            maxRidersUI.text = "" + calcoloMax(player, swordsmen, archers, riders, caserma, 2);
             ridersSlider.minValue = 1;
-            ridersSlider.maxValue = player.getCitizens();
+            ridersSlider.maxValue = calcoloMax(player, swordsmen, archers, riders, caserma, 2);
+
+            noCitizensAvailableSwordsmen.SetActive(false);
+            noCitizensAvailableArchers.SetActive(false);
+            noCitizensAvailableRiders.SetActive(false);
         }
         else
         {
@@ -77,24 +81,24 @@ public class SliderController : MonoBehaviour
     {
         if ((int)swordsmenSlider.value != 0 && type == 1)
         {
-            player.setRapidMoney((-15)*((int)swordsmenSlider.value));
-            player.setTempCitizens((int)swordsmenSlider.value);
+            player.setRapidMoney((-20)*((int)swordsmenSlider.value));
             player.player_citizens -= (int)swordsmenSlider.value;
             swordsmen.setTempTotal((int)swordsmenSlider.value);
+            barracks.setReclutamentoMaxMoment((int)swordsmenSlider.value);
         }
         else if ((int)archersSlider.value != 0 && type == 2)
         {
-            player.setRapidMoney((-15) * ((int)archersSlider.value));
-            player.setTempCitizens((int)archersSlider.value);
+            player.setRapidMoney((-20) * ((int)archersSlider.value));
             player.player_citizens -= (int)archersSlider.value;
             archers.setTempTotal((int)archersSlider.value);
+            barracks.setReclutamentoMaxMoment((int)swordsmenSlider.value);
         }
         else if ((int)ridersSlider.value != 0 && type == 3)
         {
-            player.setRapidMoney((-15) * ((int)ridersSlider.value));
-            player.setTempCitizens((int)ridersSlider.value);
+            player.setRapidMoney((-30) * ((int)ridersSlider.value));
             player.player_citizens -= (int)ridersSlider.value;
             riders.setTempTotal((int)ridersSlider.value);
+            barracks.setReclutamentoMaxMoment((int)swordsmenSlider.value);
         }
         FindObjectOfType<AudioManager>().PlayEffect(RecruitmentSound);
     }
@@ -104,5 +108,37 @@ public class SliderController : MonoBehaviour
         swordsmenSlider.value = swordsmenSlider.minValue;
         archersSlider.value = archersSlider.minValue;
         ridersSlider.value = ridersSlider.minValue;
+    }
+
+
+
+
+    public int calcoloMax (Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, Caserma caserma, int x)
+    {
+        int y = player.getCitizens();
+        int z = caserma.getReclutamentoMaxMoment();
+        if (x == 1)
+        {
+            while ((20*y) > player.getMoney())
+            {
+                y = y - 1;
+            }
+        }
+        if (x == 2)
+        {
+            while ((30 * y) > player.getMoney())
+            {
+                y = y - 1;
+            }
+        }
+        if (z < y)
+        {
+            return z;
+        }
+        else
+        {
+            return y;
+        }
+
     }
 }
