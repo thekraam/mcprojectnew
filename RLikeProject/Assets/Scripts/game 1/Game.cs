@@ -277,13 +277,6 @@ public class Game : MonoBehaviour
         player.player_money = data.player_money;
 
 
-        /*
-        FindObjectOfType<Events>().setEventAqueduct(data.aqueduct);
-        FindObjectOfType<Events>().setEventResponse(data.response);
-        FindObjectOfType<Events>().setEventCitydefenseproject(data.citydefenseproject);
-        FindObjectOfType<Events>().setEventAqueductSecondary(data.aqueductSecondary);
-        FindObjectOfType<Events>().setEventAqueductTurnsLeft(data.aqueductTurnsLeft);
-        FindObjectOfType<Events>().setEventAttendingSecondaryEvent(data.attendingSecondaryEvent);*/
         FindObjectOfType<Events>().aqueduct = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;
         FindObjectOfType<Events>().aqueductMalusTurnsLeft = data.aqueductMalusTurnsLeft;
