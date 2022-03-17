@@ -8,7 +8,7 @@ public class Fattoria : MonoBehaviour
     private int abitantiMax = 100;
     public int crescitaAbitanti = 15;
     public int gold = 0;
-    public int farmLvlUpCost = 100;
+    public int farmLvlUpCost = 1000;
 
 
     //------------funzione per il lvl up della fattoria----------
@@ -20,28 +20,27 @@ public class Fattoria : MonoBehaviour
             abitantiMax = 200;
             crescitaAbitanti = 20;
             gold = 20;
-            farmLvlUpCost = 200;
+            farmLvlUpCost = 2000;
         }
         else if (lvl == 3)
         {
             abitantiMax = 300;
             crescitaAbitanti= 25;
             gold = 40;
-            farmLvlUpCost = 300;
+            farmLvlUpCost = 3500;
         }
         else if (lvl == 4)
         {
             abitantiMax = 400;
             crescitaAbitanti = 30;
             gold = 80;
-            farmLvlUpCost = 400;
+            farmLvlUpCost = 5000;
         }
         else if (lvl == 5)
         {
             abitantiMax = 500;
             crescitaAbitanti = 40;
             gold = 160;
-            farmLvlUpCost = 500;
         }
     }
 
@@ -157,5 +156,29 @@ public class Fattoria : MonoBehaviour
             return "";
     }
     
+    public int calcoloCosto ()
+    {
+        int x = 0;
+        if (lvl == 1)
+        {
+            x = 1000;
+        }
+        if (lvl == 2)
+        {
+            x = 2000;
+        }
+        if (lvl == 3)
+        {
+            x = 3500;
+        }
+        if (lvl == 4)
+        {
+            x = 5000;
+        }
+        return x;
+    }
+
+
+
 
 }

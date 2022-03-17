@@ -58,6 +58,7 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI turnsUI;
     // colori
     Color32 darkred = new Color32(92, 0, 0, 255);
+    Color32 blacknormal = new Color32(55 , 55, 55, 255);
 
 
     Player player = new Player(); // oggetto player partita - non contiene soldati
@@ -150,12 +151,23 @@ public class Game : MonoBehaviour
         farmnextgoldperturnUI.text = fattoria.getNextGoldFattoria();
 
         if (fattoria.getLvlFattoria() < 5)
+        {
             farmupgradecostUI.text = "Costo: " + fattoria.getLvlUpCost();
+            if (player.getMoney() < fattoria.calcoloCosto())
+            {
+                farmupgradecostUI.color = darkred;
+            }
+            else
+            {
+                farmupgradecostUI.color = blacknormal;
+            }
+        }
         else
         {
             farmupgradecostUI.text = "Max level reached";
             farmupgradecostUI.color = darkred;
         }
+
     }
 
     public void onTapNextSeason()
@@ -257,8 +269,11 @@ public class Game : MonoBehaviour
 
     public void onUpgradeFarm()
     {
-        if(fattoria.getLvlFattoria() < 5)
+        if(fattoria.getLvlFattoria() < 5 && (player.getMoney() >= fattoria.calcoloCosto()) ){
+            player.setRapidMoney(-fattoria.calcoloCosto());
             fattoria.lvlUpFattoria();
+        }
+
     }
 
     // tasti caserma
