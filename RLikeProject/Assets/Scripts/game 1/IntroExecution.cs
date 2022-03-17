@@ -20,7 +20,10 @@ public class IntroExecution : MonoBehaviour
 
     public void SetLogo(int logoSelector)
     {
-   //    FindObjectOfType<Game>().logoUI = logoSelector;
+        if (logoSelector == 1) FindObjectOfType<Game>().logoUI_1.SetActive(true);
+        if (logoSelector == 2) FindObjectOfType<Game>().logoUI_2.SetActive(true);
+        if (logoSelector == 3) FindObjectOfType<Game>().logoUI_3.SetActive(true);
+        if (logoSelector == 4) FindObjectOfType<Game>().logoUI_4.SetActive(true);
     }
 
     public void StartExecution()

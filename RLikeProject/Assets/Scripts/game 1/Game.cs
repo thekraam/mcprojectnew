@@ -7,7 +7,10 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    public Image logoUI;
+    public GameObject logoUI_1;
+    public GameObject logoUI_2;
+    public GameObject logoUI_3;
+    public GameObject logoUI_4;
     /* variabili di controllo tempo di aggiornamento allo skipturn */
     private float startTime = 0;
     private float startTimeController = 0;
@@ -119,10 +122,11 @@ public class Game : MonoBehaviour
             skipTurnBlocker.SetActive(true);
             startTimeController = 0;
             startTime = 0;
-            
         }
 
         if (FindObjectOfType<DialogueManager>().animator.GetBool("IsOpen")) dialogueInterfaceBlocker.SetActive(true);
+        
+
 
         // --------------------------- updater generale ---------------------------
 
