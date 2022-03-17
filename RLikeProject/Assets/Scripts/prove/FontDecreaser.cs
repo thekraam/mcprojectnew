@@ -6,11 +6,28 @@ using TMPro;
 
 public class FontDecreaser : MonoBehaviour
 {
-    public Text prova;
+    public Text Cityname;
+    int i=0;
 
-    public void test()
+
+    public void Update()
     {
-        if(prova.text.Length > 10)
-            prova.fontSize -= 5;
+        if (Cityname.text.Length < 8) Cityname.fontSize = 150;
+        if (Cityname.text.Length > 8 && Cityname.text.Length > i)
+        {
+            Cityname.fontSize -= 4;
+            i++;
+        }
     }
+
+
+    public void Decreaser()
+    {
+        while(Cityname.text.Length > 8 && Cityname.text.Length > i)
+        {
+            Cityname.fontSize -= 4;
+            i++;
+        }
+    }
+
 }
