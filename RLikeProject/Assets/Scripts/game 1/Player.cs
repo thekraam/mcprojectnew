@@ -114,6 +114,14 @@ public class Player : MonoBehaviour
     int x = swordsmen.getTotal();*/
 
 
+
+
+
+
+
+
+
+    //-----------------------Bonus--------------------
     public float getBonusWall ()
     {
         return bonusWall;
@@ -137,5 +145,31 @@ public class Player : MonoBehaviour
     {
         return bonusBattle;
     }
+
+    public void setBonusWall(int x)
+    {
+        bonusWall = bonusWall + x;
+    }
+
+    public void setBonusCity(int x)
+    {
+        bonusCity = bonusCity + x;
+    }
+
+    public void setBonusFar(int x)
+    {
+        bonusFar = bonusFar + x;
+    }
+
+    public void setBonusDemoniac(int x)
+    {
+        bonusDemoniac = bonusDemoniac + x;
+    }
+    public void setBonusBattle(int x)
+    {
+        bonusBattle = bonusBattle + x;
+    }
+
+
 
 }
