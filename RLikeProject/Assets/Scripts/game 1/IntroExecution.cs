@@ -18,9 +18,9 @@ public class IntroExecution : MonoBehaviour
     bool skipIsPressed = false;
     bool skip = false;
 
-    public void SetLogo(Image logo)
+    public void SetLogo(int logoSelector)
     {
-        
+       FindObjectOfType<Game>().logoUI = logoSelector;
     }
 
     public void StartExecution()
