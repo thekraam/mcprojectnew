@@ -56,6 +56,10 @@ public class Game : MonoBehaviour
     public Text moneyUI;
     public Text maxRecruitableUI;
     public TextMeshProUGUI turnsUI;
+    // colori
+    Color32 darkred = new Color32(92, 0, 0, 255);
+
+
     Player player = new Player(); // oggetto player partita - non contiene soldati
 
     /* classi di tipo soldato.classesoldato */
@@ -117,6 +121,8 @@ public class Game : MonoBehaviour
 
         // --------------------------- updater generale ---------------------------
 
+        FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders);
+
         SwordsmenUI.text = "" + swordsmen.getTotal();
         ArchersUI.text = "" + archers.getTotal();
         RidersUI.text = "" + riders.getTotal();
@@ -147,11 +153,9 @@ public class Game : MonoBehaviour
             farmupgradecostUI.text = "Costo: " + fattoria.getLvlUpCost();
         else
         {
-            Color32 darkred = new Color32(92, 0, 0, 255);
             farmupgradecostUI.text = "Max level reached";
             farmupgradecostUI.color = darkred;
         }
-        
     }
 
     public void onTapNextSeason()
@@ -254,6 +258,23 @@ public class Game : MonoBehaviour
     {
         if(fattoria.getLvlFattoria() < 5)
             fattoria.lvlUpFattoria();
+    }
+
+    // tasti caserma
+
+    public void onRecruitSwordsmen()
+    {
+        FindObjectOfType<SliderController>().onPressStartTraining(1, player, caserma, swordsmen, archers, riders);
+    }
+
+    public void onRecruitArchers()
+    {
+        FindObjectOfType<SliderController>().onPressStartTraining(2, player, caserma, swordsmen, archers, riders);
+    }
+
+    public void onRecruitRiders()
+    {
+        FindObjectOfType<SliderController>().onPressStartTraining(3, player, caserma, swordsmen, archers, riders);
     }
 
     /*----------------save------load------------------*/
