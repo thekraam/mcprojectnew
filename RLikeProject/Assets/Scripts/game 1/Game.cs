@@ -121,7 +121,7 @@ public class Game : MonoBehaviour
 
         // --------------------------- updater generale ---------------------------
 
-        FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders);
+        FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders, caserma);
 
         SwordsmenUI.text = "" + swordsmen.getTotal();
         ArchersUI.text = "" + archers.getTotal();
@@ -173,11 +173,12 @@ public class Game : MonoBehaviour
 
         player.setTempCitizens(fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects(player, swordsmen, archers, riders, fattoria));
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
-        
+
 
         //player.setCitizensMax(fattoria.getAbitantiMax());
 
 
+        caserma.aggiornaMax(); //aggiornamento soldati reclutabili nel turno
 
         swordsmen.setTotal(); // ricalcolo tot spadaccini
         archers.setTotal(); // ricalcolo tot arcieri

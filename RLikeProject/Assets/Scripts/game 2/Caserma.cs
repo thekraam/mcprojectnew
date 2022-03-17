@@ -7,7 +7,7 @@ public class Caserma : MonoBehaviour
     int lvl = 1;
     int reclutamentoMAX = 10;
     float bonusBarrack = 0;
-
+    int reclutamentoMaxMoment = 10;
     public void lvlUpBarrack()
     {
         lvl = lvl + 1;
@@ -46,7 +46,18 @@ public class Caserma : MonoBehaviour
     {
         return bonusBarrack;
     }
-
+    public int getReclutamentoMaxMoment()
+    {
+        return reclutamentoMaxMoment;
+    }
+    public void setReclutamentoMaxMoment(int x)
+    {
+        reclutamentoMaxMoment = reclutamentoMaxMoment - x;
+    }
+    public void aggiornaMax()
+    {
+        reclutamentoMaxMoment = reclutamentoMAX;
+    }
 
     //----------------------------------prossimo livello----------------------
     public int getNextlvlBarrack()
