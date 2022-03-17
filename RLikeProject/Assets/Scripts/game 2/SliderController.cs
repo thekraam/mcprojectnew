@@ -91,14 +91,14 @@ public class SliderController : MonoBehaviour
             player.setRapidMoney((-20) * ((int)archersSlider.value));
             player.player_citizens -= (int)archersSlider.value;
             archers.setTempTotal((int)archersSlider.value);
-            barracks.setReclutamentoMaxMoment((int)swordsmenSlider.value);
+            barracks.setReclutamentoMaxMoment((int)archersSlider.value);
         }
         else if ((int)ridersSlider.value != 0 && type == 3)
         {
             player.setRapidMoney((-30) * ((int)ridersSlider.value));
             player.player_citizens -= (int)ridersSlider.value;
             riders.setTempTotal((int)ridersSlider.value);
-            barracks.setReclutamentoMaxMoment((int)swordsmenSlider.value);
+            barracks.setReclutamentoMaxMoment((int)ridersSlider.value);
         }
         FindObjectOfType<AudioManager>().PlayEffect(RecruitmentSound);
     }

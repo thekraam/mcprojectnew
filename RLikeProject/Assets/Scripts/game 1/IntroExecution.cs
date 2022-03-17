@@ -20,7 +20,7 @@ public class IntroExecution : MonoBehaviour
 
     public void SetLogo(int logoSelector)
     {
-       FindObjectOfType<Game>().logoUI = logoSelector;
+   //    FindObjectOfType<Game>().logoUI = logoSelector;
     }
 
     public void StartExecution()

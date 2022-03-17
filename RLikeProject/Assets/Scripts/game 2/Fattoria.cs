@@ -156,29 +156,6 @@ public class Fattoria : MonoBehaviour
             return "";
     }
     
-    public int calcoloCosto ()
-    {
-        int x = 0;
-        if (lvl == 1)
-        {
-            x = 1000;
-        }
-        if (lvl == 2)
-        {
-            x = 2000;
-        }
-        if (lvl == 3)
-        {
-            x = 3500;
-        }
-        if (lvl == 4)
-        {
-            x = 5000;
-        }
-        return x;
-    }
-
-
 
 
 }

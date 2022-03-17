@@ -5,6 +5,35 @@ using UnityEngine;
 //nell'edificio fabbro metterò attualmente pochi potenziamenti per ora, in quanto son ancora in fase di decisione/bilanciamento
 public class Fabbro : MonoBehaviour
 {
+    int lvl = 1;
+    int costo = 1000;
+    public void lvlup()
+    {
+        lvl = lvl + 1;
+        if (lvl == 2)
+        {
+            costo = 1500;
+        }
+        if (lvl == 3)
+        {
+            costo = 2000;
+        }
+        if (lvl == 4)
+        {
+            costo = 2500;
+        }
+    }
+
+    public int getlvl()
+    {
+        return lvl;
+    }
+    public int getcosto()
+    {
+        return costo;
+    }
+    
+
     //------------------ soldati ------------------------
     int armi = 0;
     int armature = 0;
@@ -114,3 +143,7 @@ public class Fabbro : MonoBehaviour
         return piccone;
     }
 }
+
+
+
+

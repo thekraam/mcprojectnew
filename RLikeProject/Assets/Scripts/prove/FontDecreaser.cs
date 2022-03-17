@@ -12,12 +12,12 @@ public class FontDecreaser : MonoBehaviour
 
     public void Update()
     {
-        if (Cityname.text.Length < 8) Cityname.fontSize = 150;
-        if (Cityname.text.Length > 8 && Cityname.text.Length > i)
-        {
-            Cityname.fontSize -= 4;
-            i++;
-        }
+    //    if (Cityname.text.Length < 8) Cityname.fontSize = 150;
+    //    if (Cityname.text.Length > 8 && Cityname.text.Length > i)
+      //  {
+        //    Cityname.fontSize -= 4;
+          //  i++;
+       // }
     }
 
 

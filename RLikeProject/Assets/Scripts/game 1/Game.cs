@@ -51,14 +51,6 @@ public class Game : MonoBehaviour
     //FABBRO
     public Text fabbrolvlUI;
     public Text fabbroupgradecostUI;
-    public Text fabbrodifesaUI;
-    public Text fabbronextdifesaUI;
-    public Text fabbroattaccoUI;
-    public Text fabbronextattaccoUI;
-    public Text fabbrozappaUI;
-    public Text fabbronextzappaUI;
-    public Text fabbropicconeUI;
-    public Text fabbronextpicconeUI;
     // GENERAL
     public Text SwordsmenUI;
     public Text ArchersUI;
@@ -165,7 +157,7 @@ public class Game : MonoBehaviour
         if (fattoria.getLvlFattoria() < 5)
         {
             farmupgradecostUI.text = "Costo: " + fattoria.getLvlUpCost();
-            if (player.getMoney() < fattoria.calcoloCosto())
+            if (player.getMoney() < fattoria.getLvlUpCost())
             {
                 farmupgradecostUI.color = darkred;
             }
@@ -180,6 +172,27 @@ public class Game : MonoBehaviour
             farmupgradecostUI.color = darkred;
         }
         // --------------------------- updater dati fabbro - tempo reale ---------------------------
+
+
+        fabbrolvlUI.text = "" + fabbro.getlvl();
+        fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
+        if (fabbro.getlvl() < 5)
+        {
+            fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
+            if (player.getMoney() < fabbro.getcosto())
+            {
+                fabbroupgradecostUI.color = darkred;
+            }
+            else
+            {
+                fabbroupgradecostUI.color = blacknormal;
+            }
+        }
+        else
+        {
+            fabbroupgradecostUI.text = "Max level reached";
+            fabbroupgradecostUI.color = darkred;
+        }
 
 
     }
@@ -283,11 +296,22 @@ public class Game : MonoBehaviour
 
     public void onUpgradeFarm()
     {
-        if(fattoria.getLvlFattoria() < 5 && (player.getMoney() >= fattoria.calcoloCosto()) ){
-            player.setRapidMoney(-fattoria.calcoloCosto());
+        if(fattoria.getLvlFattoria() < 5 && (player.getMoney() >= fattoria.getLvlUpCost()) ){
+            player.setRapidMoney(-fattoria.getLvlUpCost());
             fattoria.lvlUpFattoria();
         }
 
+    }
+
+    // tasti fabbro
+
+    public void onUpgradeFabbro()
+    {
+        if (fabbro.getlvl() < 5 && (player.getMoney() >= fabbro.getcosto()))
+        {
+            player.setRapidMoney(-fabbro.getcosto());
+            fabbro.lvlup();
+        }
     }
 
     // tasti caserma
