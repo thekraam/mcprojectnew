@@ -7,6 +7,7 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
+    public Image logoUI;
     /* variabili di controllo tempo di aggiornamento allo skipturn */
     private float startTime = 0;
     private float startTimeController = 0;
@@ -47,6 +48,17 @@ public class Game : MonoBehaviour
     public Text farmgoldperturnUI;
     public Text farmnextgoldperturnUI;
     public Text farmupgradecostUI;
+    //FABBRO
+    public Text fabbrolvlUI;
+    public Text fabbroupgradecostUI;
+    public Text fabbrodifesaUI;
+    public Text fabbronextdifesaUI;
+    public Text fabbroattaccoUI;
+    public Text fabbronextattaccoUI;
+    public Text fabbrozappaUI;
+    public Text fabbronextzappaUI;
+    public Text fabbropicconeUI;
+    public Text fabbronextpicconeUI;
     // GENERAL
     public Text SwordsmenUI;
     public Text ArchersUI;
@@ -167,6 +179,8 @@ public class Game : MonoBehaviour
             farmupgradecostUI.text = "Max level reached";
             farmupgradecostUI.color = darkred;
         }
+        // --------------------------- updater dati fabbro - tempo reale ---------------------------
+
 
     }
 
