@@ -52,6 +52,16 @@ public class SliderController : MonoBehaviour
             minRidersUI.text = "";
             maxRidersUI.text = "";
 
+            swordsmenSlider.minValue = 0;
+            swordsmenSlider.maxValue = 0;
+
+            archersSlider.minValue = 0;
+            archersSlider.maxValue = 0;
+
+            ridersSlider.minValue = 0;
+            ridersSlider.maxValue = 0;
+
+
             noCitizensAvailableSwordsmen.SetActive(true);
             noCitizensAvailableArchers.SetActive(true);
             noCitizensAvailableRiders.SetActive(true);
