@@ -54,6 +54,14 @@ public class Game : MonoBehaviour
     //FABBRO
     public Text fabbrolvlUI;
     public Text fabbroupgradecostUI;
+    //CASERMA
+    public Text casermalvUI;
+    public Text casermaupgradecostUI;
+    public Text casermanextlvlUI;
+    public Text casermareclutamentoMAXUI;
+    public Text casermanextreclutamentoMAXUI;
+    public Text casermaBattleBonusUI;
+    public Text casermaNextBattleBonusUI;
     // GENERAL
     public Text SwordsmenUI;
     public Text ArchersUI;
@@ -179,7 +187,7 @@ public class Game : MonoBehaviour
 
 
         fabbrolvlUI.text = "" + fabbro.getlvl();
-        fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
+       // fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
         if (fabbro.getlvl() < 5)
         {
             fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
@@ -197,6 +205,37 @@ public class Game : MonoBehaviour
             fabbroupgradecostUI.text = "Max level reached";
             fabbroupgradecostUI.color = darkred;
         }
+
+        // --------------------------- updater dati fabbro - tempo reale ---------------------------
+        /*
+        public Text casermaNextBattleBonusUI;
+        */
+        casermalvUI.text = "" + caserma.getLvl();
+        if (caserma.getLvl() < 5)
+        {
+            casermaupgradecostUI.text = "Costo: " + caserma.getcosto();
+            if (player.getMoney() < caserma.getcosto())
+            {
+                casermaupgradecostUI.color = darkred;
+            }
+            else
+            {
+                casermaupgradecostUI.color = blacknormal;
+            }
+        }
+        else
+        {
+            casermaupgradecostUI.text = "Max level reached";
+            casermaupgradecostUI.color = darkred;
+        }
+
+        casermanextlvlUI.text = caserma.getNextlvlBarrack();
+        casermareclutamentoMAXUI.text = "" + caserma.getReclutamentoMax();
+        casermanextreclutamentoMAXUI.text = caserma.getNextlvlReclutamentoMax();
+        casermaBattleBonusUI.text = "" + caserma.getBonusBarrack();
+        casermaNextBattleBonusUI.text = caserma.getNextLvlBonusBarrack();
+
+
 
 
     }
@@ -320,6 +359,23 @@ public class Game : MonoBehaviour
 
     // tasti caserma
 
+    /*
+    public Text casermalvUI;
+    public Text casermaupgradecostUI;
+    public Text casermanextlvlUI;
+    public Text casermareclutamentoMAXUI;
+    public Text casermanextreclutamentoMAXUI;
+    public Text casermaBattleBonusUI;
+    public Text casermaNextBattleBonusUI;
+    */
+    public void onUpgradeCaserma()
+    {
+        if (caserma.getLvl() < 5 && (player.getMoney() >= caserma.getcosto()))
+        {
+            player.setRapidMoney(-caserma.getcosto());
+            caserma.lvlUpBarrack();
+        }
+    }
     public void onRecruitSwordsmen()
     {
         FindObjectOfType<SliderController>().onPressStartTraining(1, player, caserma, swordsmen, archers, riders);
@@ -334,6 +390,14 @@ public class Game : MonoBehaviour
     {
         FindObjectOfType<SliderController>().onPressStartTraining(3, player, caserma, swordsmen, archers, riders);
     }
+
+
+
+
+
+
+
+
 
     /*----------------save------load------------------*/
 
