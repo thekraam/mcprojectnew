@@ -7,16 +7,16 @@ public class Soldiers : MonoBehaviour
 {
     public class Swordsmen
     {
-        int total_swordsmen = 0;
-        int temp_total_swordsmen = 0;
-        int atk_swordsmen = 4;
-        int temp_atk_swordsmen = 0;
-        int def_swordsmen = 8;
-        int temp_def_swordsmen = 0;
-        float bonus_swordsmen = 0;
+        public int total_swordsmen = 0;
+        public int temp_total_swordsmen = 0;
+        public int atk_swordsmen = 4;
+        public int temp_atk_swordsmen = 0;
+        public int def_swordsmen = 8;
+        public int temp_def_swordsmen = 0;
+        public float bonus_swordsmen = 0;
 
-        int momentswordman = 0;
-        int momentDeadswordman = 0;
+        public int momentswordman = 0;
+        public int momentDeadswordman = 0;
 
         // num totale spadaccini
         public int getTotal()
@@ -117,16 +117,16 @@ public class Soldiers : MonoBehaviour
     //--------------------------------------------------Archers---------------------------------------------
     public class Archers
     {
-        int total_archers = 0;
-        int temp_total_archers = 0;
-        int atk_archers = 9;
-        int temp_atk_archers = 9;
-        int def_archers = 3;
-        int temp_def_archers = 3;
-        float bonus_archers = 0;
+        public int total_archers = 0;
+        public int temp_total_archers = 0;
+        public int atk_archers = 9;
+        public int temp_atk_archers = 9;
+        public int def_archers = 3;
+        public int temp_def_archers = 3;
+        public float bonus_archers = 0;
 
-        int momentarcher = 0;
-        int momentDeadArcher = 0;
+        public int momentarcher = 0;
+        public int momentDeadArcher = 0;
 
         // dammi num totale arcieri
         public int getTotal()
@@ -228,16 +228,16 @@ public class Soldiers : MonoBehaviour
     //--------------------------------------------------Riders---------------------------------------------
     public class Riders
     {
-        int total_riders = 0;
-        int temp_total_riders = 0;
-        int atk_riders = 8;
-        int temp_atk_riders = 8;
-        int def_riders = 5;
-        int temp_def_riders = 5;
-        float bonus_riders = 0;
+        public int total_riders = 0;
+        public int temp_total_riders = 0;
+        public int atk_riders = 8;
+        public int temp_atk_riders = 8;
+        public int def_riders = 5;
+        public int temp_def_riders = 5;
+        public float bonus_riders = 0;
 
-        int momentrider = 0;
-        int momentDeadRider = 0;
+        public int momentrider = 0;
+        public int momentDeadRider = 0;
 
         // dammi num totale riders
         public int getTotal()

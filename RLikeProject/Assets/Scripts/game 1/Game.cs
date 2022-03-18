@@ -403,7 +403,7 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria);
+        SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders);
     }
 
     public void LoadGame()
@@ -436,6 +436,23 @@ public class Game : MonoBehaviour
         fattoria.setCrescitaAbitanti(data.crescitaAbitanti);
         fattoria.setGoldFattoria(data.farmGold);
         fattoria.setLvlUpCost(data.farmLvlUpCost);
+
+        caserma.lvl = data.casermalvl;
+        caserma.reclutamentoMAX = data.reclutamentoMAX;
+        caserma.bonusBarrack = data.bonusBarrack;
+        caserma.reclutamentoMaxMoment = data.reclutamentoMaxMoment;
+        caserma.costo = data.casermaLvlUpCost;
+
+        swordsmen.total_swordsmen = data.total_swordsmen;
+        swordsmen.setTempTotal(data.temp_total_swordsmen);
+        swordsmen.setTotal();
+        archers.total_archers = data.total_archers;
+        archers.setTempTotal(data.temp_total_archers);
+        archers.setTotal();
+        riders.total_riders = data.total_riders;
+        riders.setTempTotal(data.temp_total_riders);
+        riders.setTotal();
+
 
     }
 

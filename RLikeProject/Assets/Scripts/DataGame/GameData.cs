@@ -29,7 +29,24 @@ public class GameData
     public int farmGold;
     public int farmLvlUpCost;
 
-    public GameData (Player player , Events events , Fattoria fattoria)
+    /*caserma*/
+    public int casermalvl;
+    public int reclutamentoMAX;
+    public float bonusBarrack;
+    public int reclutamentoMaxMoment;
+    public int casermaLvlUpCost;
+
+    /*soldati*/
+    public int total_swordsmen;
+    public int temp_total_swordsmen;
+    public int total_archers;
+    public int temp_total_archers;
+    public int total_riders;
+    public int temp_total_riders;
+
+
+    public GameData (Player player , Events events , Fattoria fattoria , Caserma caserma,
+        Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         player_turn = player.getTurn();
         player_population = player.getPopulation();
@@ -40,15 +57,10 @@ public class GameData
 
 
         aqueduct = events.aqueduct;
-
         response = events.response[0];
-
         citydefenseproject = events.citydefenseproject;
-
         aqueductSecondary = events.aqueductSecondary;
-
         aqueductTurnsLeft = events.aqueductTurnsLeft;
-
         attendingSecondaryEvent = events.attendingSecondaryEvent;
         aqueductMalusTurnsLeft = events.aqueductMalusTurnsLeft;
         aqueductEffectMalus = events.aqueductEffectMalus;
@@ -59,6 +71,18 @@ public class GameData
         farmGold = fattoria.getGoldFattoria();
         farmLvlUpCost = fattoria.getLvlUpCost();
 
+        casermalvl = caserma.getLvl();
+        reclutamentoMAX = caserma.getReclutamentoMax();
+        bonusBarrack = caserma.getBonusBarrack();
+        reclutamentoMaxMoment = caserma.getReclutamentoMaxMoment();
+        casermaLvlUpCost = caserma.getcosto();
+
+        total_swordsmen = swordsmen.getTotal();
+        temp_total_swordsmen = swordsmen.getTempTotal();
+        total_archers = archers.getTotal();
+        temp_total_archers = archers.getTempTotal();
+        total_riders = riders.getTotal();
+        temp_total_riders = riders.getTempTotal();
     }
 
 }

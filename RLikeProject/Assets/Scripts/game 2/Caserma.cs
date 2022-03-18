@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Caserma : MonoBehaviour
 {
-    int lvl = 1;
-    int reclutamentoMAX = 10;
-    float bonusBarrack = 0;
-    int reclutamentoMaxMoment = 10;
-    int costo = 1000;
+    public int lvl = 1;
+    public int reclutamentoMAX = 10;
+    public float bonusBarrack = 0;
+    public int reclutamentoMaxMoment = 10;
+    public int costo = 1000;
+
     public void lvlUpBarrack()
     {
         lvl = lvl + 1;
