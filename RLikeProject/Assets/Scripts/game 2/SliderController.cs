@@ -26,6 +26,20 @@ public class SliderController : MonoBehaviour
     public Text maxRidersUI;
     public GameObject noCitizensAvailableRiders;
 
+
+    public Text swordmanTotalcostUI;
+    public Text archersTotalcostUI;
+    public Text ridersTotalcostUI;
+    public Text swordmanRemaingSlotUI;
+    public Text archersRemaingSlotUI;
+    public Text ridersRemaingSlotUI;
+
+
+
+
+
+
+
     public void RealTimeSliders(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, Caserma caserma)
     {
         if(calcoloMax(player, swordsmen, archers, riders, caserma, 1) != 0)
@@ -34,17 +48,19 @@ public class SliderController : MonoBehaviour
             maxSwordsmenUI.text = "" + calcoloMax(player, swordsmen, archers, riders, caserma, 1);
             swordsmenSlider.minValue = 1;
             swordsmenSlider.maxValue = calcoloMax(player, swordsmen, archers, riders, caserma, 1);
+            swordmanTotalcostUI.text = "Cost : " + ((int)swordsmenSlider.value) * 20;
 
             minArchersUI.text = "1";
             maxArchersUI.text = "" + calcoloMax(player, swordsmen, archers, riders, caserma, 1);
             archersSlider.minValue = 1;
             archersSlider.maxValue = calcoloMax(player, swordsmen, archers, riders, caserma, 1);
+            archersTotalcostUI.text = "Cost : " + ((int)archersSlider.value) * 20;
 
             minRidersUI.text = "1";
             maxRidersUI.text = "" + calcoloMax(player, swordsmen, archers, riders, caserma, 2);
             ridersSlider.minValue = 1;
             ridersSlider.maxValue = calcoloMax(player, swordsmen, archers, riders, caserma, 2);
-
+            ridersTotalcostUI.text = "Cost : " + ((int)ridersSlider.value) * 20;
             noCitizensAvailableSwordsmen.SetActive(false);
             noCitizensAvailableArchers.SetActive(false);
             noCitizensAvailableRiders.SetActive(false);
@@ -75,6 +91,9 @@ public class SliderController : MonoBehaviour
         selectedSwordsmenUI.text = "" + (int)swordsmenSlider.value;
         selectedArchersUI.text = "" + (int)archersSlider.value;
         selectedRidersUI.text = "" + (int)ridersSlider.value;
+        swordmanRemaingSlotUI.text = "Remaining slot : " + caserma.getReclutamentoMaxMoment();
+        archersRemaingSlotUI.text = "Remaining slot : " + caserma.getReclutamentoMaxMoment();
+        ridersRemaingSlotUI.text = "Remaining slot : " + caserma.getReclutamentoMaxMoment();
     }
 
     public void onPressStartTraining(int type, Player player, Caserma barracks, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)

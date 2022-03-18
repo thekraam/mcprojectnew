@@ -65,6 +65,7 @@ public class Fabbro : MonoBehaviour
 
     public int zappa = 0;
     public int goldzappa = 0;
+    
     public void powerUPZappa (Fattoria fattoria)
     {
         zappa = zappa + 1;
@@ -142,6 +143,322 @@ public class Fabbro : MonoBehaviour
     {
         return piccone;
     }
+
+
+
+
+
+
+
+
+    public string getnextpotenziamento(int x)
+    {
+        if (x == 1)
+        {
+            if (armi < 5)
+            {
+                return "+" + (armi + 1);
+            }
+            else
+            {
+                return "MAX";
+            }
+        }
+        if (x == 2)
+        {
+            if (armature < 5)
+            {
+                return "+" + (armature + 1);
+            }
+            else
+            {
+                return "MAX";
+            }
+        }
+        if (x == 3)
+        {
+            if (zappa < 5)
+            {
+                return "+" + (zappa + 1);
+            }
+            else
+            {
+                return "MAX";
+            }
+        }
+        else
+        {
+            if (piccone < 5)
+            {
+                return "+" + (piccone + 1);
+            }
+            else
+            {
+                return "MAX";
+            }
+        }
+
+
+
+
+    }
+
+    int costoarmi = 0;
+    int costoarmature = 0;
+    int costoZappa = 0;
+    int costoPiccone = 0;
+
+    public string getCostoPotenziamenti(int x)
+    {
+
+        if (x == 1)
+        {
+            if (armi == 0)
+            {
+                return "cost: 300";
+            }
+            if (armi == 1)
+            {
+                return "cost: 400";
+            }
+            if (armi == 2)
+            {
+                return "cost: 500";
+            }
+            if (armi == 3)
+            {
+                return "cost: 600";
+            }
+            if (armi == 4)
+            {
+                return "cost: 700";
+            }
+            else
+            {
+                return "max level";
+            }
+
+        }
+        if (x == 2)
+        {
+            if (armature == 0)
+            {
+                return "cost: 300";
+            }
+            if (armature == 1)
+            {
+                return "cost: 400";
+            }
+            if (armature == 2)
+            {
+                return "cost: 500";
+            }
+            if (armature == 3)
+            {
+                return "cost: 600";
+            }
+            if (armature == 4)
+            {
+                return "cost: 700";
+            }
+            else
+            {
+                return "max level";
+            }
+
+        }
+        if (x == 3)
+        {
+            if (zappa == 0)
+            {
+                return "cost: 200";
+            }
+            if (zappa == 1)
+            {
+                return "cost: 250";
+            }
+            if (zappa == 2)
+            {
+                return "cost: 300";
+            }
+            if (zappa == 3)
+            {
+                return "cost: 350";
+            }
+            if (zappa == 4)
+            {
+                return "cost: 400";
+            }
+            else
+            {
+                return "max level";
+            }
+
+        }
+        else
+        {
+            if (piccone == 0)
+            {
+                return "cost: 400";
+            }
+            if (piccone == 1)
+            {
+                return "cost: 450";
+            }
+            if (piccone == 2)
+            {
+                return "cost: 500";
+            }
+            if (piccone == 3)
+            {
+                return "cost: 550";
+            }
+            if (piccone == 4)
+            {
+                return "cost: 600";
+            }
+            else
+            {
+                return "max level";
+            }
+
+
+        }
+    }
+        public int getCostoNumPotenziamenti(int x)
+        {
+
+            if (x == 1)
+            {
+                if (armi == 0)
+                {
+                    return 300;
+                }
+                if (armi == 1)
+                {
+                    return 400;
+                }
+                if (armi == 2)
+                {
+                    return 500;
+                }
+                if (armi == 3)
+                {
+                    return 600;
+                }
+                else
+                {
+                    return 700;
+                }
+
+
+            }
+            if (x == 2)
+            {
+                if (armature == 0)
+                {
+                    return 300;
+                }
+                if (armature == 1)
+                {
+                    return 400;
+                }
+                if (armature == 2)
+                {
+                    return 500;
+                }
+                if (armature == 3)
+                {
+                    return 600;
+                }
+                else
+                {
+                    return 700;
+                }
+
+
+            }
+            if (x == 3)
+            {
+                if (zappa == 0)
+                {
+                    return 200;
+                }
+                if (zappa == 1)
+                {
+                    return 250;
+                }
+                if (zappa == 2)
+                {
+                    return 300;
+                }
+                if (zappa == 3)
+                {
+                    return 350;
+                }
+                else
+                {
+                    return 400;
+                }
+
+            }
+            else
+            {
+                if (piccone == 0)
+                {
+                    return 400;
+                }
+                if (piccone == 1)
+                {
+                    return 450;
+                }
+                if (piccone == 2)
+                {
+                    return 500;
+                }
+                if (piccone == 3)
+                {
+                    return 550;
+                }
+                else
+                {
+                    return 600;
+                }
+
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -54,6 +54,19 @@ public class Game : MonoBehaviour
     //FABBRO
     public Text fabbrolvlUI;
     public Text fabbroupgradecostUI;
+    public Text fabbroAtkUI;
+    public Text fabbroNextAtkUI;
+    public Text fabbroDefUI;
+    public Text fabbroNextDefUI;
+    public Text fabbroZappaUI;
+    public Text fabbroNextZappaUI;
+    public Text fabbroPicconeUI;
+    public Text fabbroNextPicconeUI;
+    public Text fabbrocostoAtk;
+    public Text fabbrocostoDef;
+    public Text fabbrocostoZappa;
+    public Text fabbrocostoPiccone;
+
     //CASERMA
     public Text casermalvUI;
     public Text casermaupgradecostUI;
@@ -62,6 +75,7 @@ public class Game : MonoBehaviour
     public Text casermanextreclutamentoMAXUI;
     public Text casermaBattleBonusUI;
     public Text casermaNextBattleBonusUI;
+
     // GENERAL
     public Text SwordsmenUI;
     public Text ArchersUI;
@@ -206,9 +220,85 @@ public class Game : MonoBehaviour
             fabbroupgradecostUI.color = darkred;
         }
 
-        // --------------------------- updater dati fabbro - tempo reale ---------------------------
+        fabbroAtkUI.text = "+" + fabbro.getArmi();
+        fabbroDefUI.text = "+" + fabbro.getArmature();
+        fabbroZappaUI.text = "+" + fabbro.getZappa();
+        fabbroPicconeUI.text = "+" + fabbro.getPiccone();
+
+
+        fabbroNextAtkUI.text = fabbro.getnextpotenziamento(1);
+        fabbroNextDefUI.text = fabbro.getnextpotenziamento(2);
+        fabbroNextZappaUI.text = fabbro.getnextpotenziamento(3);
+        fabbroNextPicconeUI.text = fabbro.getnextpotenziamento(4);
+
+        if (fabbro.getArmi() == fabbro.getlvl() && fabbro.getlvl() != 5)
+        {
+            fabbrocostoAtk.text = "Next lvl needed";
+            fabbrocostoAtk.color = darkred;
+        }
+        else if (fabbro.getCostoNumPotenziamenti(1) > player.getMoney())
+        {
+            fabbrocostoAtk.text = fabbro.getCostoPotenziamenti(1);
+            fabbrocostoAtk.color = darkred;
+        }
+        else
+        { 
+            fabbrocostoAtk.text = fabbro.getCostoPotenziamenti(1);
+            fabbrocostoAtk.color = blacknormal;
+        }
+        if (fabbro.getArmature() == fabbro.getlvl() && fabbro.getlvl() != 5)
+        {
+            fabbrocostoDef.text = "Next lvl needed";
+            fabbrocostoDef.color = darkred;
+        }
+        else if (fabbro.getCostoNumPotenziamenti(2) > player.getMoney())
+        {
+            fabbrocostoDef.text = fabbro.getCostoPotenziamenti(2);
+            fabbrocostoDef.color = darkred;
+        }
+        else
+        {
+            fabbrocostoDef.text = fabbro.getCostoPotenziamenti(2);
+            fabbrocostoDef.color = blacknormal;
+        }
+        if (fabbro.getZappa() == fabbro.getlvl() && fabbro.getlvl() != 5)
+        {
+            fabbrocostoZappa.text = "Next lvl needed";
+            fabbrocostoZappa.color = darkred;
+        }
+        else if (fabbro.getCostoNumPotenziamenti(3) > player.getMoney())
+        {
+            fabbrocostoZappa.text = fabbro.getCostoPotenziamenti(3);
+            fabbrocostoZappa.color = darkred;
+        }
+        else
+        {
+            fabbrocostoZappa.text = fabbro.getCostoPotenziamenti(3);
+            fabbrocostoZappa.color = blacknormal;
+        }
+        if (fabbro.getPiccone() == fabbro.getlvl() && fabbro.getlvl() != 5)
+        {
+            fabbrocostoPiccone.text = "Next lvl needed";
+            fabbrocostoPiccone.color = darkred;
+        }
+        else if (fabbro.getCostoNumPotenziamenti(4) > player.getMoney())
+        {
+
+            fabbrocostoPiccone.text = fabbro.getCostoPotenziamenti(4);
+            fabbrocostoPiccone.color = darkred;
+        }
+        else
+        {
+            fabbrocostoPiccone.text = fabbro.getCostoPotenziamenti(4);
+            fabbrocostoPiccone.color = blacknormal;
+        }
+  
+
+
+        // --------------------------- updater dati caserma - tempo reale ---------------------------
         /*
         public Text casermaNextBattleBonusUI;
+
         */
         casermalvUI.text = "" + caserma.getLvl();
         if (caserma.getLvl() < 5)
@@ -357,23 +447,59 @@ public class Game : MonoBehaviour
         }
     }
 
+
+    public void upgradeArmi()
+    {
+        if ((fabbro.getArmi()+1) <= fabbro.getlvl() && fabbro.getCostoNumPotenziamenti(1) <= player.getMoney())
+        {
+            player.setRapidMoney(-fabbro.getCostoNumPotenziamenti(1));
+            fabbro.powerUPArmi(swordsmen, archers, riders);
+        }
+    }
+    public void upgradeArmature()
+    {
+        if ((fabbro.getArmature()+1) <= fabbro.getlvl() && fabbro.getCostoNumPotenziamenti(2) <= player.getMoney())
+        {
+            player.setRapidMoney(-fabbro.getCostoNumPotenziamenti(2));
+            fabbro.powerUPArmature(swordsmen, archers, riders);
+        }
+    }
+    public void upgradeZappa()
+    {
+        if ((fabbro.getZappa()+1) <= fabbro.getlvl() && fabbro.getCostoNumPotenziamenti(3) <= player.getMoney())
+        {
+            player.setRapidMoney(-fabbro.getCostoNumPotenziamenti(3));
+            fabbro.powerUPZappa(fattoria);
+        }
+    }
+    public void upgradePiccone()
+    {
+        if ((fabbro.getPiccone()+1) <= fabbro.getlvl() && fabbro.getCostoNumPotenziamenti(4) <= player.getMoney())
+        {
+            player.setRapidMoney(-fabbro.getCostoNumPotenziamenti(4));
+            fabbro.powerUPPiccone();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
     // tasti caserma
 
-    /*
-    public Text casermalvUI;
-    public Text casermaupgradecostUI;
-    public Text casermanextlvlUI;
-    public Text casermareclutamentoMAXUI;
-    public Text casermanextreclutamentoMAXUI;
-    public Text casermaBattleBonusUI;
-    public Text casermaNextBattleBonusUI;
-    */
     public void onUpgradeCaserma()
     {
         if (caserma.getLvl() < 5 && (player.getMoney() >= caserma.getcosto()))
         {
             player.setRapidMoney(-caserma.getcosto());
             caserma.lvlUpBarrack();
+            caserma.setReclutamentoMaxMoment(-10);
         }
     }
     public void onRecruitSwordsmen()
@@ -390,7 +516,7 @@ public class Game : MonoBehaviour
     {
         FindObjectOfType<SliderController>().onPressStartTraining(3, player, caserma, swordsmen, archers, riders);
     }
-
+ 
 
 
 
@@ -455,8 +581,6 @@ public class Game : MonoBehaviour
 
 
     }
-
-
 
 
 
