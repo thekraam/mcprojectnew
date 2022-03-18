@@ -202,12 +202,6 @@ public class Fabbro : MonoBehaviour
 
 
     }
-
-    int costoarmi = 0;
-    int costoarmature = 0;
-    int costoZappa = 0;
-    int costoPiccone = 0;
-
     public string getCostoPotenziamenti(int x)
     {
 

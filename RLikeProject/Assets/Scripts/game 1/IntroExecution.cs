@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class IntroExecution : MonoBehaviour
 {
+    public GameObject MainMenu;
+    public CanvasGroup skipButton;
+    public GameObject skipButtonObject;
+    public GameObject confirmSelection;
+
+    public Button logo1;
+    public Button logo2;
+    public Button logo3;
+    public Button logo4;
+
     public CanvasGroup firstLine;
     public CanvasGroup secondLine;
     public CanvasGroup thirdLine;
@@ -15,22 +25,109 @@ public class IntroExecution : MonoBehaviour
     public CanvasGroup IntroSequence;
     public CanvasGroup Choice;
 
+    public AudioClip ConfirmSoundEffect;
+    public AudioClip NewGameIntroEffect;
+    public AudioClip flipToGameEffect;
+
     bool skipIsPressed = false;
-    bool skip = false;
+
+    public void ButtonHandler(int currentButton)
+    {
+        if(currentButton == 1)
+        {
+            logo1.interactable = false;
+            logo2.interactable = true;
+            logo3.interactable = true;
+            logo4.interactable = true;
+        }
+        if (currentButton == 2)
+        {
+            logo1.interactable = true;
+            logo2.interactable = false;
+            logo3.interactable = true;
+            logo4.interactable = true;
+        }
+        if (currentButton == 3)
+        {
+            logo1.interactable = true;
+            logo2.interactable = true;
+            logo3.interactable = false;
+            logo4.interactable = true;
+        }
+        if (currentButton == 4)
+        {
+            logo1.interactable = true;
+            logo2.interactable = true;
+            logo3.interactable = true;
+            logo4.interactable = false;
+        }
+    }
 
     public void SetLogo(int logoSelector)
     {
-        if (logoSelector == 1) FindObjectOfType<Game>().logoUI_1.SetActive(true);
-        if (logoSelector == 2) FindObjectOfType<Game>().logoUI_2.SetActive(true);
-        if (logoSelector == 3) FindObjectOfType<Game>().logoUI_3.SetActive(true);
-        if (logoSelector == 4) FindObjectOfType<Game>().logoUI_4.SetActive(true);
+        ButtonHandler(logoSelector);
+        if (logoSelector == 1)
+        {
+            FindObjectOfType<Game>().logoUI_1.SetActive(true);
+            FindObjectOfType<Game>().logoUI_2.SetActive(false);
+            FindObjectOfType<Game>().logoUI_3.SetActive(false);
+            FindObjectOfType<Game>().logoUI_4.SetActive(false);
+        }
+        if (logoSelector == 2)
+        {
+            FindObjectOfType<Game>().logoUI_1.SetActive(false);
+            FindObjectOfType<Game>().logoUI_2.SetActive(true);
+            FindObjectOfType<Game>().logoUI_3.SetActive(false);
+            FindObjectOfType<Game>().logoUI_4.SetActive(false);
+        }
+        if (logoSelector == 3)
+        {
+            FindObjectOfType<Game>().logoUI_1.SetActive(false);
+            FindObjectOfType<Game>().logoUI_2.SetActive(false);
+            FindObjectOfType<Game>().logoUI_3.SetActive(true);
+            FindObjectOfType<Game>().logoUI_4.SetActive(false);
+        }
+        if (logoSelector == 4)
+        {
+            FindObjectOfType<Game>().logoUI_1.SetActive(false);
+            FindObjectOfType<Game>().logoUI_2.SetActive(false);
+            FindObjectOfType<Game>().logoUI_3.SetActive(false);
+            FindObjectOfType<Game>().logoUI_4.SetActive(true);
+        }
+    }
+    public void EndOfSequenceCityText(Text City)
+    {
+        MainMenu.SetActive(false);
+
+        if (City.text != "")
+        {
+            FindObjectOfType<FontDecreaser>().Cityname.text = City.text;
+            FindObjectOfType<FontDecreaser>().CityInputRequest = true;
+            StartCoroutine(EndOfExecution());
+        }
+    }
+
+    IEnumerator EndOfExecution()
+    {
+        // riproduzione suono sul confirm
+        yield return new WaitForSeconds(0.8f);
+        float choiceTime = 0f;
+        FindObjectOfType<AudioManager>().PlayEffect(flipToGameEffect);
+        while (choiceTime < 0.8f)
+        {
+            choiceTime += Time.deltaTime;
+            Choice.alpha = Mathf.Lerp(1f, 0f, choiceTime / 0.8f); // da 0f a 1f si accende, da 1f a 0f si spegne
+            IntroSequence.alpha = Mathf.Lerp(1f, 0f, choiceTime / 0.8f);
+            yield return new WaitForSeconds(0.001f);
+        }
+        confirmSelection.SetActive(false);
+        IntroSequence.gameObject.SetActive(false);
     }
 
     public void StartExecution()
     {
         StartCoroutine(FadeSequence());
     }
-
 
     public void Skipping()
     {
@@ -329,9 +426,11 @@ public class IntroExecution : MonoBehaviour
             timePassed6 += Time.deltaTime;
             sixthLine.alpha = Mathf.Lerp(1f, 0f, timePassed6 / 0.6f);
             stars.alpha = Mathf.Lerp(1f, 0f, timePassed6 / 0.6f);
+            skipButton.alpha = Mathf.Lerp(1f, 0f, timePassed6 / 0.6f);
             yield return new WaitForSeconds(0.025f);
         }
 
+        skipButtonObject.SetActive(false);
         yield return new WaitForSeconds(0.8f);
 
         float choiceTime = 0f;
