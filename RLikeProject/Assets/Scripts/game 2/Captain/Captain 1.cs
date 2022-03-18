@@ -41,7 +41,8 @@ public class Captain1 : MonoBehaviour
     string perk3comment = "errorPerk3comment";
     //-------------------------------------------------------------------------
 
-
+    string finalcomment = "errorfinalcomment";
+    int boolfinalcomment = 0;
 
     public void resetCaptain()
     {
@@ -111,6 +112,8 @@ public class Captain1 : MonoBehaviour
             bonusBattle = bonusBattle + 1;
             perk3 = givePerk();
             perk3comment = givePerkComment();
+            giveFinalComment();
+            boolfinalcomment = 1;
         }
 
 
@@ -452,7 +455,33 @@ public class Captain1 : MonoBehaviour
         return comment;
     }
 
-    public void giveName()
+
+    public void giveFinalComment()
+    {
+        int x = (int)Random.Range(1f, 6f);
+        if (x == 1)
+        {
+            finalcomment = "'il suo corpo era fatto di spade'";
+        }
+        if (x == 2)
+        {
+            finalcomment = "c'ha pure il lupo";
+        }
+        if (x == 3)
+        {
+            finalcomment = "'Deus Vult'";
+        }
+        if (x == 4)
+        {
+            finalcomment = "'Ho +2 in tpc'";
+        }
+        if (x == 5)
+        {
+            finalcomment = "'I will have order'";
+        }
+    }
+
+        public void giveName()
     {
         int x = (int)Random.Range(1f, 7f);
         if (x == 1)
@@ -564,6 +593,14 @@ public class Captain1 : MonoBehaviour
     public string getPerk3comment()
     {
         return perk3comment;
+    }
+    public string getFinalComment()
+    {
+        return finalcomment;
+    }
+    public int getBoolFinalComment()
+    {
+        return boolfinalcomment;
     }
 }
 

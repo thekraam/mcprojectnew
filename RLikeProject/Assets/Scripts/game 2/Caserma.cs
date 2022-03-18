@@ -8,21 +8,25 @@ public class Caserma : MonoBehaviour
     int reclutamentoMAX = 10;
     float bonusBarrack = 0;
     int reclutamentoMaxMoment = 10;
+    int costo = 1000;
     public void lvlUpBarrack()
     {
         lvl = lvl + 1;
         if (lvl == 2)
         {
+            costo = 1500;
             reclutamentoMAX = 20;
             bonusBarrack = 3;
         }
         else if (lvl == 3)
         {
+            costo = 2000;
             reclutamentoMAX = 30;
             bonusBarrack = 4;
         }
         else if (lvl == 4)
         {
+            costo = 3000;
             reclutamentoMAX = 40;
             bonusBarrack = 5;
         }
@@ -58,33 +62,80 @@ public class Caserma : MonoBehaviour
     {
         reclutamentoMaxMoment = reclutamentoMAX;
     }
+    public int getcosto()
+    {
+        return costo;
+    }
 
     //----------------------------------prossimo livello----------------------
-    public int getNextlvlBarrack()
-    {
-        return lvl + 1;
-    }
-    public int getNextlvlReclutamentoMax()
-    {
-        return reclutamentoMAX + 10;
-    }
-    public float getNextLvlBonusBarrack()
+    public string getNextlvlBarrack()
     {
         if (lvl == 1)
         {
-            return 3;
+            return "2";
         }
         if (lvl == 2)
         {
-            return 4;
+            return "3";
         }
         if (lvl == 3)
         {
-            return 5;
+            return "4";
+        }
+        if (lvl == 4)
+        {
+            return "5";
         }
         else
         {
-            return 7.5f;
+            return "max";
+        }
+     }
+    public string getNextlvlReclutamentoMax()
+    {
+        if (lvl == 1)
+        {
+            return "20";
+        }
+        if (lvl == 2)
+        {
+            return "30";
+        }
+        if (lvl == 3)
+        {
+            return "40";
+        }
+        if (lvl == 4)
+        {
+            return "50";
+        }
+        else
+        {
+            return "MAX";
+        }
+    }
+
+    public string getNextLvlBonusBarrack()
+    {
+        if (lvl == 1)
+        {
+            return "+3";
+        }
+        if (lvl == 2)
+        {
+            return "+4";
+        }
+        if (lvl == 3)
+        {
+            return "+5";
+        }
+        if (lvl == 4)
+        {
+            return "+7.5";
+        }
+        else
+        {
+            return "MAX";
         }
     }
     //-------------------------------------------------------------------------
