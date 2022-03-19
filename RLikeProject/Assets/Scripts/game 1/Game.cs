@@ -160,13 +160,13 @@ public class Game : MonoBehaviour
 
         FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders, caserma); // va in Caserma
 
-        //SwordsmenUI.text = "" + swordsmen.getTotal();
-        //ArchersUI.text = "" + archers.getTotal();
-        //RidersUI.text = "" + riders.getTotal();
+        SwordsmenUI.text = "" + swordsmen.getTotal();
+        ArchersUI.text = "" + archers.getTotal();
+        RidersUI.text = "" + riders.getTotal();
 
-        //populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); // mostra il nuovo totale della popolazione totale appena la trovi
+        populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); // mostra il nuovo totale della popolazione totale appena la trovi
 
-        //moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
+        moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
         turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
     }
