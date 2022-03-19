@@ -30,6 +30,23 @@ public class IntroExecution : MonoBehaviour
     public AudioClip flipToGameEffect;
 
     bool skipIsPressed = false;
+    public bool introSequenceOff = false;
+
+    public static IntroExecution Instance = null;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void ButtonHandler(int currentButton)
     {
@@ -122,6 +139,7 @@ public class IntroExecution : MonoBehaviour
         }
         confirmSelection.SetActive(false);
         IntroSequence.gameObject.SetActive(false);
+        FindObjectOfType<FontDecreaser>().introClosed = true;
     }
 
     public void StartExecution()

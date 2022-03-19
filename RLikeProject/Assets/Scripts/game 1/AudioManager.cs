@@ -107,14 +107,17 @@ public class AudioManager : MonoBehaviour
 	}
 	public void RandomMusic(params AudioClip[] clips)
 	{
-		StopAllCoroutines();
-		ResetAudio();
-		int randomIndex = Random.Range(0, clips.Length);
-		MusicSource.clip = clips[randomIndex];
-		if (oldMusicClip == MusicSource.clip && randomIndex > 0) MusicSource.clip = clips[randomIndex - 1];
-		if (oldMusicClip == MusicSource.clip && randomIndex == 0) MusicSource.clip = clips[randomIndex + 1];
+		if (!MusicSource.isPlaying)
+		{
+			StopAllCoroutines();
+			MusicSource.volume = 0.1f;
+			int randomIndex = Random.Range(0, clips.Length);
+			MusicSource.clip = clips[randomIndex];
+			if (oldMusicClip == MusicSource.clip && randomIndex > 0) MusicSource.clip = clips[randomIndex - 1];
+			if (oldMusicClip == MusicSource.clip && randomIndex == 0) MusicSource.clip = clips[randomIndex + 1];
 
-		oldMusicClip = MusicSource.clip;
-		MusicSource.Play();
+			oldMusicClip = MusicSource.clip;
+			MusicSource.Play();
+		}
 	}
 }

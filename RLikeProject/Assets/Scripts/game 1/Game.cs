@@ -20,7 +20,7 @@ public class Game : MonoBehaviour
     private bool isTurnDone = false;
 
     /* Dichiarazione Musica di gioco */
-    //public AudioClip[] GameMusic;
+    public AudioClip[] GameMusic;
     public AudioClip newTurnSound;
     public AudioClip village_mapUnfold;
     public AudioClip farm_cowbells;
@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
     public AudioClip guild_paperwork;
     public AudioClip guild_expeditionCompleted;
     public AudioClip barracks_swordFight;
-    public AudioClip cave_mining;
+    public AudioClip mine_pickaxe;
 
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject mainMenuPanel;
@@ -38,6 +38,7 @@ public class Game : MonoBehaviour
     public GameObject fabbroPanel;
     public GameObject casermaPanel;
     public GameObject guildPanel;
+    public GameObject minePanel;
 
     /* pannelli blocker */
     public GameObject skipTurnBlocker;
@@ -126,9 +127,9 @@ public class Game : MonoBehaviour
     }
 
     // ---------------------------- aggiornamento in real time texts ----------------------------
-    public void Update()
+
+    private void SyncTurnAndBlockers()
     {
-        // --------------------------- controller tempo per aggiornamento sync ---------------------------
         startTime = startTime + Time.deltaTime;
         startTimeController = startTimeController + Time.deltaTime;
 
@@ -150,30 +151,28 @@ public class Game : MonoBehaviour
         }
 
         if (FindObjectOfType<DialogueManager>().animator.GetBool("IsOpen")) dialogueInterfaceBlocker.SetActive(true);
+    }
 
-
-
-        // --------------------------- updater generale ---------------------------
-
+    private void UpdateVillageUI()
+    {
         CityNameUI.text = FindObjectOfType<FontDecreaser>().Cityname.text.ToString().ToUpper();
         CityNameUI.fontSize = FindObjectOfType<FontDecreaser>().Cityname.fontSize;
 
-        FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders, caserma);
+        FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders, caserma); // va in Caserma
 
         //SwordsmenUI.text = "" + swordsmen.getTotal();
         //ArchersUI.text = "" + archers.getTotal();
         //RidersUI.text = "" + riders.getTotal();
 
         //populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); // mostra il nuovo totale della popolazione totale appena la trovi
-    
+
         //moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
         turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
+    }
 
-        // --------------------------- updater dati fattoria - tempo reale ---------------------------
-
-        player.setCitizensMax(fattoria.getAbitantiMax());
-
+    private void UpdateFarmUI()
+    {
         farmlvlUI.text = "" + fattoria.getLvlFattoria();
         farmnextlvlUI.text = "" + fattoria.getNextLvlFattoria();
 
@@ -203,11 +202,12 @@ public class Game : MonoBehaviour
             farmupgradecostUI.text = "Max level reached";
             farmupgradecostUI.color = darkred;
         }
-        // --------------------------- updater dati fabbro - tempo reale ---------------------------
+    }
 
-
+    private void UpdateBlacksmithUI()
+    {
         fabbrolvlUI.text = "" + fabbro.getlvl();
-       // fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
+        // fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
         if (fabbro.getlvl() < 5)
         {
             fabbroupgradecostUI.text = "Costo: " + fabbro.getcosto();
@@ -248,7 +248,7 @@ public class Game : MonoBehaviour
             fabbrocostoAtk.color = darkred;
         }
         else
-        { 
+        {
             fabbrocostoAtk.text = fabbro.getCostoPotenziamenti(1);
             fabbrocostoAtk.color = blacknormal;
         }
@@ -298,12 +298,12 @@ public class Game : MonoBehaviour
             fabbrocostoPiccone.text = fabbro.getCostoPotenziamenti(4);
             fabbrocostoPiccone.color = blacknormal;
         }
-  
+    }
 
-
-        // --------------------------- updater dati caserma - tempo reale ---------------------------
+    private void UpdateBarracksUI()
+    {
         /*
-        public Text casermaNextBattleBonusUI;
+            public Text casermaNextBattleBonusUI;
 
         */
         casermalvUI.text = "" + caserma.getLvl();
@@ -330,10 +330,33 @@ public class Game : MonoBehaviour
         casermanextreclutamentoMAXUI.text = caserma.getNextlvlReclutamentoMax();
         casermaBattleBonusUI.text = "" + caserma.getBonusBarrack();
         casermaNextBattleBonusUI.text = caserma.getNextLvlBonusBarrack();
+    }
 
+    public void Update()
+    {
+        // ---------------------------                 BG Music                --------------------------
+        if (FindObjectOfType<FontDecreaser>().introClosed)
+            FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
 
+        // --------------------------- controller tempo per aggiornamento sync ---------------------------
+        SyncTurnAndBlockers();
 
+        // --------------------------- updater generale ---------------------------
 
+        UpdateVillageUI();
+
+        // --------------------------- updater dati fattoria - tempo reale ---------------------------
+
+        player.setCitizensMax(fattoria.getAbitantiMax());
+        UpdateFarmUI();
+
+        // --------------------------- updater dati fabbro - tempo reale ---------------------------
+
+        UpdateBlacksmithUI();
+
+        // --------------------------- updater dati caserma - tempo reale ---------------------------
+
+        UpdateBarracksUI();
     }
 
     public void onTapNextSeason()
@@ -373,6 +396,7 @@ public class Game : MonoBehaviour
         SaveGame();
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
+
     public void onTapVillage()
     {
         FindObjectOfType<AudioManager>().PlayEffectFaded(village_mapUnfold);
@@ -383,6 +407,7 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(false);
+        minePanel.SetActive(false);
     }
 
     public void onTapFarm()
@@ -395,6 +420,7 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(false);
+        minePanel.SetActive(false);
     }
     public void onTapCaserma()
     {
@@ -406,6 +432,8 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(true); //
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(false);
+        minePanel.SetActive(false);
+
     }
 
     public void onTapGuild()
@@ -418,6 +446,7 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(true); //
         fabbroPanel.SetActive(false);
+        minePanel.SetActive(false);
     }
 
     public void onTapFabbro()
@@ -430,7 +459,22 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(true); //
+        minePanel.SetActive(false);
     }
+
+    public void onTapMine()
+    {
+        FindObjectOfType<AudioManager>().PlayEffectFaded(mine_pickaxe);
+
+        gamePanel.SetActive(true); // sempre true
+        cityPanel.SetActive(false); //
+        farmPanel.SetActive(false);
+        casermaPanel.SetActive(false);
+        guildPanel.SetActive(false);
+        fabbroPanel.SetActive(false); //
+        minePanel.SetActive(true);
+    }
+
     // tasti fattoria
 
     public void onUpgradeFarm()

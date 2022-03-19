@@ -12,6 +12,7 @@ public class FontDecreaser : MonoBehaviour
 
 	int i=0;
     public bool CityInputRequest = false;
+	public bool introClosed = false;
 
 	private void Awake()
 	{
