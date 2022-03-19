@@ -26,12 +26,16 @@ public class AudioManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public void ResetAudio()
+	public void ResetAudioEffects()
+	{
+		EffectsSource.Stop();
+		EffectsSource.volume = 1;
+	}
+
+	public void ResetAudioMusic()
 	{
 		MusicSource.Stop();
-		EffectsSource.Stop();
 		MusicSource.volume = 1;
-		EffectsSource.volume = 1;
 	}
 
 	public void PlayMusic(AudioClip clip)
@@ -57,6 +61,7 @@ public class AudioManager : MonoBehaviour
 				yield return new WaitForSeconds(0.008f);
 			}
 			MusicSource.Stop();
+			MusicSource.volume = 1;
 		}
 		else
 		{
@@ -67,7 +72,6 @@ public class AudioManager : MonoBehaviour
 			}
 			EffectsSource.Stop();
 		}
-		MusicSource.volume = 1;
 		EffectsSource.volume = 1;
 	}
 
@@ -76,7 +80,7 @@ public class AudioManager : MonoBehaviour
 		if (!EffectsSource.isPlaying)
 		{
 			StopAllCoroutines();
-			ResetAudio();
+			ResetAudioEffects();
 			EffectsSource.clip = clip;
 			EffectsSource.Play();
 		}
@@ -87,7 +91,7 @@ public class AudioManager : MonoBehaviour
 		if (!EffectsSource.isPlaying)
 		{
 			StopAllCoroutines();
-			ResetAudio();
+			ResetAudioEffects();
 			PlayEffect(clip);
 			StartCoroutine(FadeOut(false, clip));
 		}
@@ -96,7 +100,7 @@ public class AudioManager : MonoBehaviour
 	public void RandomSoundEffect(params AudioClip[] clips)
 	{
 		StopAllCoroutines();
-		ResetAudio();
+		ResetAudioEffects();
 		int randomIndex = Random.Range(0, clips.Length);
 		EffectsSource.clip = clips[randomIndex];
 		if (oldEffectClip == EffectsSource.clip && randomIndex > 0) EffectsSource.clip = clips[randomIndex - 1];
