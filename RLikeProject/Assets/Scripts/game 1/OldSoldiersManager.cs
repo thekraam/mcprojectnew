@@ -36,7 +36,41 @@ public class OldSoldiersManager : MonoBehaviour
     bool eighthBattleChecker = false;
     bool ninthBattleChecker = false;
 
+    int backSoldiersSwordsmenFirst ;
+    int backSoldiersArchersFirst;
+    int backSoldiersRidersFirst ;
 
+    int backSoldiersSwordsmenSecond ;
+    int backSoldiersArchersSecond ;
+    int backSoldiersRidersSecond ;
+
+    int backSoldiersSwordsmenThird;
+    int backSoldiersArchersThird ;
+    int backSoldiersRidersThird ;
+
+    int backSoldiersSwordsmenFourth;
+    int backSoldiersArchersFourth;
+    int backSoldiersRidersFourth;
+
+    int backSoldiersSwordsmenFifth;
+    int backSoldiersArchersFifth;
+    int backSoldiersRidersFifth;
+
+    int backSoldiersSwordsmenSixth;
+    int backSoldiersArchersSixth;
+    int backSoldiersRidersSixth;
+
+    int backSoldiersSwordsmenSeventh;
+    int backSoldiersArchersSeventh;
+    int backSoldiersRidersSeventh;
+
+    int backSoldiersSwordsmenEighth;
+    int backSoldiersArchersEighth;
+    int backSoldiersRidersEighth;
+
+    int backSoldiersSwordsmenNinth;
+    int backSoldiersArchersNinth;
+    int backSoldiersRidersNinth;
     public void SoldiersCalcByTurn(bool isGuildBattle, Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, int terri)
     {
         terriFirstBattle = terri;
@@ -49,41 +83,41 @@ public class OldSoldiersManager : MonoBehaviour
         terriEighthBattle = terri;
         terriNinthBattle = terri;
 
-        int backSoldiersSwordsmenFirst = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersFirst = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersFirst = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenFirst = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersFirst = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersFirst = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenSecond = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersSecond = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersSecond = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenSecond = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersSecond = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersSecond = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenThird = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersThird = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersThird = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenThird = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersThird = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersThird = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenFourth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersFourth = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersFourth = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenFourth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersFourth = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersFourth = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenFifth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersFifth = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersFifth = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenFifth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersFifth = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersFifth = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenSixth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersSixth = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersSixth = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenSixth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersSixth = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersSixth = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenSeventh = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersSeventh = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersSeventh = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenSeventh = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersSeventh = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersSeventh = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenEighth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersEighth = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersEighth = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenEighth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersEighth = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersEighth = riders.getMomentRider() - riders.getMomentDeadRider();
 
-        int backSoldiersSwordsmenNinth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-        int backSoldiersArchersNinth = archers.getMomentArcher() - archers.getMomentDeadArcher();
-        int backSoldiersRidersNinth = riders.getMomentRider() - riders.getMomentDeadRider();
+         backSoldiersSwordsmenNinth = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
+         backSoldiersArchersNinth = archers.getMomentArcher() - archers.getMomentDeadArcher();
+         backSoldiersRidersNinth = riders.getMomentRider() - riders.getMomentDeadRider();
 
         /* blocco terri 2 */
 

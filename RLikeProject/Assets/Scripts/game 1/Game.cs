@@ -363,8 +363,10 @@ public class Game : MonoBehaviour
         UpdateBarracksUI();
     }
 
+
+
     public void onTapNextSeason()
-    {
+    { 
         isTurnDone = true;
         FindObjectOfType<AudioManager>().PlayEffectFaded(newTurnSound);
     }
