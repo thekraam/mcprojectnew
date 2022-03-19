@@ -87,7 +87,9 @@ public class Game : MonoBehaviour
     public Text citizensUI;
     public Text populationUI;
     public Text moneyUI;
-    public Text maxRecruitableUI;
+    public Text moneyfarmUI;
+    public Text moneymineUI;
+    public Text moneytaxUI;
     public TextMeshProUGUI turnsUI;
     // colori
     Color32 darkred = new Color32(92, 0, 0, 255);
@@ -160,12 +162,14 @@ public class Game : MonoBehaviour
 
         FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders, caserma); // va in Caserma
 
-        SwordsmenUI.text = "" + swordsmen.getTotal();
-        ArchersUI.text = "" + archers.getTotal();
-        RidersUI.text = "" + riders.getTotal();
-
+        SwordsmenUI.text = "" + swordsmen.getTotal() + " (" + swordsmen.getTempTotal()+")";
+        ArchersUI.text = "" + archers.getTotal() + " (" + archers.getTempTotal() + ")";
+        RidersUI.text = "" + riders.getTotal() + " (" + riders.getTempTotal() + ")";
+        citizensUI.text = "" + player.getCitizens() +" (" + player.getTempCitizens() + ")";
         populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); // mostra il nuovo totale della popolazione totale appena la trovi
-
+        moneyfarmUI.text = "(" + (fattoria.getGoldFattoria() + fabbro.getSoldiZappa()) + ")";
+        moneymineUI.text = "(" + (miniera.getgoldMiniera() + fabbro.getSoldiPiccone()) + ")";
+        moneytaxUI.text = "(+" + (player.getCitizens() * 2) + ")";
         moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
 
         turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
