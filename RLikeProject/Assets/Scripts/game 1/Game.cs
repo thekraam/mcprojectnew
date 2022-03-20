@@ -124,6 +124,7 @@ public class Game : MonoBehaviour
     Caserma caserma = new Caserma();
     Fabbro fabbro = new Fabbro();
     Gilda gilda = new Gilda();
+    OldSoldiersManager manager = new OldSoldiersManager();
 
     public List<Text> UIelements;
 
@@ -475,6 +476,9 @@ public class Game : MonoBehaviour
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
         Debug.LogError(player.getTurn());
 
+        manager.riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
+        manager.gildamexritorno(player, gilda);  //betatesting
+
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
         FindObjectOfType<Events>().EventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
@@ -676,6 +680,23 @@ public class Game : MonoBehaviour
             gilda.lvlup();
         }
     }
+
+
+    public void onSpedizione1() // prima tipologia di spedizione
+    {
+        if (gilda.getcontrollosped1() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 1, manager);
+            gilda.setcontrollosped1(1);
+        }
+        else if (gilda.getcontrollosped2() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 1, manager);
+            gilda.setcontrollosped2(1);
+        }
+
+    }
+
 
 
 
