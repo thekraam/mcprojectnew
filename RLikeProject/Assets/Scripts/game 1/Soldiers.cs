@@ -113,6 +113,30 @@ public class Soldiers : MonoBehaviour
         {
             momentDeadswordman = x;
         }
+
+
+
+
+
+        public string getscrittaswordman()
+        {
+              
+              if (temp_total_swordsmen == 0)
+              {
+                    return "(0)";
+              }
+              else
+              {
+                    return "(+" + temp_total_swordsmen + ")";
+              }
+            
+
+        }
+
+
+
+
+
     }
     //--------------------------------------------------Archers---------------------------------------------
     public class Archers
@@ -224,6 +248,32 @@ public class Soldiers : MonoBehaviour
         {
             momentDeadArcher = x;
         }
+
+
+
+
+
+
+
+        public string getscrittaarcher()
+        {
+
+            if (temp_total_archers == 0)
+            {
+                return "(0)";
+            }
+            else
+            {
+                return "(+" + temp_total_archers + ")";
+            }
+
+
+        }
+
+
+
+
+
     }
     //--------------------------------------------------Riders---------------------------------------------
     public class Riders
@@ -335,7 +385,37 @@ public class Soldiers : MonoBehaviour
         {
             momentDeadRider = x;
         }
+
+
+
+
+
+
+        public string getscrittarider()
+        {
+
+            if (temp_total_riders == 0)
+            {
+                return "(0)";
+            }
+            else
+            {
+                return "(+" + temp_total_riders + ")";
+            }
+
+
+        }
+
+
+
+
+
     }
+
+
+
+
+
 
 
 

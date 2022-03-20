@@ -80,13 +80,29 @@ public class Game : MonoBehaviour
     public Text casermaBattleBonusUI;
     public Text casermaNextBattleBonusUI;
 
+    //MINIERA
+    public Text minieralvUI;
+    public Text minieranextlvlUI;
+    public Text minieracostoUI;
+    public Text minieragoldUI;
+    public Text minieragolnextUI;
+
+    //GILDA
+    public Text gildalvUI;
+    public Text gildacostoUI;
+
     // GENERAL
     public Text SwordsmenUI;
+    public Text SwordsmenNextUI;
     public Text ArchersUI;
+    public Text ArchersNextUI;
     public Text RidersUI;
+    public Text RidersNextUI;
     public Text citizensUI;
+    public Text citizensNextUI;
     public Text populationUI;
     public Text moneyUI;
+    public Text moneyNextUI;
     public Text moneyfarmUI;
     public Text moneymineUI;
     public Text moneytaxUI;
@@ -161,16 +177,20 @@ public class Game : MonoBehaviour
         CityNameUI.fontSize = FindObjectOfType<FontDecreaser>().Cityname.fontSize;
 
         FindObjectOfType<SliderController>().RealTimeSliders(player, swordsmen, archers, riders, caserma); // va in Caserma
-
-        SwordsmenUI.text = "" + swordsmen.getTotal() + " (" + swordsmen.getTempTotal()+")";
-        ArchersUI.text = "" + archers.getTotal() + " (" + archers.getTempTotal() + ")";
-        RidersUI.text = "" + riders.getTotal() + " (" + riders.getTempTotal() + ")";
-        citizensUI.text = "" + player.getCitizens() +" (" + player.getTempCitizens() + ")";
-        populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); // mostra il nuovo totale della popolazione totale appena la trovi
-        moneyfarmUI.text = "(" + (fattoria.getGoldFattoria() + fabbro.getSoldiZappa()) + ")";
-        moneymineUI.text = "(" + (miniera.getgoldMiniera() + fabbro.getSoldiPiccone()) + ")";
+        SwordsmenUI.text = "" + swordsmen.getTotal();
+        SwordsmenNextUI.text = swordsmen.getscrittaswordman();
+        ArchersUI.text = "" + archers.getTotal();
+        ArchersNextUI.text = archers.getscrittaarcher();
+        RidersUI.text = "" + riders.getTotal();
+        RidersNextUI.text = riders.getscrittarider();
+        citizensUI.text = "" + player.getCitizens();
+        citizensNextUI.text = "(+" + (fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects(player, swordsmen, archers, riders, fattoria)) + ")";
+        populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); 
+        moneyfarmUI.text = "(+" + (fattoria.getGoldFattoria() + fabbro.getSoldiZappa()) + ")";
+        moneymineUI.text = "(+" + (miniera.getgoldMiniera() + fabbro.getSoldiPiccone()) + ")";
         moneytaxUI.text = "(+" + (player.getCitizens() * 2) + ")";
-        moneyUI.text = "" + player.getMoney(); // mostra il nuovo totale dei soldi appena lo trovi
+        moneyUI.text = "" + player.getMoney();
+        moneyNextUI.text = "(+" + (fattoria.getGoldFattoria() + fabbro.getSoldiZappa() + miniera.getgoldMiniera() + fabbro.getSoldiPiccone()+ (player.getCitizens() * 2))  +")";   
 
         turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
     }
@@ -336,6 +356,60 @@ public class Game : MonoBehaviour
         casermaNextBattleBonusUI.text = caserma.getNextLvlBonusBarrack();
     }
 
+
+    private void UpdateMineUI()
+    {
+        minieralvUI.text = "" + miniera.getLvlMiniera();
+        minieranextlvlUI.text = miniera.getNextlvl();
+        if (miniera.getLvlMiniera() < 5)
+        {
+            minieracostoUI.text = "Costo: " + miniera.getcosto();
+            if (player.getMoney() < miniera.getcosto())
+            {
+                minieracostoUI.color = darkred;
+            }
+            else
+            {
+                minieracostoUI.color = blacknormal;
+            }
+        }
+        else
+        {
+            minieracostoUI.text = "Max level reached";
+            minieracostoUI.color = darkred;
+        }
+        minieragoldUI.text = "+" + miniera.getgoldMiniera();
+        minieragolnextUI.text = miniera.getgoldnext();
+
+
+    }
+    private void UpdateGuildUI()
+    {
+
+        gildalvUI.text = "" + gilda.getlvl();
+        if (gilda.getlvl() < 5)
+        {
+            gildacostoUI.text = "Costo: " + gilda.getcosto();
+            if (player.getMoney() < gilda.getcosto())
+            {
+                gildacostoUI.color = darkred;
+            }
+            else
+            {
+                gildacostoUI.color = blacknormal;
+            }
+        }
+        else
+        {
+            gildacostoUI.text = "Max level reached";
+            gildacostoUI.color = darkred;
+        }
+
+    }
+
+
+
+
     public void Update()
     {
         // ---------------------------                 BG Music                --------------------------
@@ -361,6 +435,11 @@ public class Game : MonoBehaviour
         // --------------------------- updater dati caserma - tempo reale ---------------------------
 
         UpdateBarracksUI();
+        // --------------------------- updater dati Miniera - tempo reale ---------------------------
+
+        UpdateMineUI();
+        // --------------------------- updater dati Gilda - tempo reale ---------------------------
+        UpdateGuildUI();
     }
 
 
@@ -533,7 +612,7 @@ public class Game : MonoBehaviour
         if ((fabbro.getPiccone()+1) <= fabbro.getlvl() && fabbro.getCostoNumPotenziamenti(4) <= player.getMoney())
         {
             player.setRapidMoney(-fabbro.getCostoNumPotenziamenti(4));
-            fabbro.powerUPPiccone();
+            fabbro.powerUPPiccone(miniera);
         }
     }
 
@@ -576,6 +655,29 @@ public class Game : MonoBehaviour
 
 
 
+    // tasti miniera
+    public void onUpgradeMiniera()
+    {
+        if (miniera.getLvlMiniera() < 5 && (player.getMoney() >= miniera.getcosto()))
+        {
+            player.setRapidMoney(-miniera.getcosto());
+            miniera.lvlUpMiniera();
+        }
+    }
+
+
+
+    //tasti gilda
+    public void onUpgradeGilda()
+    {
+        if (gilda.getlvl() < 5 && (player.getMoney() >= gilda.getcosto()))
+        {
+            player.setRapidMoney(-gilda.getcosto());
+            gilda.lvlup();
+        }
+    }
+
+
 
 
 
@@ -583,7 +685,7 @@ public class Game : MonoBehaviour
 
     /*----------------save------load------------------*/
 
-    public void SaveGame()
+        public void SaveGame()
     {
         SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders);
     }

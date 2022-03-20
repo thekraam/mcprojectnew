@@ -135,10 +135,6 @@ public class Fabbro : MonoBehaviour
     {
         return goldpiccone * piccone;
     }
-    public void powerUPPiccone()
-    {
-        piccone = piccone + 1;
-    }
     public int getPiccone()
     {
         return piccone;

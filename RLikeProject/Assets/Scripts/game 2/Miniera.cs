@@ -7,20 +7,24 @@ public class Miniera : MonoBehaviour
     int lvl = 1;
     public int gold = 100;
     bool carboneHigh = false;
+    int costo = 1000;
 
     public void lvlUpMiniera ()
     {
         lvl = lvl + 1;
         if (lvl == 2)
         {
+            costo = 2000;
             gold = 200;
         }
         else if (lvl == 3)
         {
+            costo = 3000;
             gold = 400;
         }
         else if (lvl == 4)
         {
+            costo = 4000;
             gold = 600; 
         }
         else if (lvl == 5)
@@ -43,7 +47,44 @@ public class Miniera : MonoBehaviour
     {
         return carboneHigh;
     }
+    public string getNextlvl()
+    {
+        if (lvl < 5)
+        {
+            return "" + lvl;
+        }
+        else
+        {
+            return "max";
+        }
+    }
 
+    public int getcosto()
+    {
+        return costo;
+    }
+
+    public string getgoldnext()
+    {
+        if (lvl == 1)
+        {
+            return "+" + (gold + 100);
+        }
+        if (lvl == 2)
+        {
+            return "+" + (gold + 200);
+        }
+        if (lvl == 3)
+        {
+            return "+" + (gold + 200);
+        }
+        if (lvl == 4)
+        {
+            return "+" + (gold + 400);
+        }
+        else
+            return "MAX";
+    }
 
 
 
