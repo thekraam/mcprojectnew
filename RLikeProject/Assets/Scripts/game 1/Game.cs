@@ -109,8 +109,8 @@ public class Game : MonoBehaviour
     public Text moneytaxUI;
     public TextMeshProUGUI turnsUI;
     // colori
-    Color32 darkred = new Color32(92, 0, 0, 255);
-    Color32 blacknormal = new Color32(55 , 55, 55, 255);
+    public Color32 darkred = new Color32(92, 0, 0, 255);
+    public Color32 blacknormal = new Color32(55 , 55, 55, 255);
 
 
     Player player = new Player(); // oggetto player partita - non contiene soldati

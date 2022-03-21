@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
 using TMPro;
 using System.Linq;
+
+
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -17,27 +20,32 @@ public class FirebaseManager : MonoBehaviour
 
     //Login variables
     [Header("Login")]
-    public TMP_InputField emailLoginField;
-    public TMP_InputField passwordLoginField;
-    public TMP_Text warningLoginText;
-    public TMP_Text confirmLoginText;
+    public GameObject LoginPanel_LoginButton;
+    public GameObject LoginPanel_RegisterButton;
+    public InputField emailLoginField;
+    public InputField passwordLoginField;
+    public Text warningLoginText;
+    public Text confirmLoginText;
 
     //Register variables
     [Header("Register")]
-    public TMP_InputField usernameRegisterField;
-    public TMP_InputField emailRegisterField;
-    public TMP_InputField passwordRegisterField;
-    public TMP_InputField passwordRegisterVerifyField;
-    public TMP_Text warningRegisterText;
+    public GameObject registerPanel;
+
+    public InputField usernameRegisterField;
+    public InputField emailRegisterField;
+    public InputField passwordRegisterField;
+    public InputField passwordRegisterVerifyField;
+    public Text warningRegisterText;
 
     //User Data variables
     [Header("UserData")]
-    public TMP_InputField usernameField;
-    public TMP_InputField xpField;
-    public TMP_InputField killsField;
-    public TMP_InputField deathsField;
+    public InputField usernameField;
+    public InputField xpField;
+    public InputField killsField;
+    public InputField deathsField;
     public GameObject scoreElement;
     public Transform scoreboardContent;
+
 
     void Awake()
     {
@@ -153,7 +161,9 @@ public class FirebaseManager : MonoBehaviour
             //Now get the result
             User = LoginTask.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
+            warningLoginText.color = new Color32(170, 0, 0, 255);
             warningLoginText.text = "";
+            confirmLoginText.color = new Color32(0, 130, 0, 255);
             confirmLoginText.text = "Logged In";
             StartCoroutine(LoadUserData());
 
@@ -171,11 +181,13 @@ public class FirebaseManager : MonoBehaviour
         if (_username == "")
         {
             //If the username field is blank show a warning
+            warningRegisterText.color = new Color32(170, 0, 0, 255);
             warningRegisterText.text = "Missing Username";
         }
         else if (passwordRegisterField.text != passwordRegisterVerifyField.text)
         {
             //If the password does not match show a warning
+            warningRegisterText.color = new Color32(170, 0, 0, 255);
             warningRegisterText.text = "Password Does Not Match!";
         }
         else
@@ -208,6 +220,7 @@ public class FirebaseManager : MonoBehaviour
                         message = "Email Already In Use";
                         break;
                 }
+                warningRegisterText.color = new Color32(170, 0, 0, 255);
                 warningRegisterText.text = message;
             }
             else
@@ -230,12 +243,16 @@ public class FirebaseManager : MonoBehaviour
                     {
                         //If there are errors handle them
                         Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
+                        warningRegisterText.color = FindObjectOfType<Game>().darkred;
                         warningRegisterText.text = "Username Set Failed!";
                     }
                     else
                     {
                         //Username is now set
                         //Now return to login screen
+                        registerPanel.SetActive(false);
+                        LoginPanel_LoginButton.SetActive(true);
+                        LoginPanel_RegisterButton.SetActive(true);
                         warningRegisterText.text = "";
                         ClearRegisterFeilds();
                         ClearLoginFeilds();
