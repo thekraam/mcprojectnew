@@ -184,7 +184,7 @@ public class Gilda : MonoBehaviour
             archers.setMomentArcher(5);
             Debug.LogError("y = 1");
             manager.salvasoldati(swordmen, archers, riders, 1);
-            manager.gildaimpostamex(1, 5, 5, 0);
+            manager.gildaimpostamex(1,y, 5, 5, 0);
             
             //dialogo da mettere 
         }
@@ -196,7 +196,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 1);
-            manager.gildaimpostamex(2, s, a, 0);
+            manager.gildaimpostamex(2,y, s, a, 0);
             
             //dialogo da mettere 
         }
@@ -208,7 +208,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 1);
-            manager.gildaimpostamex(3, s, a, 0);
+            manager.gildaimpostamex(3,y, s, a, 0);
             
             //dialogo da mettere 
         }
@@ -219,7 +219,7 @@ public class Gilda : MonoBehaviour
             archers.setMomentArcher(5);
             Debug.LogError("y = 4");
             manager.salvasoldati(swordmen, archers, riders, 1);
-            manager.gildaimpostamex(4, 5, 5, 0);
+            manager.gildaimpostamex(4,y, 5, 5, 0);
             
             //dialogo da mettere 
         }
@@ -231,7 +231,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(10);
             archers.setMomentArcher(10);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(5, 10, 10, 0);
+            manager.gildaimpostamex(5,y, 10, 10, 0);
             //dialogo da mettere 
         }
         if (x == 2 && y == 2) //battaglia persa
@@ -241,7 +241,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(6, s, a, 0);
+            manager.gildaimpostamex(6,y, s, a, 0);
             //dialogo da mettere 
         }
         if (x == 2 && y == 3) //battaglia vinta
@@ -251,7 +251,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(7, s, a, 0);
+            manager.gildaimpostamex(7,y, s, a, 0);
             //dialogo da mettere 
         }
         if (x == 2 && y == 4)//no battaglia ma bonus
@@ -260,7 +260,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(10);
             archers.setMomentArcher(10);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(8, 10, 10, 0);
+            manager.gildaimpostamex(8,y, 10, 10, 0);
             //dialogo da mettere 
         }
 
@@ -272,7 +272,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(10);
             archers.setMomentArcher(10);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(9, 10, 10, 10);
+            manager.gildaimpostamex(9,y, 10, 10, 10);
             //dialogo da mettere 
         }
         if (x == 3 && y == 2) //battaglia persa
@@ -284,7 +284,7 @@ public class Gilda : MonoBehaviour
             archers.setMomentArcher(a);
             riders.setMomentRider(r);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(10, s, a, r);
+            manager.gildaimpostamex(10,y, s, a, r);
             //dialogo da mettere 
         }
         if (x == 3 && y == 3) //battaglia vinta
@@ -296,7 +296,7 @@ public class Gilda : MonoBehaviour
             archers.setMomentArcher(a);
             riders.setMomentRider(r);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(11, s, a, r);
+            manager.gildaimpostamex(11,y, s, a, r);
             //dialogo da mettere 
         }
         if (x == 3 && y == 4)//no battaglia ma bonus
@@ -305,7 +305,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(10);
             archers.setMomentArcher(10);
             manager.salvasoldati(swordmen, archers, riders, 2);
-            manager.gildaimpostamex(12, 10, 10, 10);
+            manager.gildaimpostamex(12,y, 10, 10, 10);
             //dialogo da mettere 
         }
 
@@ -317,7 +317,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(15);
             archers.setMomentArcher(15);
             manager.salvasoldati(swordmen, archers, riders, 3);
-            manager.gildaimpostamex(13, 15, 15, 10);
+            manager.gildaimpostamex(13,y, 15, 15, 10);
             //dialogo da mettere 
         }
         if (x == 4 && y == 2) //battaglia persa
@@ -329,7 +329,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 3);
-            manager.gildaimpostamex(14, s, a, r);
+            manager.gildaimpostamex(14,y, s, a, r);
             //dialogo da mettere 
         }
         if (x == 4 && y == 3) //battaglia vinta
@@ -341,7 +341,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 3);
-            manager.gildaimpostamex(15, s, a, r);
+            manager.gildaimpostamex(15,y, s, a, r);
             //dialogo da mettere 
         }
         if (x == 4 && y == 4)//no battaglia ma bonus
@@ -350,7 +350,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(15);
             archers.setMomentArcher(15);
             manager.salvasoldati(swordmen, archers, riders, 3);
-            manager.gildaimpostamex(16, 15, 15, 10);
+            manager.gildaimpostamex(16,y, 15, 15, 10);
             //dialogo da mettere 
         }
         //-----------------------------------------------------------------------------------
@@ -360,7 +360,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(20);
             archers.setMomentArcher(20);
             manager.salvasoldati(swordmen, archers, riders, 4);
-            manager.gildaimpostamex(17, 20, 20, 10);
+            manager.gildaimpostamex(17,y, 20, 20, 10);
             //dialogo da mettere 
         }
         if (x == 5 && y == 2) //battaglia persa
@@ -372,7 +372,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 4);
-            manager.gildaimpostamex(18, s, a, r);
+            manager.gildaimpostamex(18,y, s, a, r);
             //dialogo da mettere 
         }
         if (x == 5 && y == 3) //battaglia vinta
@@ -384,7 +384,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(s);
             archers.setMomentArcher(a);
             manager.salvasoldati(swordmen, archers, riders, 4);
-            manager.gildaimpostamex(19, s, a, r);
+            manager.gildaimpostamex(19,y, s, a, r);
             //dialogo da mettere 
         }
         if (x == 5 && y == 4)//no battaglia ma bonus
@@ -393,7 +393,7 @@ public class Gilda : MonoBehaviour
             swordmen.setMomentSwordman(20);
             archers.setMomentArcher(20);
             manager.salvasoldati(swordmen, archers, riders, 4);
-            manager.gildaimpostamex(20, 20, 20, 10);
+            manager.gildaimpostamex(20,y, 20, 20, 10);
             //dialogo da mettere 
         }
 
