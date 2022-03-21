@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour
 			while (MusicSource.volume > 0)
 			{
 				MusicSource.volume -= 0.005f;
-				yield return new WaitForSeconds(0.008f);
+				yield return new WaitForSeconds(0.004f);
 			}
 			MusicSource.Stop();
 			MusicSource.volume = 1;

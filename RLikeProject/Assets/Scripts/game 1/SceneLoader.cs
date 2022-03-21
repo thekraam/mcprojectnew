@@ -25,9 +25,9 @@ public class SceneLoader : MonoBehaviour
 
     public void onPressButton(bool NewGame)
     {
-        FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
         if (NewGame)
         {
+            FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
             IntroExecutionPanel.SetActive(true);
             FindObjectOfType<IntroExecution>().StartExecution();
         }

@@ -101,7 +101,7 @@ public class Game : MonoBehaviour
     public Text citizensUI;
     public Text citizensNextUI;
     public Text populationUI_1;
-    public Text populationUI_2;
+    public Text populationUI_2; 
     public Text moneyUI;
     public Text moneyNextUI;
     public Text moneyfarmUI;
@@ -415,10 +415,10 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        // ---------------------------                 BG Music                --------------------------
+        // ---------------------------                 BG Music                ---------------------------
+
         if (FindObjectOfType<FontDecreaser>().introClosed)
             FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
-
         // --------------------------- controller tempo per aggiornamento sync ---------------------------
         SyncTurnAndBlockers();
 
