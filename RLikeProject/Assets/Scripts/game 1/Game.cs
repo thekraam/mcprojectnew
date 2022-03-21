@@ -195,7 +195,7 @@ public class Game : MonoBehaviour
 
         turnsUI.text = "" + player.getTurn(); // mostra il nuovo turno appena lo trovi
     }
-
+    
     private void UpdateFarmUI()
     {
         farmlvlUI.text = "" + fattoria.getLvlFattoria();
@@ -453,7 +453,6 @@ public class Game : MonoBehaviour
     
     public void onSkipTurn()
     {
-        FindObjectOfType<OldSoldiersManager>().CheckBattleStatus(false, player, swordsmen, archers, riders, FindObjectOfType<Events>().terri); 
 
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
@@ -680,7 +679,7 @@ public class Game : MonoBehaviour
             gilda.lvlup();
         }
     }
-
+    //--------------------------------------------------------------spedizione
 
     public void onSpedizione1() // prima tipologia di spedizione
     {
@@ -697,8 +696,63 @@ public class Game : MonoBehaviour
 
     }
 
+    public void onSpedizione2() // prima tipologia di spedizione
+    {
+        if (gilda.getcontrollosped1() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 2, manager);
+            gilda.setcontrollosped1(1);
+        }
+        else if (gilda.getcontrollosped2() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 2, manager);
+            gilda.setcontrollosped2(1);
+        }
 
+    }
+    public void onSpedizione3() // prima tipologia di spedizione
+    {
+        if (gilda.getcontrollosped1() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 3, manager);
+            gilda.setcontrollosped1(1);
+        }
+        else if (gilda.getcontrollosped2() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 3, manager);
+            gilda.setcontrollosped2(1);
+        }
 
+    }
+    public void onSpedizione4() // prima tipologia di spedizione
+    {
+        if (gilda.getcontrollosped1() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 4, manager);
+            gilda.setcontrollosped1(1);
+        }
+        else if (gilda.getcontrollosped2() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 4, manager);
+            gilda.setcontrollosped2(1);
+        }
+
+    }
+
+    public void onSpedizione5() // prima tipologia di spedizione
+    {
+        if (gilda.getcontrollosped1() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 5, manager);
+            gilda.setcontrollosped1(1);
+        }
+        else if (gilda.getcontrollosped2() == 0)
+        {
+            gilda.spedizione(player, swordsmen, archers, riders, 5, manager);
+            gilda.setcontrollosped2(1);
+        }
+
+    }
 
 
 
@@ -706,7 +760,7 @@ public class Game : MonoBehaviour
 
     /*----------------save------load------------------*/
 
-        public void SaveGame()
+    public void SaveGame()
     {
         SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders);
     }
