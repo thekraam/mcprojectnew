@@ -100,7 +100,8 @@ public class Game : MonoBehaviour
     public Text RidersNextUI;
     public Text citizensUI;
     public Text citizensNextUI;
-    public Text populationUI;
+    public Text populationUI_1;
+    public Text populationUI_2;
     public Text moneyUI;
     public Text moneyNextUI;
     public Text moneyfarmUI;
@@ -186,7 +187,8 @@ public class Game : MonoBehaviour
         RidersNextUI.text = riders.getscrittarider();
         citizensUI.text = "" + player.getCitizens();
         citizensNextUI.text = "(+" + (fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects(player, swordsmen, archers, riders, fattoria)) + ")";
-        populationUI.text = "" + player.getPopulation() + "/" + player.getCitizensMax(); 
+        populationUI_1.text = "" + player.getPopulation();
+        populationUI_2.text = "" + player.getCitizensMax();
         moneyfarmUI.text = "(+" + (fattoria.getGoldFattoria() + fabbro.getSoldiZappa()) + ")";
         moneymineUI.text = "(+" + (miniera.getgoldMiniera() + fabbro.getSoldiPiccone()) + ")";
         moneytaxUI.text = "(+" + (player.getCitizens() * 2) + ")";

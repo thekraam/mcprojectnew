@@ -31,11 +31,9 @@ public class FontDecreaser : MonoBehaviour
 
 	public void Update()
     {
-        if (Cityname.text.Length > 8 && CityInputRequest && Cityname.text.Length > i)
+        if (Cityname.text.Length > 15 && CityInputRequest && Cityname.text.Length > i)
         {
-			if (Cityname.text.Length > 15)
-				Cityname.fontSize -= 1;
-		    Cityname.fontSize -= 3;
+			Cityname.fontSize -= 3;
 			i++;
         }
     }
