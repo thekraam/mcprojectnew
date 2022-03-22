@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 public class Game : MonoBehaviour
@@ -20,6 +23,9 @@ public class Game : MonoBehaviour
     private float startTime = 0;
     private float startTimeController = 0;
     private bool isTurnDone = false;
+
+    [Header("Game Status")]
+    public GameObject resumeGameText;
 
     [Header("Music")]
     /* Dichiarazione Musica di gioco */
@@ -146,6 +152,7 @@ public class Game : MonoBehaviour
 
     public void Start()
     {
+
         // musica on
         //FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
 
@@ -159,6 +166,17 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         casermaPanel.SetActive(false);
+    }
+
+    public void SAVEDELETETEST()
+    {
+        SaveSystem.DeleteSave();
+    }
+
+    public void onQuitGame()
+    {
+        SceneManager.UnloadSceneAsync(0);
+        SceneManager.LoadScene(0);
     }
 
     // ---------------------------- aggiornamento in real time texts ----------------------------
@@ -430,6 +448,9 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
+        // ---------------------------   Controllo Presenza Salvataggio --------------------------
+        SaveSystem.DataStatus(resumeGameText);
+
         // ---------------------------                 BG Music                ---------------------------
 
         if (FindObjectOfType<FontDecreaser>().introClosed)

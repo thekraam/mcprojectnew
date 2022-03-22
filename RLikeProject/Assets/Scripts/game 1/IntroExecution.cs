@@ -45,7 +45,7 @@ public class IntroExecution : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     public void ButtonHandler(int currentButton)

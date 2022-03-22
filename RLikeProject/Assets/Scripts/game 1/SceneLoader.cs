@@ -22,6 +22,12 @@ public class SceneLoader : MonoBehaviour
         FindObjectOfType<AudioManager>().PlayMusic(MainMenuMusic);
     }
 
+    public void onQuitPressed()
+    {
+        SceneManager.UnloadSceneAsync(0);
+        SceneManager.UnloadSceneAsync(1);
+    }
+
 
     public void onPressButton(bool NewGame)
     {
