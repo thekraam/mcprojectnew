@@ -7,18 +7,21 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    /* nome citta e loghi */
+    [Header("City and symbol UI")]
     public Text CityNameUI;
 
     public GameObject logoUI_1;
     public GameObject logoUI_2;
     public GameObject logoUI_3;
     public GameObject logoUI_4;
+
+    [Header("Sync Variables")]
     /* variabili di controllo tempo di aggiornamento allo skipturn */
     private float startTime = 0;
     private float startTimeController = 0;
     private bool isTurnDone = false;
 
+    [Header("Music")]
     /* Dichiarazione Musica di gioco */
     public AudioClip[] GameMusic;
     public AudioClip newTurnSound;
@@ -30,6 +33,7 @@ public class Game : MonoBehaviour
     public AudioClip barracks_swordFight;
     public AudioClip mine_pickaxe;
 
+    [Header("Main Panels")]
     /* Dichiarazione object di controllo visibilita pannelli */
     public GameObject mainMenuPanel;
     public GameObject gamePanel; // pannello all'avvio partita
@@ -40,11 +44,15 @@ public class Game : MonoBehaviour
     public GameObject guildPanel;
     public GameObject minePanel;
 
+    [Header("Panel Blockers")]
     /* pannelli blocker */
     public GameObject skipTurnBlocker;
     public GameObject dialogueInterfaceBlocker;
 
+    [Header("UI Section")]
     /* dichiarazione elementi di UI tramite oggetto Text in UnityEngine.UI */
+
+    [Header("Farm UI")]
     // FARM
     public Text farmlvlUI;
     public Text farmnextlvlUI;
@@ -55,6 +63,8 @@ public class Game : MonoBehaviour
     public Text farmgoldperturnUI;
     public Text farmnextgoldperturnUI;
     public Text farmupgradecostUI;
+
+    [Header("Blacksmith UI")]
     //FABBRO
     public Text fabbrolvlUI;
     public Text fabbroupgradecostUI;
@@ -71,6 +81,7 @@ public class Game : MonoBehaviour
     public Text fabbrocostoZappa;
     public Text fabbrocostoPiccone;
 
+    [Header("Barracks UI")]
     //CASERMA
     public Text casermalvUI;
     public Text casermaupgradecostUI;
@@ -80,6 +91,7 @@ public class Game : MonoBehaviour
     public Text casermaBattleBonusUI;
     public Text casermaNextBattleBonusUI;
 
+    [Header("Mine UI")]
     //MINIERA
     public Text minieralvUI;
     public Text minieranextlvlUI;
@@ -87,10 +99,12 @@ public class Game : MonoBehaviour
     public Text minieragoldUI;
     public Text minieragolnextUI;
 
+    [Header("Guild UI")]
     //GILDA
     public Text gildalvUI;
     public Text gildacostoUI;
 
+    [Header("Miscellaneous UI")]
     // GENERAL
     public Text SwordsmenUI;
     public Text SwordsmenNextUI;
@@ -108,6 +122,7 @@ public class Game : MonoBehaviour
     public Text moneymineUI;
     public Text moneytaxUI;
     public TextMeshProUGUI turnsUI;
+
     // colori
     public Color32 darkred = new Color32(92, 0, 0, 255);
     public Color32 blacknormal = new Color32(55 , 55, 55, 255);
