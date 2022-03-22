@@ -656,6 +656,11 @@ public class Game : MonoBehaviour
     {
         FindObjectOfType<SliderController>().onPressStartTraining(3, player, caserma, swordsmen, archers, riders);
     }
+
+    public void onDisbandTroops()
+    {
+        FindObjectOfType<SliderController>().onPressDisbandTroops(player, swordsmen, archers, riders);
+    }
  
 
 

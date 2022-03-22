@@ -34,7 +34,25 @@ public class SliderController : MonoBehaviour
     public Text archersRemaingSlotUI;
     public Text ridersRemaingSlotUI;
 
+    [Header("Disband")]
+    public Slider swordsmenDisbandSlider;
+    public Slider archersDisbandSlider;
+    public Slider ridersDisbandSlider;
+    public GameObject noCitizensAvailableSwordsmenDisband;
 
+    public Text selectedDisbandSwordsmenUI;
+    public Text minDisbandSwordsmenUI;
+    public Text maxDisbandSwordsmenUI;
+    public GameObject noCitizensAvailableArchersDisband;
+
+    public Text selectedDisbandArchersUI;
+    public Text minDisbandArchersUI;
+    public Text maxDisbandArchersUI;
+    public GameObject noCitizensAvailableRidersDisband;
+
+    public Text selectedDisbandRidersUI;
+    public Text minDisbandRidersUI;
+    public Text maxDisbandRidersUI;
 
 
 
@@ -94,6 +112,63 @@ public class SliderController : MonoBehaviour
         swordmanRemaingSlotUI.text = "Remaining slot : " + caserma.getReclutamentoMaxMoment();
         archersRemaingSlotUI.text = "Remaining slot : " + caserma.getReclutamentoMaxMoment();
         ridersRemaingSlotUI.text = "Remaining slot : " + caserma.getReclutamentoMaxMoment();
+
+        
+        
+        /*------------------------Disband Troops---------------------*/
+
+        if (swordsmen.getTotal() != 0) { 
+            minDisbandSwordsmenUI.text = "0";
+            maxDisbandSwordsmenUI.text = "" + swordsmen.getTotal();
+            swordsmenDisbandSlider.minValue = 0;
+            swordsmenDisbandSlider.maxValue = swordsmen.getTotal();
+            noCitizensAvailableSwordsmenDisband.SetActive(false);            
+        }
+        else
+        {
+            minDisbandSwordsmenUI.text = "";
+            maxDisbandSwordsmenUI.text = "";           
+            swordsmenDisbandSlider.minValue = 0;
+            swordsmenDisbandSlider.maxValue = 0;
+            noCitizensAvailableSwordsmenDisband.SetActive(true);
+        }
+        //
+        if (archers.getTotal() != 0) { 
+            minDisbandArchersUI.text = "0";
+            maxDisbandArchersUI.text = "" + archers.getTotal();
+            archersDisbandSlider.minValue = 0;
+            archersDisbandSlider.maxValue = archers.getTotal();
+            noCitizensAvailableArchersDisband.SetActive(false);            
+        }
+        else
+        {
+            minDisbandArchersUI.text = "";
+            maxDisbandArchersUI.text = "";            
+            archersDisbandSlider.minValue = 0;
+            archersDisbandSlider.maxValue = 0;
+            noCitizensAvailableArchersDisband.SetActive(true);            
+        }
+        //
+        if (riders.getTotal() != 0) { 
+            minDisbandRidersUI.text = "0";
+            maxDisbandRidersUI.text = "" + riders.getTotal();
+            ridersDisbandSlider.minValue = 0;
+            ridersDisbandSlider.maxValue = riders.getTotal();
+            noCitizensAvailableRidersDisband.SetActive(false);            
+        }
+        else
+        {
+            minDisbandRidersUI.text = "";
+            maxDisbandRidersUI.text = "";            
+            ridersDisbandSlider.minValue = 0;
+            ridersDisbandSlider.maxValue = 0;
+            noCitizensAvailableRidersDisband.SetActive(true);
+        }  
+        //
+        selectedDisbandSwordsmenUI.text = "" + (int)swordsmenDisbandSlider.value;
+        selectedDisbandArchersUI.text = "" + (int)archersDisbandSlider.value;
+        selectedDisbandRidersUI.text = "" + (int)ridersDisbandSlider.value;
+        /*------------------------------------------------------------------------*/
     }
 
     public void onPressStartTraining(int type, Player player, Caserma barracks, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
@@ -122,6 +197,24 @@ public class SliderController : MonoBehaviour
         FindObjectOfType<AudioManager>().PlayEffect(RecruitmentSound);
     }
 
+    //DisbandTroops
+    public void onPressDisbandTroops( Player player,Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    {
+        if ((int)swordsmenDisbandSlider.value != 0 || (int)archersDisbandSlider.value != 0 || (int)ridersDisbandSlider.value != 0)
+        { 
+            
+            player.player_citizens += (int)swordsmenDisbandSlider.value;
+            swordsmen.setRapidTotal(-(int)swordsmenDisbandSlider.value);
+ 
+            player.player_citizens += (int)archersDisbandSlider.value;
+            archers.setRapidTotal(-(int)archersDisbandSlider.value);
+            
+            player.player_citizens += (int)ridersDisbandSlider.value;
+            riders.setRapidTotal(-(int)ridersDisbandSlider.value);
+        }    
+        
+        //FindObjectOfType<AudioManager>().PlayEffect(RecruitmentSound);
+    }
     public void ClosingPanels()
     {
         swordsmenSlider.value = swordsmenSlider.minValue;
