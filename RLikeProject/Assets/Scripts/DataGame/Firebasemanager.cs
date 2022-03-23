@@ -108,12 +108,17 @@ public class FirebaseManager : MonoBehaviour
     //Function for the save button
     public void SaveDataButton()
     {
-        //StartCoroutine(UpdateUsernameAuth(usernameField.text));
-        StartCoroutine(UpdateUsernameDatabase(usernameField.text));
+        StartCoroutine(UpdateUsernameAuth(usernameField.text));
+        //StartCoroutine(UpdateUsernameDatabase(username.text));
 
         StartCoroutine(UpdateXp(xpField.text));
         //StartCoroutine(UpdateKills(int.Parse(killsField.text)));
         //StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
+    }
+
+    public void SaveUsername()
+    {
+        StartCoroutine(UpdateUsernameDatabase(usernameRegisterField.text));
     }
     //Function for the scoreboard button
     public void ScoreboardButton()
@@ -259,6 +264,8 @@ public class FirebaseManager : MonoBehaviour
                         LoginPanel_LoginButton.SetActive(true);
                         LoginPanel_RegisterButton.SetActive(true);
                         warningRegisterText.text = "";
+                        SaveUsername();
+                        //StartCoroutine(UpdateUsernameDatabase(_username));
                         ClearRegisterFeilds();
                         ClearLoginFeilds();
                     }
@@ -301,6 +308,7 @@ public class FirebaseManager : MonoBehaviour
         else
         {
             //Database username is now updated
+            
         }
     }
 
