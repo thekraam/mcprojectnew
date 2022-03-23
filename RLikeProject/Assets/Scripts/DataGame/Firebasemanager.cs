@@ -39,8 +39,9 @@ public class FirebaseManager : MonoBehaviour
 
     //User Data variables
     [Header("UserData")]
+    public Text username;
     public InputField usernameField;
-    public InputField xpField;
+    public Text xpField;
     public InputField killsField;
     public InputField deathsField;
     public GameObject scoreElement;
@@ -107,12 +108,12 @@ public class FirebaseManager : MonoBehaviour
     //Function for the save button
     public void SaveDataButton()
     {
-        StartCoroutine(UpdateUsernameAuth(usernameField.text));
+        //StartCoroutine(UpdateUsernameAuth(usernameField.text));
         StartCoroutine(UpdateUsernameDatabase(usernameField.text));
 
-        StartCoroutine(UpdateXp(int.Parse(xpField.text)));
-        StartCoroutine(UpdateKills(int.Parse(killsField.text)));
-        StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
+        StartCoroutine(UpdateXp(xpField.text));
+        //StartCoroutine(UpdateKills(int.Parse(killsField.text)));
+        //StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
     }
     //Function for the scoreboard button
     public void ScoreboardButton()
@@ -169,7 +170,10 @@ public class FirebaseManager : MonoBehaviour
 
             yield return new WaitForSeconds(2);
 
+            username.color = new Color32(0, 130, 0, 255);
+            username.text = User.DisplayName;
             usernameField.text = User.DisplayName;
+            
             confirmLoginText.text = "";
             ClearLoginFeilds();
             ClearRegisterFeilds();
@@ -250,6 +254,7 @@ public class FirebaseManager : MonoBehaviour
                     {
                         //Username is now set
                         //Now return to login screen
+                        Debug.LogFormat("User register in successfully: {0} ({1})", User.DisplayName, User.Email);
                         registerPanel.SetActive(false);
                         LoginPanel_LoginButton.SetActive(true);
                         LoginPanel_RegisterButton.SetActive(true);
@@ -299,7 +304,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateXp(int _xp)
+    private IEnumerator UpdateXp(string _xp)
     {
         //Set the currently logged in user xp
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("xp").SetValueAsync(_xp);
@@ -349,7 +354,7 @@ public class FirebaseManager : MonoBehaviour
             //Deaths are now updated
         }
     }
-
+    
     private IEnumerator LoadUserData()
     {
         //Get the currently logged in user data
@@ -365,8 +370,8 @@ public class FirebaseManager : MonoBehaviour
         {
             //No data exists yet
             xpField.text = "0";
-            killsField.text = "0";
-            deathsField.text = "0";
+            //killsField.text = "0";
+            //deathsField.text = "0";
         }
         else
         {
@@ -374,8 +379,8 @@ public class FirebaseManager : MonoBehaviour
             DataSnapshot snapshot = DBTask.Result;
 
             xpField.text = snapshot.Child("xp").Value.ToString();
-            killsField.text = snapshot.Child("kills").Value.ToString();
-            deathsField.text = snapshot.Child("deaths").Value.ToString();
+            //killsField.text = snapshot.Child("kills").Value.ToString();
+            //deathsField.text = snapshot.Child("deaths").Value.ToString();
         }
     }
 

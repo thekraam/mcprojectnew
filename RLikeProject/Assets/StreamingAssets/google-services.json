@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "893104036880",
+    "firebase_url": "https://eternal-s-attack-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "eternal-s-attack",
+    "storage_bucket": "eternal-s-attack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893104036880:android:eec00ad0ce492e99b6be95",
+        "android_client_info": {
+          "package_name": "com.arkgames.eternalsattack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893104036880-8m4draj2ch6s57a2qpqjn971dpcdn657.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwzKpksvQ2UESDfG4O5g9yha_BcpEv_Qw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893104036880-8m4draj2ch6s57a2qpqjn971dpcdn657.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "893104036880-5pbqdhsefmf1pm62vb34u8ifrvkdb3gi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.arkgames.eternalsattack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
