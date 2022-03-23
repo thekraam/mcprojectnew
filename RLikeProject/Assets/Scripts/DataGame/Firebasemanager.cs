@@ -39,11 +39,11 @@ public class FirebaseManager : MonoBehaviour
 
     //User Data variables
     [Header("UserData")]
-    public Text username;
     public InputField usernameField;
-    public Text xpField;
-    public InputField killsField;
-    public InputField deathsField;
+    public Text username;
+    public Text goldField;
+    public TextMeshProUGUI seasonField;
+    public Text citynameField;
     public GameObject scoreElement;
     public Transform scoreboardContent;
 
@@ -111,14 +111,18 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(UpdateUsernameAuth(usernameField.text));
         //StartCoroutine(UpdateUsernameDatabase(username.text));
 
-        StartCoroutine(UpdateXp(xpField.text));
-        //StartCoroutine(UpdateKills(int.Parse(killsField.text)));
+        StartCoroutine(UpdateGold(goldField.text));
+        StartCoroutine(UpdateSeason(seasonField.text));
+        StartCoroutine(UpdateCityName(citynameField.text));
         //StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
     }
 
     public void SaveUsername()
     {
         StartCoroutine(UpdateUsernameDatabase(usernameRegisterField.text));
+        StartCoroutine(UpdateCityName(""));
+        StartCoroutine(UpdateGold(""));
+        StartCoroutine(UpdateSeason(""));
     }
     //Function for the scoreboard button
     public void ScoreboardButton()
@@ -265,7 +269,6 @@ public class FirebaseManager : MonoBehaviour
                         LoginPanel_RegisterButton.SetActive(true);
                         warningRegisterText.text = "";
                         SaveUsername();
-                        //StartCoroutine(UpdateUsernameDatabase(_username));
                         ClearRegisterFeilds();
                         ClearLoginFeilds();
                     }
@@ -311,45 +314,10 @@ public class FirebaseManager : MonoBehaviour
             
         }
     }
-
-    private IEnumerator UpdateXp(string _xp)
-    {
-        //Set the currently logged in user xp
-        var DBTask = DBreference.Child("users").Child(User.UserId).Child("xp").SetValueAsync(_xp);
-
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-
-        if (DBTask.Exception != null)
-        {
-            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-        }
-        else
-        {
-            //Xp is now updated
-        }
-    }
-
-    private IEnumerator UpdateKills(int _kills)
-    {
-        //Set the currently logged in user kills
-        var DBTask = DBreference.Child("users").Child(User.UserId).Child("kills").SetValueAsync(_kills);
-
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-
-        if (DBTask.Exception != null)
-        {
-            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-        }
-        else
-        {
-            //Kills are now updated
-        }
-    }
-
-    private IEnumerator UpdateDeaths(int _deaths)
+    private IEnumerator UpdateCityName(string _cityname)
     {
         //Set the currently logged in user deaths
-        var DBTask = DBreference.Child("users").Child(User.UserId).Child("deaths").SetValueAsync(_deaths);
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("cityname").SetValueAsync(_cityname);
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -362,6 +330,41 @@ public class FirebaseManager : MonoBehaviour
             //Deaths are now updated
         }
     }
+
+    private IEnumerator UpdateSeason(string _season)
+    {
+        //Set the currently logged in user kills
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("season").SetValueAsync(_season);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Season are now updated
+        }
+    }
+
+    private IEnumerator UpdateGold(string _gold)
+    {
+        //Set the currently logged in user xp
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("gold").SetValueAsync(_gold);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            //Gold is now updated
+        }
+    }
+
     
     private IEnumerator LoadUserData()
     {
@@ -377,25 +380,28 @@ public class FirebaseManager : MonoBehaviour
         else if (DBTask.Result.Value == null)
         {
             //No data exists yet
-            xpField.text = "0";
-            //killsField.text = "0";
-            //deathsField.text = "0";
+            citynameField.text = "0";
+            seasonField.text = "0";
+            goldField.text = "0";
+            
+            
         }
         else
         {
             //Data has been retrieved
             DataSnapshot snapshot = DBTask.Result;
 
-            xpField.text = snapshot.Child("xp").Value.ToString();
-            //killsField.text = snapshot.Child("kills").Value.ToString();
-            //deathsField.text = snapshot.Child("deaths").Value.ToString();
+            citynameField.text = snapshot.Child("cityname").Value.ToString();
+            seasonField.text = snapshot.Child("season").Value.ToString();
+            goldField.text = snapshot.Child("gold").Value.ToString();
+                        
         }
     }
 
     private IEnumerator LoadScoreboardData()
     {
         //Get all the users data ordered by kills amount
-        var DBTask = DBreference.Child("users").OrderByChild("kills").GetValueAsync();
+        var DBTask = DBreference.Child("users").OrderByChild("season").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -418,9 +424,13 @@ public class FirebaseManager : MonoBehaviour
             foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
             {
                 string username = childSnapshot.Child("username").Value.ToString();
-                int kills = int.Parse(childSnapshot.Child("kills").Value.ToString());
-                int deaths = int.Parse(childSnapshot.Child("deaths").Value.ToString());
-                int xp = int.Parse(childSnapshot.Child("xp").Value.ToString());
+                string cityname = childSnapshot.Child("cityname").Value.ToString();
+                string season = childSnapshot.Child("season").Value.ToString();
+                string gold = childSnapshot.Child("gold").Value.ToString();
+
+                //Instantiate new scoreboard elements
+                GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
+                scoreboardElement.GetComponent<ScoreElement>().NewScoreElement(username, cityname, gold, season);
             }
 
         }
