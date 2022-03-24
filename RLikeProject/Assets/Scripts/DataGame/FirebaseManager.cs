@@ -72,7 +72,54 @@ public class FirebaseManager : MonoBehaviour
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
         DBreference = FirebaseDatabase.DefaultInstance.RootReference;
+        AuthStateChanged(this, null);
+
     }
+
+    public bool isSignedIn()
+    {
+        return (User != auth.CurrentUser && auth.CurrentUser != null);
+    }
+
+    private IEnumerator userSigneIn()
+    {
+        var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else if (DBTask.Result.Value == null)
+        {
+            //No data exists yet
+            username.text = "0";
+    
+        }
+        else
+        {
+            DataSnapshot snapshot = DBTask.Result;
+
+            username.text = snapshot.Child("username").Value.ToString();
+        }
+
+        
+    }
+
+    void AuthStateChanged(object sender, System.EventArgs eventArgs) {
+        if (auth.CurrentUser != User) {
+            bool signedIn = User != auth.CurrentUser && auth.CurrentUser != null;
+            if (!signedIn && User != null) {
+                Debug.Log("Signed out " + User.UserId);
+            }
+            User = auth.CurrentUser;
+            if (signedIn) {
+                Debug.Log("Signed in " + User.UserId);
+                
+            }
+        }
+    }
+
     public void ClearLoginFeilds()
     {
         emailLoginField.text = "";
@@ -128,6 +175,7 @@ public class FirebaseManager : MonoBehaviour
     public void ScoreboardButton()
     {
         StartCoroutine(LoadScoreboardData());
+        StartCoroutine(userSigneIn());
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -180,7 +228,7 @@ public class FirebaseManager : MonoBehaviour
             yield return new WaitForSeconds(2);
 
             username.color = new Color32(0, 130, 0, 255);
-            username.text = User.DisplayName;
+            
             usernameField.text = User.DisplayName;
             
             confirmLoginText.text = "";
@@ -365,11 +413,13 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    
+
+
     private IEnumerator LoadUserData()
     {
         //Get the currently logged in user data
         var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -435,4 +485,5 @@ public class FirebaseManager : MonoBehaviour
 
         }
     }
+    
 }
