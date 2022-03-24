@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class battle1 : MonoBehaviour
 {
-
+    KillList killList = new KillList();
 
 
     public int battaglia(Captain1 capitano1, Captain2 capitano2, Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider, Enemy.ESwordsmen eswordman, Enemy.EArchers earcher, Enemy.ERiders erider, float terri, float bonusTerri, float bonusETerri, float bonusSoldier, float bonusEnemy)
@@ -261,11 +261,11 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadswordman == 1)
                     {
-                        print("You have lost " + deadswordman + "swordman");
+                        killList.insertNewLine("You have lost " + deadswordman + " swordsman", 1);
                     }
                     else
                     {
-                        print("You have lost " + deadswordman + "swordmen");
+                        killList.insertNewLine("You have lost " + deadswordman + " swordsmen", 1);
                     }
                         cont1 = 1;
                     contatorestampa--;
@@ -274,11 +274,11 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadarcher == 1)
                     {
-                        print("You have lost " + deadarcher + "archer");
+                        killList.insertNewLine("You have lost " + deadarcher + " archer", 1);
                     }
                     else
                     {
-                        print("You have lost " + deadarcher + "archers");
+                        killList.insertNewLine("You have lost " + deadarcher + " archers", 1);
                     }
                     cont2 = 1;
                     contatorestampa--;
@@ -287,11 +287,11 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadrider == 1)
                     {
-                        print("You have lost " + deadrider + "rider");
+                        killList.insertNewLine("You have lost " + deadrider + " rider", 1);
                     }
                     else
                     {
-                        print("You have lost " + deadrider + "riders");
+                        killList.insertNewLine("You have lost " + deadrider + " riders", 1);
                     }
                     cont3 = 1;
                     contatorestampa--;
@@ -300,11 +300,11 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadeswordman == 1)
                     {
-                        print("Enemy has lost " + deadeswordman + "swordman");
+                        killList.insertNewLine("Enemy has lost " + deadeswordman + " swordsman", 2);
                     }
                     else
                     {
-                        print("Enemy has lost " + deadeswordman + "swordmen");
+                        killList.insertNewLine("Enemy has lost " + deadeswordman + " swordsmen", 2);
                     }
                     cont4 = 1;
                     contatorestampa--;
@@ -313,11 +313,11 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadearcher == 1)
                     {
-                        print("Enemy has lost " + deadearcher + "archer");
+                        killList.insertNewLine("Enemy has lost " + deadearcher + " archer", 2);
                     }
                     else
                     {
-                        print("Enemy has lost " + deadearcher + "archers");
+                        killList.insertNewLine("Enemy has lost " + deadearcher + " archers", 2);
                     }
                     cont5 = 1;
                     contatorestampa--;
@@ -326,11 +326,11 @@ public class battle1 : MonoBehaviour
                 {
                     if (deaderider == 1)
                     {
-                        print("Enemy has lost " + deaderider + "swordman");
+                        killList.insertNewLine("Enemy has lost " + deaderider + " rider", 2);
                     }
                     else
                     {
-                        print("Enemy has lost " + deaderider + "swordmen");
+                        killList.insertNewLine("Enemy has lost " + deaderider + " riders", 2);
                     }
                     cont6 = 1;
                     contatorestampa--;
