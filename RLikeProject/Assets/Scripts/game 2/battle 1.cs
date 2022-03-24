@@ -93,12 +93,32 @@ public class battle1 : MonoBehaviour
         float deadeswordman = 0;
         float deadearcher = 0;
         float deaderider = 0;
-        
-        
+
+
+
+        int contatorestampa = 0;
+        int randomstampa = 0;
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        int cont4 = 0;
+        int cont5 = 0;
+        int cont6 = 0;
+
+
+
+
+
         //swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider()
-        
+
         while (turno < 6)
         {
+            cont1 = 0;
+            cont2 = 0;
+            cont3 = 0;
+            cont4 = 0;
+            cont5 = 0;
+            cont6 = 0;
             //----------------------------------calcoli iniziali del ciclo----------------------------------------
             ATK = (swordman.getAtk() * swordman.getMomentSwordman()) + (archer.getAtk() * archer.getMomentArcher()) + (rider.getAtk() * rider.getMomentRider());
             DEF = (swordman.getDef() * swordman.getMomentSwordman()) + (archer.getDef() * archer.getMomentArcher()) + (rider.getDef() * rider.getMomentRider());
@@ -217,6 +237,121 @@ public class battle1 : MonoBehaviour
             {
                 turno = 6;
             }
+
+
+
+
+
+            contatorestampa = 6;
+
+            if (deadswordman > 0) { contatorestampa = contatorestampa - 1; }
+            if (deadarcher > 0) { contatorestampa = contatorestampa - 1; }
+            if (deadrider > 0) { contatorestampa = contatorestampa - 1; }
+            if (deadeswordman > 0) { contatorestampa = contatorestampa - 1; }
+            if (deadearcher > 0) { contatorestampa = contatorestampa - 1; }
+            if (deaderider > 0) { contatorestampa = contatorestampa - 1; }
+
+            while (contatorestampa == 0)
+            {
+
+                randomstampa = (int)Random.Range(1f, 7f);
+
+
+                if (randomstampa == 1 && cont1 == 0 && deadswordman > 0)
+                {
+                    if (deadswordman == 1)
+                    {
+                        print("You have lost " + deadswordman + "swordman");
+                    }
+                    else
+                    {
+                        print("You have lost " + deadswordman + "swordmen");
+                    }
+                        cont1 = 1;
+                    contatorestampa--;
+                }
+                if (randomstampa == 2 && cont2 == 0 && deadarcher > 0)
+                {
+                    if (deadarcher == 1)
+                    {
+                        print("You have lost " + deadarcher + "archer");
+                    }
+                    else
+                    {
+                        print("You have lost " + deadarcher + "archers");
+                    }
+                    cont2 = 1;
+                    contatorestampa--;
+                }
+                if (randomstampa == 3 && cont3 == 0 && deadrider > 0)
+                {
+                    if (deadrider == 1)
+                    {
+                        print("You have lost " + deadrider + "rider");
+                    }
+                    else
+                    {
+                        print("You have lost " + deadrider + "riders");
+                    }
+                    cont3 = 1;
+                    contatorestampa--;
+                }
+                if (randomstampa == 4 && cont4 == 0 && deadeswordman > 0)
+                {
+                    if (deadeswordman == 1)
+                    {
+                        print("Enemy has lost " + deadeswordman + "swordman");
+                    }
+                    else
+                    {
+                        print("Enemy has lost " + deadeswordman + "swordmen");
+                    }
+                    cont4 = 1;
+                    contatorestampa--;
+                }
+                if (randomstampa == 5 && cont1 == 0 && deadearcher > 0)
+                {
+                    if (deadearcher == 1)
+                    {
+                        print("Enemy has lost " + deadearcher + "archer");
+                    }
+                    else
+                    {
+                        print("Enemy has lost " + deadearcher + "archers");
+                    }
+                    cont5 = 1;
+                    contatorestampa--;
+                }
+                if (randomstampa == 6 && cont1 == 0 && deaderider > 0)
+                {
+                    if (deaderider == 1)
+                    {
+                        print("Enemy has lost " + deaderider + "swordman");
+                    }
+                    else
+                    {
+                        print("Enemy has lost " + deaderider + "swordmen");
+                    }
+                    cont6 = 1;
+                    contatorestampa--;
+                }
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             turno++;
