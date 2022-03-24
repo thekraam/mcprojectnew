@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class OldSoldiersManager : MonoBehaviour
 {
-    int sword1 = 0;
-    int arc1 = 0;
-    int rid1 = 0;
-    int turn1 = 0;
+    public int sword1 = 0;
+    public int arc1 = 0;
+    public int rid1 = 0;
+    public int turn1 = 0;
 
-    int sword2 = 0;
-    int arc2 = 0;
-    int rid2 = 0;
-    int turn2 = 0;
+    public int sword2 = 0;
+    public int arc2 = 0;
+    public int rid2 = 0;
+    public int turn2 = 0;
 
-    int sword3 = 0;
-    int arc3 = 0;
-    int rid3 = 0;
-    int turn3 = 0;
+    public int sword3 = 0;
+    public int arc3 = 0;
+    public int rid3 = 0;
+    public int turn3 = 0;
 
-    int sword4 = 0;
-    int arc4 = 0;
-    int rid4 = 0;
-    int turn4 = 0;
+    public int sword4 = 0;
+    public int arc4 = 0;
+    public int rid4 = 0;
+    public int turn4 = 0;
 
-    int sword5 = 0;
-    int arc5 = 0;
-    int rid5 = 0;
-    int turn5 = 0;
+    public int sword5 = 0;
+    public int arc5 = 0;
+    public int rid5 = 0;
+    public int turn5 = 0;
 
 
     public void salvasoldati(Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, int terri)
@@ -173,19 +173,19 @@ public class OldSoldiersManager : MonoBehaviour
 
     //--------------------------------variabili per la risposta di tutti i tipi di messaggi da parte della gilda-------------------------------------
 
-    int swordgilda1;
-    int arcgilda1;
-    int ridgilda1;
-    int tipologia1;
-    int moltiplicatore1;
-    int turngilda1;
+    public int swordgilda1;
+    public int arcgilda1;
+    public int ridgilda1;
+    public int tipologia1;
+    public int moltiplicatore1;
+    public int turngilda1;
 
-    int swordgilda2;
-    int arcgilda2;
-    int ridgilda2;
-    int tipologia2;
-    int moltiplicatore2;
-    int turngilda2;
+    public int swordgilda2;
+    public int arcgilda2;
+    public int ridgilda2;
+    public int tipologia2;
+    public int moltiplicatore2;
+    public int turngilda2;
 
 
 
