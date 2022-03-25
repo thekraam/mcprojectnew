@@ -109,6 +109,10 @@ public class Game : MonoBehaviour
     //GILDA
     public Text gildalvUI;
     public Text gildacostoUI;
+    public Button Exped2;
+    public Button Exped3;
+    public Button Exped4;
+    public Button Exped5;
 
     [Header("Miscellaneous UI")]
     // GENERAL
@@ -439,6 +443,39 @@ public class Game : MonoBehaviour
         {
             gildacostoUI.text = "Max level reached";
             gildacostoUI.color = darkred;
+        }
+
+        if (gilda.getsped2() == 1)
+        {
+            Exped2.interactable = true;
+        }
+        else
+        {
+            Exped2.interactable = false;
+        }
+        if (gilda.getsped3() == 1)
+        {
+            Exped3.interactable = true;
+        }
+        else
+        {
+            Exped3.interactable = false;
+        }
+        if (gilda.getsped4() == 1)
+        {
+            Exped4.interactable = true;
+        }
+        else
+        {
+            Exped4.interactable = false;
+        }
+        if (gilda.getsped5() == 1)
+        {
+            Exped5.interactable = true;
+        }
+        else
+        {
+            Exped5.interactable = false;
         }
 
     }
