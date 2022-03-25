@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Miniera : MonoBehaviour
 {
-    int lvl = 1;
+    public int lvl = 1;
     public int gold = 100;
-    bool carboneHigh = false;
-    int costo = 1000;
+    public bool carboneHigh = false;
+    public int costo = 1000;
 
     public void lvlUpMiniera ()
     {

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Gilda : MonoBehaviour
 {
-    int lvl = 1;
-    int costo = 1000;
-    int sped2 = 0;
-    int sped3 = 0;
-    int sped4 = 0;
-    int sped5 = 0;
+    public int lvl = 1;
+    public int costo = 1000;
+    public int sped2 = 0;
+    public int sped3 = 0;
+    public int sped4 = 0;
+    public int sped5 = 0;
 
 
 
@@ -100,8 +100,8 @@ public class Gilda : MonoBehaviour
 
 
 
-    int controllosped1 = 0;
-    int controllosped2 = 0;
+    public int controllosped1 = 0;
+    public int controllosped2 = 0;
 
     public int getcontrollosped1()
     {

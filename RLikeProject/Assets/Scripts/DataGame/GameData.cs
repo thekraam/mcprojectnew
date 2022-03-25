@@ -44,9 +44,38 @@ public class GameData
     public int total_riders;
     public int temp_total_riders;
 
+    /* mine */
+    public int minelvl;
+    public int minegold;
+    public bool carboneHigh;
+    public int minecosto;
+
+    /*fabbro*/
+    public int fablvl;
+    public int fabcosto;
+    public int armi;
+    public int armature;
+    public int zappa;
+    public int goldzappa;
+    public int piccone;
+    public int goldpiccone;
+
+    /*gilda*/
+
+    public int gildalvl;
+    public int gildacosto;
+    public int sped2;
+    public int sped3;
+    public int sped4;
+    public int sped5;
+    public int controllosped1;
+    public int controllosped2;
+
 
     public GameData (Player player , Events events , Fattoria fattoria , Caserma caserma,
-        Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+        Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, 
+        Miniera miniera, Fabbro fabbro, Gilda gilda
+        )
     {
         player_turn = player.getTurn();
         player_population = player.getPopulation();
@@ -83,6 +112,30 @@ public class GameData
         temp_total_archers = archers.getTempTotal();
         total_riders = riders.getTotal();
         temp_total_riders = riders.getTempTotal();
+
+        minelvl = miniera.lvl;
+        minegold = miniera.gold;
+        carboneHigh = miniera.carboneHigh;
+        minecosto = miniera.costo;
+
+        fablvl = fabbro.lvl;
+        fabcosto = fabbro.costo;
+        armi = fabbro.armi;
+        armature = fabbro.armature;
+        zappa = fabbro.zappa;
+        goldzappa = fabbro.goldzappa;
+        piccone = fabbro.piccone;
+        goldpiccone = fabbro.goldpiccone;
+
+
+        gildalvl = gilda.lvl;
+        gildacosto = gilda.costo;
+        sped2 = gilda.sped2;
+        sped3 = gilda.sped3;
+        sped4 = gilda.sped4;
+        sped5 = gilda.sped5;
+        controllosped1 = gilda.controllosped1;
+        controllosped2 = gilda.controllosped2;
     }
 
 }

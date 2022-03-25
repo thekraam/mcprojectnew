@@ -805,7 +805,7 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders);
+        SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders,miniera,fabbro,gilda);
     }
 
     public void LoadGame()
@@ -839,6 +839,11 @@ public class Game : MonoBehaviour
         fattoria.setGoldFattoria(data.farmGold);
         fattoria.setLvlUpCost(data.farmLvlUpCost);
 
+        miniera.lvl = data.minelvl;
+        miniera.gold = data.minegold;
+        miniera.carboneHigh = data.carboneHigh;
+        miniera.costo = data.minecosto;
+
         caserma.lvl = data.casermalvl;
         caserma.reclutamentoMAX = data.reclutamentoMAX;
         caserma.bonusBarrack = data.bonusBarrack;
@@ -854,6 +859,25 @@ public class Game : MonoBehaviour
         riders.total_riders = data.total_riders;
         riders.setTempTotal(data.temp_total_riders);
         riders.setTotal();
+
+        fabbro.lvl = data.fablvl;
+        fabbro.costo = data.fabcosto;
+        fabbro.armi  = data.armi;
+        fabbro.armature = data.armature;
+        fabbro.zappa = data.zappa;
+        fabbro.goldzappa = data.goldzappa;
+        fabbro.piccone = data.piccone;
+        fabbro.goldpiccone = data.goldpiccone;
+
+        
+        gilda.lvl = data.gildalvl;
+        gilda.costo = data.gildacosto;
+        gilda.sped2 = data.sped2;
+        gilda.sped3 = data.sped3;
+        gilda.sped4 = data.sped4;
+        gilda.sped5 = data.sped5;
+        gilda.controllosped1 = data.controllosped1;
+        gilda.controllosped2 = data.controllosped2;
 
 
     }
