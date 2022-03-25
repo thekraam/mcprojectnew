@@ -13,6 +13,8 @@ public class GameData
     public int player_citizensMAX;
     public int temp_player_citizens;
 
+
+    /*eventi*/
     public int aqueduct;
     public int response;
     public int citydefenseproject;
