@@ -805,12 +805,15 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders,miniera,fabbro,gilda);
+        SaveSystem.SaveGame(CityNameUI.text,player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders,miniera,fabbro,gilda);
     }
 
     public void LoadGame()
     {
         GameData data = SaveSystem.LoadGame();
+
+        CityNameUI.text = data.cityName;
+
         player.player_turn = data.player_turn;
         player.setPopulation(data.player_population);
         player.player_citizens = data.player_citizens;

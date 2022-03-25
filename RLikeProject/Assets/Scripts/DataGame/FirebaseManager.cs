@@ -78,7 +78,7 @@ public class FirebaseManager : MonoBehaviour
 
     public bool isSignedIn()
     {
-        return (User != auth.CurrentUser && auth.CurrentUser != null);
+        return (User == auth.CurrentUser && auth.CurrentUser != null);
     }
 
     private IEnumerator userSigneIn()
@@ -163,6 +163,14 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(UpdateCityName(citynameField.text));
         //StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
     }
+    public void SaveFairBase()
+    {
+        if(!isSignedIn())
+            Debug.Log("Not Connected");
+        else 
+            SaveDataButton();
+
+    }
 
     public void SaveUsername()
     {
@@ -229,7 +237,8 @@ public class FirebaseManager : MonoBehaviour
 
             username.color = new Color32(0, 130, 0, 255);
             
-            usernameField.text = User.DisplayName;
+            //usernameField.text = User.DisplayName;
+            StartCoroutine(userSigneIn());
             
             confirmLoginText.text = "";
             ClearLoginFeilds();

@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-
+    public string cityName;
     public int player_turn;
     public int player_population;
     public int player_money;
@@ -72,11 +72,14 @@ public class GameData
     public int controllosped2;
 
 
-    public GameData (Player player , Events events , Fattoria fattoria , Caserma caserma,
+    public GameData (string cityname, Player player , Events events , Fattoria fattoria , Caserma caserma,
         Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, 
         Miniera miniera, Fabbro fabbro, Gilda gilda
         )
     {
+
+        cityName = cityname;
+
         player_turn = player.getTurn();
         player_population = player.getPopulation();
         player_money = player.getMoney();

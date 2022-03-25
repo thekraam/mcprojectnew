@@ -20,7 +20,7 @@ public static class SaveSystem
         if (File.Exists(isDataPresent)) File.Delete(isDataPresent);
     }
 
-    public static void SaveGame(Player player , Events events , Fattoria fattoria , Caserma caserma ,
+    public static void SaveGame(string cityname ,Player player , Events events , Fattoria fattoria , Caserma caserma ,
                 Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders,
                   Miniera miniera, Fabbro fabbro, Gilda gilda
         )
@@ -30,7 +30,7 @@ public static class SaveSystem
         isDataPresent = path;
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        GameData data = new GameData(player , events , fattoria , caserma , 
+        GameData data = new GameData(cityname ,player , events , fattoria , caserma , 
                                     swordsmen , archers , riders , miniera, 
                                     fabbro, gilda );
 
