@@ -561,7 +561,8 @@ public class Game : MonoBehaviour
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
 
     public void onTapVillage()
-    {
+    {   
+        // audio effect
         FindObjectOfType<AudioManager>().PlayEffectFaded(village_mapUnfold);
 
         gamePanel.SetActive(true); // sempre true
@@ -571,10 +572,13 @@ public class Game : MonoBehaviour
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(false);
         minePanel.SetActive(false);
+
+        FindObjectOfType<Tutorial>().OnFirstTapVillage();
     }
 
     public void onTapFarm()
     {
+        // audio effect
         FindObjectOfType<AudioManager>().PlayEffectFaded(farm_cowbells);
 
         gamePanel.SetActive(true); // sempre true
@@ -584,9 +588,12 @@ public class Game : MonoBehaviour
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(false);
         minePanel.SetActive(false);
+
+        FindObjectOfType<Tutorial>().OnFirstTapFarm();
     }
     public void onTapCaserma()
     {
+        // audio effect
         FindObjectOfType<AudioManager>().PlayEffectFaded(barracks_swordFight);
 
         gamePanel.SetActive(true); // sempre true
@@ -597,10 +604,12 @@ public class Game : MonoBehaviour
         fabbroPanel.SetActive(false);
         minePanel.SetActive(false);
 
+        FindObjectOfType<Tutorial>().OnFirstTapBarracks();
     }
 
     public void onTapGuild()
     {
+        // audio effect
         FindObjectOfType<AudioManager>().PlayEffectFaded(guild_paperwork);
 
         gamePanel.SetActive(true); // sempre true
@@ -610,10 +619,13 @@ public class Game : MonoBehaviour
         guildPanel.SetActive(true); //
         fabbroPanel.SetActive(false);
         minePanel.SetActive(false);
+
+        FindObjectOfType<Tutorial>().OnFirstTapGuild();
     }
 
     public void onTapFabbro()
     {
+        // audio effect
         FindObjectOfType<AudioManager>().PlayEffectFaded(blacksmith_Anvil);
 
         gamePanel.SetActive(true); // sempre true
@@ -623,10 +635,13 @@ public class Game : MonoBehaviour
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(true); //
         minePanel.SetActive(false);
+
+        FindObjectOfType<Tutorial>().OnFirstTapBlacksmith();
     }
 
     public void onTapMine()
     {
+        // audio effect
         FindObjectOfType<AudioManager>().PlayEffectFaded(mine_pickaxe);
 
         gamePanel.SetActive(true); // sempre true
@@ -636,6 +651,8 @@ public class Game : MonoBehaviour
         guildPanel.SetActive(false);
         fabbroPanel.SetActive(false); //
         minePanel.SetActive(true);
+
+        FindObjectOfType<Tutorial>().OnFirstTapMine();
     }
 
     // tasti fattoria

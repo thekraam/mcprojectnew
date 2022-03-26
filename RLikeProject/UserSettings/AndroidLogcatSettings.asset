@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "LGD855b7e25028",
         "name": "com.arkgames.eternalsattack",
-        "processId": 29328,
+        "processId": 4785,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,25 +11,67 @@
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 22331,
+            "processId": 9349,
+            "exited": true
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 15262,
+            "exited": true
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 19522,
+            "exited": true
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 20332,
+            "exited": true
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 21364,
+            "exited": true
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.android.settings",
+            "processId": 4029,
             "exited": false
         },
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 25525,
+            "processId": 26754,
             "exited": false
         },
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 31243,
+            "processId": 27622,
             "exited": false
         },
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 29328,
+            "processId": 28176,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 29063,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 4785,
             "exited": false
         }
     ],
