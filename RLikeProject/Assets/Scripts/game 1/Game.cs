@@ -568,15 +568,18 @@ public class Game : MonoBehaviour
 
 
     public void Update()
-    {
+    {      
         // ---------------------------   Controllo Presenza Salvataggio --------------------------
+
         SaveSystem.DataStatus(resumeGameText);
 
         // ---------------------------                 BG Music                ---------------------------
 
         if (FindObjectOfType<FontDecreaser>().introClosed)
             FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
+
         // --------------------------- controller tempo per aggiornamento sync ---------------------------
+
         SyncTurnAndBlockers();
 
         // --------------------------- updater generale ---------------------------
@@ -598,7 +601,9 @@ public class Game : MonoBehaviour
         // --------------------------- updater dati Miniera - tempo reale ---------------------------
 
         UpdateMineUI();
+
         // --------------------------- updater dati Gilda - tempo reale ---------------------------
+
         UpdateGuildUI();
     }
 
@@ -640,6 +645,7 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
         FindObjectOfType<Events>().EventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
+        FindObjectOfType<Events>().attendingMainEvent = true;
         SaveGame();
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------

@@ -11,7 +11,7 @@ public class Gilda : MonoBehaviour
     public int sped4 = 0;
     public int sped5 = 0;
 
-
+    string[] message = new string[10]; // array di stringhe da mandare al dialogo
 
 
     public void lvlup()
@@ -176,7 +176,6 @@ public class Gilda : MonoBehaviour
 
         y = (int)Random.Range(1f, 5f);
 
-
         if (x == 1 && y == 1) //no battaglia
         {
 
@@ -185,8 +184,18 @@ public class Gilda : MonoBehaviour
             Debug.LogError("y = 1");
             manager.salvasoldati(swordmen, archers, riders, 1);
             manager.gildaimpostamex(1,y, 5, 5, 0);
-            
-            //dialogo da mettere 
+
+
+            // format invio stringhe
+            string eventString1 = "Questo";
+            string eventString2 = "è";
+            string eventString3 = "un banale esempio";
+         // string eventString4 = "possibile frase in più";
+         // string eventString5 = "altra possibile frase in più, fino a 10 totali";
+
+            string[] message = { eventString1, eventString2, eventString3 /*, eventString4, eventString5...*/ };
+
+            FindObjectOfType<DialogueManagerMINI>().StartDialogue(false, /* --> inserisci qui il nome di chi parla, se non lo vuoi metti "" --> */"Guild Master", message);
         }
         if (x == 1 && y == 2) //battaglia persa
         {

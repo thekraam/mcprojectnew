@@ -45,6 +45,8 @@ public class Events : MonoBehaviour
 
     /* booleane eventi secondari */
     public bool attendingSecondaryEvent = false; // generico, stabilisce se si sta partecipando gia' ad un evento secondario
+    public bool attendingMainEvent = true;
+
 
     public int aqueductSecondary = 0; // evento secondario acquedotto
 
@@ -177,6 +179,8 @@ public class Events : MonoBehaviour
         }
         else
             aqueductSecondary = 0; // conferma logica dell'algoritmo, inutile
+        yield return new WaitForSeconds(1.5f);
+        attendingMainEvent = false;
     }
 
     /* evento primario aumento delle difese della citta' */
@@ -201,5 +205,7 @@ public class Events : MonoBehaviour
             player.setRapidMoney(-1000);
             player.bonusWall = 1;
         }
+        yield return new WaitForSeconds(1.5f);
+        attendingMainEvent = false;
     }
 }

@@ -9,7 +9,6 @@ public class Dialogue : MonoBehaviour
     private string a = "Guild Master";
 
 
-
     // FUNZIONE DA USARE SOLO PER NEXT IN MAIN PER I DIALOGHI
     public void TriggerSPECIALDialogue()
     {
@@ -32,9 +31,9 @@ public class Dialogue : MonoBehaviour
 
 
     // funzione per far apparire il dialogue, va su un tasto o una situazione
-    public void TriggerGuildDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void TriggerGuildDialogue(string[] message)
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(false, a, pickGuildEvent(player, swordsmen, archers, riders));
+        FindObjectOfType<DialogueManagerMINI>().StartDialogue(false, "Guild Master", message);
     }
 
     // dialogo di popup in caso si tenti di fare due eventi gilda nello stesso turno
@@ -42,7 +41,6 @@ public class Dialogue : MonoBehaviour
     {
         string[] alreadyAttendingMessage = {"Apologize sir, you can't send two adventurer groups at the same time."};
         FindObjectOfType<DialogueManager>().StartDialogue(false, "Guild Master", alreadyAttendingMessage);
-        
     }
 
 
