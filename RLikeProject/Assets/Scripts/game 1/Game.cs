@@ -617,6 +617,7 @@ public class Game : MonoBehaviour
     
     public void onSkipTurn()
     {
+        FindObjectOfType<Events>().attendingMainEvent = true; // si da per scontato che stia partecipando ad un evento, qualora non dovesse scattare Events.EventStarter settera a false a fine tentativo scelta evento
 
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
@@ -645,7 +646,6 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
         FindObjectOfType<Events>().EventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
-        FindObjectOfType<Events>().attendingMainEvent = true;
         SaveGame();
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------

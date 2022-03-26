@@ -52,6 +52,13 @@ public class DialogueManagerMINI : MonoBehaviour
 
 	public void StartDialogue(bool isInteractive, string name, string[] eventStrings)
 	{
+		StartCoroutine(WaitForPreviousDialogue(isInteractive, name, eventStrings));
+	}
+
+	private IEnumerator WaitForPreviousDialogue(bool isInteractive, string name, string[] eventStrings)
+    {
+		yield return new WaitUntil(() => FindObjectOfType<Events>().attendingMainEvent == false);
+
 		endingdialogue = 0;
 		responseToInteractiveDialogue = 0;
 		if (DialogueIsResetting == 1)
