@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     public float bonusFar = 0;
     public float bonusDemoniac = 0;
 
+    public int lvlwall = 0;
+    public int lvlfield = 0;
+
 
     //------------------------------------------turni---------------------
     public int getTurn()
@@ -171,5 +174,59 @@ public class Player : MonoBehaviour
     }
 
 
+    public int getlvlwall()
+    {
+        return lvlwall;
+    }
+    public int getlvlfield()
+    {
+        return lvlfield;
+    }
+    public void lvlupWall()
+    {
+        lvlwall = lvlwall + 1 ;
+        bonusWall = bonusWall + 5;
+    }
+    public void lvlupfield()
+    {
+        lvlfield = lvlfield + 1;
+        bonusCity = bonusCity + 5;
+    }
+
+    public int getcostowall()
+    {
+        if (lvlwall == 0) return 500;
+        if (lvlwall == 1) return 1000;
+        if (lvlwall == 2) return 1500;
+        if (lvlwall == 3) return 2000;
+        else return 2500;
+    }
+
+    public string getcostowallmex()
+    {
+        if (lvlwall == 0) return "Cost: " + "500";
+        if (lvlwall == 1) return "Cost: " + "1000";
+        if (lvlwall == 2) return "Cost: " + "1500";
+        if (lvlwall == 3) return "Cost: " + "2000";
+        else return "max lvl reached";
+    }
+
+    public int getcostofield()
+    {
+        if (lvlfield == 0) return 500;
+        if (lvlfield == 1) return 1000;
+        if (lvlfield == 2) return 1500;
+        if (lvlfield == 3) return 2000;
+        else return 2500;
+    }
+
+    public string getcostofieldmex()
+    {
+        if (lvlfield == 0) return "Cost: " + "500";
+        if (lvlfield == 1) return "Cost: " + "1000";
+        if (lvlfield == 2) return "Cost: " + "1500";
+        if (lvlfield == 3) return "Cost: " + "2000";
+        else return "max lvl reached";
+    }
 
 }

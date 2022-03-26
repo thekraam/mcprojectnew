@@ -184,7 +184,7 @@ public class Fabbro : MonoBehaviour
         {
             if (zappa < 5)
             {
-                return "+" + (zappa + 1);
+                return "+" + ((zappa + 1)*10) + "%";
             }
             else
             {
@@ -195,7 +195,7 @@ public class Fabbro : MonoBehaviour
         {
             if (piccone < 5)
             {
-                return "+" + (piccone + 1);
+                return "+" + ((piccone + 1)*5) + "%";
             }
             else
             {

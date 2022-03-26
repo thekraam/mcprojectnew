@@ -96,6 +96,25 @@ public class Game : MonoBehaviour
     public Text casermanextreclutamentoMAXUI;
     public Text casermaBattleBonusUI;
     public Text casermaNextBattleBonusUI;
+    public Text infoswordmanQTYUI;
+    public Text infoarcherQTYUI;
+    public Text inforiderQTYUI;
+    public Text infoswordmanATKUI;
+    public Text infoarcherATKUI;
+    public Text inforiderATKUI;
+    public Text infoswordmanDEFUI;
+    public Text infoarcherDEFUI;
+    public Text inforiderDEFUI;
+    public Text infoswordmanTATKUI;
+    public Text infoarcherTATKUI;
+    public Text inforiderTATKUI;
+    public Text infoswordmanTDEFUI;
+    public Text infoarcherTDEFUI;
+    public Text inforiderTDEFUI;
+
+
+
+
 
     [Header("Mine UI")]
     //MINIERA
@@ -113,6 +132,17 @@ public class Game : MonoBehaviour
     public Button Exped3;
     public Button Exped4;
     public Button Exped5;
+
+    public Text gildabonus1;
+    public Text gildabonus2;
+    public Text gildabonus3;
+    public Text gildabonus4;
+    public Text gildalvlwall;
+    public Text gildalvlfields;
+    public Text gildacostowall;
+    public Text gildacostofields;
+
+
 
     [Header("Miscellaneous UI")]
     // GENERAL
@@ -292,8 +322,8 @@ public class Game : MonoBehaviour
 
         fabbroAtkUI.text = "+" + fabbro.getArmi();
         fabbroDefUI.text = "+" + fabbro.getArmature();
-        fabbroZappaUI.text = "+" + fabbro.getZappa();
-        fabbroPicconeUI.text = "+" + fabbro.getPiccone();
+        fabbroZappaUI.text = "+" + (fabbro.getZappa() * 10) + "%";
+        fabbroPicconeUI.text = "+" + (fabbro.getPiccone()*5) + "%";
 
 
         fabbroNextAtkUI.text = fabbro.getnextpotenziamento(1);
@@ -394,7 +424,27 @@ public class Game : MonoBehaviour
         casermanextreclutamentoMAXUI.text = caserma.getNextlvlReclutamentoMax();
         casermaBattleBonusUI.text = "" + caserma.getBonusBarrack();
         casermaNextBattleBonusUI.text = caserma.getNextLvlBonusBarrack();
-    }
+
+          infoswordmanQTYUI.text = "" + swordsmen.getTotal();
+          infoarcherQTYUI.text = "" + archers.getTotal();
+          inforiderQTYUI.text = "" + riders.getTotal();
+          infoswordmanATKUI.text = "" + swordsmen.getAtk();
+          infoarcherATKUI.text = "" + archers.getAtk();
+          inforiderATKUI.text = "" + riders.getAtk();
+          infoswordmanDEFUI.text = "" + swordsmen.getDef() ;
+          infoarcherDEFUI.text = "" + archers.getDef();
+          inforiderDEFUI.text = "" + riders.getDef();
+          infoswordmanTATKUI.text =  "" + (swordsmen.getAtk() * swordsmen.getTotal()) ;
+          infoarcherTATKUI.text = "" + (archers.getTotal() * archers.getAtk());
+          inforiderTATKUI.text = "" + (riders.getAtk() * riders.getTotal());
+          infoswordmanTDEFUI.text = "" + ( swordsmen.getTotal() * swordsmen.getDef());
+          infoarcherTDEFUI.text = "" + (archers.getDef() * archers.getTotal());
+          inforiderTDEFUI.text = "" + (riders.getTotal() * riders.getDef());
+
+
+
+
+}
 
 
     private void UpdateMineUI()
@@ -477,6 +527,40 @@ public class Game : MonoBehaviour
         {
             Exped5.interactable = false;
         }
+
+
+
+
+            gildabonus1.text = "" + player.getBonusWall() + "%";
+            gildabonus2.text = "" + player.getBonusCity() + "%";
+            gildabonus3.text = "" + player.getBonusFar() + "%";
+            gildabonus4.text = "" + player.getBonusDemoniac() + "%";
+            gildalvlwall.text = "lvl " + (player.getlvlwall() +1);
+            gildalvlfields.text = "lvl " + (player.getlvlfield()+1);
+
+
+        gildacostowall.text = player.getcostowallmex();
+        if (player.getMoney() < player.getcostowall() || player.getlvlwall() == 4)
+        {
+            gildacostowall.color = darkred;
+        }
+        else
+        {
+            gildacostowall.color = blacknormal;
+        }
+
+        gildacostofields.text = player.getcostofieldmex();
+
+        if (player.getMoney() < player.getcostofield() || player.getlvlfield() == 4)
+        {
+            gildacostofields.color = darkred;
+        }
+        else
+        {
+            gildacostofields.color = blacknormal;
+        }
+
+
 
     }
 
@@ -776,6 +860,30 @@ public class Game : MonoBehaviour
             gilda.lvlup();
         }
     }
+
+    public void onUpgradeWall()
+    {
+        if (player.getlvlwall() < 4 && (player.getMoney() >= player.getcostowall()))
+        {
+            player.setRapidMoney(-player.getcostowall());
+            player.lvlupWall();
+        }
+    }
+
+    public void onUpgradeField()
+    {
+        if (player.getlvlfield() < 4 && (player.getMoney() >= player.getcostofield()))
+        {
+            player.setRapidMoney(-player.getcostofield());
+            player.lvlupfield();
+        }
+    }
+
+
+
+
+
+
     //--------------------------------------------------------------spedizione
 
     public void onSpedizione1() // prima tipologia di spedizione
