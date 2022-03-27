@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "LGD855b7e25028",
+    "m_SelectedDeviceId": "ZY323HZ2MM",
     "m_SelectedPackage": {
-        "deviceId": "LGD855b7e25028",
-        "name": "com.arkgames.eternalsattack",
-        "processId": 4785,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,67 +11,31 @@
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 9349,
-            "exited": true
-        },
-        {
-            "deviceId": "LGD855b7e25028",
-            "name": "com.arkgames.eternalsattack",
-            "processId": 15262,
-            "exited": true
-        },
-        {
-            "deviceId": "LGD855b7e25028",
-            "name": "com.arkgames.eternalsattack",
-            "processId": 19522,
-            "exited": true
-        },
-        {
-            "deviceId": "LGD855b7e25028",
-            "name": "com.arkgames.eternalsattack",
-            "processId": 20332,
-            "exited": true
-        },
-        {
-            "deviceId": "LGD855b7e25028",
-            "name": "com.arkgames.eternalsattack",
-            "processId": 21364,
-            "exited": true
-        },
-        {
-            "deviceId": "LGD855b7e25028",
-            "name": "com.android.settings",
-            "processId": 4029,
+            "processId": 22331,
             "exited": false
         },
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 26754,
+            "processId": 25525,
             "exited": false
         },
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 27622,
+            "processId": 31243,
             "exited": false
         },
         {
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
-            "processId": 28176,
+            "processId": 29328,
             "exited": false
         },
         {
-            "deviceId": "LGD855b7e25028",
-            "name": "com.arkgames.eternalsattack",
-            "processId": 29063,
-            "exited": false
-        },
-        {
-            "deviceId": "LGD855b7e25028",
-            "name": "com.arkgames.eternalsattack",
-            "processId": 4785,
+            "deviceId": "ZY323HZ2MM",
+            "name": "com.motorola.launcher3",
+            "processId": 3555,
             "exited": false
         }
     ],

@@ -143,6 +143,17 @@ public class Game : MonoBehaviour
     public Text gildacostofields;
 
 
+    public Text capitanonameUI;
+    public Text capitanolvlUI;
+    public Text capitanoATKUI;
+    public Text capitanoDEFUI;
+    public Text capitanoBonusUI;
+    public Text capitanoTalent1UI;
+    public Text capitanoTalent2UI;
+    public Text capitanoTalent3UI;
+    public Text capitanoDescriptionUI;
+
+
 
     [Header("Miscellaneous UI")]
     // GENERAL
@@ -561,8 +572,23 @@ public class Game : MonoBehaviour
         }
 
 
+        capitanonameUI.text = "Captain " + capitano.getName();
+        capitanolvlUI.text = "lvl " + capitano.getLvl();
+        capitanoATKUI.text = "" + capitano.getAtk();
+        capitanoDEFUI.text = "" + capitano.getDef();
+        capitanoBonusUI.text = "+" + capitano.getBonusBattle() + "%";
+                     
 
-    }
+             capitanoTalent1UI.text = capitano.getPerk1();
+            if (capitano.getLvl() >= 3) { capitanoTalent2UI.text = capitano.getPerk2(); }
+            else { capitanoTalent2UI.text = ""; }
+            if (capitano.getLvl() == 6) { capitanoTalent3UI.text = capitano.getPerk3(); }
+            else { capitanoTalent3UI.text = ""; }
+
+            capitanoDescriptionUI.text = capitano.getFinalComment();
+
+
+}
 
 
 
@@ -642,6 +668,7 @@ public class Game : MonoBehaviour
 
         manager.riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
         manager.gildamexritorno(player, gilda);  //betatesting
+        if (capitano.getcreato() == false) { capitano.setcreato(); }  //crea capitano se non creato precedentemente
 
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
@@ -711,6 +738,7 @@ public class Game : MonoBehaviour
         minePanel.SetActive(false);
 
         FindObjectOfType<Tutorial>().OnFirstTapGuild();
+        if (capitano.getcreato() == false) { capitano.setcreato(); }  //crea capitano se non creato precedentemente
     }
 
     public void onTapFabbro()
@@ -1069,6 +1097,7 @@ public class Game : MonoBehaviour
     Enemy.EArchers earchers = new Enemy.EArchers();
     Enemy.ERiders eriders = new Enemy.ERiders();
 
+    
     public void makeEnemy(int totale, int livello, int swordmen, int archers, int riders, int lvlcapitano)
     {
         enemy.creazione(totale, livello, swordmen, archers, riders, lvlcapitano, enemyCapitano, eswordsmen, earchers, eriders);

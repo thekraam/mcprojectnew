@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Captain1 : MonoBehaviour
 {
+    bool creato = false;
+
     int lvl = 1;
     int atk = 6;
     int def = 6;
@@ -71,6 +73,9 @@ public class Captain1 : MonoBehaviour
         perk3 = "errorPerk3";
         perk3comment = "errorPerk3comment";
 
+                    giveFinalComment();
+            boolfinalcomment = 1;
+
     }
 
     public void lvlup()
@@ -112,8 +117,7 @@ public class Captain1 : MonoBehaviour
             bonusBattle = bonusBattle + 1;
             perk3 = givePerk();
             perk3comment = givePerkComment();
-            giveFinalComment();
-            boolfinalcomment = 1;
+
         }
 
 
@@ -169,17 +173,17 @@ public class Captain1 : MonoBehaviour
                 
                 if (x1 == 1)
                 { 
-                    perk = "Esperto";
+                    perk = "Expert (Battle Bonus +2%)";
                     bonusBattle = bonusBattle + 2;
                 }
                 if (x1 == 2)
                 {
-                    perk = "Esperto lvl 2";
+                    perk = "Expert lvl 2 (Battle Bonus +2%) ";
                     bonusBattle = bonusBattle + 2;
                 }
                 if (x1 == 3)
                 {
-                    perk = "Esperto lvl 3";
+                    perk = "Expert lvl 3 (Battle Bonus +2%)";
                     bonusBattle = bonusBattle + 2;
                 }
                 xcont = 1;
@@ -192,19 +196,19 @@ public class Captain1 : MonoBehaviour
 
                 if (x2 == 1)
                 {
-                    perk = "combattente";
+                    perk = "figher (+3 Atk, +3 Def)";
                     atk = atk + 3;
                     def = def + 3;
                 }
                 if (x2 == 2)
                 {
-                    perk = "combattente lvl 2";
+                    perk = "figher lvl 2 (+3 Atk, +3 Def)";
                     atk = atk + 3;
                     def = def + 3;
                 }
                 if (x2 == 3)
                 {
-                    perk = "combattente lvl 3";
+                    perk = "figher lvl 3 (+3 Atk, +3 Def)";
                     atk = atk + 3;
                     def = def + 3;
                 }
@@ -217,17 +221,17 @@ public class Captain1 : MonoBehaviour
 
                 if (x3 == 1)
                 {
-                    perk = "specializzato in mura";
+                    perk = "Walls Master (Wall Bonus +5%)";
                     bonusWall = bonusWall + 5;
                 }
                 if (x3 == 2)
                 {
-                    perk = "specializzato in mura lvl 2";
+                    perk = "Walls Master lvl 2 (Wall Bonus +5%)";
                     bonusWall = bonusWall + 5;
                 }
                 if (x3 == 3)
                 {
-                    perk = "specializzato in mura lvl 3";
+                    perk = "Walls Master lvl 3 (Wall Bonus +5%)";
                     bonusWall = bonusWall + 5;
                 }
                 xcont = 3;
@@ -240,17 +244,17 @@ public class Captain1 : MonoBehaviour
 
                 if (x4 == 1)
                 {
-                    perk = "specializzato nei campi";
+                    perk = "Field Master (Fields Bonus +5%) ";
                     bonusCity = bonusCity + 5;
                 }
                 if (x4 == 2)
                 {
-                    perk = "specializzato nei campi lvl 2";
+                    perk = "Field Master  lvl 2 (Fields Bonus +5%)";
                     bonusCity = bonusCity + 5;
                 }
                 if (x4 == 3)
                 {
-                    perk = "specializzato nei campi lvl 3";
+                    perk = "Field Master  lvl 3 (Fields Bonus +5%)";
                     bonusCity = bonusCity + 5;
                 }
                 xcont = 4;
@@ -262,17 +266,17 @@ public class Captain1 : MonoBehaviour
 
                 if (x5 == 1)
                 {
-                    perk = "specializzato nelle terre lontane";
+                    perk = "Far Lands Master (Far Lands bonus +5%)";
                     bonusFar = bonusFar + 5;
                 }
                 if (x5 == 2)
                 {
-                    perk = "specializzato nelle terre lontane lvl 2";
+                    perk = "Far Lands Master lvl 2 (Far Lands bonus +5%)";
                     bonusFar = bonusFar + 5;
                 }
                 if (x5 == 3)
                 {
-                    perk = "specializzato nelle terre lontane lvl 3";
+                    perk = "Far Lands Master lvl 3 (Far Lands bonus +5%)";
                     bonusFar = bonusFar + 5;
                 }
                 xcont = 5;
@@ -285,17 +289,17 @@ public class Captain1 : MonoBehaviour
 
                 if (x6 == 1)
                 {
-                    perk = "specializzato nelle terre demoniache";
+                    perk = "Demoniac Lands Master (Demoniac Lands bonus +5%)";
                     bonusDemoniac = bonusDemoniac + 5;
                 }
                 if (x6 == 2)
                 {
-                    perk = "specializzato nelle terre demoniache lvl 2";
+                    perk = "Demoniac Lands Master lvl 2 (Demoniac Lands bonus +5%)";
                     bonusDemoniac = bonusDemoniac + 5;
                 }
                 if (x6 == 3)
                 {
-                    perk = "specializzato nelle terre demoniache lvl 3";
+                    perk = "Demoniac Lands Master lvl 3 (Demoniac Lands bonus +5%)";
                     bonusDemoniac = bonusDemoniac + 5;
                 }
                 xcont = 6;
@@ -307,17 +311,17 @@ public class Captain1 : MonoBehaviour
 
                 if (x7 == 1)
                 {
-                    perk = "attaccante";
+                    perk = "aggressor (+6 ATK)";
                     atk = atk + 6;
                 }
                 if (x7 == 2)
                 {
-                    perk = "attaccante lvl 2";
+                    perk = "aggressor lvl 2 (+6 ATK)";
                     atk = atk + 6;
                 }
                 if (x7 == 3)
                 {
-                    perk = "attaccante lvl 3";
+                    perk = "aggressor lvl 3 (+6 ATK)";
                     atk = atk + 6;
                 }
                 xcont = 7;
@@ -329,17 +333,17 @@ public class Captain1 : MonoBehaviour
 
                 if (x8 == 1)
                 {
-                    perk = "difensore";
+                    perk = "defender (+6 DEF)";
                     def = def + 6;
                 }
                 if (x8 == 2)
                 {
-                    perk = "difensore lvl 2";
+                    perk = "defender lvl 2 (+6 DEF)";
                     def = def + 6;
                 }
                 if (x8 == 3)
                 {
-                    perk = "difensore lvl 3";
+                    perk = "defender lvl 3 (+6 DEF)";
                     def = def + 6;
                 }
                 xcont = 8;
@@ -351,19 +355,19 @@ public class Captain1 : MonoBehaviour
 
                 if (x9 == 1)
                 {
-                    perk = "forza bruta";
+                    perk = "Brute Force (+10 Atk, -2 Def)";
                     atk = atk + 10;
                     def = def - 2;
                 }
                 if (x9 == 2)
                 {
-                    perk = "forza bruta lvl 2";
+                    perk = "Brute Force lvl 2 (+10 Atk, -2 Def)";
                     atk = atk + 10;
                     def = def - 2;
                 }
                 if (x9 == 3)
                 {
-                    perk = "forza bruta lvl 3";
+                    perk = "Brute Force lvl 3 (+10 Atk, -2 Def)";
                     atk = atk + 10;
                     def = def - 2;
                 }
@@ -376,19 +380,19 @@ public class Captain1 : MonoBehaviour
 
                 if (x10 == 1)
                 {
-                    perk = "muro di pietra";
+                    perk = "Wall of Stone (+10 Def, -2 Atk)";
                     def = def + 10;
                     atk = atk - 2;
                 }
                 if (x10 == 2)
                 {
-                    perk = "muro di pietra lvl 2";
+                    perk = "Wall of Stone lvl 2 (+10 Def, -2 Atk)";
                     def = def + 10;
                     atk = atk - 2;
                 }
                 if (x10 == 3)
                 {
-                    perk = "muro di pietra lvl 3";
+                    perk = "Wall of Stone lvl 3 (+10 Def, -2 Atk)";
                     def = def + 10;
                     atk = atk - 2;
                 }
@@ -522,6 +526,17 @@ public class Captain1 : MonoBehaviour
         }
 
     //----------------------------------------------getters------------------------------------------
+    
+    public bool getcreato()
+    {
+        return creato;
+    }
+    public void setcreato()
+    {
+        creato = true;
+        resetCaptain();
+    }    
+    
     public void setAtk(int x)
     {
         atk = atk + x;
