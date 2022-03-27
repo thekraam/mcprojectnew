@@ -462,56 +462,171 @@ public class Captain1 : MonoBehaviour
 
     public void giveFinalComment()
     {
-        int x = (int)Random.Range(1f, 6f);
-        if (x == 1)
+        finalcomment = "";
+        while (finalcomment == "")
         {
-            finalcomment = "'il suo corpo era fatto di spade'";
-        }
-        if (x == 2)
-        {
-            finalcomment = "c'ha pure il lupo";
-        }
-        if (x == 3)
-        {
-            finalcomment = "'Deus Vult'";
-        }
-        if (x == 4)
-        {
-            finalcomment = "'Ho +2 in tpc'";
-        }
-        if (x == 5)
-        {
-            finalcomment = "'I will have order'";
+            int x = (int)Random.Range(1f, 22f);
+            if (x == 1)
+            {
+                finalcomment = "'His body is made of swords'";
+            }
+            if (x == 2)
+            {
+                finalcomment = "'He's even got a wolf!'";
+            }
+            if (x == 3)
+            {
+                finalcomment = "'Deus Vult'";
+            }
+            if (x == 4)
+            {
+                finalcomment = "'Got a plus two in TPC'";
+            }
+            if (x == 5)
+            {
+                finalcomment = "'I will have order'";
+            }
+            if (x == 6)
+            {
+                finalcomment = "'If you really want something...'";
+            }
+            if (x == 7)
+            {
+                finalcomment = "'Ah s**t, here we go again...'";
+            }
+            if (x == 8 && name == "Jack")
+            {
+                finalcomment = "'The wind... is troubled today'";
+            }
+            if (x == 9)
+            {
+                finalcomment = "'Our enemy is already dead'";
+            }
+            if (x == 10)
+            {
+                finalcomment = "'Glory lies beyond the horizon'";
+            }
+            if (x == 11)
+            {
+                finalcomment = "'It's not like I want to protect your City or something'";
+            }
+            if (x == 12)
+            {
+                finalcomment = "'People die if they are killed'";
+            }
+            if (x == 13)
+            {
+                finalcomment = "'Useless, useless, useless!'";
+            }
+            if (x == 14)
+            {
+                finalcomment = "'Nothing ever goes as planned in this accursed world'";
+            }
+            if (x == 15)
+            {
+                finalcomment = "'It is at the moment of death that humanity has value'";
+            }
+            if (x == 16)
+            {
+                finalcomment = "'I feel like I fought for thousands of battles, but I didn't'";
+            }
+            if (x == 17)
+            {
+                finalcomment = "'Soldiers, follow my lead!'";
+            }
+            if (x == 18)
+            {
+                finalcomment = "'This time... I won't lose!'";
+            }
+            if (x == 19)
+            {
+                finalcomment = "'Finally it's' " + nome + "'s turn to shine!'";
+            }
+            if (x == 20)
+            {
+                finalcomment = "'Our army funding should be '" + FindObjectOfType<Game>().moneyUI.text + " Golds'";
+            }
+            if (x == 21)
+            {
+                finalcomment = "'Don't worry, I'm the strongest.'";
+            }
         }
     }
 
         public void giveName()
     {
-        int x = (int)Random.Range(1f, 7f);
-        if (x == 1)
+        nome = "";
+        while (nome == "")
         {
-            nome = "Jack";
-        }
-
-        if (x == 2)
-        {
-            nome = "Depp";
-        }
-        if (x == 3)
-        {
-            nome = "Tadakuni";
-        }
-        if (x == 4)
-        {
-            nome = "Capta1n";
-        }
-        if (x == 5)
-        {
-            nome = "Markovich";
-        }
-        if (x == 6)
-        {
-            nome = "Hopper";
+            int x = (int)Random.Range(1f, 18f);
+            if (x == 1)
+            {
+                nome = "Jack";
+            }
+            if (x == 2)
+            {
+                nome = "Depp";
+            }
+            if (x == 3)
+            {
+                nome = "Tadakuni";
+            }
+            if (x == 4)
+            {
+                nome = "Capta1n";
+            }
+            if (x == 5)
+            {
+                nome = "Markovich";
+            }
+            if (x == 6)
+            {
+                nome = "Hopper";
+            }
+            if (x == 7)
+            {
+                nome = "Wolf";
+            }
+            if (x == 8)
+            {
+                nome = "Aro";
+            }
+            if (x == 9)
+            {
+                nome = "Arvon";
+            }
+            if (x == 10)
+            {
+                nome = "Macy";
+            }
+            if (x == 11)
+            {
+                nome = "Lalatina";
+            }
+            if (x == 12)
+            {
+                nome = "Aldenee";
+            }
+            if (x == 13)
+            {
+                nome = "Edelfelt";
+            }
+            if (x == 14)
+            {
+                nome = "Venezo";
+            }
+            if (x == 15)
+            {
+                nome = "C. Marcs";
+            }
+            if (x == 16)
+            {
+                nome = "Ragnar";
+            }
+            if (x == 17)
+            {
+                nome = "Philip";
+            }
         }
     }
 
