@@ -128,6 +128,8 @@ public class Game : MonoBehaviour
     //GILDA
     public Text gildalvUI;
     public Text gildacostoUI;
+    public Text gildanumspedUI;
+    public Button Exped1;
     public Button Exped2;
     public Button Exped3;
     public Button Exped4;
@@ -153,6 +155,26 @@ public class Game : MonoBehaviour
     public Text capitanoTalent3UI;
     public Text capitanoDescriptionUI;
 
+    public Text gsped1UI;
+    public Text gsped11UI;
+    public Text gsped12UI;
+    public Text gsped2UI;
+    public Text gsped21UI;
+    public Text gsped22UI;
+    public Text gsped3UI;
+    public Text gsped31UI;
+    public Text gsped32UI;
+    public Text gsped33UI;
+    public Text gsped4UI;
+    public Text gsped41UI;
+    public Text gsped42UI;
+    public Text gsped43UI;
+    public Text gsped5UI;
+    public Text gsped51UI;
+    public Text gsped52UI;
+    public Text gsped53UI;
+
+
 
 
     [Header("Miscellaneous UI")]
@@ -177,7 +199,7 @@ public class Game : MonoBehaviour
     // colori
     public Color32 darkred = new Color32(92, 0, 0, 255);
     public Color32 blacknormal = new Color32(55 , 55, 55, 255);
-
+    public Color32 yellowgood = new Color32(149, 74, 8, 255);
 
     Player player = new Player(); // oggetto player partita - non contiene soldati
 
@@ -507,9 +529,20 @@ public class Game : MonoBehaviour
             gildacostoUI.color = darkred;
         }
 
+        if (gilda.getsped1() == 1)
+        {
+            Exped1.interactable = true;
+         
+        }
+        else
+        {
+            Exped1.interactable = false;
+          
+        }
         if (gilda.getsped2() == 1)
         {
             Exped2.interactable = true;
+
         }
         else
         {
@@ -541,9 +574,23 @@ public class Game : MonoBehaviour
         }
 
 
+        gildanumspedUI.text = gilda.segnalanumsped();
+        if (gildanumspedUI.text == "0/2")
+        {
+            gildacostoUI.color = blacknormal;
+        }
+        if (gildanumspedUI.text == "1/2")
+        {
+            gildacostoUI.color = yellowgood;
+        }
+        if (gildanumspedUI.text == "2/2")
+        {
+            gildacostoUI.color = darkred;
+        }
 
 
-            gildabonus1.text = "" + player.getBonusWall() + "%";
+
+        gildabonus1.text = "" + player.getBonusWall() + "%";
             gildabonus2.text = "" + player.getBonusCity() + "%";
             gildabonus3.text = "" + player.getBonusFar() + "%";
             gildabonus4.text = "" + player.getBonusDemoniac() + "%";
@@ -589,7 +636,23 @@ public class Game : MonoBehaviour
             capitanoDescriptionUI.text = capitano.getFinalComment();
 
 
-}
+
+        if (swordsmen.getTotal() < 5 || archers.getTotal() < 5) { gsped1UI.color = darkred; gsped11UI.color = darkred; gsped12UI.color = darkred; }
+        else { gsped1UI.color = blacknormal; gsped11UI.color = blacknormal; gsped12UI.color = blacknormal; }
+        if (swordsmen.getTotal() < 10 || archers.getTotal() < 10) { gsped2UI.color = darkred; gsped21UI.color = darkred; gsped22UI.color = darkred; }
+        else { gsped2UI.color = blacknormal; gsped21UI.color = blacknormal; gsped22UI.color = blacknormal; }
+        if (swordsmen.getTotal() < 10 || archers.getTotal() < 10 || riders.getTotal() < 10 ) { gsped3UI.color = darkred; gsped31UI.color = darkred; gsped32UI.color = darkred; gsped33UI.color = darkred; }
+        else { gsped3UI.color = blacknormal; gsped31UI.color = blacknormal; gsped32UI.color = blacknormal; gsped33UI.color = blacknormal; }
+        if (swordsmen.getTotal() < 15 || archers.getTotal() < 15 || riders.getTotal() < 10) { gsped4UI.color = darkred; gsped41UI.color = darkred; gsped42UI.color = darkred; gsped43UI.color = darkred; }
+        else { gsped4UI.color = blacknormal; gsped41UI.color = blacknormal; gsped42UI.color = blacknormal; gsped43UI.color = blacknormal; }
+        if (swordsmen.getTotal() < 20 || archers.getTotal() < 20 || riders.getTotal() < 10) { gsped5UI.color = darkred; gsped51UI.color = darkred; gsped52UI.color = darkred; gsped53UI.color = darkred; }
+        else { gsped5UI.color = blacknormal; gsped51UI.color = blacknormal; gsped52UI.color = blacknormal; gsped53UI.color = blacknormal; }
+
+
+
+
+
+    }
 
 
 
@@ -922,12 +985,15 @@ public class Game : MonoBehaviour
 
     public void onSpedizione1() // prima tipologia di spedizione
     {
-        if (gilda.getcontrollosped1() == 0)
+        Debug.LogError("spedizione1 = " + gilda.getcontrollosped1());
+        Debug.LogError("spedizione2 = " + gilda.getcontrollosped2());
+        if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 5 && archers.getTotal() >= 5)
         {
+            Debug.LogError("La spedizione parte");
             gilda.spedizione(player, swordsmen, archers, riders, 1, manager);
             gilda.setcontrollosped1(1);
         }
-        else if (gilda.getcontrollosped2() == 0)
+        else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 5 && archers.getTotal() >= 5)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 1, manager);
             gilda.setcontrollosped2(1);
@@ -937,12 +1003,12 @@ public class Game : MonoBehaviour
 
     public void onSpedizione2() // prima tipologia di spedizione
     {
-        if (gilda.getcontrollosped1() == 0)
+        if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 2, manager);
             gilda.setcontrollosped1(1);
         }
-        else if (gilda.getcontrollosped2() == 0)
+        else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 2, manager);
             gilda.setcontrollosped2(1);
@@ -951,12 +1017,12 @@ public class Game : MonoBehaviour
     }
     public void onSpedizione3() // prima tipologia di spedizione
     {
-        if (gilda.getcontrollosped1() == 0)
+        if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10 && riders.getTotal() >= 10 )
         {
             gilda.spedizione(player, swordsmen, archers, riders, 3, manager);
             gilda.setcontrollosped1(1);
         }
-        else if (gilda.getcontrollosped2() == 0)
+        else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10 && riders.getTotal() >= 10)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 3, manager);
             gilda.setcontrollosped2(1);
@@ -965,12 +1031,12 @@ public class Game : MonoBehaviour
     }
     public void onSpedizione4() // prima tipologia di spedizione
     {
-        if (gilda.getcontrollosped1() == 0)
+        if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 15 && archers.getTotal() >= 15 && riders.getTotal() >= 10)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 4, manager);
             gilda.setcontrollosped1(1);
         }
-        else if (gilda.getcontrollosped2() == 0)
+        else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 15 && archers.getTotal() >= 15 && riders.getTotal() >= 10)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 4, manager);
             gilda.setcontrollosped2(1);
@@ -980,12 +1046,12 @@ public class Game : MonoBehaviour
 
     public void onSpedizione5() // prima tipologia di spedizione
     {
-        if (gilda.getcontrollosped1() == 0)
+        if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 20 && archers.getTotal() >= 20 && riders.getTotal() >= 10)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 5, manager);
             gilda.setcontrollosped1(1);
         }
-        else if (gilda.getcontrollosped2() == 0)
+        else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 20 && archers.getTotal() >= 20 && riders.getTotal() >= 10)
         {
             gilda.spedizione(player, swordsmen, archers, riders, 5, manager);
             gilda.setcontrollosped2(1);

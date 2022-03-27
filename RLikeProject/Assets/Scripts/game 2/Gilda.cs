@@ -6,6 +6,7 @@ public class Gilda : MonoBehaviour
 {
     public int lvl = 1;
     public int costo = 1000;
+    public int sped1 = 1;
     public int sped2 = 0;
     public int sped3 = 0;
     public int sped4 = 0;
@@ -38,7 +39,10 @@ public class Gilda : MonoBehaviour
         }
     }
 
-
+    public int getsped1()
+    {
+        return sped1;
+    }
     public int getsped2()
     {
         return sped2;
@@ -55,6 +59,32 @@ public class Gilda : MonoBehaviour
     {
         return sped5;
     }
+
+    public void setsped1(int x)
+    {
+        sped1 = x;
+    }
+    public void setsped2(int x)
+    {
+        sped2 = x;
+    }
+    public void setsped3(int x)
+    {
+        sped3 = x;
+    }
+    public void setsped4(int x)
+    {
+        sped4 = x;
+    }
+    public void setsped5(int x)
+    {
+        sped5 = x;
+    }
+
+
+
+
+
 
 
 
@@ -146,29 +176,34 @@ public class Gilda : MonoBehaviour
         {
             swordmen.setRapidTotal(-5);
             archers.setRapidTotal(-5);
+            sped1 = 0;
         }
         if (x == 2)
         {
             swordmen.setRapidTotal(-10);
             archers.setRapidTotal(-10);
+            sped2 = 0;
         }
         if (x == 3)
         {
             swordmen.setRapidTotal(-10);
             archers.setRapidTotal(-10);
             riders.setRapidTotal(-10);
+            sped3 = 0;
         }
         if (x == 4)
         {
             swordmen.setRapidTotal(-15);
             archers.setRapidTotal(-15);
             riders.setRapidTotal(-10);
+            sped4 = 0;
         }
         if (x == 5)
         {
             swordmen.setRapidTotal(-20);
             archers.setRapidTotal(-20);
             riders.setRapidTotal(-10);
+            sped5 = 0;
         }
 
 
@@ -184,8 +219,7 @@ public class Gilda : MonoBehaviour
             Debug.LogError("y = 1");
             manager.salvasoldati(swordmen, archers, riders, 1);
             manager.gildaimpostamex(1,y, 5, 5, 0);
-
-
+            /*
             // format invio stringhe
             string eventString1 = "Questo";
             string eventString2 = "è";
@@ -193,10 +227,11 @@ public class Gilda : MonoBehaviour
          // string eventString4 = "possibile frase in più";
          // string eventString5 = "altra possibile frase in più, fino a 10 totali";
 
-            string[] message = { eventString1, eventString2, eventString3 /*, eventString4, eventString5...*/ };
+            string[] message = { eventString1, eventString2, eventString3 /*, eventString4, eventString5...*/// };
 
-            FindObjectOfType<DialogueManagerMINI>().StartDialogue(false, /* --> inserisci qui il nome di chi parla, se non lo vuoi metti "" --> */"Guild Master", message);
-        }
+           // FindObjectOfType<DialogueManagerMINI>().StartDialogue(false, /* --> inserisci qui il nome di chi parla, se non lo vuoi metti "" --> */"Guild Master", message); 
+   
+    }
         if (x == 1 && y == 2) //battaglia persa
         {
             int s = ((int)Random.Range(1f, 6f));
@@ -426,6 +461,19 @@ public class Gilda : MonoBehaviour
 
 
 
+
+
+
+
+
+    public string segnalanumsped()
+    {
+        if (controllosped1 == 0 && controllosped2 == 0) { return "0/2"; }
+        if (controllosped1 == 1 && controllosped2 == 0) { return "1/2"; }
+        if (controllosped1 == 0 && controllosped2 == 1) { return "1/2"; }
+        else { return "2/2"; }
+
+    }
 
 
 }

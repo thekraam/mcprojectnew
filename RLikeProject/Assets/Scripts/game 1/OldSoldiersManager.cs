@@ -213,38 +213,38 @@ public class OldSoldiersManager : MonoBehaviour
         }
         if (cont == 1)
         {
-            if (x * y < 5)
+            if (x < 5)
             {
                 turngilda1 = 1;
             }
-            if (5 <= (x * y) && (x * y) < 13)
+            if (5 <= (x) && (x) < 13)
             {
                 turngilda1 = 2;
             }
-            if (13 <= (x * y) && (x * y) < 17)
+            if (13 <= (x ) && (x ) < 17)
             {
                 turngilda1 = 3;
             }
-            if (17 <= (x * y) && (x * y) <= 20)
+            if (17 <= (x ) && (x ) <= 20)
             {
                 turngilda1 = 4;
             }
         }
         else
         {
-            if (x * y < 5)
+            if (x < 5)
             {
                 turngilda2 = 1;
             }
-            if (5 <= (x * y) && (x * y) < 13)
+            if (5 <= (x ) && (x ) < 13)
             {
                 turngilda2 = 2;
             }
-            if (13 <= (x * y) && (x * y) < 17)
+            if (13 <= (x) && (x ) < 17)
             {
                 turngilda2 = 3;
             }
-            if (17 <= (x * y) && (x * y) <= 20)
+            if (17 <= (x ) && (x) <= 20)
             {
                 turngilda2 = 4;
             }
@@ -263,507 +263,243 @@ public class OldSoldiersManager : MonoBehaviour
 
         turngilda1--;
         turngilda2--;
+        Debug.LogError("tipologia1 = " + tipologia1 + " e moltiplicatore " + moltiplicatore1 );
+        Debug.LogError("tipologia2 = " + tipologia2 + " e moltiplicatore " + moltiplicatore2);
+        Debug.LogError("turngilda1 = " + turngilda1);
+        Debug.LogError("turngilda2 = " + turngilda2);
 
-
-        if ((tipologia1 * moltiplicatore1 == 1) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 1) && turngilda2 == 0)
+        if (((tipologia1 == 1) && turngilda1 == 0) || ((tipologia2 == 1) && turngilda2 == 0))
         {
-            if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
-            else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
+            Debug.LogError("caso 1 ");
+            if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
+            else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
             player.setRapidMoney(200);
-
+            gilda.setsped1(1);
             //dialogo 1
             
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
-        }
-        if ((tipologia1 * moltiplicatore1 == 2) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 2) && turngilda2 == 0)
-        {
-            if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
-            else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
 
+            Debug.LogError("sped1 = " + gilda.getsped1());
+        }
+        if (((tipologia1 == 2) && turngilda1 == 0 )||( (tipologia2 == 2) && turngilda2 == 0))
+        {
+            if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
+            else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
+            player.setRapidMoney(200);
+            gilda.setsped1(1);
             //dialogo 2
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
-        }
-        if ((tipologia1 * moltiplicatore1 == 3) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 3) && turngilda2 == 0)
-        {
-            if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
-            else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
+            Debug.LogError("caso 2 ");
 
+            Debug.LogError("sped1 = " + gilda.getsped1());
+        }
+        if (((tipologia1 == 3) && turngilda1 == 0) || ((tipologia2 == 3) && turngilda2 == 0))
+        {
+            if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
+            else if (gilda.getcontrollosped2() == 1) {gilda.setcontrollosped2(0); }
+            player.setRapidMoney(200);
+            gilda.setsped1(1);
             //dialogo 3
+            Debug.LogError("caso 3 ");
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+            Debug.LogError("sped1 = " + gilda.getsped1());
         }
-        if ((tipologia1 * moltiplicatore1 == 4) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 4) && turngilda2 == 0)
+        if (((tipologia1 == 4) && turngilda1 == 0) || ((tipologia2 == 4) && turngilda2 == 0))
         {
-            if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
-            else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
+            if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
+            else if (gilda.getcontrollosped2() == 1)  {gilda.setcontrollosped2(0); }
             player.setRapidMoney(200);
-
+            gilda.setsped1(1);
             //dialogo 4
+            Debug.LogError("caso 4 ");
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+            Debug.LogError("sped1 = " + gilda.getsped1());
         }
-        if ((tipologia1 * moltiplicatore1 == 5) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 5) && turngilda2 == 0)
+        if (((tipologia1 == 5) && turngilda1 == 0 )|| ((tipologia2 == 5) && turngilda2 == 0))
         {
-            if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
-            else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            Debug.Log("Son dentro tipologia 5");
+            if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
+            else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
+            player.setRapidMoney(800);
+            gilda.setsped2(1);
             //dialogo 5
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 6) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 6) && turngilda2 == 0)
+        if (((tipologia1 == 6) && turngilda1 == 0) || ((tipologia2 == 6) && turngilda2 == 0))
         {
+            Debug.Log("Son dentro tipologia 6");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(800);
+            gilda.setsped2(1);
             //dialogo 6
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 7) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 7) && turngilda2 == 0)
+        if (((tipologia1 == 7) && turngilda1 == 0 )||( (tipologia2 == 7) && turngilda2 == 0))
         {
+            Debug.Log("Son dentro tipologia 7");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(800);
+            gilda.setsped2(1);
             //dialogo 7
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
         }
-        if ((tipologia1 * moltiplicatore1 == 8) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 8) && turngilda2 == 0)
+        if (((tipologia1 == 8) && turngilda1 == 0) || ((tipologia2 == 8) && turngilda2 == 0))
         {
+            Debug.Log("Son dentro tipologia 8");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(800);
+            gilda.setsped2(1);
             //dialogo 8
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
         }
-        if ((tipologia1 * moltiplicatore1 == 9) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 9) && turngilda2 == 0)
+        if ((tipologia1  == 9) && turngilda1 == 0 || (tipologia2 == 9) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(1500);
+            gilda.setsped3(1);
             //dialogo 9
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 10) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 10) && turngilda2 == 0)
+        if ((tipologia1 == 10) && turngilda1 == 0 || (tipologia2 == 10) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(1500);
+            gilda.setsped3(1);
             //dialogo 10
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 11) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 11) && turngilda2 == 0)
+        if ((tipologia1 == 11) && turngilda1 == 0 || (tipologia2 == 11) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(1500);
+            gilda.setsped3(1);
             //dialogo 11
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 12) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 12) && turngilda2 == 0)
+        if ((tipologia1 == 12) && turngilda1 == 0 || (tipologia2 == 12) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
+            player.setRapidMoney(1500);
+            gilda.setsped3(1);
+            //dialogo 12
 
-            //dialogo 1
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
         }
-        if ((tipologia1 * moltiplicatore1 == 13) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 13) && turngilda2 == 0)
+        if ((tipologia1 == 13) && turngilda1 == 0 || (tipologia2 == 13) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(2500);
+            gilda.setsped4(1);
             //dialogo 13
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 14) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 14) && turngilda2 == 0)
+        if ((tipologia1 == 14) && turngilda1 == 0 || (tipologia2 == 14) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(2500);
+            gilda.setsped4(1);
             //dialogo 14
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 15) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 15) && turngilda2 == 0)
+        if ((tipologia1 == 15) && turngilda1 == 0 || (tipologia2  == 15) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(2500);
+            gilda.setsped4(1);
             //dialogo 15
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 16) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 16) && turngilda2 == 0)
+        if ((tipologia1 == 16) && turngilda1 == 0 || (tipologia2 == 16) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(2500);
+            gilda.setsped4(1);
             //dialogo 16
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 17) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 17) && turngilda2 == 0)
+        if ((tipologia1 == 17) && turngilda1 == 0 || (tipologia2 == 17) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(4000);
+            gilda.setsped5(1);
             //dialogo 17
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+ 
         }
-        if ((tipologia1 * moltiplicatore1 == 18) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 18) && turngilda2 == 0)
+        if ((tipologia1 == 18) && turngilda1 == 0 || (tipologia2 == 18) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(4000);
+            gilda.setsped5(1);
             //dialogo 18
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 19) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 19) && turngilda2 == 0)
+        if ((tipologia1 == 19) && turngilda1 == 0 || (tipologia2 == 19) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(4000);
+            gilda.setsped5(1);
             //dialogo 1
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
         }
-        if ((tipologia1 * moltiplicatore1 == 20) && turngilda1 == 0 || (tipologia2 * moltiplicatore2 == 20) && turngilda2 == 0)
+        if ((tipologia1 == 20) && turngilda1 == 0 || (tipologia2 == 20) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(200);
-
+            player.setRapidMoney(4000);
+            gilda.setsped5(1);
             //dialogo 20
 
-            if (turngilda1 == 0)
-            {
-                swordgilda1 = 0;
-                arcgilda1 = 0;
-                ridgilda1 = 0;
-                tipologia1 = 0;
-                moltiplicatore1 = 0;
-            }
-            if (turngilda2 == 0)
-            {
-                swordgilda2 = 0;
-                arcgilda2 = 0;
-                ridgilda2 = 0;
-                tipologia2 = 0;
-                moltiplicatore2 = 0;
-            }
+
+        }
+
+        if (turngilda1 == 0)
+        {
+            swordgilda1 = 0;
+            arcgilda1 = 0;
+            ridgilda1 = 0;
+            tipologia1 = 0;
+            moltiplicatore1 = 0;
+        }
+        if (turngilda2 == 0)
+        {
+            swordgilda2 = 0;
+            arcgilda2 = 0;
+            ridgilda2 = 0;
+            tipologia2 = 0;
+            moltiplicatore2 = 0;
+        }
+
+
+
+
+        if (true)
+        {
+            Debug.Log("CONFERMA");
         }
     }
 }
