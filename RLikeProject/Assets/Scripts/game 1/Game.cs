@@ -577,15 +577,15 @@ public class Game : MonoBehaviour
         gildanumspedUI.text = gilda.segnalanumsped();
         if (gildanumspedUI.text == "0/2")
         {
-            gildacostoUI.color = blacknormal;
+            gildanumspedUI.color = blacknormal;
         }
         if (gildanumspedUI.text == "1/2")
         {
-            gildacostoUI.color = yellowgood;
+            gildanumspedUI.color = yellowgood;
         }
         if (gildanumspedUI.text == "2/2")
         {
-            gildacostoUI.color = darkred;
+            gildanumspedUI.color = darkred;
         }
 
 
@@ -637,15 +637,15 @@ public class Game : MonoBehaviour
 
 
 
-        if (swordsmen.getTotal() < 5 || archers.getTotal() < 5) { gsped1UI.color = darkred; gsped11UI.color = darkred; gsped12UI.color = darkred; }
+        if ((swordsmen.getTotal() < 5 || archers.getTotal() < 5) && Exped1.interactable) { gsped1UI.color = darkred; gsped11UI.color = darkred; gsped12UI.color = darkred; }
         else { gsped1UI.color = blacknormal; gsped11UI.color = blacknormal; gsped12UI.color = blacknormal; }
-        if (swordsmen.getTotal() < 10 || archers.getTotal() < 10) { gsped2UI.color = darkred; gsped21UI.color = darkred; gsped22UI.color = darkred; }
+        if ((swordsmen.getTotal() < 10 || archers.getTotal() < 10) && Exped2.interactable) { gsped2UI.color = darkred; gsped21UI.color = darkred; gsped22UI.color = darkred; }
         else { gsped2UI.color = blacknormal; gsped21UI.color = blacknormal; gsped22UI.color = blacknormal; }
-        if (swordsmen.getTotal() < 10 || archers.getTotal() < 10 || riders.getTotal() < 10 ) { gsped3UI.color = darkred; gsped31UI.color = darkred; gsped32UI.color = darkred; gsped33UI.color = darkred; }
+        if ((swordsmen.getTotal() < 10 || archers.getTotal() < 10 || riders.getTotal() < 10) && Exped3.interactable) { gsped3UI.color = darkred; gsped31UI.color = darkred; gsped32UI.color = darkred; gsped33UI.color = darkred; }
         else { gsped3UI.color = blacknormal; gsped31UI.color = blacknormal; gsped32UI.color = blacknormal; gsped33UI.color = blacknormal; }
-        if (swordsmen.getTotal() < 15 || archers.getTotal() < 15 || riders.getTotal() < 10) { gsped4UI.color = darkred; gsped41UI.color = darkred; gsped42UI.color = darkred; gsped43UI.color = darkred; }
+        if ((swordsmen.getTotal() < 15 || archers.getTotal() < 15 || riders.getTotal() < 10) && Exped4.interactable) { gsped4UI.color = darkred; gsped41UI.color = darkred; gsped42UI.color = darkred; gsped43UI.color = darkred; }
         else { gsped4UI.color = blacknormal; gsped41UI.color = blacknormal; gsped42UI.color = blacknormal; gsped43UI.color = blacknormal; }
-        if (swordsmen.getTotal() < 20 || archers.getTotal() < 20 || riders.getTotal() < 10) { gsped5UI.color = darkred; gsped51UI.color = darkred; gsped52UI.color = darkred; gsped53UI.color = darkred; }
+        if ((swordsmen.getTotal() < 20 || archers.getTotal() < 20 || riders.getTotal() < 10) && Exped5.interactable) { gsped5UI.color = darkred; gsped51UI.color = darkred; gsped52UI.color = darkred; gsped53UI.color = darkred; }
         else { gsped5UI.color = blacknormal; gsped51UI.color = blacknormal; gsped52UI.color = blacknormal; gsped53UI.color = blacknormal; }
 
 

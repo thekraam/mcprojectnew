@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayEffect(AudioClip clip)
 	{
-		if (!EffectsSource.isPlaying)
+		if ((EffectsSource.isPlaying && EffectsSource.clip != clip) || (!EffectsSource.isPlaying))
 		{
 			StopAllCoroutines();
 			ResetAudioEffects();
@@ -88,7 +88,7 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayEffectFaded(AudioClip clip)
 	{
-		if (!EffectsSource.isPlaying)
+		if ((EffectsSource.isPlaying && EffectsSource.clip != clip) || (!EffectsSource.isPlaying))
 		{
 			StopAllCoroutines();
 			ResetAudioEffects();
