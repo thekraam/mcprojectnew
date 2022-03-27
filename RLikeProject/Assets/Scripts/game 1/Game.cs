@@ -211,6 +211,7 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         casermaPanel.SetActive(false);
+        if (capitano.getcreato() == false) { capitano.setcreato(); }
     }
 
     public void SAVEDELETETEST()
@@ -668,7 +669,7 @@ public class Game : MonoBehaviour
 
         manager.riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
         manager.gildamexritorno(player, gilda);  //betatesting
-        if (capitano.getcreato() == false) { capitano.setcreato(); }  //crea capitano se non creato precedentemente
+        
 
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
@@ -738,7 +739,6 @@ public class Game : MonoBehaviour
         minePanel.SetActive(false);
 
         FindObjectOfType<Tutorial>().OnFirstTapGuild();
-        if (capitano.getcreato() == false) { capitano.setcreato(); }  //crea capitano se non creato precedentemente
     }
 
     public void onTapFabbro()
