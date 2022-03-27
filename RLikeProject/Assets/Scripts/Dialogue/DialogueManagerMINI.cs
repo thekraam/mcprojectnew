@@ -12,6 +12,8 @@ public class DialogueManagerMINI : MonoBehaviour
 
 	// booleane varie
 	private bool isInteractiveDM = false;
+	private bool completedFirstDialogueMINI = false;
+	private int MINIDialogueCounter = 0;
 	private int responseToInteractiveDialogue = 0;
 	private int DialogueIsResetting = 0;
 	int endingdialogue = 0;
@@ -58,6 +60,16 @@ public class DialogueManagerMINI : MonoBehaviour
 	private IEnumerator WaitForPreviousDialogue(bool isInteractive, string name, string[] eventStrings)
     {
 		yield return new WaitUntil(() => FindObjectOfType<Events>().attendingMainEvent == false);
+
+		MINIDialogueCounter++;
+
+		if (MINIDialogueCounter == 2)
+		{
+			MINIDialogueCounter = 0;
+			yield return new WaitUntil(() => completedFirstDialogueMINI = true);
+		}
+
+		if (completedFirstDialogueMINI) completedFirstDialogueMINI = false;
 
 		endingdialogue = 0;
 		responseToInteractiveDialogue = 0;
@@ -116,6 +128,8 @@ public class DialogueManagerMINI : MonoBehaviour
 		FindObjectOfType<AudioManager>().RandomSoundEffect(OpenAndCloseSounds);
 		FindObjectOfType<Game>().dialogueInterfaceBlocker.SetActive(false);
 		endingdialogue = 1;
+
+		completedFirstDialogueMINI = true;
 	}
 
 	public int[] InvokedChecker()
