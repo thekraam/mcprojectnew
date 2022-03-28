@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public int lvlwall = 0;
     public int lvlfield = 0;
 
+    public int soldiersaway = 0;
 
     //------------------------------------------turni---------------------
     public int getTurn()
@@ -59,10 +60,19 @@ public class Player : MonoBehaviour
 
     public void setCitizens()
     {
-        int x = player_citizensMAX-player_population;
+        Debug.Log("cittadini massimi è uguale a = " + player_citizensMAX);
+        Debug.Log("popolazione è uguale a = " + player_population);
+        Debug.Log("soldiersaway è uguale a = " + soldiersaway);
+        int x = player_citizensMAX-player_population-soldiersaway;
+        Debug.Log("x è uguale a = " + x);
         if (temp_player_citizens>x)
         {
+            Debug.Log("entro dentro l'if");
             temp_player_citizens = x;
+            if (x < 0)
+            {
+                temp_player_citizens = 0;
+            }
         }
         player_citizens = player_citizens + temp_player_citizens;
         temp_player_citizens = 0;
@@ -227,6 +237,19 @@ public class Player : MonoBehaviour
         if (lvlfield == 2) return "Cost: " + "1500";
         if (lvlfield == 3) return "Cost: " + "2000";
         else return "max lvl reached";
+    }
+
+
+
+
+    public int getsoldiersaway()
+    {
+        return soldiersaway;
+    }
+
+    public void setsoldiersaway(int x)
+    {
+        soldiersaway = soldiersaway + x;
     }
 
 }

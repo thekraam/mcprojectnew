@@ -177,12 +177,14 @@ public class Gilda : MonoBehaviour
             swordmen.setRapidTotal(-5);
             archers.setRapidTotal(-5);
             sped1 = 0;
+            player.setsoldiersaway(10);
         }
         if (x == 2)
         {
             swordmen.setRapidTotal(-10);
             archers.setRapidTotal(-10);
             sped2 = 0;
+            player.setsoldiersaway(20);
         }
         if (x == 3)
         {
@@ -190,6 +192,7 @@ public class Gilda : MonoBehaviour
             archers.setRapidTotal(-10);
             riders.setRapidTotal(-10);
             sped3 = 0;
+            player.setsoldiersaway(30);
         }
         if (x == 4)
         {
@@ -197,6 +200,7 @@ public class Gilda : MonoBehaviour
             archers.setRapidTotal(-15);
             riders.setRapidTotal(-10);
             sped4 = 0;
+            player.setsoldiersaway(40);
         }
         if (x == 5)
         {
@@ -204,6 +208,7 @@ public class Gilda : MonoBehaviour
             archers.setRapidTotal(-20);
             riders.setRapidTotal(-10);
             sped5 = 0;
+            player.setsoldiersaway(50);
         }
 
 

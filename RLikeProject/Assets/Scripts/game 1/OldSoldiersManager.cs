@@ -275,8 +275,9 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
             player.setRapidMoney(200);
             gilda.setsped1(1);
+            player.setsoldiersaway(-10);
             //dialogo 1
-            
+
 
             Debug.LogError("sped1 = " + gilda.getsped1());
         }
@@ -286,6 +287,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
             player.setRapidMoney(200);
             gilda.setsped1(1);
+            player.setsoldiersaway(-10);
             //dialogo 2
 
             Debug.LogError("caso 2 ");
@@ -298,6 +300,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) {gilda.setcontrollosped2(0); }
             player.setRapidMoney(200);
             gilda.setsped1(1);
+            player.setsoldiersaway(-10);
             //dialogo 3
             Debug.LogError("caso 3 ");
 
@@ -309,6 +312,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1)  {gilda.setcontrollosped2(0); }
             player.setRapidMoney(200);
             gilda.setsped1(1);
+            player.setsoldiersaway(-10);
             //dialogo 4
             Debug.LogError("caso 4 ");
 
@@ -321,6 +325,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
             player.setRapidMoney(800);
             gilda.setsped2(1);
+            player.setsoldiersaway(-20);
             //dialogo 5
 
 
@@ -332,6 +337,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(800);
             gilda.setsped2(1);
+            player.setsoldiersaway(-20);
             //dialogo 6
 
 
@@ -343,6 +349,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(800);
             gilda.setsped2(1);
+            player.setsoldiersaway(-20);
             //dialogo 7
 
         }
@@ -353,6 +360,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(800);
             gilda.setsped2(1);
+            player.setsoldiersaway(-20);
             //dialogo 8
 
         }
@@ -362,6 +370,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(1500);
             gilda.setsped3(1);
+            player.setsoldiersaway(-30);
             //dialogo 9
 
 
@@ -372,6 +381,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(1500);
             gilda.setsped3(1);
+            player.setsoldiersaway(-30);
             //dialogo 10
 
 
@@ -382,6 +392,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(1500);
             gilda.setsped3(1);
+            player.setsoldiersaway(-30);
             //dialogo 11
 
 
@@ -392,6 +403,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(1500);
             gilda.setsped3(1);
+            player.setsoldiersaway(-30);
             //dialogo 12
 
 
@@ -402,6 +414,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(2500);
             gilda.setsped4(1);
+            player.setsoldiersaway(-40);
             //dialogo 13
 
 
@@ -412,6 +425,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(2500);
             gilda.setsped4(1);
+            player.setsoldiersaway(-40);
             //dialogo 14
 
 
@@ -422,6 +436,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(2500);
             gilda.setsped4(1);
+            player.setsoldiersaway(-40);
             //dialogo 15
 
 
@@ -432,6 +447,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(2500);
             gilda.setsped4(1);
+            player.setsoldiersaway(-40);
             //dialogo 16
 
 
@@ -442,9 +458,10 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(4000);
             gilda.setsped5(1);
+            player.setsoldiersaway(-50);
             //dialogo 17
 
- 
+
         }
         if ((tipologia1 == 18) && turngilda1 == 0 || (tipologia2 == 18) && turngilda2 == 0)
         {
@@ -452,6 +469,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(4000);
             gilda.setsped5(1);
+            player.setsoldiersaway(-50);
             //dialogo 18
 
 
@@ -462,6 +480,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(4000);
             gilda.setsped5(1);
+            player.setsoldiersaway(-50);
             //dialogo 1
 
 
@@ -472,6 +491,7 @@ public class OldSoldiersManager : MonoBehaviour
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(4000);
             gilda.setsped5(1);
+            player.setsoldiersaway(-50);
             //dialogo 20
 
 
