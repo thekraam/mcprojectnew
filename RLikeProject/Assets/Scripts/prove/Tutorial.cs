@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Tutorial : MonoBehaviour
 {
@@ -50,9 +52,10 @@ public class Tutorial : MonoBehaviour
     ///////////////////////// TUTORIAL BENVENUTO //////////////////////////////////////
     void Start()
     {
-        if (welcomeTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             welcomeTutorial = false;
+
             bgPanel.gameObject.SetActive(true);
             parentContinueButton.gameObject.SetActive(true);
             welcomePanel1.SetActive(true);
@@ -82,7 +85,7 @@ public class Tutorial : MonoBehaviour
     ///////////////////////// TUTORIAL GILDA //////////////////////////////////////
     public void OnFirstTapGuild()
     {
-        if (guildTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             guildTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -112,7 +115,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapBonusButton()
     {
-        if (bonusTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             bonusTutorial = false;
             parentContinueButton.gameObject.SetActive(true);
@@ -131,7 +134,7 @@ public class Tutorial : MonoBehaviour
     ///////////////////////// TUTORIAL VILLAGGIO //////////////////////////////////////
     public void OnFirstTapVillage()
     {
-        if (villageTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             villageTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -162,7 +165,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapBarracks()
     {
-        if (barracksTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             barracksTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -193,7 +196,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapFarm()
     {
-        if (farmTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             farmTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -215,7 +218,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapMine()
     {
-        if (mineTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             mineTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -237,7 +240,7 @@ public class Tutorial : MonoBehaviour
     ///
     public void OnFirstTapBlacksmith()
     {
-        if (blacksmithTutorial)
+        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
         {
             blacksmithTutorial = false;
             bgPanel.gameObject.SetActive(true);

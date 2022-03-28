@@ -123,6 +123,7 @@ public class GameData
 
         /*tutorial*/
         welcomeTutorial = tutorial.welcomeTutorial;
+        Debug.LogError("welcomeTutorial " + tutorial.welcomeTutorial);
         villageTutorial = tutorial.villageTutorial;
         farmTutorial = tutorial.farmTutorial;
         barracksTutorial = tutorial.barracksTutorial;

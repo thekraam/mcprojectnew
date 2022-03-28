@@ -10,6 +10,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class Game : MonoBehaviour
 {
+
+    public bool tutorialW;
     [Header("City and symbol UI")]
     public Text CityNameUI;
 
@@ -1099,6 +1101,7 @@ public class Game : MonoBehaviour
 
         /*tutorial*/
         FindObjectOfType<Tutorial>().welcomeTutorial = data.welcomeTutorial;
+        tutorialW = data.welcomeTutorial;
         FindObjectOfType<Tutorial>().villageTutorial = data.villageTutorial;
         FindObjectOfType<Tutorial>().farmTutorial = data.farmTutorial;
         FindObjectOfType<Tutorial>().barracksTutorial = data.barracksTutorial;

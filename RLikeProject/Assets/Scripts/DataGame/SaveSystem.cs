@@ -8,6 +8,8 @@ public static class SaveSystem
 {
     public static string isDataPresent;
 
+    
+
     public static void DataStatus(GameObject resumeGame)
     {
         isDataPresent = Application.persistentDataPath + "/game.fun";
