@@ -6,13 +6,35 @@ using UnityEngine;
 public class GameData
 {
     public string cityName;
+
     public int player_turn;
+
     public int player_population;
+    public int temp_player_citizens;
     public int player_money;
     public int player_citizens;
     public int player_citizensMAX;
-    public int temp_player_citizens;
+    public int temp_player_citizensMAX;
 
+    public float bonusBattle;
+    public float bonusWall;
+    public float bonusCity;
+    public float bonusFar;
+    public float bonusDemoniac;
+    public int lvlwall;
+    public int lvlfield;
+    public int soldiersaway;
+
+
+    /*Tutorial*/
+    public bool welcomeTutorial;
+    public bool villageTutorial;
+    public bool farmTutorial;
+    public bool barracksTutorial;
+    public bool blacksmithTutorial;
+    public bool guildTutorial;
+    public bool mineTutorial;
+    public bool bonusTutorial;
 
     /*eventi*/
     public int aqueduct;
@@ -76,7 +98,7 @@ public class GameData
 
     public GameData (string cityname, Player player , Events events , Fattoria fattoria , Caserma caserma,
         Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, 
-        Miniera miniera, Fabbro fabbro, Gilda gilda
+        Miniera miniera, Fabbro fabbro, Gilda gilda, Tutorial tutorial
         )
     {
 
@@ -88,8 +110,28 @@ public class GameData
         player_citizens = player.getCitizens();
         player_citizensMAX = player.getCitizensMax();
         temp_player_citizens = player.getTempCitizens();
+        temp_player_citizensMAX = player.temp_player_citizensMAX;
 
+        bonusBattle = player.bonusBattle;
+        bonusWall= player.bonusWall;
+        bonusCity = player.bonusCity;
+        bonusFar = player.bonusFar;
+        bonusDemoniac = player.bonusDemoniac;
+        lvlwall = player.lvlwall;
+        lvlfield = player.lvlfield;
+        soldiersaway = player.soldiersaway;
 
+        /*tutorial*/
+        welcomeTutorial = tutorial.welcomeTutorial;
+        villageTutorial = tutorial.villageTutorial;
+        farmTutorial = tutorial.farmTutorial;
+        barracksTutorial = tutorial.barracksTutorial;
+        blacksmithTutorial = tutorial.blacksmithTutorial;
+        guildTutorial = tutorial.guildTutorial;
+        mineTutorial = tutorial.mineTutorial;
+        bonusTutorial = tutorial.bonusTutorial;
+
+        /*eventi*/
         aqueduct = events.aqueduct;
         response = events.response[0];
         citydefenseproject = events.citydefenseproject;

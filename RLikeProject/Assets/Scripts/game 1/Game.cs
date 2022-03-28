@@ -1066,7 +1066,10 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(CityNameUI.text,player,FindObjectOfType<Events>(),fattoria,caserma,swordsmen,archers,riders,miniera,fabbro,gilda);
+        SaveSystem.SaveGame(CityNameUI.text,player,
+            FindObjectOfType<Events>(),fattoria,
+            caserma,swordsmen,archers,riders,miniera,
+            fabbro,gilda, FindObjectOfType<Tutorial>());
     }
 
     public void LoadGame()
@@ -1085,6 +1088,24 @@ public class Game : MonoBehaviour
         //player.setTempCitizens(data.temp_player_citizens);
         player.player_money = data.player_money;
 
+        player.bonusBattle = data.bonusBattle;
+        player.bonusWall = data.bonusWall;
+        player.bonusCity = data.bonusCity;
+        player.bonusFar = data.bonusFar;
+        player.bonusDemoniac = data.bonusDemoniac;
+        player.lvlwall = data.lvlwall;
+        player.lvlfield = data.lvlfield;
+        player.soldiersaway = data.soldiersaway;
+
+        /*tutorial*/
+        FindObjectOfType<Tutorial>().welcomeTutorial = data.welcomeTutorial;
+        FindObjectOfType<Tutorial>().villageTutorial = data.villageTutorial;
+        FindObjectOfType<Tutorial>().farmTutorial = data.farmTutorial;
+        FindObjectOfType<Tutorial>().barracksTutorial = data.barracksTutorial;
+        FindObjectOfType<Tutorial>().blacksmithTutorial = data.blacksmithTutorial;
+        FindObjectOfType<Tutorial>().guildTutorial = data.guildTutorial;
+        FindObjectOfType<Tutorial>().mineTutorial = data.mineTutorial;
+        FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
 
         FindObjectOfType<Events>().aqueduct = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;

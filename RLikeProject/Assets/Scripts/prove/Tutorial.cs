@@ -37,14 +37,14 @@ public class Tutorial : MonoBehaviour
     public GameObject bgPanel;
 
 
-    bool welcomeTutorial = true;
-    bool villageTutorial = true;
-    bool farmTutorial = true;
-    bool barracksTutorial = true;
-    bool blacksmithTutorial = true;
-    bool guildTutorial = true;
-    bool mineTutorial = true;
-    bool bonusTutorial = true;
+    public bool welcomeTutorial = true;
+    public bool villageTutorial = true;
+    public bool farmTutorial = true;
+    public bool barracksTutorial = true;
+    public bool blacksmithTutorial = true;
+    public bool guildTutorial = true;
+    public bool mineTutorial = true;
+    public bool bonusTutorial = true;
 
 
     ///////////////////////// TUTORIAL BENVENUTO //////////////////////////////////////
@@ -56,7 +56,7 @@ public class Tutorial : MonoBehaviour
             bgPanel.gameObject.SetActive(true);
             parentContinueButton.gameObject.SetActive(true);
             welcomePanel1.SetActive(true);
-            continueButton.onClick.AddListener(WelcomePanel1Disabler); // aggiungi funzionalità bottone
+            continueButton.onClick.AddListener(WelcomePanel1Disabler); // aggiungi funzionalit? bottone
         }
     }
 
