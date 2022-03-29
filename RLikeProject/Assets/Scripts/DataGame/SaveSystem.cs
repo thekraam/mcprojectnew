@@ -24,7 +24,9 @@ public static class SaveSystem
 
     public static void SaveGame(string cityname ,Player player , Events events , Fattoria fattoria , Caserma caserma ,
                 Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders,
-                  Miniera miniera, Fabbro fabbro, Gilda gilda, Tutorial tutorial
+                  Miniera miniera, Fabbro fabbro, Gilda gilda, Tutorial tutorial,
+                  OldSoldiersManager oldSoldiers
+
         )
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -34,7 +36,7 @@ public static class SaveSystem
 
         GameData data = new GameData(cityname ,player , events , fattoria , caserma , 
                                     swordsmen , archers , riders , miniera, 
-                                    fabbro, gilda , tutorial);
+                                    fabbro, gilda , tutorial, oldSoldiers);
 
         formatter.Serialize(stream, data);
         stream.Close();

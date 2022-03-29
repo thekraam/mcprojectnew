@@ -1071,7 +1071,8 @@ public class Game : MonoBehaviour
         SaveSystem.SaveGame(CityNameUI.text,player,
             FindObjectOfType<Events>(),fattoria,
             caserma,swordsmen,archers,riders,miniera,
-            fabbro,gilda, FindObjectOfType<Tutorial>());
+            fabbro,gilda, FindObjectOfType<Tutorial>(),
+            FindObjectOfType<OldSoldiersManager>());
     }
 
     public void LoadGame()
@@ -1138,15 +1139,41 @@ public class Game : MonoBehaviour
         caserma.reclutamentoMaxMoment = data.reclutamentoMaxMoment;
         caserma.costo = data.casermaLvlUpCost;
 
+        /*soldati*/
         swordsmen.total_swordsmen = data.total_swordsmen;
         swordsmen.setTempTotal(data.temp_total_swordsmen);
         swordsmen.setTotal();
+        swordsmen.atk_swordsmen = data.atk_swordsmen;
+        swordsmen.temp_atk_swordsmen = data.temp_atk_swordsmen;
+        swordsmen.def_swordsmen = data.def_swordsmen;
+        swordsmen.temp_def_swordsmen = data.temp_def_swordsmen;
+        swordsmen.bonus_swordsmen = data.bonus_swordsmen;
+        swordsmen.momentswordman = data.momentswordman;
+        swordsmen.momentDeadswordman = data.momentDeadswordman;
+
         archers.total_archers = data.total_archers;
         archers.setTempTotal(data.temp_total_archers);
         archers.setTotal();
+        archers.atk_archers = data.atk_archers;
+        archers.temp_atk_archers = data.temp_atk_archers;
+        archers.def_archers = data.def_archers;
+        archers.temp_def_archers = data.temp_def_archers;
+        archers.bonus_archers = data.bonus_archers;
+        archers.momentarcher = data.momentarcher;
+        archers.momentDeadArcher = data.momentDeadArcher;
+
+
         riders.total_riders = data.total_riders;
         riders.setTempTotal(data.temp_total_riders);
         riders.setTotal();
+        riders.atk_riders = data.atk_riders;
+        riders.temp_atk_riders = data.temp_atk_riders;
+        riders.def_riders = data.def_riders;
+        riders.temp_def_riders = data.temp_def_riders;
+        riders.bonus_riders = data.bonus_riders;
+        riders.momentrider = data.momentrider;
+        riders.momentDeadRider = data.momentDeadRider;
+
 
         fabbro.lvl = data.fablvl;
         fabbro.costo = data.fabcosto;
@@ -1157,9 +1184,11 @@ public class Game : MonoBehaviour
         fabbro.piccone = data.piccone;
         fabbro.goldpiccone = data.goldpiccone;
 
-        
+        /*gilda*/
+
         gilda.lvl = data.gildalvl;
         gilda.costo = data.gildacosto;
+        gilda.sped1 = data.sped1;
         gilda.sped2 = data.sped2;
         gilda.sped3 = data.sped3;
         gilda.sped4 = data.sped4;
@@ -1167,7 +1196,46 @@ public class Game : MonoBehaviour
         gilda.controllosped1 = data.controllosped1;
         gilda.controllosped2 = data.controllosped2;
 
+        /*OldSoldiers*/
 
+        FindObjectOfType<OldSoldiersManager>().sword1 = data.sword1;
+        FindObjectOfType<OldSoldiersManager>().arc1 = data.arc1;
+        FindObjectOfType<OldSoldiersManager>().rid1 = data.rid1;
+        FindObjectOfType<OldSoldiersManager>().turn1 = data.turn1;
+
+        FindObjectOfType<OldSoldiersManager>().sword2 = data.sword2;
+        FindObjectOfType<OldSoldiersManager>().arc2 = data.arc2;
+        FindObjectOfType<OldSoldiersManager>().rid2 = data.rid2;
+        FindObjectOfType<OldSoldiersManager>().turn2 = data.turn2;
+
+        FindObjectOfType<OldSoldiersManager>().sword3 = data.sword3;
+        FindObjectOfType<OldSoldiersManager>().arc3 = data.arc3;
+        FindObjectOfType<OldSoldiersManager>().rid3 = data.rid3;
+        FindObjectOfType<OldSoldiersManager>().turn3 = data.turn3;
+
+        FindObjectOfType<OldSoldiersManager>().sword4 = data.sword4;
+        FindObjectOfType<OldSoldiersManager>().arc4 = data.arc4;
+        FindObjectOfType<OldSoldiersManager>().rid4 = data.rid4;
+        FindObjectOfType<OldSoldiersManager>().turn4 = data.turn4;
+
+        FindObjectOfType<OldSoldiersManager>().sword5 = data.sword5;
+        FindObjectOfType<OldSoldiersManager>().arc5 = data.arc5;
+        FindObjectOfType<OldSoldiersManager>().rid5 = data.rid5;
+        FindObjectOfType<OldSoldiersManager>().turn5 = data.turn5;
+
+        FindObjectOfType<OldSoldiersManager>().swordgilda1 = data.swordgilda1;
+        FindObjectOfType<OldSoldiersManager>().arcgilda1 = data.arcgilda1;
+        FindObjectOfType<OldSoldiersManager>().ridgilda1 = data.ridgilda1;
+        FindObjectOfType<OldSoldiersManager>().tipologia1 = data.tipologia1;
+        FindObjectOfType<OldSoldiersManager>().moltiplicatore1 = data.moltiplicatore1;
+        FindObjectOfType<OldSoldiersManager>().turngilda1 = data.turngilda1;
+
+        FindObjectOfType<OldSoldiersManager>().swordgilda2 = data.swordgilda2;
+        FindObjectOfType<OldSoldiersManager>().arcgilda2 = data.arcgilda2;
+        FindObjectOfType<OldSoldiersManager>().ridgilda2 = data.ridgilda2;
+        FindObjectOfType<OldSoldiersManager>().tipologia2 = data.tipologia2;
+        FindObjectOfType<OldSoldiersManager>().moltiplicatore2 = data.moltiplicatore2;
+        FindObjectOfType<OldSoldiersManager>().turngilda2 = data.turngilda2;
     }
 
 
