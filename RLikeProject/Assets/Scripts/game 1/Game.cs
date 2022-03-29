@@ -1072,7 +1072,12 @@ public class Game : MonoBehaviour
             FindObjectOfType<Events>(),fattoria,
             caserma,swordsmen,archers,riders,miniera,
             fabbro,gilda, FindObjectOfType<Tutorial>(),
-            FindObjectOfType<OldSoldiersManager>());
+            FindObjectOfType<OldSoldiersManager>(),
+            enemy,
+            eswordsmen,
+            earchers,
+            eriders
+            );
     }
 
     public void LoadGame()
@@ -1174,7 +1179,27 @@ public class Game : MonoBehaviour
         riders.momentrider = data.momentrider;
         riders.momentDeadRider = data.momentDeadRider;
 
+        /*Enemy*/
 
+        enemy.totalSoldier = data.totalSoldierE;
+        enemy.lvl = data.lvlE;
+
+        eswordsmen.total_swordsmen = data.total_swordsmenE;
+        eswordsmen.atk_swordsmen = data.atk_swordsmenE;
+        eswordsmen.def_swordsmen = data.def_swordsmenE;
+        eswordsmen.bonus_swordsmen = data.bonus_swordsmenE;
+
+        earchers.total_archers = data.total_archersE;
+        earchers.atk_archers = data.atk_archersE;
+        earchers.def_archers = data.def_archersE;
+        earchers.bonus_archers = data.bonus_archersE;
+
+        eriders.total_riders = data.total_ridersE;
+        eriders.atk_riders = data.atk_ridersE;
+        eriders.def_riders = data.def_ridersE;
+        eriders.bonus_riders = data.bonus_ridersE;
+
+        /*fabbro*/
         fabbro.lvl = data.fablvl;
         fabbro.costo = data.fabcosto;
         fabbro.armi  = data.armi;

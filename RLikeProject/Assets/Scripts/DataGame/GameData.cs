@@ -88,9 +88,29 @@ public class GameData
     public int def_riders;
     public int temp_def_riders;
     public float bonus_riders;
-
     public int momentrider;
     public int momentDeadRider;
+
+    /*Enemy*/
+
+    public int totalSoldierE;
+    public int lvlE;
+
+    public int total_swordsmenE;
+    public int atk_swordsmenE;
+    public int def_swordsmenE;
+    public float bonus_swordsmenE;
+
+    public int total_archersE;
+    public int atk_archersE;
+    public int def_archersE;
+    public float bonus_archersE;
+
+    public int total_ridersE;
+    public int atk_ridersE;
+    public int def_ridersE;
+    public float bonus_ridersE;
+
 
     /* mine */
     public int minelvl;
@@ -163,10 +183,13 @@ public class GameData
 
 
 
+
+
     public GameData (string cityname, Player player , Events events , Fattoria fattoria , Caserma caserma,
         Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, 
         Miniera miniera, Fabbro fabbro, Gilda gilda, Tutorial tutorial,
-        OldSoldiersManager oldSoldiers
+        OldSoldiersManager oldSoldiers, Enemy enemy,
+        Enemy.ESwordsmen eSwordsmen, Enemy.EArchers eArchers, Enemy.ERiders eRiders
         )
     {
 
@@ -255,6 +278,26 @@ public class GameData
         bonus_riders = riders.getBonus();
         momentrider = riders.getMomentRider();
         momentDeadRider = riders.getMomentDeadRider();
+
+        /*Enemy*/
+
+        totalSoldierE = enemy.getTotalsoldier();
+        lvlE = enemy.getLvl();
+
+        total_swordsmenE = eSwordsmen.getTotal();
+        atk_swordsmenE = eSwordsmen.getAtk();
+        def_swordsmenE = eSwordsmen.getDef();
+        bonus_swordsmenE = eSwordsmen.getBonus();
+
+        total_archersE = eArchers.getTotal();
+        atk_archersE = eArchers.getAtk();
+        def_archersE = eArchers.getDef();
+        bonus_archersE = eArchers.getBonus();
+
+        total_ridersE = eRiders.getTotal();
+        atk_ridersE = eRiders.getAtk();
+        def_ridersE = eRiders.getDef();
+        bonus_ridersE = eRiders.getBonus();
 
         /*miniera*/
         minelvl = miniera.lvl;

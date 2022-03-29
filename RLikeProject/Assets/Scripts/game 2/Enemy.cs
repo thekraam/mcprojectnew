@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    int totalSoldier = 0;
-    int lvl = 1;
+    public int totalSoldier = 0;
+    public int lvl = 1;
 
     public class ESwordsmen
     {
-        int total_swordsmen = 0;
-        int atk_swordsmen = 5;
-        int def_swordsmen = 8;
-        float bonus_swordsmen = 0;
+        public int total_swordsmen = 0;
+        public int atk_swordsmen = 5;
+        public int def_swordsmen = 8;
+        public float bonus_swordsmen = 0;
 
         public void lvlup()
         {
@@ -73,10 +74,10 @@ public class Enemy : MonoBehaviour
     }
     public class EArchers
     {
-        int total_archers = 0;
-        int atk_archers = 9;
-        int def_archers = 3;
-        float bonus_archers = 0;
+        public int total_archers = 0;
+        public int atk_archers = 9;
+        public int def_archers = 3;
+        public float bonus_archers = 0;
 
         public void lvlup()
         {
@@ -136,10 +137,11 @@ public class Enemy : MonoBehaviour
 
     public class ERiders
     {
-        int total_riders = 0;
-        int atk_riders = 8;
-        int def_riders = 5;
-        float bonus_riders = 0;
+        public int total_riders = 0;
+        public int atk_riders = 8;
+        public int def_riders = 5;
+        public float bonus_riders = 0;
+
         public void lvlup()
         {
             atk_riders = atk_riders + 1;
