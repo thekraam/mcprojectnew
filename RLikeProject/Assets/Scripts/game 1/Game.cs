@@ -29,6 +29,10 @@ public class Game : MonoBehaviour
     [Header("Game Status")]
     public GameObject resumeGameText;
 
+    [Header("LogStatus")]
+    public GameObject logStatus;
+    public GameObject userPanel;
+
     [Header("Music")]
     /* Dichiarazione Musica di gioco */
     public AudioClip[] GameMusic;
@@ -664,6 +668,9 @@ public class Game : MonoBehaviour
         // ---------------------------   Controllo Presenza Salvataggio --------------------------
 
         SaveSystem.DataStatus(resumeGameText);
+
+        //----------------------------  Controllo presenza Log ---------------------
+        FindObjectOfType<FirebaseManager>().LogStatus(logStatus, userPanel);
 
         // ---------------------------                 BG Music                ---------------------------
 

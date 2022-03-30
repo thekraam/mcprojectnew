@@ -76,9 +76,26 @@ public class FirebaseManager : MonoBehaviour
 
     }
 
-    public bool isSignedIn()
+    public bool isSignedIn(object sender, System.EventArgs eventArgs)
     {
+
         return (User == auth.CurrentUser && auth.CurrentUser != null);
+    }
+
+    public void LogStatus(GameObject logStatus, GameObject userPanel)
+    {
+        if (!isSignedIn(this, null))
+        {
+            logStatus.SetActive(true);
+            userPanel.SetActive(false);
+            username.text = "";
+        }
+        else
+        {
+            logStatus.SetActive(false);
+            userPanel.SetActive(true);
+            StartCoroutine(userSigneIn());
+        }
     }
 
     private IEnumerator userSigneIn()
@@ -165,7 +182,7 @@ public class FirebaseManager : MonoBehaviour
     }
     public void SaveFairBase()
     {
-        if(!isSignedIn())
+        if(!isSignedIn(this, null))
             Debug.Log("Not Connected");
         else 
             SaveDataButton();
