@@ -76,15 +76,16 @@ public class FirebaseManager : MonoBehaviour
 
     }
 
-    public bool isSignedIn(object sender, System.EventArgs eventArgs)
+    public bool isSignedIn()
     {
+        bool signedIn = User == auth.CurrentUser && auth.CurrentUser != null;
 
-        return (User == auth.CurrentUser && auth.CurrentUser != null);
+        return signedIn;
     }
 
     public void LogStatus(GameObject logStatus, GameObject userPanel)
     {
-        if (!isSignedIn(this, null))
+        if (!isSignedIn())
         {
             logStatus.SetActive(true);
             userPanel.SetActive(false);
@@ -95,6 +96,7 @@ public class FirebaseManager : MonoBehaviour
             logStatus.SetActive(false);
             userPanel.SetActive(true);
             StartCoroutine(userSigneIn());
+            StopCoroutine(userSigneIn());
         }
     }
 
@@ -182,7 +184,7 @@ public class FirebaseManager : MonoBehaviour
     }
     public void SaveFairBase()
     {
-        if(!isSignedIn(this, null))
+        if(!isSignedIn())
             Debug.Log("Not Connected");
         else 
             SaveDataButton();
@@ -200,7 +202,7 @@ public class FirebaseManager : MonoBehaviour
     public void ScoreboardButton()
     {
         StartCoroutine(LoadScoreboardData());
-        StartCoroutine(userSigneIn());
+        
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -255,7 +257,7 @@ public class FirebaseManager : MonoBehaviour
             username.color = new Color32(0, 130, 0, 255);
             
             //usernameField.text = User.DisplayName;
-            StartCoroutine(userSigneIn());
+            //StartCoroutine(userSigneIn());
             
             confirmLoginText.text = "";
             ClearLoginFeilds();
