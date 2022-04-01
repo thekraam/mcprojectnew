@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "893104036880",
+    "firebase_url": "https://eternal-s-attack-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "eternal-s-attack",
     "storage_bucket": "eternal-s-attack.appspot.com"
   },
