@@ -254,11 +254,13 @@ public class FirebaseManager : MonoBehaviour
 
             yield return new WaitForSeconds(2);
 
-            username.color = new Color32(0, 130, 0, 255);
             
+            username.color = new Color32(0, 130, 0, 255);
+
             //usernameField.text = User.DisplayName;
             //StartCoroutine(userSigneIn());
-            
+            FindObjectOfType<Game>().onTapForSave();
+
             confirmLoginText.text = "";
             ClearLoginFeilds();
             ClearRegisterFeilds();
@@ -345,6 +347,7 @@ public class FirebaseManager : MonoBehaviour
                         LoginPanel_RegisterButton.SetActive(true);
                         warningRegisterText.text = "";
                         SaveUsername();
+                        FindObjectOfType<Game>().onTapForSave();
                         ClearRegisterFeilds();
                         ClearLoginFeilds();
                     }
