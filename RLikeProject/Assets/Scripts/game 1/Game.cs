@@ -670,7 +670,7 @@ public class Game : MonoBehaviour
         SaveSystem.DataStatus(resumeGameText);
 
         //----------------------------  Controllo presenza Log ---------------------
-        FindObjectOfType<FirebaseManager>().LogStatus(logStatus, userPanel);
+        //FindObjectOfType<FirebaseManager>().LogStatus(logStatus, userPanel);
 
         // ---------------------------                 BG Music                ---------------------------
 
@@ -1072,6 +1072,11 @@ public class Game : MonoBehaviour
 
 
     /*----------------save------load------------------*/
+
+    public void onTapForSave()
+    {
+        FindObjectOfType<FirebaseManager>().LogStatus(logStatus, userPanel);
+    }
 
     public void SaveGame()
     {
