@@ -78,7 +78,26 @@ public class FirebaseManager : MonoBehaviour
 
     public bool isSignedIn()
     {
-        return (User == auth.CurrentUser && auth.CurrentUser != null);
+        bool signedIn = User == auth.CurrentUser && auth.CurrentUser != null;
+
+        return signedIn;
+    }
+
+    public void LogStatus(GameObject logStatus, GameObject userPanel)
+    {
+        if (!isSignedIn())
+        {
+            logStatus.SetActive(true);
+            userPanel.SetActive(false);
+            username.text = "";
+        }
+        else
+        {
+            logStatus.SetActive(false);
+            userPanel.SetActive(true);
+            StartCoroutine(userSigneIn());
+            StopCoroutine(userSigneIn());
+        }
     }
 
     private IEnumerator userSigneIn()
@@ -183,7 +202,7 @@ public class FirebaseManager : MonoBehaviour
     public void ScoreboardButton()
     {
         StartCoroutine(LoadScoreboardData());
-        StartCoroutine(userSigneIn());
+        
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -235,11 +254,13 @@ public class FirebaseManager : MonoBehaviour
 
             yield return new WaitForSeconds(2);
 
+            
             username.color = new Color32(0, 130, 0, 255);
-            
+
             //usernameField.text = User.DisplayName;
-            StartCoroutine(userSigneIn());
-            
+            //StartCoroutine(userSigneIn());
+            FindObjectOfType<Game>().onTapForSave();
+
             confirmLoginText.text = "";
             ClearLoginFeilds();
             ClearRegisterFeilds();
@@ -326,6 +347,7 @@ public class FirebaseManager : MonoBehaviour
                         LoginPanel_RegisterButton.SetActive(true);
                         warningRegisterText.text = "";
                         SaveUsername();
+                        FindObjectOfType<Game>().onTapForSave();
                         ClearRegisterFeilds();
                         ClearLoginFeilds();
                     }

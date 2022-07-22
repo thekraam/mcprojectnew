@@ -8,6 +8,8 @@ public static class SaveSystem
 {
     public static string isDataPresent;
 
+    
+
     public static void DataStatus(GameObject resumeGame)
     {
         isDataPresent = Application.persistentDataPath + "/game.fun";
@@ -22,7 +24,10 @@ public static class SaveSystem
 
     public static void SaveGame(string cityname ,Player player , Events events , Fattoria fattoria , Caserma caserma ,
                 Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders,
-                  Miniera miniera, Fabbro fabbro, Gilda gilda
+                  Miniera miniera, Fabbro fabbro, Gilda gilda, Tutorial tutorial,
+                  OldSoldiersManager oldSoldiers, Enemy enemy, Enemy.ESwordsmen eSwordsmen,
+                  Enemy.EArchers eArchers, Enemy.ERiders eRiders
+
         )
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -32,7 +37,8 @@ public static class SaveSystem
 
         GameData data = new GameData(cityname ,player , events , fattoria , caserma , 
                                     swordsmen , archers , riders , miniera, 
-                                    fabbro, gilda );
+                                    fabbro, gilda , tutorial, oldSoldiers, enemy,
+                                    eSwordsmen, eArchers, eRiders);
 
         formatter.Serialize(stream, data);
         stream.Close();
