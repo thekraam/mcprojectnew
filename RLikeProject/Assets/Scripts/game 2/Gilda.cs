@@ -156,6 +156,9 @@ public class Gilda : MonoBehaviour
 
     public void spedizione (Player player,Soldiers.Swordsmen swordmen, Soldiers.Archers archers, Soldiers.Riders riders, int x, OldSoldiersManager manager)
     {
+
+
+
         Debug.LogError("Entro dentro gilda");
         Debug.LogError("controllo1 = " + controllosped1);
         Debug.LogError("controllo2 = " + controllosped2);

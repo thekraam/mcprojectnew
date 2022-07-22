@@ -678,7 +678,6 @@ public class Game : MonoBehaviour
 
         // --------------------------- updater dati fattoria - tempo reale ---------------------------
 
-        player.setCitizensMax(fattoria.getAbitantiMax());
         UpdateFarmUI();
 
         // --------------------------- updater dati fabbro - tempo reale ---------------------------
@@ -842,6 +841,7 @@ public class Game : MonoBehaviour
         if(fattoria.getLvlFattoria() < 5 && (player.getMoney() >= fattoria.getLvlUpCost()) ){
             player.setRapidMoney(-fattoria.getLvlUpCost());
             fattoria.lvlUpFattoria();
+            player.addCitizensMax(100);
         }
 
     }

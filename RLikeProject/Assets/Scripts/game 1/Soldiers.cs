@@ -111,7 +111,7 @@ public class Soldiers : MonoBehaviour
         }
         public void setMomentDeadSwordman(int x)
         {
-            momentDeadswordman = x;
+            momentDeadswordman += x;
         }
 
 
@@ -246,7 +246,7 @@ public class Soldiers : MonoBehaviour
         }
         public void setMomentDeadArcher(int x)
         {
-            momentDeadArcher = x;
+            momentDeadArcher += x;
         }
 
 
@@ -383,7 +383,7 @@ public class Soldiers : MonoBehaviour
         }
         public void setMomentDeadRider(int x)
         {
-            momentDeadRider = x;
+            momentDeadRider += x;
         }
 
 

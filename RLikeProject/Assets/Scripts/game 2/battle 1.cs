@@ -14,9 +14,16 @@ public class battle1 : MonoBehaviour
     public int battaglia(Captain1 capitano1, Captain2 capitano2, Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider, Enemy.ESwordsmen eswordman, Enemy.EArchers earcher, Enemy.ERiders erider, float terri, float bonusTerri, float bonusETerri, float bonusSoldier, float bonusEnemy)
     {
         //------------------------------------reset morti-----------------------------------
-        swordman.setMomentDeadSwordman(0);
-        archer.setMomentDeadArcher(0);
-        rider.setMomentDeadRider(0);
+        swordman.setMomentDeadSwordman(-swordman.getMomentDeadSwordman());
+        archer.setMomentDeadArcher(-archer.getMomentDeadArcher());
+        rider.setMomentDeadRider(-rider.getMomentDeadRider());
+        swordman.setMomentSwordman(0);
+        archer.setMomentArcher(0);
+        rider.setMomentRider(0);
+
+
+
+
         //----------------------------------------------------------------------------------
         int fine = 0;
         int rapporto1 = 0;
@@ -202,20 +209,20 @@ public class battle1 : MonoBehaviour
             deaderider = (int)((deadEsoldier / 100) * percErider);
             //  Debug.LogError("deadErider " + deaderider);
 
-            swordman.setMomentSwordman((int)-deadswordman);
+            swordman.setMomentSwordman( swordman.getMomentSwordman() + (int)-deadswordman);
             if (swordman.getMomentSwordman() < 0)
             {
-                swordman.setMomentSwordman(-swordman.getMomentSwordman());
+                swordman.setMomentSwordman(0);
             }
-            archer.setMomentArcher((int)-deadarcher);
+            archer.setMomentArcher(archer.getMomentArcher() + (int)-deadarcher);
             if (archer.getMomentArcher() < 0)
             {
-                archer.setMomentArcher(-archer.getMomentArcher());
+                archer.setMomentArcher(0);
             }
-            rider.setMomentRider((int)-deadrider);
+            rider.setMomentRider(rider.getMomentRider() + (int)-deadrider);
             if (rider.getMomentRider() < 0)
             {
-                rider.setMomentRider(-rider.getMomentRider());
+                rider.setMomentRider(0);
             }
             eswordman.setRapidTotal((int)-deadeswordman);
             if (eswordman.getTotal() < 0)
@@ -240,18 +247,18 @@ public class battle1 : MonoBehaviour
 
 
 
-
+            
 
             contatorestampa = 6;
 
-            if (deadswordman > 0) { contatorestampa = contatorestampa - 1; }
-            if (deadarcher > 0) { contatorestampa = contatorestampa - 1; }
-            if (deadrider > 0) { contatorestampa = contatorestampa - 1; }
-            if (deadeswordman > 0) { contatorestampa = contatorestampa - 1; }
-            if (deadearcher > 0) { contatorestampa = contatorestampa - 1; }
-            if (deaderider > 0) { contatorestampa = contatorestampa - 1; }
+            if (deadswordman == 0) { contatorestampa = contatorestampa - 1; }
+            if (deadarcher == 0) { contatorestampa = contatorestampa - 1; }
+            if (deadrider == 0) { contatorestampa = contatorestampa - 1; }
+            if (deadeswordman == 0) { contatorestampa = contatorestampa - 1; }
+            if (deadearcher == 0) { contatorestampa = contatorestampa - 1; }
+            if (deaderider == 0) { contatorestampa = contatorestampa - 1; }
 
-            while (contatorestampa == 0)
+            while (contatorestampa > 0)
             {
 
                 randomstampa = (int)Random.Range(1f, 7f);
@@ -309,7 +316,7 @@ public class battle1 : MonoBehaviour
                     cont4 = 1;
                     contatorestampa--;
                 }
-                if (randomstampa == 5 && cont1 == 0 && deadearcher > 0)
+                if (randomstampa == 5 && cont5 == 0 && deadearcher > 0)
                 {
                     if (deadearcher == 1)
                     {
@@ -322,7 +329,7 @@ public class battle1 : MonoBehaviour
                     cont5 = 1;
                     contatorestampa--;
                 }
-                if (randomstampa == 6 && cont1 == 0 && deaderider > 0)
+                if (randomstampa == 6 && cont6 == 0 && deaderider > 0)
                 {
                     if (deaderider == 1)
                     {

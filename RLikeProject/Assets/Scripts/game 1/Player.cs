@@ -97,6 +97,11 @@ public class Player : MonoBehaviour
         player_citizensMAX = modifier;
 
     }
+    public void addCitizensMax(int modifier)
+    {
+        player_citizensMAX = player_citizensMAX + modifier;
+
+    }
 
     //--------------------------------------------golds----------------------------
     public int getMoney()

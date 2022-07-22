@@ -37,9 +37,9 @@ public class OldSoldiersManager : MonoBehaviour
         if (sword1 == 0 && arc1 == 0 && rid1 == 0 && controllo == 0)
         {
             Debug.LogError("son dentro la prima condizione (giusta)");
-            sword1 = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-            arc1 = archers.getMomentArcher() - archers.getMomentDeadArcher();
-            rid1 = riders.getMomentRider() - riders.getMomentDeadRider();
+            sword1 = swordsmen.getMomentSwordman();
+            arc1 = archers.getMomentArcher();
+            rid1 = riders.getMomentRider();
             turn1 = terri;
             controllo = 1;
             Debug.LogError("sword1 " + sword1);
@@ -52,9 +52,9 @@ public class OldSoldiersManager : MonoBehaviour
         else if (sword2 == 0 && arc2 == 0 && rid2 == 0 && controllo == 0)
         {
             Debug.LogError("error");
-            sword2 = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-            arc2 = archers.getMomentArcher() - archers.getMomentDeadArcher();
-            rid2 = riders.getMomentRider() - riders.getMomentDeadRider();
+            sword2 = swordsmen.getMomentSwordman();
+            arc2 = archers.getMomentArcher();
+            rid2 = riders.getMomentRider();
             turn2 = terri;
             controllo = 1;
         }
@@ -62,9 +62,9 @@ public class OldSoldiersManager : MonoBehaviour
         else if (sword3 == 0 && arc3 == 0 && rid3 == 0 && controllo == 0)
         {
             Debug.LogError("error");
-            sword3 = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-            arc3 = archers.getMomentArcher() - archers.getMomentDeadArcher();
-            rid3 = riders.getMomentRider() - riders.getMomentDeadRider();
+            sword3 = swordsmen.getMomentSwordman();
+            arc3 = archers.getMomentArcher();
+            rid3 = riders.getMomentRider();
             turn3 = terri;
             controllo = 1;
         }
@@ -72,9 +72,9 @@ public class OldSoldiersManager : MonoBehaviour
         else if (sword4 == 0 && arc4 == 0 && rid4 == 0 && controllo == 0)
         {
             Debug.LogError("error");
-            sword4 = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-            arc4 = archers.getMomentArcher() - archers.getMomentDeadArcher();
-            rid4 = riders.getMomentRider() - riders.getMomentDeadRider();
+            sword4 = swordsmen.getMomentSwordman();
+            arc4 = archers.getMomentArcher();
+            rid4 = riders.getMomentRider();
             turn4 = terri;
             controllo = 1;
         }
@@ -82,9 +82,9 @@ public class OldSoldiersManager : MonoBehaviour
         else if (sword5 == 0 && arc5 == 0 && rid5 == 0 && controllo == 0)
         {
             Debug.LogError("error");
-            sword5 = swordsmen.getMomentSwordman() - swordsmen.getMomentDeadSwordman();
-            arc5 = archers.getMomentArcher() - archers.getMomentDeadArcher();
-            rid5 = riders.getMomentRider() - riders.getMomentDeadRider();
+            sword5 = swordsmen.getMomentSwordman();
+            arc5 = archers.getMomentArcher();
+            rid5 = riders.getMomentRider();
             turn5 = terri;
             controllo = 1;
         }
