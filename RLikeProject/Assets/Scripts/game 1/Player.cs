@@ -60,11 +60,11 @@ public class Player : MonoBehaviour
 
     public void setCitizens()
     {
-        Debug.Log("cittadini massimi è uguale a = " + player_citizensMAX);
-        Debug.Log("popolazione è uguale a = " + player_population);
-        Debug.Log("soldiersaway è uguale a = " + soldiersaway);
+       // Debug.Log("cittadini massimi è uguale a = " + player_citizensMAX);
+       // Debug.Log("popolazione è uguale a = " + player_population);
+       // Debug.Log("soldiersaway è uguale a = " + soldiersaway);
         int x = player_citizensMAX-player_population-soldiersaway;
-        Debug.Log("x è uguale a = " + x);
+       // Debug.Log("x è uguale a = " + x);
         if (temp_player_citizens>x)
         {
             Debug.Log("entro dentro l'if");
