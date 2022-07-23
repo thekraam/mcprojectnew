@@ -8,21 +8,25 @@ using UnityEngine;
 
 public class battle1 : MonoBehaviour
 {
-    KillList killList = new KillList();
 
 
     public int battaglia(Captain1 capitano1, Captain2 capitano2, Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider, Enemy.ESwordsmen eswordman, Enemy.EArchers earcher, Enemy.ERiders erider, float terri, float bonusTerri, float bonusETerri, float bonusSoldier, float bonusEnemy)
     {
+        //------------------------------------reset KillList-----------------------------------
+
+        int ATKlist = (swordman.getAtk() * swordman.getMomentSwordman()) + (archer.getAtk() * archer.getMomentArcher()) + (rider.getAtk() * rider.getMomentRider());
+        int DEFlist = (swordman.getDef() * swordman.getMomentSwordman()) + (archer.getDef() * archer.getMomentArcher()) + (rider.getDef() * rider.getMomentRider());
+        int EATKlist = (eswordman.getAtk() * eswordman.getTotal()) + (earcher.getAtk() * earcher.getTotal()) + (erider.getAtk() * erider.getTotal());
+        int EDEFlist = (eswordman.getDef() * eswordman.getTotal()) + (earcher.getDef() * earcher.getTotal()) + (erider.getDef() * erider.getTotal());
+
+        FindObjectOfType<KillList>().setKillList(1+swordman.getMomentSwordman()+archer.getMomentArcher()+rider.getMomentRider(),1+eswordman.getTotal() + earcher.getTotal() + erider.getTotal() , ATKlist, DEFlist, EATKlist, EDEFlist);
         //------------------------------------reset morti-----------------------------------
         swordman.setMomentDeadSwordman(-swordman.getMomentDeadSwordman());
         archer.setMomentDeadArcher(-archer.getMomentDeadArcher());
         rider.setMomentDeadRider(-rider.getMomentDeadRider());
-        swordman.setMomentSwordman(0);
-        archer.setMomentArcher(0);
-        rider.setMomentRider(0);
-
-
-
+        //swordman.setMomentSwordman(0);
+        //archer.setMomentArcher(0);
+        //rider.setMomentRider(0);
 
         //----------------------------------------------------------------------------------
         int fine = 0;
@@ -268,11 +272,13 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadswordman == 1)
                     {
-                        killList.insertNewLine("You have lost " + deadswordman + " swordsman", 1);
+                        FindObjectOfType<KillList>().insertNewLine("You have lost " + deadswordman + " swordsman", 1);
+                        FindObjectOfType<KillList>().setFightingSoldiers(0, (int)deadswordman, swordman.getAtk() , swordman.getDef() );
                     }
                     else
                     {
-                        killList.insertNewLine("You have lost " + deadswordman + " swordsmen", 1);
+                        FindObjectOfType<KillList>().insertNewLine("You have lost " + deadswordman + " swordsmen", 1);
+                        FindObjectOfType<KillList>().setFightingSoldiers(0, (int)deadswordman, swordman.getAtk()* (int)deadswordman, swordman.getDef()* (int)deadswordman);
                     }
                         cont1 = 1;
                     contatorestampa--;
@@ -281,11 +287,13 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadarcher == 1)
                     {
-                        killList.insertNewLine("You have lost " + deadarcher + " archer", 1);
+                        FindObjectOfType<KillList>().insertNewLine("You have lost " + deadarcher + " archer", 1);
+                        FindObjectOfType<KillList>().setFightingSoldiers(0, (int)deadarcher, archer.getAtk()*(int)deadarcher, archer.getDef()* (int)deadarcher);
                     }
                     else
                     {
-                        killList.insertNewLine("You have lost " + deadarcher + " archers", 1);
+                        FindObjectOfType<KillList>().insertNewLine("You have lost " + deadarcher + " archers", 1);
+                        FindObjectOfType<KillList>().setFightingSoldiers(0, (int)deadarcher, archer.getAtk() * (int)deadarcher, archer.getDef() * (int)deadarcher);
                     }
                     cont2 = 1;
                     contatorestampa--;
@@ -294,11 +302,13 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadrider == 1)
                     {
-                        killList.insertNewLine("You have lost " + deadrider + " rider", 1);
+                        FindObjectOfType<KillList>().insertNewLine("You have lost " + deadrider + " rider", 1);
+                        FindObjectOfType<KillList>().setFightingSoldiers(0, (int)deadrider, rider.getAtk()* (int)deadrider , rider.getDef()* (int)deadrider );
                     }
                     else
                     {
-                        killList.insertNewLine("You have lost " + deadrider + " riders", 1);
+                        FindObjectOfType<KillList>().insertNewLine("You have lost " + deadrider + " riders", 1);
+                        FindObjectOfType<KillList>().setFightingSoldiers(0, (int)deadrider, rider.getAtk() * (int)deadrider, rider.getDef() * (int)deadrider);
                     }
                     cont3 = 1;
                     contatorestampa--;
@@ -307,11 +317,13 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadeswordman == 1)
                     {
-                        killList.insertNewLine("Enemy has lost " + deadeswordman + " swordsman", 2);
+                        FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadeswordman + " swordsman", 2);
+                        FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadeswordman, eswordman.getAtk()* (int)deadeswordman , eswordman.getDef()* (int)deadeswordman );
                     }
                     else
                     {
-                        killList.insertNewLine("Enemy has lost " + deadeswordman + " swordsmen", 2);
+                        FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadeswordman + " swordsmen", 2);
+                        FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadeswordman, eswordman.getAtk() * (int)deadeswordman, eswordman.getDef() * (int)deadeswordman);
                     }
                     cont4 = 1;
                     contatorestampa--;
@@ -320,11 +332,13 @@ public class battle1 : MonoBehaviour
                 {
                     if (deadearcher == 1)
                     {
-                        killList.insertNewLine("Enemy has lost " + deadearcher + " archer", 2);
+                        FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadearcher + " archer", 2);
+                        FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadearcher, earcher.getAtk()* (int)deadearcher,earcher.getDef()* (int)deadearcher );
                     }
                     else
                     {
-                        killList.insertNewLine("Enemy has lost " + deadearcher + " archers", 2);
+                        FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadearcher + " archers", 2);
+                        FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadearcher, earcher.getAtk() * (int)deadearcher, earcher.getDef() * (int)deadearcher);
                     }
                     cont5 = 1;
                     contatorestampa--;
@@ -333,11 +347,13 @@ public class battle1 : MonoBehaviour
                 {
                     if (deaderider == 1)
                     {
-                        killList.insertNewLine("Enemy has lost " + deaderider + " rider", 2);
+                        FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deaderider + " rider", 2);
+                        FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deaderider, erider.getAtk()* (int)deaderider , erider.getDef()* (int)deaderider );
                     }
                     else
                     {
-                        killList.insertNewLine("Enemy has lost " + deaderider + " riders", 2);
+                        FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deaderider + " riders", 2);
+                        FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deaderider, erider.getAtk() * (int)deaderider, erider.getDef() * (int)deaderider);
                     }
                     cont6 = 1;
                     contatorestampa--;

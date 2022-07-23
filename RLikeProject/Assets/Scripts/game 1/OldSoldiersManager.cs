@@ -32,26 +32,26 @@ public class OldSoldiersManager : MonoBehaviour
 
     public void salvasoldati(Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, int terri)
     {
-        Debug.LogError("son dentro salvasoldati");
+       // Debug.LogError("son dentro salvasoldati");
         int controllo = 0;
         if (sword1 == 0 && arc1 == 0 && rid1 == 0 && controllo == 0)
         {
-            Debug.LogError("son dentro la prima condizione (giusta)");
+            //    Debug.LogError("son dentro la prima condizione (giusta)");
             sword1 = swordsmen.getMomentSwordman();
             arc1 = archers.getMomentArcher();
             rid1 = riders.getMomentRider();
             turn1 = terri;
             controllo = 1;
-            Debug.LogError("sword1 " + sword1);
-            Debug.LogError("arc1 " + arc1);
-            Debug.LogError("rid1 " + rid1);
-            Debug.LogError("turn1 " + turn1);
+            // Debug.LogError("sword1 " + sword1);
+            // Debug.LogError("arc1 " + arc1);
+            // Debug.LogError("rid1 " + rid1);
+            // Debug.LogError("turn1 " + turn1);
 
         }
 
         else if (sword2 == 0 && arc2 == 0 && rid2 == 0 && controllo == 0)
         {
-            Debug.LogError("error");
+            //    Debug.LogError("error");
             sword2 = swordsmen.getMomentSwordman();
             arc2 = archers.getMomentArcher();
             rid2 = riders.getMomentRider();
@@ -61,7 +61,7 @@ public class OldSoldiersManager : MonoBehaviour
 
         else if (sword3 == 0 && arc3 == 0 && rid3 == 0 && controllo == 0)
         {
-            Debug.LogError("error");
+            //   Debug.LogError("error");
             sword3 = swordsmen.getMomentSwordman();
             arc3 = archers.getMomentArcher();
             rid3 = riders.getMomentRider();
@@ -71,7 +71,7 @@ public class OldSoldiersManager : MonoBehaviour
 
         else if (sword4 == 0 && arc4 == 0 && rid4 == 0 && controllo == 0)
         {
-            Debug.LogError("error");
+            //    Debug.LogError("error");
             sword4 = swordsmen.getMomentSwordman();
             arc4 = archers.getMomentArcher();
             rid4 = riders.getMomentRider();
@@ -81,14 +81,14 @@ public class OldSoldiersManager : MonoBehaviour
 
         else if (sword5 == 0 && arc5 == 0 && rid5 == 0 && controllo == 0)
         {
-            Debug.LogError("error");
+            //   Debug.LogError("error");
             sword5 = swordsmen.getMomentSwordman();
             arc5 = archers.getMomentArcher();
             rid5 = riders.getMomentRider();
             turn5 = terri;
             controllo = 1;
         }
-        Debug.LogError("chiudo salvataggio dati");
+        //  Debug.LogError("chiudo salvataggio dati");
     }
 
     public void riassegnaSoldati(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
@@ -258,19 +258,19 @@ public class OldSoldiersManager : MonoBehaviour
 
     public void gildamexritorno(Player player, Gilda gilda)
     {
-        Debug.Log("entro dentro gildamexritorno");
+        //    Debug.Log("entro dentro gildamexritorno");
 
 
         turngilda1--;
         turngilda2--;
-        Debug.LogError("tipologia1 = " + tipologia1 + " e moltiplicatore " + moltiplicatore1 );
-        Debug.LogError("tipologia2 = " + tipologia2 + " e moltiplicatore " + moltiplicatore2);
-        Debug.LogError("turngilda1 = " + turngilda1);
-        Debug.LogError("turngilda2 = " + turngilda2);
+        //    Debug.LogError("tipologia1 = " + tipologia1 + " e moltiplicatore " + moltiplicatore1 );
+        //   Debug.LogError("tipologia2 = " + tipologia2 + " e moltiplicatore " + moltiplicatore2);
+        //   Debug.LogError("turngilda1 = " + turngilda1);
+        //   Debug.LogError("turngilda2 = " + turngilda2);
 
         if (((tipologia1 == 1) && turngilda1 == 0) || ((tipologia2 == 1) && turngilda2 == 0))
         {
-            Debug.LogError("caso 1 ");
+            //     Debug.LogError("caso 1 ");
             if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
             else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
             player.setRapidMoney(200);
@@ -279,7 +279,7 @@ public class OldSoldiersManager : MonoBehaviour
             //dialogo 1
 
 
-            Debug.LogError("sped1 = " + gilda.getsped1());
+            //        Debug.LogError("sped1 = " + gilda.getsped1());
         }
         if (((tipologia1 == 2) && turngilda1 == 0 )||( (tipologia2 == 2) && turngilda2 == 0))
         {
@@ -290,9 +290,9 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-10);
             //dialogo 2
 
-            Debug.LogError("caso 2 ");
+            //       Debug.LogError("caso 2 ");
 
-            Debug.LogError("sped1 = " + gilda.getsped1());
+            //       Debug.LogError("sped1 = " + gilda.getsped1());
         }
         if (((tipologia1 == 3) && turngilda1 == 0) || ((tipologia2 == 3) && turngilda2 == 0))
         {
@@ -302,9 +302,9 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
             //dialogo 3
-            Debug.LogError("caso 3 ");
+            //        Debug.LogError("caso 3 ");
 
-            Debug.LogError("sped1 = " + gilda.getsped1());
+            //       Debug.LogError("sped1 = " + gilda.getsped1());
         }
         if (((tipologia1 == 4) && turngilda1 == 0) || ((tipologia2 == 4) && turngilda2 == 0))
         {
@@ -314,13 +314,13 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
             //dialogo 4
-            Debug.LogError("caso 4 ");
+            //       Debug.LogError("caso 4 ");
 
-            Debug.LogError("sped1 = " + gilda.getsped1());
+            //      Debug.LogError("sped1 = " + gilda.getsped1());
         }
         if (((tipologia1 == 5) && turngilda1 == 0 )|| ((tipologia2 == 5) && turngilda2 == 0))
         {
-            Debug.Log("Son dentro tipologia 5");
+            //      Debug.Log("Son dentro tipologia 5");
             if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
             else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
             player.setRapidMoney(800);
@@ -332,7 +332,7 @@ public class OldSoldiersManager : MonoBehaviour
         }
         if (((tipologia1 == 6) && turngilda1 == 0) || ((tipologia2 == 6) && turngilda2 == 0))
         {
-            Debug.Log("Son dentro tipologia 6");
+            //       Debug.Log("Son dentro tipologia 6");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(800);
@@ -344,7 +344,7 @@ public class OldSoldiersManager : MonoBehaviour
         }
         if (((tipologia1 == 7) && turngilda1 == 0 )||( (tipologia2 == 7) && turngilda2 == 0))
         {
-            Debug.Log("Son dentro tipologia 7");
+            //       Debug.Log("Son dentro tipologia 7");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(800);
@@ -355,7 +355,7 @@ public class OldSoldiersManager : MonoBehaviour
         }
         if (((tipologia1 == 8) && turngilda1 == 0) || ((tipologia2 == 8) && turngilda2 == 0))
         {
-            Debug.Log("Son dentro tipologia 8");
+            //       Debug.Log("Son dentro tipologia 8");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
             player.setRapidMoney(800);
@@ -519,7 +519,7 @@ public class OldSoldiersManager : MonoBehaviour
 
         if (true)
         {
-            Debug.Log("CONFERMA");
+            //         Debug.Log("CONFERMA");
         }
     }
 }
