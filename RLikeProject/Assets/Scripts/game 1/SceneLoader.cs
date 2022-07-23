@@ -42,15 +42,7 @@ public class SceneLoader : MonoBehaviour
             loadingPanel.SetActive(true);
             StartCoroutine(LoadingScreenFadeOut(0.8f));
         }
-    }
-    public void onPressRestart()
-    {
-        
-        FindObjectOfType<Game>().onQuitGame();
-        onPressButton(true);
-        FindObjectOfType<Game>().mainMenuPanel.SetActive(false);
-
-        
+        Debug.LogError("rest");
     }
 
     /*

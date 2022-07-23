@@ -5,17 +5,95 @@ using UnityEngine.UI;
 
 public class KillList : MonoBehaviour
 {
+    public Text soldiers;
+    private int soldiersValue;
+    public Text enemySoldiers;
+    private int enemySoldiersValue;
+
+    public Text ATKUI;
+    private int ATKUIvalue;
+    public Text DEFUI;
+    private int DEFUIvalue;
+
+    public Text eATKUI;
+    private int eATKUIvalue;
+    public Text eDEFUI;
+    private int eDEFUIvalue;
+
+    bool set = false;
+
     public Text[] Line;
     public CanvasGroup[] LineGroup;
     
     private int[] armyType = new int[30];
+    private int[ , ] deadSoldiersInTurn = new int[30,2];
+    private int[] atks = new int[30];
+    private int[] defs = new int[30];
     int i = 0;
+
+    private void Update()
+    {
+        if (set)
+        {
+            soldiers.text = "" + soldiersValue;
+            enemySoldiers.text = "" + enemySoldiersValue;
+
+            ATKUI.text = "" + ATKUIvalue;
+            DEFUI.text = "" + DEFUIvalue;
+
+            eATKUI.text = "" + eATKUIvalue;
+            eDEFUI.text = "" + eDEFUIvalue;
+        }
+    }
+
+    public void setKillList(int soldiers, int enemySoldiers, int ATKUI, int DEFUI, int eATKUI, int eDEFUI)
+    {
+        this.soldiersValue = soldiers;
+        this.enemySoldiersValue = enemySoldiers;
+        this.ATKUIvalue = ATKUI;
+        this.DEFUIvalue = DEFUI;
+        this.eATKUIvalue = eATKUI;
+        this.eDEFUIvalue = eDEFUI;
+
+        this.soldiers.text = "" + soldiers;
+        this.enemySoldiers.text = "" + enemySoldiers;
+        this.ATKUI.text = "" + ATKUI;
+        this.DEFUI.text = "" + DEFUI;
+        this.eATKUI.text = "" + eATKUI;
+        this.eDEFUI.text = "" + eDEFUI;
+
+        this.set = true;
+    }
+
+
+    public void setFightingSoldiers(int armytype, int deaths, int ATKtoSub, int DEFtoSub)
+    {
+        deadSoldiersInTurn[i , armytype] = deaths;
+        atks[i] = ATKtoSub;
+        defs[i] = DEFtoSub;
+        i++;
+    }
 
     public void insertNewLine(string line, int army)
     {
         Line[i].text = line;
         armyType[i] = army;
-        i++;
+    }
+
+    private void calcNewUI(int armytype, int line)
+    {
+        if(armytype == 1)
+        {
+            soldiersValue -= deadSoldiersInTurn[line, armyType[line]-1];
+            ATKUIvalue -= atks[line];
+            DEFUIvalue -= defs[line];
+        }
+        else
+        {
+            enemySoldiersValue -= deadSoldiersInTurn[line, armyType[line]-1];
+            eATKUIvalue -= atks[line];
+            eDEFUIvalue -= defs[line];
+        }
     }
 
     public void test()
@@ -55,6 +133,9 @@ public class KillList : MonoBehaviour
     {
         StartCoroutine(FadeIn(LineGroup[0]));
         if (armyType[0] == 2) Line[0].alignment = TextAnchor.MiddleRight;
+
+        
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         StartCoroutine(FadeIn(LineGroup[1]));
@@ -66,7 +147,8 @@ public class KillList : MonoBehaviour
                 Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
-        
+        calcNewUI(armyType[0], 0);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -86,6 +168,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[1], 1);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -101,8 +186,12 @@ public class KillList : MonoBehaviour
                 Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[2], 2);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -121,6 +210,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[3], 3);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -140,6 +232,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[4], 4);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         if (Line[6].text != "")
@@ -159,6 +254,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[5], 5);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         if (Line[7].text != "")
@@ -179,6 +277,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[6], 6);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         if (Line[8].text != "")
@@ -200,6 +301,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[7], 7);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         if (Line[9].text != "")
@@ -223,6 +327,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[8], 8);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         if (Line[10].text != "")
@@ -247,6 +354,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[9], 9);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         if (Line[11].text != "")
@@ -272,6 +382,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[10], 10);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
         if (Line[12].text != "")
@@ -298,6 +411,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[11], 11);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -326,6 +442,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[12], 12);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -355,6 +474,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[13], 13);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -386,6 +508,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[14], 14);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -418,6 +543,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[15], 15);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -451,6 +579,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[16], 16);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -486,6 +617,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[17], 17);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -521,6 +655,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[18], 18);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -557,6 +694,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[19], 19);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -594,6 +734,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[20], 20);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -632,6 +775,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[21], 21);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -672,6 +818,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[22], 22);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -712,6 +861,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[23], 23);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -753,6 +905,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[24], 24);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -795,6 +950,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[25], 25);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -838,6 +996,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[26], 26);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -882,6 +1043,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[27], 27);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -927,6 +1091,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[28], 28);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -973,6 +1140,9 @@ public class KillList : MonoBehaviour
             }
         }
         else StopCoroutine(PushLines());
+
+        calcNewUI(armyType[29], 29);
+
         yield return new WaitForSeconds(Random.Range(1f, 3f));
     }
 

@@ -131,19 +131,26 @@ public class Events : MonoBehaviour
     public void EventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
         float eventChooser = 0;
+        bool selected = false;
 
-        eventChooser = Random.Range(0f, 1f);
-        if (eventChooser >= 0 && eventChooser < 1f)
+        while (!selected)
         {
-            if (aqueduct == 0 /*&& player.getMoney() >= 400*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
+            eventChooser = Random.Range(0f, 1f);
+            if (eventChooser >= 0 && eventChooser < 1f)
             {
-                StartCoroutine(TriggerAqueductEvent(player, swordsmen, archers, riders));
-            }
-            else if (citydefenseproject == 0 /*&& player.getMoney() >= 1000*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
-            {
-                StartCoroutine(TriggerCityDefenseProjectEvent(player, swordsmen, archers, riders));
+                if (aqueduct == 0 /*&& player.getMoney() >= 400*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
+                {
+                    StartCoroutine(TriggerAqueductEvent(player, swordsmen, archers, riders));
+                    selected = true;
+                }
+                else if (citydefenseproject == 0 /*&& player.getMoney() >= 1000*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
+                {
+                    StartCoroutine(TriggerCityDefenseProjectEvent(player, swordsmen, archers, riders));
+                    selected = true;
+                }
             }
         }
+
     }
 
     /* evento primario aquedotto */
