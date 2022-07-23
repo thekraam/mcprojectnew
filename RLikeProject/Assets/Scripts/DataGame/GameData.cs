@@ -25,8 +25,7 @@ public class GameData
     public int lvlfield;
     public int soldiersaway;
 
-
-    /*Tutorial*/
+    /*tutorial*/
     public bool welcomeTutorial;
     public bool villageTutorial;
     public bool farmTutorial;
@@ -36,7 +35,7 @@ public class GameData
     public bool mineTutorial;
     public bool bonusTutorial;
 
-    /*eventi*/
+    /*events*/
     public int aqueduct;
     public int response;
     public int citydefenseproject;
@@ -46,21 +45,26 @@ public class GameData
     public bool attendingSecondaryEvent;
     public bool aqueductEffectMalus;
 
-    /*fattoria*/
+    /*farm*/
     public int farmLvl;
     public int abitantiMax;
     public int crescitaAbitanti;
     public int farmGold;
     public int farmLvlUpCost;
-
-    /*caserma*/
+    /*mine*/
+    public int minelvl;
+    public int minegold;
+    public bool carboneHigh;
+    public int minecosto;
+    /*barracks*/
     public int casermalvl;
     public int reclutamentoMAX;
     public float bonusBarrack;
     public int reclutamentoMaxMoment;
     public int casermaLvlUpCost;
 
-    /*soldati*/
+    /*soldiers*/
+    /*swordsmen*/
     public int total_swordsmen;
     public int temp_total_swordsmen;
     public int atk_swordsmen;
@@ -70,7 +74,7 @@ public class GameData
     public float bonus_swordsmen;
     public int momentswordman;
     public int momentDeadswordman ;
-
+    /*archers*/
     public int total_archers;
     public int temp_total_archers;
     public int atk_archers;
@@ -80,7 +84,7 @@ public class GameData
     public float bonus_archers;
     public int momentarcher;
     public int momentDeadArcher;
-
+    /*riders*/
     public int total_riders;
     public int temp_total_riders;
     public int atk_riders;
@@ -112,12 +116,6 @@ public class GameData
     public float bonus_ridersE;
 
 
-    /* mine */
-    public int minelvl;
-    public int minegold;
-    public bool carboneHigh;
-    public int minecosto;
-
     /*fabbro*/
     public int fablvl;
     public int fabcosto;
@@ -129,7 +127,6 @@ public class GameData
     public int goldpiccone;
 
     /*gilda*/
-
     public int gildalvl;
     public int gildacosto;
     public int sped1;
@@ -141,7 +138,6 @@ public class GameData
     public int controllosped2;
 
     /*OldSoldiers*/
-
     public int sword1;
     public int arc1;
     public int rid1;
@@ -223,7 +219,7 @@ public class GameData
         mineTutorial = tutorial.mineTutorial;
         bonusTutorial = tutorial.bonusTutorial;
 
-        /*eventi*/
+        /*events*/
         aqueduct = events.aqueduct;
         response = events.response[0];
         citydefenseproject = events.citydefenseproject;
@@ -233,22 +229,26 @@ public class GameData
         aqueductMalusTurnsLeft = events.aqueductMalusTurnsLeft;
         aqueductEffectMalus = events.aqueductEffectMalus;
 
-        /*fattoria*/
+        /*farm*/
         farmLvl = fattoria.getLvlFattoria();
         abitantiMax = fattoria.getAbitantiMax();
         crescitaAbitanti = fattoria.getCrescitaAbitanti();
         farmGold = fattoria.getGoldFattoria();
         farmLvlUpCost = fattoria.getLvlUpCost();
-
-        /*caserma*/
+        /*mine*/
+        minelvl = miniera.lvl;
+        minegold = miniera.gold;
+        carboneHigh = miniera.carboneHigh;
+        minecosto = miniera.costo;
+        /*barracks*/
         casermalvl = caserma.getLvl();
         reclutamentoMAX = caserma.getReclutamentoMax();
         bonusBarrack = caserma.getBonusBarrack();
         reclutamentoMaxMoment = caserma.getReclutamentoMaxMoment();
         casermaLvlUpCost = caserma.getcosto();
 
-        /*soldati*/
-
+        /*soldiers*/
+        /*swordsmen*/
         total_swordsmen = swordsmen.getTotal();
         temp_total_swordsmen = swordsmen.getTempTotal();
         atk_swordsmen = swordsmen.getAtk();
@@ -258,7 +258,7 @@ public class GameData
         bonus_swordsmen = swordsmen.getBonus();
         momentswordman = swordsmen.getMomentSwordman();
         momentDeadswordman = swordsmen.getMomentDeadSwordman();
-
+        /*archers*/
         total_archers = archers.getTotal();
         temp_total_archers = archers.getTempTotal();
         atk_archers = archers.getAtk();
@@ -268,7 +268,7 @@ public class GameData
         bonus_archers = archers.getBonus();
         momentarcher = archers.getMomentArcher();
         momentDeadArcher = archers.getMomentDeadArcher();
-
+        /*riders*/
         total_riders = riders.getTotal();
         temp_total_riders = riders.getTempTotal();
         atk_riders = riders.getAtk();
@@ -299,12 +299,6 @@ public class GameData
         def_ridersE = eRiders.getDef();
         bonus_ridersE = eRiders.getBonus();
 
-        /*miniera*/
-        minelvl = miniera.lvl;
-        minegold = miniera.gold;
-        carboneHigh = miniera.carboneHigh;
-        minecosto = miniera.costo;
-
         /*fabbro*/
         fablvl = fabbro.lvl;
         fabcosto = fabbro.costo;
@@ -327,7 +321,6 @@ public class GameData
         controllosped2 = gilda.controllosped2;
 
         /*OldSoldiers*/
-
         sword1 = oldSoldiers.sword1;
         arc1 = oldSoldiers.arc1;
         rid1 = oldSoldiers.rid1;

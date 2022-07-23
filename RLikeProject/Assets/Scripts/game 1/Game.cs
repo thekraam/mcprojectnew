@@ -1128,6 +1128,7 @@ public class Game : MonoBehaviour
         FindObjectOfType<Tutorial>().mineTutorial = data.mineTutorial;
         FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
 
+        /*events*/
         FindObjectOfType<Events>().aqueduct = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;
         FindObjectOfType<Events>().aqueductMalusTurnsLeft = data.aqueductMalusTurnsLeft;
@@ -1135,28 +1136,28 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().citydefenseproject = data.citydefenseproject;
         FindObjectOfType<Events>().aqueductSecondary = data.aqueductSecondary;
         FindObjectOfType<Events>().aqueductTurnsLeft = data.aqueductTurnsLeft;
-        
         FindObjectOfType<Events>().attendingSecondaryEvent = data.attendingSecondaryEvent;
 
-
+        /*farm*/
         fattoria.setLvlFattoria(data.farmLvl);
         fattoria.setAbitantiMax(data.abitantiMax);
         fattoria.setCrescitaAbitanti(data.crescitaAbitanti);
         fattoria.setGoldFattoria(data.farmGold);
         fattoria.setLvlUpCost(data.farmLvlUpCost);
-
+        /*mine*/
         miniera.lvl = data.minelvl;
         miniera.gold = data.minegold;
         miniera.carboneHigh = data.carboneHigh;
         miniera.costo = data.minecosto;
-
+        /*barracks*/
         caserma.lvl = data.casermalvl;
         caserma.reclutamentoMAX = data.reclutamentoMAX;
         caserma.bonusBarrack = data.bonusBarrack;
         caserma.reclutamentoMaxMoment = data.reclutamentoMaxMoment;
         caserma.costo = data.casermaLvlUpCost;
 
-        /*soldati*/
+        /*soldiers*/
+        /*swordsmen*/
         swordsmen.total_swordsmen = data.total_swordsmen;
         swordsmen.setTempTotal(data.temp_total_swordsmen);
         swordsmen.setTotal();
@@ -1167,7 +1168,7 @@ public class Game : MonoBehaviour
         swordsmen.bonus_swordsmen = data.bonus_swordsmen;
         swordsmen.momentswordman = data.momentswordman;
         swordsmen.momentDeadswordman = data.momentDeadswordman;
-
+        /*archers*/
         archers.total_archers = data.total_archers;
         archers.setTempTotal(data.temp_total_archers);
         archers.setTotal();
@@ -1178,8 +1179,7 @@ public class Game : MonoBehaviour
         archers.bonus_archers = data.bonus_archers;
         archers.momentarcher = data.momentarcher;
         archers.momentDeadArcher = data.momentDeadArcher;
-
-
+        /*riders*/
         riders.total_riders = data.total_riders;
         riders.setTempTotal(data.temp_total_riders);
         riders.setTotal();
@@ -1222,7 +1222,6 @@ public class Game : MonoBehaviour
         fabbro.goldpiccone = data.goldpiccone;
 
         /*gilda*/
-
         gilda.lvl = data.gildalvl;
         gilda.costo = data.gildacosto;
         gilda.sped1 = data.sped1;
@@ -1234,7 +1233,6 @@ public class Game : MonoBehaviour
         gilda.controllosped2 = data.controllosped2;
 
         /*OldSoldiers*/
-
         FindObjectOfType<OldSoldiersManager>().sword1 = data.sword1;
         FindObjectOfType<OldSoldiersManager>().arc1 = data.arc1;
         FindObjectOfType<OldSoldiersManager>().rid1 = data.rid1;
