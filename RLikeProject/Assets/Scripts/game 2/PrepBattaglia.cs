@@ -60,6 +60,7 @@ public class PrepBattaglia : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
         yield return new WaitForSeconds(0.001f);
+        currentCanvasGroup.gameObject.SetActive(false);
     }
 
     public IEnumerator effettoFadeIn(CanvasGroup currentCanvasGroup)

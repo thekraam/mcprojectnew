@@ -24,6 +24,7 @@ public class KillList : MonoBehaviour
 
     public Text[] Line;
     public CanvasGroup[] LineGroup;
+    public CanvasGroup canvasContinue;
     public GameObject buttonContinue;
     
     private int[] armyType = new int[30];
@@ -85,16 +86,17 @@ public class KillList : MonoBehaviour
     {
         if(armytype == 1)
         {
-            soldiersValue -= deadSoldiersInTurn[line, armyType[line]-1];
-            ATKUIvalue -= atks[line];
-            DEFUIvalue -= defs[line];
+            soldiersValue = (soldiersValue - deadSoldiersInTurn[line, armyType[line] - 1])<0 ? 0 : soldiersValue - deadSoldiersInTurn[line, armyType[line]-1];
+            ATKUIvalue = (ATKUIvalue - atks[line])<0 ? 0 : ATKUIvalue - atks[line];
+            DEFUIvalue = (DEFUIvalue - defs[line])<0 ? 0 : DEFUIvalue - defs[line];
         }
         else
         {
-            enemySoldiersValue -= deadSoldiersInTurn[line, armyType[line]-1];
-            eATKUIvalue -= atks[line];
-            eDEFUIvalue -= defs[line];
+            enemySoldiersValue = (enemySoldiersValue - deadSoldiersInTurn[line, armyType[line] - 1]) < 0 ? 0 : (enemySoldiersValue - deadSoldiersInTurn[line, armyType[line] - 1]);
+            eATKUIvalue = (eATKUIvalue-atks[line])<0 ? 0 : (eATKUIvalue - atks[line]);
+            eDEFUIvalue = (eDEFUIvalue-defs[line])<0 ? 0 : (eDEFUIvalue - defs[line]);
         }
+
     }
 
     public void test()
@@ -120,8 +122,11 @@ public class KillList : MonoBehaviour
 
     private IEnumerator FadeIn(CanvasGroup currentLineGroup)
     {
+        currentLineGroup.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         float timePassed0 = 0f;
+
+        if(currentLineGroup.alpha!=1)
         while (timePassed0 < 0.8f)
         {
             timePassed0 += Time.deltaTime;
@@ -132,23 +137,39 @@ public class KillList : MonoBehaviour
 
     public IEnumerator PushLines()
     {
-        StartCoroutine(FadeIn(LineGroup[0]));
-        if (armyType[0] == 2) Line[0].alignment = TextAnchor.MiddleRight;
+        if (Line[0].text != "")
+        {
+            StartCoroutine(FadeIn(LineGroup[0]));
+            if (armyType[0] == 2) Line[0].alignment = TextAnchor.MiddleRight;
+        }
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
 
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
-        StartCoroutine(FadeIn(LineGroup[1]));
-        if (armyType[1] == 2) Line[1].alignment = TextAnchor.MiddleRight;
-        // oldPos = Line[0].rectTransform.localPosition.y; pare non serva
-        newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
-        while (Line[0].rectTransform.localPosition.y >= newPos)
+        if (Line[1].text != "")
         {
-            Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 2, (float)0);
-            yield return null;
+            StartCoroutine(FadeIn(LineGroup[1]));
+            if (armyType[1] == 2) Line[1].alignment = TextAnchor.MiddleRight;
+            // oldPos = Line[0].rectTransform.localPosition.y; pare non serva
+            newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
+            while (Line[0].rectTransform.localPosition.y >= newPos)
+            {
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 2, (float)0);
+                yield return null;
+            }
+            calcNewUI(armyType[0], 0);
         }
-        calcNewUI(armyType[0], 0);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -167,10 +188,13 @@ public class KillList : MonoBehaviour
                 Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[2], 2);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[1], 1);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -187,11 +211,13 @@ public class KillList : MonoBehaviour
                 Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
-
+            calcNewUI(armyType[3], 3);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[2], 2);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -209,10 +235,13 @@ public class KillList : MonoBehaviour
                 Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[4], 4);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[3], 3);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -231,10 +260,13 @@ public class KillList : MonoBehaviour
                 Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[5], 5);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[4], 4);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -253,10 +285,13 @@ public class KillList : MonoBehaviour
                 Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[6], 6);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[5], 5);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -276,10 +311,13 @@ public class KillList : MonoBehaviour
                 Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[7], 7);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[6], 6);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -300,10 +338,13 @@ public class KillList : MonoBehaviour
                 Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[8], 8);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[7], 7);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -325,10 +366,13 @@ public class KillList : MonoBehaviour
                 Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[9], 9);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[8], 8);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -351,10 +395,13 @@ public class KillList : MonoBehaviour
                 Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[10], 10);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[9], 9);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -378,10 +425,13 @@ public class KillList : MonoBehaviour
                 Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[11], 11);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[10], 10);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -406,10 +456,13 @@ public class KillList : MonoBehaviour
                 Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[12], 12);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[11], 11);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -436,10 +489,13 @@ public class KillList : MonoBehaviour
                 Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[13], 13);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[12], 12);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -467,10 +523,13 @@ public class KillList : MonoBehaviour
                 Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[14], 14);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[13], 13);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -500,10 +559,13 @@ public class KillList : MonoBehaviour
                 Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[15], 15);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[14], 14);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -534,10 +596,13 @@ public class KillList : MonoBehaviour
                 Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[16], 16);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[15], 15);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -569,10 +634,13 @@ public class KillList : MonoBehaviour
                 Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[17], 17);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[16], 16);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -606,10 +674,13 @@ public class KillList : MonoBehaviour
                 Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[18], 18);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[17], 17);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -643,10 +714,13 @@ public class KillList : MonoBehaviour
                 Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[19], 19);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[18], 18);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -681,10 +755,13 @@ public class KillList : MonoBehaviour
                 Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[20], 20);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[19], 19);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -720,10 +797,13 @@ public class KillList : MonoBehaviour
                 Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[21], 21);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[20], 20);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -760,10 +840,13 @@ public class KillList : MonoBehaviour
                 Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[22], 22);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[21], 21);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -802,10 +885,13 @@ public class KillList : MonoBehaviour
                 Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[23], 23);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[22], 22);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -844,11 +930,13 @@ public class KillList : MonoBehaviour
                 Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[24], 24);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[23], 23);
-
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
@@ -887,10 +975,13 @@ public class KillList : MonoBehaviour
                 Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[25], 25);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[24], 24);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -931,10 +1022,13 @@ public class KillList : MonoBehaviour
                 Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[26], 26);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[25], 25);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -976,10 +1070,13 @@ public class KillList : MonoBehaviour
                 Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[27], 27);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[26], 26);
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -1022,12 +1119,15 @@ public class KillList : MonoBehaviour
                 Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[28], 28);
         }
-        else StopCoroutine(PushLines());
+        else
+        {
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
+        }
 
-        calcNewUI(armyType[27], 27);
-
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
+            yield return new WaitForSeconds(Random.Range(1f, 3f));
 
 
 
@@ -1069,62 +1169,66 @@ public class KillList : MonoBehaviour
                 Line[28].rectTransform.localPosition = new Vector3(0, (float)Line[28].rectTransform.localPosition.y - 2, (float)0);
                 yield return null;
             }
+            calcNewUI(armyType[29], 29);
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[28], 28);
-
-        yield return new WaitForSeconds(Random.Range(1f, 3f));
-
-
-
-        if (Line[30].text != "")
+        else
         {
-            StartCoroutine(FadeIn(LineGroup[30]));
-            if (armyType[30] == 2) Line[30].alignment = TextAnchor.MiddleRight;
-            newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
-            while (Line[0].rectTransform.localPosition.y >= newPos)
-            {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 2, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 2, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 2, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 2, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 2, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 2, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 2, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 2, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 2, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 2, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 2, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 2, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 2, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 2, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 2, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 2, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 2, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 2, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 2, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 2, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 2, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 2, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 2, (float)0);
-                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 2, (float)0);
-                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 2, (float)0);
-                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 2, (float)0);
-                Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 2, (float)0);
-                Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 2, (float)0);
-                Line[28].rectTransform.localPosition = new Vector3(0, (float)Line[28].rectTransform.localPosition.y - 2, (float)0);
-                Line[29].rectTransform.localPosition = new Vector3(0, (float)Line[29].rectTransform.localPosition.y - 2, (float)0);
-                yield return null;
-            }
+            StartCoroutine(FadeIn(canvasContinue));
+            StopCoroutine(PushLines());
         }
-        else StopCoroutine(PushLines());
-
-        calcNewUI(armyType[29], 29);
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
-        buttonContinue.SetActive(true);
+
+
+        //if (Line[30].text != "")
+        //{
+        //    StartCoroutine(FadeIn(LineGroup[30]));
+        //    if (armyType[30] == 2) Line[30].alignment = TextAnchor.MiddleRight;
+        //    newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
+        //    while (Line[0].rectTransform.localPosition.y >= newPos)
+        //    {
+        //        Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[28].rectTransform.localPosition = new Vector3(0, (float)Line[28].rectTransform.localPosition.y - 2, (float)0);
+        //        Line[29].rectTransform.localPosition = new Vector3(0, (float)Line[29].rectTransform.localPosition.y - 2, (float)0);
+        //        yield return null;
+        //    }
+        //    calcNewUI(armyType[30], 30);
+        //}
+        //else
+        //{
+        //    StartCoroutine(FadeIn(canvasContinue));
+        //    StopCoroutine(PushLines());
+        //}
+
+        yield return new WaitForSeconds(Random.Range(1f, 3f));
     }
 
 
