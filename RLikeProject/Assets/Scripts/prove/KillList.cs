@@ -5,25 +5,26 @@ using UnityEngine.UI;
 
 public class KillList : MonoBehaviour
 {
-    public Text soldiers;
+    private Text soldiers;
     private int soldiersValue;
-    public Text enemySoldiers;
+    private Text enemySoldiers;
     private int enemySoldiersValue;
 
-    public Text ATKUI;
+    private Text ATKUI;
     private int ATKUIvalue;
-    public Text DEFUI;
+    private Text DEFUI;
     private int DEFUIvalue;
 
-    public Text eATKUI;
+    private Text eATKUI;
     private int eATKUIvalue;
-    public Text eDEFUI;
+    private Text eDEFUI;
     private int eDEFUIvalue;
 
     bool set = false;
 
-    public Text[] Line;
-    public CanvasGroup[] LineGroup;
+    private Text[] Line;
+    private CanvasGroup[] LineGroup;
+    public GameObject buttonContinue;
     
     private int[] armyType = new int[30];
     private int[ , ] deadSoldiersInTurn = new int[30,2];
@@ -129,7 +130,7 @@ public class KillList : MonoBehaviour
         }
     }
 
-    private IEnumerator PushLines()
+    public IEnumerator PushLines()
     {
         StartCoroutine(FadeIn(LineGroup[0]));
         if (armyType[0] == 2) Line[0].alignment = TextAnchor.MiddleRight;
@@ -1144,8 +1145,9 @@ public class KillList : MonoBehaviour
         calcNewUI(armyType[29], 29);
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
-    }
 
+        buttonContinue.SetActive(true);
+    }
 
 
 

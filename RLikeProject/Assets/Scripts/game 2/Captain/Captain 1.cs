@@ -77,11 +77,6 @@ public class Captain1 : MonoBehaviour
             boolfinalcomment = 1;
 
     }
-
-    public void Awake()
-    {
-        resetCaptain();
-    }
     
     public void lvlup()
     {
@@ -578,7 +573,7 @@ public class Captain1 : MonoBehaviour
             }
             if (x == 4)
             {
-                nome = "Capta1n";
+                nome = "Captain";
             }
             if (x == 5)
             {

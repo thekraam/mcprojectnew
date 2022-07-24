@@ -133,14 +133,18 @@ public class battle1 : MonoBehaviour
             //----------------------------------calcoli iniziali del ciclo----------------------------------------
             ATK = (swordman.getAtk() * swordman.getMomentSwordman()) + (archer.getAtk() * archer.getMomentArcher()) + (rider.getAtk() * rider.getMomentRider());
             DEF = (swordman.getDef() * swordman.getMomentSwordman()) + (archer.getDef() * archer.getMomentArcher()) + (rider.getDef() * rider.getMomentRider());
+
             EATK = (eswordman.getAtk() * eswordman.getTotal()) + (earcher.getAtk() * earcher.getTotal()) + (erider.getAtk() * erider.getTotal());
             EDEF = (eswordman.getDef() * eswordman.getTotal()) + (earcher.getDef() * earcher.getTotal()) + (erider.getDef() * erider.getTotal());
+
             percswordman = (100 * (swordman.getDef() * swordman.getMomentSwordman())) / DEF;
             percarcher = (100 * (archer.getDef() * archer.getMomentArcher())) / DEF;
             percrider = (100 * (rider.getDef() * rider.getMomentRider())) / DEF;
+
             percEswordman = (100 * (eswordman.getDef() * eswordman.getTotal())) / EDEF;
             percEarcher = (100 * (earcher.getDef() * earcher.getTotal())) / EDEF;
             percErider = (100 * (erider.getDef() * erider.getTotal())) / EDEF;
+
             ATK = ATK + capitano1.getAtk();
             DEF = DEF + capitano1.getDef();
             //Debug.LogError("EATK prova " + EATK);
@@ -174,7 +178,7 @@ public class battle1 : MonoBehaviour
             x2 = EATK - DEF;
 
             y1 = (x1 * 100) / EDEF;
-            //  Debug.LogError("y1 " + y1);
+            // Debug.LogError("y1 " + y1);
             y2 = (x2 * 100) / DEF;
             // Debug.LogError("y2 " + y2);
 

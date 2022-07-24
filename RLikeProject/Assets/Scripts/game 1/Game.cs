@@ -240,6 +240,7 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         casermaPanel.SetActive(false);
+        capitano.resetCaptain();
     }
 
     public void SAVEDELETETEST()
@@ -719,8 +720,6 @@ public class Game : MonoBehaviour
     
     public void onSkipTurn()
     {
-        FindObjectOfType<Events>().attendingMainEvent = true; // si da per scontato che stia partecipando ad un evento, qualora non dovesse scattare Events.EventStarter settera a false a fine tentativo scelta evento
-
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() +swordsmen.getTempTotal() + archers.getTempTotal()+ riders.getTempTotal()); // prima volta necessaria

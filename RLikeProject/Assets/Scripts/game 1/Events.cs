@@ -15,6 +15,8 @@ public class Events : MonoBehaviour
 
     /* variabile territorio attuale di battaglia */
     public int terri = -1;
+    public int bonusETerri = 0;
+    public int bonusEnemy = 0;
 
     /* variabili malus cittadini */
     private int citizensMalus1 = 0;
@@ -37,6 +39,10 @@ public class Events : MonoBehaviour
     private int goldMalus7 = 0;
     private int goldMalus8 = 0;
     private int goldMalus9 = 0;
+
+    /* last battle info */
+    public int lastBattleInfo = 0;
+    public bool finishedBattle = false;
 
 
     /* booleane effetti */
@@ -61,8 +67,29 @@ public class Events : MonoBehaviour
     /* variabili countdown EFFETTI TEMPORANEI evento secondario, grande numero di default */
     public int aqueductMalusTurnsLeft = 999999;
 
-    
 
+    public void makeEnemyForEvent(int totale, int livello, int swordsmen, int archers, int riders, int lvlCapitano)
+    {
+        FindObjectOfType<Game>().makeEnemy(totale, livello, swordsmen, archers, riders, lvlCapitano);
+    }
+
+    // pulsante start battle di battle preparation
+    public void onPressStartBattle()
+    {
+        FindObjectOfType<PrepBattaglia>().AssegnaSoldati(); // soldati selezionati con gli sliders = soldati assegnati ai moment
+
+        lastBattleInfo = FindObjectOfType<Game>().newBattle(terri, bonusETerri, bonusEnemy);
+
+        FindObjectOfType<PrepBattaglia>().AvvioBattaglia(); // avvio effetto per killist
+
+        //FindObjectOfType<PrepBattaglia>().battleLive.SetActive(true);
+    }
+
+    public void onPressContinue()
+    {
+        FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
+        finishedBattle = true;
+    }
 
     /* controllore di response (decisione giocatore) sull'oggetto dialoguemanager */
     IEnumerator ResponseUpdater()
@@ -111,7 +138,7 @@ public class Events : MonoBehaviour
 
     public void SecondaryEventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
-        if (aqueductSecondary == 1 && attendingSecondaryEvent && aqueductTurnsLeft == 0)
+        if (aqueductSecondary == 1 && aqueductTurnsLeft == 0)
         {
             aqueductEffectMalus = true;
 
@@ -119,7 +146,7 @@ public class Events : MonoBehaviour
             attendingSecondaryEvent = false;
             aqueductMalusTurnsLeft = 3;
 
-            string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens per turn, for 3 turns]";
+            string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens each turn turn, for 3 turns]";
 
             string[] message = { eventString1 };
 
@@ -133,9 +160,12 @@ public class Events : MonoBehaviour
         float eventChooser = 0;
         bool selected = false;
 
-        while (!selected)
+        while (!selected && !attendingSecondaryEvent)
         {
             eventChooser = Random.Range(0f, 1f);
+
+            eventChooser = 1.4f; // debug evento testbattaglia
+
             if (eventChooser >= 0 && eventChooser < 1f)
             {
                 if (aqueduct == 0 /*&& player.getMoney() >= 400*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
@@ -148,6 +178,11 @@ public class Events : MonoBehaviour
                     StartCoroutine(TriggerCityDefenseProjectEvent(player, swordsmen, archers, riders));
                     selected = true;
                 }
+            }
+            if(eventChooser >= 1f && eventChooser < 2f)
+            {
+                StartCoroutine(TriggerBattleTestEvent(player, swordsmen, archers, riders));
+                selected = true;
             }
         }
 
@@ -187,7 +222,6 @@ public class Events : MonoBehaviour
         else
             aqueductSecondary = 0; // conferma logica dell'algoritmo, inutile
         yield return new WaitForSeconds(1.5f);
-        attendingMainEvent = false;
     }
 
     /* evento primario aumento delle difese della citta' */
@@ -213,6 +247,27 @@ public class Events : MonoBehaviour
             player.bonusWall = 1;
         }
         yield return new WaitForSeconds(1.5f);
-        attendingMainEvent = false;
+    }
+
+    IEnumerator TriggerBattleTestEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    {    
+        string eventString1 = "A cojo' voi combatte? o sei 'na pussy";
+
+        string[] message = { eventString1 };
+
+        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+
+        StartCoroutine(ResponseUpdater());
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if(response[0] == 1) // risponde si
+        {
+            terri = 2; // assegnazione territorio di battaglia 
+            makeEnemyForEvent(20, 1, 5, 5, 10, 1); // creazione esercito nemico
+            FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+            yield return new WaitUntil(() => finishedBattle == true);
+        }
+        yield return new WaitForSeconds(1.5f);
     }
 }
