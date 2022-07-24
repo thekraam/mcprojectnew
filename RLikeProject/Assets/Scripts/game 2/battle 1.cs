@@ -121,7 +121,7 @@ public class battle1 : MonoBehaviour
 
 
 
-
+        int contatorefittizio = 0;
 
         //swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider()
 
@@ -201,24 +201,24 @@ public class battle1 : MonoBehaviour
             totalEsoldiers = eswordman.getTotal() + earcher.getTotal() + erider.getTotal();
 
             deadsoldier = (int)((totalsoldiers / 100) * z2);
-            //Debug.LogError("deadsoldier " + deadsoldier );
+          //  Debug.LogError("deadsoldier " + deadsoldier );
             deadEsoldier = (int)((totalEsoldiers / 100) * z1);
-            // Debug.LogError("deadEsoldier " + deadEsoldier);
+          //   Debug.LogError("deadEsoldier " + deadEsoldier);
             deadswordman = (int)((deadsoldier / 100) * percswordman);
-            //  Debug.LogError("deadswordman " + deadswordman);
+           //   Debug.LogError("deadswordman " + deadswordman);
             swordman.setMomentDeadSwordman ((int)deadswordman);
             deadarcher = (int)((deadsoldier / 100) * percarcher);
             //   Debug.LogError("deadarcher " + deadarcher);
             archer.setMomentDeadArcher((int)deadarcher);
             deadrider = (int)((deadsoldier / 100) * percrider);
-            //   Debug.LogError("deadrider " + deadrider);
+           //    Debug.LogError("deadrider " + deadrider);
             rider.setMomentDeadRider((int)deadrider);
             deadeswordman = (int)((deadEsoldier / 100) * percEswordman);
-            //  Debug.LogError("deadEswordman " + deadeswordman);
+           //   Debug.LogError("deadEswordman -------------------------------------------------------------- " + deadeswordman);
             deadearcher = (int)((deadEsoldier / 100) * percEarcher);
-            //  Debug.LogError("deadEarcher " + deadearcher);
+            // Debug.LogError("deadEarcher -------------------------------------------------------------- " + deadearcher);
             deaderider = (int)((deadEsoldier / 100) * percErider);
-            //  Debug.LogError("deadErider " + deaderider);
+             // Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
 
             swordman.setMomentSwordman( swordman.getMomentSwordman() + (int)-deadswordman);
             if (swordman.getMomentSwordman() < 0)
@@ -273,10 +273,10 @@ public class battle1 : MonoBehaviour
             {
 
                 randomstampa = (int)Random.Range(1f, 7f);
-
-
+               // Debug.LogError("dentro il while");
                 if (randomstampa == 1 && cont1 == 0 && deadswordman > 0)
                 {
+                    //Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deadswordman == 1)
                     {
                         FindObjectOfType<KillList>().insertNewLine("You have lost " + deadswordman + " swordsman", 1);
@@ -289,9 +289,12 @@ public class battle1 : MonoBehaviour
                     }
                         cont1 = 1;
                     contatorestampa--;
+                    contatorefittizio = contatorefittizio + 1;
+                  //  Debug.LogError("1 contatore fittizio = " + contatorefittizio);
                 }
                 if (randomstampa == 2 && cont2 == 0 && deadarcher > 0)
                 {
+                    //Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deadarcher == 1)
                     {
                         FindObjectOfType<KillList>().insertNewLine("You have lost " + deadarcher + " archer", 1);
@@ -304,9 +307,12 @@ public class battle1 : MonoBehaviour
                     }
                     cont2 = 1;
                     contatorestampa--;
+                    contatorefittizio = contatorefittizio + 1;
+                   // Debug.LogError("2 contatore fittizio = " + contatorefittizio);
                 }
                 if (randomstampa == 3 && cont3 == 0 && deadrider > 0)
                 {
+                    //Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deadrider == 1)
                     {
                         FindObjectOfType<KillList>().insertNewLine("You have lost " + deadrider + " rider", 1);
@@ -319,9 +325,12 @@ public class battle1 : MonoBehaviour
                     }
                     cont3 = 1;
                     contatorestampa--;
+                    contatorefittizio = contatorefittizio + 1;
+                   // Debug.LogError("3 contatore fittizio = " + contatorefittizio);
                 }
                 if (randomstampa == 4 && cont4 == 0 && deadeswordman > 0)
                 {
+                    //Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deadeswordman == 1)
                     {
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadeswordman + " swordsman", 2);
@@ -334,9 +343,12 @@ public class battle1 : MonoBehaviour
                     }
                     cont4 = 1;
                     contatorestampa--;
+                    contatorefittizio = contatorefittizio + 1;
+                    //Debug.LogError("4 contatore fittizio = " + contatorefittizio);
                 }
                 if (randomstampa == 5 && cont5 == 0 && deadearcher > 0)
                 {
+                    //Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deadearcher == 1)
                     {
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadearcher + " archer", 2);
@@ -348,10 +360,13 @@ public class battle1 : MonoBehaviour
                         FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadearcher, earcher.getAtk() * (int)deadearcher, earcher.getDef() * (int)deadearcher);
                     }
                     cont5 = 1;
+                    contatorefittizio = contatorefittizio + 1;
+                  //  Debug.LogError("5 contatore fittizio = " + contatorefittizio);
                     contatorestampa--;
                 }
                 if (randomstampa == 6 && cont6 == 0 && deaderider > 0)
                 {
+                   // Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deaderider == 1)
                     {
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deaderider + " rider", 2);
@@ -364,6 +379,8 @@ public class battle1 : MonoBehaviour
                     }
                     cont6 = 1;
                     contatorestampa--;
+                    contatorefittizio = contatorefittizio + 1;
+                   // Debug.LogError("6 contatore fittizio = " + contatorefittizio);
                 }
 
 
@@ -423,7 +440,6 @@ public class battle1 : MonoBehaviour
                 fine = 2;
             }
         }
-        // Debug.LogError("numero vittoria " + fine);
         return fine;
     }
 
