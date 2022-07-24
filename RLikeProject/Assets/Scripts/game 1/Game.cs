@@ -706,7 +706,7 @@ public class Game : MonoBehaviour
 
         //____________________________ updater Preparazione della battaglia ------------------------
 
-        //  FindObjectOfType<prepbattaglia>().RealTimeSliders(player,swordsmen,archers,riders,caserma,capitano);
+        FindObjectOfType<PrepBattaglia>().RealTimeSliders(player,swordsmen,archers,riders,caserma,capitano);
     }
 
 
