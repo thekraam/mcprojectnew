@@ -210,9 +210,9 @@ public class Game : MonoBehaviour
     Player player = new Player(); // oggetto player partita - non contiene soldati
 
     /* classi di tipo soldato.classesoldato */
-    Soldiers.Swordsmen swordsmen = new Soldiers.Swordsmen();
-    Soldiers.Archers archers = new Soldiers.Archers();
-    Soldiers.Riders riders = new Soldiers.Riders();
+    public Soldiers.Swordsmen swordsmen = new Soldiers.Swordsmen();
+    public Soldiers.Archers archers = new Soldiers.Archers();
+    public Soldiers.Riders riders = new Soldiers.Riders();
 
     Fattoria fattoria = new Fattoria();
     Miniera miniera = new Miniera();
@@ -220,6 +220,7 @@ public class Game : MonoBehaviour
     Fabbro fabbro = new Fabbro();
     Gilda gilda = new Gilda();
     OldSoldiersManager manager = new OldSoldiersManager();
+
 
     public List<Text> UIelements;
 
@@ -239,7 +240,6 @@ public class Game : MonoBehaviour
         casermaPanel.SetActive(false);
         guildPanel.SetActive(false);
         casermaPanel.SetActive(false);
-        if (capitano.getcreato() == false) { capitano.setcreato(); }
     }
 
     public void SAVEDELETETEST()
@@ -703,6 +703,10 @@ public class Game : MonoBehaviour
         // --------------------------- updater dati Gilda - tempo reale ---------------------------
 
         UpdateGuildUI();
+
+        //____________________________ updater Preparazione della battaglia ------------------------
+
+        //  FindObjectOfType<prepbattaglia>().RealTimeSliders(player,swordsmen,archers,riders,caserma,capitano);
     }
 
 

@@ -78,6 +78,11 @@ public class Captain1 : MonoBehaviour
 
     }
 
+    public void Awake()
+    {
+        resetCaptain();
+    }
+    
     public void lvlup()
     {
         lvl = lvl + 1;
