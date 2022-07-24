@@ -20,6 +20,9 @@ public class Game : MonoBehaviour
     public GameObject logoUI_3;
     public GameObject logoUI_4;
 
+    public GameObject logoVictory;
+    public GameObject logoDefeat;
+
     [Header("Sync Variables")]
     /* variabili di controllo tempo di aggiornamento allo skipturn */
     private float startTime = 0;
@@ -708,6 +711,17 @@ public class Game : MonoBehaviour
         //____________________________ updater Preparazione della battaglia ------------------------
 
         FindObjectOfType<PrepBattaglia>().RealTimeSliders(player,swordsmen,archers,riders,caserma,capitano);
+
+        if (FindObjectOfType<Events>().lastBattleInfo > 2)
+        {
+            logoVictory.SetActive(true);
+            logoDefeat.SetActive(false);
+        }
+        else
+        {
+            logoDefeat.SetActive(true);
+            logoVictory.SetActive(true);
+        }
     }
 
 

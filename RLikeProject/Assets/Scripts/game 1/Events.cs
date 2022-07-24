@@ -67,7 +67,6 @@ public class Events : MonoBehaviour
     /* variabili countdown EFFETTI TEMPORANEI evento secondario, grande numero di default */
     public int aqueductMalusTurnsLeft = 999999;
 
-
     public void makeEnemyForEvent(int totale, int livello, int swordsmen, int archers, int riders, int lvlCapitano)
     {
         FindObjectOfType<Game>().makeEnemy(totale, livello, swordsmen, archers, riders, lvlCapitano);
