@@ -86,6 +86,9 @@ public class PrepBattaglia : MonoBehaviour
     {
         StartCoroutine(effettoFadeIn(battleTransition));
         yield return new WaitForSeconds(0.01f);
+
+        FindObjectOfType<PrepBattaglia>().SincronizzaSoldati(); // sincronizzo i soldati veri del giocatore
+
         StartCoroutine(FindObjectOfType<KillList>().PushLines());
         yield return null;
     }
@@ -246,14 +249,21 @@ public class PrepBattaglia : MonoBehaviour
     public void AssegnaSoldati()
     {
         FindObjectOfType<Game>().swordsmen.setMomentSwordman((int)swordsmenSlider.value);
-        FindObjectOfType<Game>().swordsmen.setRapidTotal(-(int)swordsmenSlider.value);
+        //FindObjectOfType<Game>().swordsmen.setRapidTotal(-(int)swordsmenSlider.value);
         FindObjectOfType<Game>().archers.setMomentArcher((int)archersSlider.value);
-        FindObjectOfType<Game>().archers.setRapidTotal(-(int)archersSlider.value);
+        //FindObjectOfType<Game>().archers.setRapidTotal(-(int)archersSlider.value);
         FindObjectOfType<Game>().riders.setMomentRider((int)ridersSlider.value);
-        FindObjectOfType<Game>().riders.setRapidTotal(-(int)ridersSlider.value);
+        //FindObjectOfType<Game>().riders.setRapidTotal(-(int)ridersSlider.value);
 
 
         // reset sliders
+    }
+
+    public void SincronizzaSoldati()
+    {
+        FindObjectOfType<Game>().swordsmen.setRapidTotal(-(int)swordsmenSlider.value);
+        FindObjectOfType<Game>().archers.setRapidTotal(-(int)archersSlider.value);
+        FindObjectOfType<Game>().riders.setRapidTotal(-(int)ridersSlider.value);
     }
 
 

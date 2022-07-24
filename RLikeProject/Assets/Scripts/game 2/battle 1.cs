@@ -19,7 +19,10 @@ public class battle1 : MonoBehaviour
         int EATKlist = (eswordman.getAtk() * eswordman.getTotal()) + (earcher.getAtk() * earcher.getTotal()) + (erider.getAtk() * erider.getTotal());
         int EDEFlist = (eswordman.getDef() * eswordman.getTotal()) + (earcher.getDef() * earcher.getTotal()) + (erider.getDef() * erider.getTotal());
 
-        FindObjectOfType<KillList>().setKillList(1+swordman.getMomentSwordman()+archer.getMomentArcher()+rider.getMomentRider(),1+eswordman.getTotal() + earcher.getTotal() + erider.getTotal() , ATKlist, DEFlist, EATKlist, EDEFlist);
+        int totS = 1 + swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider();
+        int totES = 1 + eswordman.getTotal() + earcher.getTotal() + erider.getTotal();
+
+        FindObjectOfType<KillList>().setKillList(totS, totES, ATKlist, DEFlist, EATKlist, EDEFlist);
         //------------------------------------reset morti-----------------------------------
         swordman.setMomentDeadSwordman(-swordman.getMomentDeadSwordman());
         archer.setMomentDeadArcher(-archer.getMomentDeadArcher());
