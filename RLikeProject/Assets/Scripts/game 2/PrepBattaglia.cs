@@ -150,9 +150,9 @@ public class PrepBattaglia : MonoBehaviour
         if (archers.getTotal() > 1)
         {
             minArchersUI.text = "0";
-            maxArchersUI.text = "" + swordsmen.getTotal();
+            maxArchersUI.text = "" + archers.getTotal();
             archersSlider.minValue = 0;
-            archersSlider.maxValue = swordsmen.getTotal();
+            archersSlider.maxValue = archers.getTotal();
         }
         if (riders.getTotal() == 0)
         {
@@ -171,9 +171,9 @@ public class PrepBattaglia : MonoBehaviour
         if (riders.getTotal() > 1)
         {
             minRidersUI.text = "0";
-            maxRidersUI.text = "" + swordsmen.getTotal();
+            maxRidersUI.text = "" + riders.getTotal();
             ridersSlider.minValue = 0;
-            ridersSlider.maxValue = swordsmen.getTotal();
+            ridersSlider.maxValue = riders.getTotal();
         }
         selectedSwordsmenUI.text = "" + (int)swordsmenSlider.value;
         selectedArchersUI.text = "" + (int)archersSlider.value;
