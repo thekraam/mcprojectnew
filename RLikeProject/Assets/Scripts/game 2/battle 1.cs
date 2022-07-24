@@ -12,6 +12,9 @@ public class battle1 : MonoBehaviour
 
     public int battaglia(Captain1 capitano1, Captain2 capitano2, Soldiers.Swordsmen swordman, Soldiers.Archers archer, Soldiers.Riders rider, Enemy.ESwordsmen eswordman, Enemy.EArchers earcher, Enemy.ERiders erider, float terri, float bonusTerri, float bonusETerri, float bonusSoldier, float bonusEnemy)
     {
+
+
+
         //------------------------------------reset KillList-----------------------------------
 
         int ATKlist = (swordman.getAtk() * swordman.getMomentSwordman()) + (archer.getAtk() * archer.getMomentArcher()) + (rider.getAtk() * rider.getMomentRider());
@@ -125,6 +128,8 @@ public class battle1 : MonoBehaviour
 
         //swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider()
 
+        Debug.LogError("Prima del while");
+
         while (turno < 6)
         {
             cont1 = 0;
@@ -140,10 +145,18 @@ public class battle1 : MonoBehaviour
             EATK = (eswordman.getAtk() * eswordman.getTotal()) + (earcher.getAtk() * earcher.getTotal()) + (erider.getAtk() * erider.getTotal());
             EDEF = (eswordman.getDef() * eswordman.getTotal()) + (earcher.getDef() * earcher.getTotal()) + (erider.getDef() * erider.getTotal());
 
-            percswordman = (100 * (swordman.getDef() * swordman.getMomentSwordman())) / DEF;
-            percarcher = (100 * (archer.getDef() * archer.getMomentArcher())) / DEF;
-            percrider = (100 * (rider.getDef() * rider.getMomentRider())) / DEF;
-
+            if (DEF != 0)
+            {
+                percswordman = (100 * (swordman.getDef() * swordman.getMomentSwordman())) / DEF;
+                percarcher = (100 * (archer.getDef() * archer.getMomentArcher())) / DEF;
+                percrider = (100 * (rider.getDef() * rider.getMomentRider())) / DEF;
+            }
+            else
+            {
+                percswordman = 0;
+                percarcher = 0;
+                percrider = 0;
+            }
             percEswordman = (100 * (eswordman.getDef() * eswordman.getTotal())) / EDEF;
             percEarcher = (100 * (earcher.getDef() * earcher.getTotal())) / EDEF;
             percErider = (100 * (erider.getDef() * erider.getTotal())) / EDEF;
@@ -201,24 +214,24 @@ public class battle1 : MonoBehaviour
             totalEsoldiers = eswordman.getTotal() + earcher.getTotal() + erider.getTotal();
 
             deadsoldier = (int)((totalsoldiers / 100) * z2);
-          //  Debug.LogError("deadsoldier " + deadsoldier );
+            Debug.LogError("deadsoldier " + deadsoldier );
             deadEsoldier = (int)((totalEsoldiers / 100) * z1);
-          //   Debug.LogError("deadEsoldier " + deadEsoldier);
+            Debug.LogError("deadEsoldier " + deadEsoldier);
             deadswordman = (int)((deadsoldier / 100) * percswordman);
-           //   Debug.LogError("deadswordman " + deadswordman);
-            swordman.setMomentDeadSwordman ((int)deadswordman);
+            Debug.LogError("deadswordman " + deadswordman);
+            swordman.setMomentDeadSwordman((int)deadswordman);
             deadarcher = (int)((deadsoldier / 100) * percarcher);
-            //   Debug.LogError("deadarcher " + deadarcher);
+            Debug.LogError("deadarcher " + deadarcher);
             archer.setMomentDeadArcher((int)deadarcher);
             deadrider = (int)((deadsoldier / 100) * percrider);
-           //    Debug.LogError("deadrider " + deadrider);
+            Debug.LogError("deadrider " + deadrider);
             rider.setMomentDeadRider((int)deadrider);
             deadeswordman = (int)((deadEsoldier / 100) * percEswordman);
-           //   Debug.LogError("deadEswordman -------------------------------------------------------------- " + deadeswordman);
+            Debug.LogError("deadEswordman -------------------------------------------------------------- " + deadeswordman);
             deadearcher = (int)((deadEsoldier / 100) * percEarcher);
-            // Debug.LogError("deadEarcher -------------------------------------------------------------- " + deadearcher);
+            Debug.LogError("deadEarcher -------------------------------------------------------------- " + deadearcher);
             deaderider = (int)((deadEsoldier / 100) * percErider);
-             // Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
+              Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
 
             swordman.setMomentSwordman( swordman.getMomentSwordman() + (int)-deadswordman);
             if (swordman.getMomentSwordman() < 0)
@@ -258,7 +271,7 @@ public class battle1 : MonoBehaviour
 
 
 
-            
+           // Debug.LogError("prima del contatore stampa");
 
             contatorestampa = 6;
 
@@ -268,12 +281,12 @@ public class battle1 : MonoBehaviour
             if (deadeswordman == 0) { contatorestampa = contatorestampa - 1; }
             if (deadearcher == 0) { contatorestampa = contatorestampa - 1; }
             if (deaderider == 0) { contatorestampa = contatorestampa - 1; }
-
+            
             while (contatorestampa > 0)
             {
 
                 randomstampa = (int)Random.Range(1f, 7f);
-               // Debug.LogError("dentro il while");
+                Debug.LogError("dentro il while");
                 if (randomstampa == 1 && cont1 == 0 && deadswordman > 0)
                 {
                     //Debug.LogError("contatore fittizio = " + contatorefittizio);
@@ -395,8 +408,8 @@ public class battle1 : MonoBehaviour
 
 
 
-
-
+            
+         
 
 
 
