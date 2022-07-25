@@ -88,7 +88,6 @@ public class Events : MonoBehaviour
     {
         FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
         finishedBattle = true;
-
     }
 
     /* controllore di response (decisione giocatore) sull'oggetto dialoguemanager */

@@ -22,6 +22,7 @@ public class KillList : MonoBehaviour
 
     bool set = false;
     public bool battleConcluded = false;
+    private bool canvasFadeDone = false;
 
     public Text[] Line;
     public CanvasGroup[] LineGroup;
@@ -142,20 +143,42 @@ public class KillList : MonoBehaviour
     private IEnumerator FadeIn(CanvasGroup currentLineGroup)
     {
         currentLineGroup.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
+        
         float timePassed0 = 0f;
 
-        if(currentLineGroup.alpha!=1)
-        while (timePassed0 < 0.8f)
+        if (currentLineGroup == canvasContinue)
         {
-            timePassed0 += Time.deltaTime;
-            currentLineGroup.alpha = Mathf.Lerp(0f, 1f, timePassed0 / 0.8f); // da 0f a 1f si accende, da 1f a 0f si spegne
-            yield return new WaitForSeconds(0.002f);
+
+            yield return new WaitForSeconds(0.2f);
+
+            if (currentLineGroup.alpha != 1)
+                while (timePassed0 < 0.8f)
+                {
+                    timePassed0 += Time.deltaTime;
+                    currentLineGroup.alpha = Mathf.Lerp(0f, 1f, timePassed0 / 0.8f); // da 0f a 1f si accende, da 1f a 0f si spegne
+                    yield return new WaitForSeconds(0.002f);
+                }
+            canvasFadeDone = true;
         }
+        else if(currentLineGroup == canvasContinue && canvasFadeDone) {
+            yield return null;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.2f);
+
+            if (currentLineGroup.alpha != 1)
+                while (timePassed0 < 0.8f)
+                {
+                    timePassed0 += Time.deltaTime;
+                    currentLineGroup.alpha = Mathf.Lerp(0f, 1f, timePassed0 / 0.8f); // da 0f a 1f si accende, da 1f a 0f si spegne
+                    yield return new WaitForSeconds(0.002f);
+                }
+        }
+        yield return null;
     }
     private IEnumerator FadeOut(CanvasGroup currentLineGroup)
     {
-        
         yield return new WaitForSeconds(0.2f);
         float timePassed0 = 0f;
 
@@ -167,10 +190,12 @@ public class KillList : MonoBehaviour
                 yield return new WaitForSeconds(0.002f);
             }
         currentLineGroup.gameObject.SetActive(false);
+
     }
 
     public IEnumerator PushLines()
     {
+        canvasFadeDone = false;
         yield return new WaitForSeconds(1f);
 
         if (Line[0].text != "")
@@ -180,9 +205,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
         calcNewUI(armyType[0], 0);
 
@@ -205,9 +231,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -231,9 +258,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -255,9 +283,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -280,9 +309,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if(!canvasFadeDone)  StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -306,9 +336,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -332,9 +363,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -359,9 +391,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -387,9 +420,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -416,9 +450,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -446,9 +481,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -477,9 +513,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -509,9 +546,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -543,9 +581,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -578,9 +617,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -615,9 +655,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -653,9 +694,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -692,9 +734,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -733,9 +776,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -774,9 +818,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -816,9 +861,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -859,9 +905,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -903,9 +950,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -949,9 +997,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -995,9 +1044,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -1041,9 +1091,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1089,9 +1140,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1138,9 +1190,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1188,9 +1241,10 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
             yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1239,17 +1293,20 @@ public class KillList : MonoBehaviour
         }
         else
         {
-            StartCoroutine(FadeIn(canvasContinue));
+            if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
+            yield return null;
         }
 
 
-        StartCoroutine(FadeIn(canvasContinue));
+        if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
 
         ResetKillList();
 
         StopCoroutine(PushLines());
+
+        yield return null;
 
 
 

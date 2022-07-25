@@ -99,7 +99,8 @@ public class PrepBattaglia : MonoBehaviour
     {
         battlePreparation.gameObject.SetActive(false);
         StartCoroutine(effettoFadeOut(battleTransition));
-        yield return new WaitForSeconds(1f);
+        StartCoroutine(effettoFadeOut(FindObjectOfType<KillList>().canvasContinue));
+        yield return new WaitForSeconds(0.8f);
         FindObjectOfType<KillList>().battleConcluded = true;
 
         preparazioneVittoriapan();
@@ -111,7 +112,7 @@ public class PrepBattaglia : MonoBehaviour
     private IEnumerator AvvioEffettiBattaglia()
     {
         StartCoroutine(effettoFadeIn(battleTransition));
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
 
         FindObjectOfType<PrepBattaglia>().SincronizzaSoldati(); // sincronizzo i soldati veri del giocatore
 
@@ -350,11 +351,11 @@ public class PrepBattaglia : MonoBehaviour
 
         if (s == 0 || s == 1)
         {
-            soldati1 = "\n" + s + " swordsman\n";
+            soldati1 = "" + s + " swordsman\n";
         }
         if (s > 0)
         {
-            soldati1 = "\n" + s + " swordsmen\n";
+            soldati1 = "" + s + " swordsmen\n";
         }
         if (a == 0 || a == 1)
         {
@@ -367,11 +368,11 @@ public class PrepBattaglia : MonoBehaviour
 
         if (r == 0 || r == 1)
         {
-            soldati3 = "" + r + " rider\n";
+            soldati3 = "" + r + " rider";
         }
         if (r > 0)
         {
-            soldati3 = "" + r + " riders\n";
+            soldati3 = "" + r + " riders";
         }
 
         soldatigiocatore.text = "" + soldati1 + soldati2 + soldati3;
@@ -382,11 +383,11 @@ public class PrepBattaglia : MonoBehaviour
 
         if (es == 0 || es == 1)
         {
-            esoldati1 = "\n" + es + " swordsman\n";
+            esoldati1 = "" + es + " swordsman\n";
         }
         if (es > 0)
         {
-            esoldati1 = "\n" + es + " swordsmen\n";
+            esoldati1 = "" + es + " swordsmen\n";
         }
 
         if (ea == 0 || ea == 1)
@@ -400,11 +401,11 @@ public class PrepBattaglia : MonoBehaviour
 
         if (er == 0 || er == 1)
         {
-            esoldati3 = "" + er + " rider\n";
+            esoldati3 = "" + er + " rider";
         }
         if (er > 0)
         {
-            esoldati3 = "" + er + " riders\n";
+            esoldati3 = "" + er + " riders";
         }
 
         soldatiEnemy.text = "" + esoldati1 + esoldati2 + esoldati3;
