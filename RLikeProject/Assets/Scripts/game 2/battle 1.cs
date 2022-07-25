@@ -214,24 +214,27 @@ public class battle1 : MonoBehaviour
             totalEsoldiers = eswordman.getTotal() + earcher.getTotal() + erider.getTotal();
 
             deadsoldier = (int)((totalsoldiers / 100) * z2);
-            Debug.LogError("deadsoldier " + deadsoldier );
+           // Debug.LogError("deadsoldier " + deadsoldier );
             deadEsoldier = (int)((totalEsoldiers / 100) * z1);
-            Debug.LogError("deadEsoldier " + deadEsoldier);
+           // Debug.LogError("deadEsoldier " + deadEsoldier);
             deadswordman = (int)((deadsoldier / 100) * percswordman);
-            Debug.LogError("deadswordman " + deadswordman);
+            //Debug.LogError("deadswordman " + deadswordman);
             swordman.setMomentDeadSwordman((int)deadswordman);
             deadarcher = (int)((deadsoldier / 100) * percarcher);
-            Debug.LogError("deadarcher " + deadarcher);
+            //Debug.LogError("deadarcher " + deadarcher);
             archer.setMomentDeadArcher((int)deadarcher);
             deadrider = (int)((deadsoldier / 100) * percrider);
-            Debug.LogError("deadrider " + deadrider);
+            //Debug.LogError("deadrider " + deadrider);
             rider.setMomentDeadRider((int)deadrider);
             deadeswordman = (int)((deadEsoldier / 100) * percEswordman);
-            Debug.LogError("deadEswordman -------------------------------------------------------------- " + deadeswordman);
+            eswordman.setDeadESwordman((int)deadeswordman);
+            //Debug.LogError("deadEswordman -------------------------------------------------------------- " + deadeswordman);
             deadearcher = (int)((deadEsoldier / 100) * percEarcher);
-            Debug.LogError("deadEarcher -------------------------------------------------------------- " + deadearcher);
+            earcher.setDeadEArchers((int)deadearcher);
+            //Debug.LogError("deadEarcher -------------------------------------------------------------- " + deadearcher);
             deaderider = (int)((deadEsoldier / 100) * percErider);
-              Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
+            erider.setDeadERiders((int)deaderider);
+             // Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
 
             swordman.setMomentSwordman( swordman.getMomentSwordman() + (int)-deadswordman);
             if (swordman.getMomentSwordman() < 0)

@@ -222,7 +222,7 @@ public class Game : MonoBehaviour
     Caserma caserma = new Caserma();
     Fabbro fabbro = new Fabbro();
     Gilda gilda = new Gilda();
-    OldSoldiersManager manager = new OldSoldiersManager();
+    public static OldSoldiersManager manager = new OldSoldiersManager();
 
 
     public List<Text> UIelements;
@@ -1302,9 +1302,9 @@ public class Game : MonoBehaviour
     Captain2 enemyCapitano = new Captain2();
     Enemy enemy = new Enemy();
     battle1 battle = new battle1();
-    Enemy.ESwordsmen eswordsmen = new Enemy.ESwordsmen();
-    Enemy.EArchers earchers = new Enemy.EArchers();
-    Enemy.ERiders eriders = new Enemy.ERiders();
+    public Enemy.ESwordsmen eswordsmen = new Enemy.ESwordsmen();
+    public Enemy.EArchers earchers = new Enemy.EArchers();
+    public Enemy.ERiders eriders = new Enemy.ERiders();
 
     
     public void makeEnemy(int totale, int livello, int swordmen, int archers, int riders, int lvlcapitano)
