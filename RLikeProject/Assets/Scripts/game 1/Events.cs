@@ -280,9 +280,6 @@ public class Events : MonoBehaviour
         yield return null;
     }
 
-    int woodsElves = 0;
-    int elfsEnemy = 0;
-    int aemisFaith = 0;
 
     // evento 14
     IEnumerator TriggerWoodsElvesEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
