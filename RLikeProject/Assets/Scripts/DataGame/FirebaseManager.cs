@@ -177,12 +177,12 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(UpdateUsernameAuth(usernameField.text));
         //StartCoroutine(UpdateUsernameDatabase(username.text));
 
-        StartCoroutine(UpdateGold(goldField.text));
+        StartCoroutine(UpdateGold(int.Parse(goldField.text)));
         StartCoroutine(UpdateSeason(seasonField.text));
         StartCoroutine(UpdateCityName(citynameField.text));
         //StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
     }
-    public void SaveFairBase()
+    public void SaveFireBase()
     {
         if(!isSignedIn())
             Debug.Log("Not Connected");
@@ -195,7 +195,7 @@ public class FirebaseManager : MonoBehaviour
     {
         StartCoroutine(UpdateUsernameDatabase(usernameRegisterField.text));
         StartCoroutine(UpdateCityName(""));
-        StartCoroutine(UpdateGold(""));
+        StartCoroutine(UpdateGold(0));
         StartCoroutine(UpdateSeason(""));
     }
     //Function for the scoreboard button
@@ -397,7 +397,7 @@ public class FirebaseManager : MonoBehaviour
     {
         //Set the currently logged in user deaths
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("cityname").SetValueAsync(_cityname);
-
+        
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)
@@ -407,6 +407,7 @@ public class FirebaseManager : MonoBehaviour
         else
         {
             //Deaths are now updated
+            
         }
     }
 
@@ -427,7 +428,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    private IEnumerator UpdateGold(string _gold)
+    private IEnumerator UpdateGold(int _gold)
     {
         //Set the currently logged in user xp
         var DBTask = DBreference.Child("users").Child(User.UserId).Child("gold").SetValueAsync(_gold);
@@ -472,6 +473,8 @@ public class FirebaseManager : MonoBehaviour
             //Data has been retrieved
             DataSnapshot snapshot = DBTask.Result;
 
+            
+
             citynameField.text = snapshot.Child("cityname").Value.ToString();
             seasonField.text = snapshot.Child("season").Value.ToString();
             goldField.text = snapshot.Child("gold").Value.ToString();
@@ -482,7 +485,7 @@ public class FirebaseManager : MonoBehaviour
     private IEnumerator LoadScoreboardData()
     {
         //Get all the users data ordered by kills amount
-        var DBTask = DBreference.Child("users").OrderByChild("season").GetValueAsync();
+        var DBTask = DBreference.Child("users").OrderByChild("gold").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -504,6 +507,7 @@ public class FirebaseManager : MonoBehaviour
             //Loop through every users UID
             foreach (DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
             {
+                
                 string username = childSnapshot.Child("username").Value.ToString();
                 string cityname = childSnapshot.Child("cityname").Value.ToString();
                 string season = childSnapshot.Child("season").Value.ToString();
