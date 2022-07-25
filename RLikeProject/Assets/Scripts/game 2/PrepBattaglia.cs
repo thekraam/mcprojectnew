@@ -24,7 +24,7 @@ public class PrepBattaglia : MonoBehaviour
     public Text minRidersUI;
     public Text maxRidersUI;
 
-
+    public GameObject resocontoBattagliaPanel;
 
     public Text nomeCap;
     public Text atkCap;
@@ -80,7 +80,10 @@ public class PrepBattaglia : MonoBehaviour
     {
         battlePreparation.gameObject.SetActive(false);
         StartCoroutine(effettoFadeOut(battleTransition));
-        yield return null;
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<KillList>().battleConcluded = true;
+
+        resocontoBattagliaPanel.SetActive(true);
     }
 
     private IEnumerator AvvioEffettiBattaglia()

@@ -88,6 +88,7 @@ public class Events : MonoBehaviour
     {
         FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
         finishedBattle = true;
+
     }
 
     /* controllore di response (decisione giocatore) sull'oggetto dialoguemanager */
@@ -267,6 +268,6 @@ public class Events : MonoBehaviour
 
             yield return new WaitUntil(() => finishedBattle == true);
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return null;
     }
 }

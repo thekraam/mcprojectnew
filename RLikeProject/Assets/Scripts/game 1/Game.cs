@@ -1101,7 +1101,7 @@ public class Game : MonoBehaviour
             FindObjectOfType<Events>(),fattoria,
             caserma,swordsmen,archers,riders,miniera,
             fabbro,gilda, FindObjectOfType<Tutorial>(),
-            FindObjectOfType<OldSoldiersManager>(),
+            manager,
             enemy,
             eswordsmen,
             earchers,
@@ -1250,44 +1250,44 @@ public class Game : MonoBehaviour
         gilda.controllosped2 = data.controllosped2;
 
         /*OldSoldiers*/
-        FindObjectOfType<OldSoldiersManager>().sword1 = data.sword1;
-        FindObjectOfType<OldSoldiersManager>().arc1 = data.arc1;
-        FindObjectOfType<OldSoldiersManager>().rid1 = data.rid1;
-        FindObjectOfType<OldSoldiersManager>().turn1 = data.turn1;
+        manager.sword1 = data.sword1;
+        manager.arc1 = data.arc1;
+        manager.rid1 = data.rid1;
+        manager.turn1 = data.turn1;
 
-        FindObjectOfType<OldSoldiersManager>().sword2 = data.sword2;
-        FindObjectOfType<OldSoldiersManager>().arc2 = data.arc2;
-        FindObjectOfType<OldSoldiersManager>().rid2 = data.rid2;
-        FindObjectOfType<OldSoldiersManager>().turn2 = data.turn2;
+        manager.sword2 = data.sword2;
+        manager.arc2 = data.arc2;
+        manager.rid2 = data.rid2;
+        manager.turn2 = data.turn2;
 
-        FindObjectOfType<OldSoldiersManager>().sword3 = data.sword3;
-        FindObjectOfType<OldSoldiersManager>().arc3 = data.arc3;
-        FindObjectOfType<OldSoldiersManager>().rid3 = data.rid3;
-        FindObjectOfType<OldSoldiersManager>().turn3 = data.turn3;
+        manager.sword3 = data.sword3;
+        manager.arc3 = data.arc3;
+        manager.rid3 = data.rid3;
+        manager.turn3 = data.turn3;
 
-        FindObjectOfType<OldSoldiersManager>().sword4 = data.sword4;
-        FindObjectOfType<OldSoldiersManager>().arc4 = data.arc4;
-        FindObjectOfType<OldSoldiersManager>().rid4 = data.rid4;
-        FindObjectOfType<OldSoldiersManager>().turn4 = data.turn4;
+        manager.sword4 = data.sword4;
+        manager.arc4 = data.arc4;
+        manager.rid4 = data.rid4;
+        manager.turn4 = data.turn4;
 
-        FindObjectOfType<OldSoldiersManager>().sword5 = data.sword5;
-        FindObjectOfType<OldSoldiersManager>().arc5 = data.arc5;
-        FindObjectOfType<OldSoldiersManager>().rid5 = data.rid5;
-        FindObjectOfType<OldSoldiersManager>().turn5 = data.turn5;
+        manager.sword5 = data.sword5;
+        manager.arc5 = data.arc5;
+        manager.rid5 = data.rid5;
+        manager.turn5 = data.turn5;
 
-        FindObjectOfType<OldSoldiersManager>().swordgilda1 = data.swordgilda1;
-        FindObjectOfType<OldSoldiersManager>().arcgilda1 = data.arcgilda1;
-        FindObjectOfType<OldSoldiersManager>().ridgilda1 = data.ridgilda1;
-        FindObjectOfType<OldSoldiersManager>().tipologia1 = data.tipologia1;
-        FindObjectOfType<OldSoldiersManager>().moltiplicatore1 = data.moltiplicatore1;
-        FindObjectOfType<OldSoldiersManager>().turngilda1 = data.turngilda1;
+        manager.swordgilda1 = data.swordgilda1;
+        manager.arcgilda1 = data.arcgilda1;
+        manager.ridgilda1 = data.ridgilda1;
+        manager.tipologia1 = data.tipologia1;
+        manager.moltiplicatore1 = data.moltiplicatore1;
+        manager.turngilda1 = data.turngilda1;
 
-        FindObjectOfType<OldSoldiersManager>().swordgilda2 = data.swordgilda2;
-        FindObjectOfType<OldSoldiersManager>().arcgilda2 = data.arcgilda2;
-        FindObjectOfType<OldSoldiersManager>().ridgilda2 = data.ridgilda2;
-        FindObjectOfType<OldSoldiersManager>().tipologia2 = data.tipologia2;
-        FindObjectOfType<OldSoldiersManager>().moltiplicatore2 = data.moltiplicatore2;
-        FindObjectOfType<OldSoldiersManager>().turngilda2 = data.turngilda2;
+        manager.swordgilda2 = data.swordgilda2;
+        manager.arcgilda2 = data.arcgilda2;
+        manager.ridgilda2 = data.ridgilda2;
+        manager.tipologia2 = data.tipologia2;
+        manager.moltiplicatore2 = data.moltiplicatore2;
+        manager.turngilda2 = data.turngilda2;
     }
 
 
