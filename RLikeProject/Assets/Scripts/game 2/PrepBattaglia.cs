@@ -44,11 +44,30 @@ public class PrepBattaglia : MonoBehaviour
     private Captain1 capitanocorrente;
     private Caserma casermacorrente;
     private Player playercorrente;
+    Soldiers.Swordsmen swordmencorrenti;
+    Soldiers.Archers archercorrenti;
+    Soldiers.Riders ridercorrenti;
     
     int x = 0;
     float capBonus = 0;
     float terriBonus = 0;
     float troopsBonus = 0;
+
+
+    //pannello di vittoria
+
+    public Text decisive;
+    public Text Victory;
+    public Text soldatigiocatore;
+    public Text soldatiEnemy;
+    public GameObject Alloro;
+    public GameObject Spada;
+
+
+
+
+
+
 
     public IEnumerator effettoFadeOut(CanvasGroup currentCanvasGroup)
     {
@@ -83,7 +102,10 @@ public class PrepBattaglia : MonoBehaviour
         yield return new WaitForSeconds(1f);
         FindObjectOfType<KillList>().battleConcluded = true;
 
+        preparazioneVittoriapan();
         resocontoBattagliaPanel.SetActive(true);
+        Debug.LogError("dopo l'attivazione del pannello");
+        Game.manager.salvasoldati(swordmencorrenti, archercorrenti, ridercorrenti, FindObjectOfType<Events>().terri);
     }
 
     private IEnumerator AvvioEffettiBattaglia()
@@ -195,6 +217,9 @@ public class PrepBattaglia : MonoBehaviour
             capitanocorrente = Capitano;
             casermacorrente = caserma;
             playercorrente = player;
+            swordmencorrenti = swordsmen;
+            archercorrenti = archers;
+            ridercorrenti = riders;
             x = 1;
         }
 
@@ -272,6 +297,121 @@ public class PrepBattaglia : MonoBehaviour
 
 
 
+
+
+ 
+    public void preparazioneVittoriapan()
+    {
+        Debug.LogError("dentro prepVitpan");
+        int controllo = FindObjectOfType<Events>().lastBattleInfo;
+        if (controllo == 1)
+        {
+            decisive.text = "DECISIVE";
+            Victory.text = "DEFEAT!";
+           Alloro.SetActive(false);
+            Spada.SetActive(true);
+        }
+        if (controllo == 2)
+        {
+            Alloro.SetActive(false);
+            Spada.SetActive(true);
+            decisive.text = "";
+            Victory.text = "DEFEAT!";
+        }
+        if (controllo == 3)
+        {
+            Alloro.SetActive(true);
+            Spada.SetActive(false);
+            decisive.text = "";
+            Victory.text = "VICTORY!";
+        }
+        if (controllo == 4)
+        {
+            Alloro.SetActive(true);
+           Spada.SetActive(false);
+            decisive.text = "DECISIVE";
+            Victory.text = "VICTORY!";
+        }
+
+        int s = FindObjectOfType<Game>().swordsmen.getMomentDeadSwordman();
+        int a = FindObjectOfType<Game>().archers.getMomentDeadArcher();
+        int r = FindObjectOfType<Game>().riders.getMomentDeadRider();
+        int es = FindObjectOfType<Game>().eswordsmen.getDeadESwordman();
+        int ea = FindObjectOfType<Game>().earchers.getDeadEArchers();
+        int er = FindObjectOfType<Game>().eriders.getDeadERiders();
+
+
+
+
+        string soldati1 = "";
+        string soldati2 = "";
+        string soldati3 = "";
+
+
+        if (s == 0 || s == 1)
+        {
+            soldati1 = "\n" + s + " swordsman\n";
+        }
+        if (s > 0)
+        {
+            soldati1 = "\n" + s + " swordsmen\n";
+        }
+        if (a == 0 || a == 1)
+        {
+            soldati2 = "" + a + " archer\n";
+        }
+        if (a > 0)
+        {
+            soldati2 = "" + a + " archers\n";
+        }
+
+        if (r == 0 || r == 1)
+        {
+            soldati3 = "" + r + " rider\n";
+        }
+        if (r > 0)
+        {
+            soldati3 = "" + r + " riders\n";
+        }
+
+        soldatigiocatore.text = "" + soldati1 + soldati2 + soldati3;
+
+        string esoldati1 = "";
+        string esoldati2 = "";
+        string esoldati3 = "";
+
+        if (es == 0 || es == 1)
+        {
+            esoldati1 = "\n" + es + " swordsman\n";
+        }
+        if (es > 0)
+        {
+            esoldati1 = "\n" + es + " swordsmen\n";
+        }
+
+        if (ea == 0 || ea == 1)
+        {
+            esoldati2 = "" + ea + " archer\n";
+        }
+        if (ea > 0)
+        {
+            esoldati2 = "" + ea + " archers\n";
+        }
+
+        if (er == 0 || er == 1)
+        {
+            esoldati3 = "" + er + " rider\n";
+        }
+        if (er > 0)
+        {
+            esoldati3 = "" + er + " riders\n";
+        }
+
+        soldatiEnemy.text = "" + esoldati1 + esoldati2 + esoldati3;
+
+
+        Debug.LogError("Finito prepVitpan");
+    }
 
 
 

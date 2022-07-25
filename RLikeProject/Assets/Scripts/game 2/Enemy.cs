@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
         public int def_swordsmen = 8;
         public float bonus_swordsmen = 0;
 
+        public int deadEswordman = 0;
+
         public void lvlup()
         {
             atk_swordsmen = atk_swordsmen + 1;
@@ -38,6 +40,17 @@ public class Enemy : MonoBehaviour
         {
             total_swordsmen = total_swordsmen + x;
         }
+
+        public int getDeadESwordman()
+        {
+            return deadEswordman;
+        }
+
+        public void setDeadESwordman(int x)
+        {
+            deadEswordman = deadEswordman + x;
+        }
+
         public void setRapidTotal(int modifier)
         {
             total_swordsmen = total_swordsmen + modifier;
@@ -79,6 +92,8 @@ public class Enemy : MonoBehaviour
         public int def_archers = 3;
         public float bonus_archers = 0;
 
+        public int deadEArchers = 0;
+
         public void lvlup()
         {
             atk_archers = atk_archers + 1;
@@ -101,6 +116,18 @@ public class Enemy : MonoBehaviour
         {
             total_archers = total_archers + x;
         }
+
+        public int getDeadEArchers()
+        {
+            return deadEArchers;
+        }
+
+        public void setDeadEArchers(int x)
+        {
+            deadEArchers = deadEArchers + x;
+        }
+
+
         public void setRapidTotal(int modifier)
         {
             total_archers = total_archers + modifier;
@@ -142,6 +169,7 @@ public class Enemy : MonoBehaviour
         public int def_riders = 5;
         public float bonus_riders = 0;
 
+        public int deadERiders = 0;
         public void lvlup()
         {
             atk_riders = atk_riders + 1;
@@ -165,6 +193,18 @@ public class Enemy : MonoBehaviour
         {
             total_riders = total_riders + x;
         }
+
+        public int getDeadERiders()
+        {
+            return deadERiders;
+        }
+
+        public void setDeadERiders(int x)
+        {
+            deadERiders = deadERiders + x;
+        }
+
+
         public void setRapidTotal(int modifier)
         {
             total_riders = total_riders + modifier;
