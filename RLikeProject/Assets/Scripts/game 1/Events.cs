@@ -44,10 +44,8 @@ public class Events : MonoBehaviour
     public int lastBattleInfo = 0;
     public bool finishedBattle = false;
 
-
-    /* booleane effetti */
-    public bool aqueductEffectMalus = false;
-
+    /* variabile fedeAemis */
+    public int aemisFaith = 0;
 
     /* booleane eventi secondari */
     public bool attendingSecondaryEvent = false; // generico, stabilisce se si sta partecipando gia' ad un evento secondario
@@ -56,16 +54,28 @@ public class Events : MonoBehaviour
 
     public int aqueductSecondary = 0; // evento secondario acquedotto
 
+    //////////////////////////////////////////////////////
+    ////*            variabili eventi             */////
+    //////////////////////////////////////////////////////
 
-    /* booleane di avvenuto evento, 0 di default */
+    /////* variabili evento acquedotto */////
     public int aqueduct = 0;
+    //------------ turni mancanti fine acquedotto e       ------------//
+    //------------ turni mancanti fine malus acquedotto   ------------//
+    public int aqueductTurnsLeft = 999999;
+    public int aqueductMalusTurnsLeft = 999999;
+
+    public bool aqueductEffectMalus = false;
+
+    /////* variabili evento progetto di costruzione difesa per la citta' */////
     public int citydefenseproject = 0;
 
-    /* variabili countdown evento secondario, grande numero di default */
-    public int aqueductTurnsLeft = 999999;
+    /////* variabili evento elfi dei boschi */////
+    public int woodsElves = 0;
+    public int elfsEnemy = 0;
 
-    /* variabili countdown EFFETTI TEMPORANEI evento secondario, grande numero di default */
-    public int aqueductMalusTurnsLeft = 999999;
+
+    //////////////////////////////////////////////////////
 
     public void makeEnemyForEvent(int totale, int livello, int swordsmen, int archers, int riders, int lvlCapitano)
     {
@@ -268,5 +278,92 @@ public class Events : MonoBehaviour
             yield return new WaitUntil(() => finishedBattle == true);
         }
         yield return null;
+    }
+
+    int woodsElves = 0;
+    int elfsEnemy = 0;
+    int aemisFaith = 0;
+
+    // evento 14
+    IEnumerator TriggerWoodsElvesEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    {
+        woodsElves = 1;
+        float woodsElvesValue = Random.Range(0f, 1f); // probabilita di verifica evento secondario
+        woodsElvesValue = 0.1f;
+        string eventString1 = "A man visits your city and asks to be helped.";
+        string eventString2 = "He claims he has been mugged by a group of Elves of the Woods and asks for help in the name of Aemis.";
+        string eventString3 = "He wants you to organize an expedition in the Far Lands.";
+        string eventString4 = "Are you willing to help this man?\n[The expedition has no cost]";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+
+        StartCoroutine(ResponseUpdater());
+        yield return new WaitUntil(() => response[1] == 1);
+
+
+        Debug.LogError("il vero response è");
+        Debug.LogError(response[0]);
+        if (response[0] == 1) // il giocatore risponde si
+        {
+            elfsEnemy = 1; // variabile 'nemicoElfi'
+            aemisFaith++;
+            if (woodsElvesValue <= 0.9f) // 90% di possibilita che si verifichi evento battaglia
+            {
+                terri = 3; // assegnazione territorio di battaglia 
+                int EventEswordsmen = 5 * Random.Range(1, 4);
+                int EventEarchers = 3 * Random.Range(1, 3);
+                int EventEriders = 0;
+                makeEnemyForEvent(EventEswordsmen + EventEarchers + EventEriders, 1, EventEswordsmen, EventEarchers, EventEriders, 1); // creazione esercito nemico
+                FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+                yield return new WaitUntil(() => finishedBattle == true);
+
+                if(lastBattleInfo > 2) // vittoria di qualsiasi tipo
+                {
+                    string eventString5 = "Your expedition comes back.";
+                    string eventString6 = "The Captain explains that the Elves fought long and hard before dying.";
+                    string eventString7 = "The man's belongings have been retrieved and returned.\nThe man wants to thank your kindness and help by donating part of his belongings.";
+                    string eventString8 = "[You obtain 300 gold worth of goods]";
+
+                    string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
+
+                    dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+
+                    player.setRapidMoney(300);
+                }
+                else // sconfitta di qualsiasi tipo
+                {
+                    string eventString5 = "Your expedition comes back.";
+                    string eventString6 = "The Captain explains that the Elves were numerous and fought harder than expected.";
+                    string eventString7 = "The expedition had to retire back to "+ FindObjectOfType<Game>().CityNameUI.text +" to reduce losses.";
+                    string eventString8 = "["+swordsmen.getMomentDeadSwordman() + " swordsmen, " + archers.getMomentDeadArcher() + " archers and " + riders.getMomentDeadRider() + " riders didn't came back]";
+
+                    string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
+
+                    dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+                }
+            }
+            else
+            {
+                string eventString5 = "Your expedition comes back earlier than expected.";
+                string eventString6 = "The Captain explains that the Elves surrended the moment after he claimed to be there in the name of " + FindObjectOfType<Game>().CityNameUI.text + ".";
+                string eventString7 = "The Elves returned the man's belongings.\nThe man wants to thank your kindness and help by donating part of his belongings.";
+                string eventString8 = "[You obtain 300 gold worth of goods]";
+
+                string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
+
+                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+
+                player.setRapidMoney(300);
+            }
+
+        }
+        else
+        {
+            aemisFaith--;
+        }
+        yield return new WaitForSeconds(1.5f);
     }
 }
