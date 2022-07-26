@@ -140,6 +140,16 @@ public class IntroExecution : MonoBehaviour
         confirmSelection.SetActive(false);
         IntroSequence.gameObject.SetActive(false);
         FindObjectOfType<FontDecreaser>().introClosed = true;
+
+        if (FindObjectOfType<FirebaseManager>().isSignedIn())
+        {
+            StartCoroutine(FindObjectOfType<FirebaseManager>().LoadUserData());
+
+            yield return new WaitUntil(() => FindObjectOfType<FirebaseManager>().dataLoaded == true);
+            FindObjectOfType<FirebaseManager>().dataLoaded = false;
+
+            FindObjectOfType<FirebaseManager>().SaveDataButton();
+        }
     }
 
     public void StartExecution()

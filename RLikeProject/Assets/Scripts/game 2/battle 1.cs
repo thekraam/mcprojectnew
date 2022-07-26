@@ -205,6 +205,9 @@ public class battle1 : MonoBehaviour
             z2 = z2 + ((z2 / 100) * y2);
             // Debug.LogError("z2 " + z2);
 
+            if (z1 > 100) z1 = 100;
+            if (z2 > 100) z2 = 100;
+
             rapporto1 = (int)(rapporto1 + z1);
             // Debug.LogError("rapporto 1 " + rapporto1);
             rapporto2 = (int)(rapporto2 + z2);
@@ -267,6 +270,9 @@ public class battle1 : MonoBehaviour
                 erider.setRapidTotal(-erider.getTotal());
             }
 
+            totalsoldiers = swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider();
+            totalEsoldiers = eswordman.getTotal() + earcher.getTotal() + erider.getTotal();
+
             if (totalEsoldiers == 0 || totalsoldiers == 0)
             {
                 turno = 6;
@@ -274,7 +280,9 @@ public class battle1 : MonoBehaviour
 
 
 
-           // Debug.LogError("prima del contatore stampa");
+            // Debug.LogError("prima del contatore stampa");\
+
+
 
             contatorestampa = 6;
 

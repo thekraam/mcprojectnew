@@ -48,6 +48,7 @@ public class FirebaseManager : MonoBehaviour
     public Transform scoreboardContent;
 
 
+
     void Awake()
     {
         //Check that all of the necessary dependencies for Firebase are present on the system
@@ -78,7 +79,12 @@ public class FirebaseManager : MonoBehaviour
 
     public bool isSignedIn()
     {
-        bool signedIn = User == auth.CurrentUser && auth.CurrentUser != null;
+        bool signedIn = false;
+
+        if (auth != null)
+        {
+            signedIn = (User == auth.CurrentUser) && (auth.CurrentUser != null);
+        }
 
         return signedIn;
     }
@@ -171,6 +177,23 @@ public class FirebaseManager : MonoBehaviour
         ClearRegisterFeilds();
         ClearLoginFeilds();
     }
+
+
+    public void LoadDataButton(bool newGame)
+    {
+        if (!isSignedIn())
+            Debug.Log("Not Connected");
+        else
+        {
+            if(!newGame)
+                StartCoroutine(LoadUserData());
+            else
+            {
+                StartCoroutine(LoadUserTutorial());
+            }
+        }
+    }
+
     //Function for the save button
     public void SaveDataButton()
     {
@@ -180,6 +203,17 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(UpdateGold(int.Parse(goldField.text)));
         StartCoroutine(UpdateSeason(seasonField.text));
         StartCoroutine(UpdateCityName(citynameField.text));
+
+        StartCoroutine(UpdateTutorials(FindObjectOfType<Tutorial>().welcomeTutorial, 
+                                       FindObjectOfType<Tutorial>().villageTutorial,
+                                       FindObjectOfType<Tutorial>().farmTutorial,
+                                       FindObjectOfType<Tutorial>().barracksTutorial,
+                                       FindObjectOfType<Tutorial>().blacksmithTutorial,
+                                       FindObjectOfType<Tutorial>().guildTutorial,
+                                       FindObjectOfType<Tutorial>().mineTutorial,
+                                       FindObjectOfType<Tutorial>().bonusTutorial));
+
+
         //StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
     }
     public void SaveFireBase()
@@ -339,6 +373,7 @@ public class FirebaseManager : MonoBehaviour
                     }
                     else
                     {
+                        
                         //Username is now set
                         //Now return to login screen
                         Debug.LogFormat("User register in successfully: {0} ({1})", User.DisplayName, User.Email);
@@ -350,6 +385,7 @@ public class FirebaseManager : MonoBehaviour
                         FindObjectOfType<Game>().onTapForSave();
                         ClearRegisterFeilds();
                         ClearLoginFeilds();
+                        SaveDataButton();
                     }
                 }
             }
@@ -445,10 +481,44 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-
-
-    private IEnumerator LoadUserData()
+    /*
+             StartCoroutine(UpdateTutorials(FindObjectOfType<Tutorial>().welcomeTutorial, 
+                                       FindObjectOfType<Tutorial>().villageTutorial,
+                                       FindObjectOfType<Tutorial>().farmTutorial,
+                                       FindObjectOfType<Tutorial>().barracksTutorial,
+                                       FindObjectOfType<Tutorial>().blacksmithTutorial,
+                                       FindObjectOfType<Tutorial>().guildTutorial,
+                                       FindObjectOfType<Tutorial>().mineTutorial,
+                                       FindObjectOfType<Tutorial>().bonusTutorial));
+     */
+    private IEnumerator UpdateTutorials(bool welcomeTutorial, bool villageTutorial, bool farmTutorial, bool barracksTutorial, bool blacksmithTutorial, bool guildTutorial, bool mineTutorial, bool bonusTutorial)
     {
+        //Set the currently logged in tutorials
+        var DBTask = DBreference.Child("users").Child(User.UserId).Child("welcomeTutorial").SetValueAsync(welcomeTutorial);
+        var DBTask1 = DBreference.Child("users").Child(User.UserId).Child("villageTutorial").SetValueAsync(villageTutorial);
+        var DBTask2 = DBreference.Child("users").Child(User.UserId).Child("farmTutorial").SetValueAsync(farmTutorial);
+        var DBTask3 = DBreference.Child("users").Child(User.UserId).Child("barracksTutorial").SetValueAsync(barracksTutorial);
+        var DBTask4 = DBreference.Child("users").Child(User.UserId).Child("blacksmithTutorial").SetValueAsync(blacksmithTutorial);
+        var DBTask5 = DBreference.Child("users").Child(User.UserId).Child("guildTutorial").SetValueAsync(guildTutorial);
+        var DBTask6 = DBreference.Child("users").Child(User.UserId).Child("mineTutorial").SetValueAsync(mineTutorial);
+        var DBTask7 = DBreference.Child("users").Child(User.UserId).Child("bonusTutorial").SetValueAsync(bonusTutorial);
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted && DBTask1.IsCompleted && DBTask2.IsCompleted && DBTask3.IsCompleted && DBTask4.IsCompleted && DBTask5.IsCompleted && DBTask6.IsCompleted && DBTask7.IsCompleted);
+
+        if (DBTask.Exception != null || DBTask1.Exception != null || DBTask2.Exception != null || DBTask3.Exception != null || DBTask4.Exception != null || DBTask5.Exception != null || DBTask6.Exception != null || DBTask7.Exception != null)
+        {
+            Debug.LogWarning("Load tutorial failed.");
+        }
+        else
+        {
+            //Gold is now updated
+        }
+    }
+
+    public bool dataLoaded = false;
+    public IEnumerator LoadUserData()
+    {
+        dataLoaded = false;
         //Get the currently logged in user data
         var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
 
@@ -478,9 +548,80 @@ public class FirebaseManager : MonoBehaviour
             citynameField.text = snapshot.Child("cityname").Value.ToString();
             seasonField.text = snapshot.Child("season").Value.ToString();
             goldField.text = snapshot.Child("gold").Value.ToString();
-                        
+
+
+            /*
+                     var DBTask = DBreference.Child("users").Child(User.UserId).Child("welcomeTutorial").SetValueAsync(welcomeTutorial);
+        var DBTask1 = DBreference.Child("users").Child(User.UserId).Child("villageTutorial").SetValueAsync(villageTutorial);
+        var DBTask2 = DBreference.Child("users").Child(User.UserId).Child("farmTutorial").SetValueAsync(farmTutorial);
+        var DBTask3 = DBreference.Child("users").Child(User.UserId).Child("barracksTutorial").SetValueAsync(barracksTutorial);
+        var DBTask4 = DBreference.Child("users").Child(User.UserId).Child("blacksmithTutorial").SetValueAsync(blacksmithTutorial);
+        var DBTask5 = DBreference.Child("users").Child(User.UserId).Child("guildTutorial").SetValueAsync(guildTutorial);
+        var DBTask6 = DBreference.Child("users").Child(User.UserId).Child("mineTutorial").SetValueAsync(mineTutorial);
+        var DBTask7 = DBreference.Child("users").Child(User.UserId).Child("bonusTutorial").SetValueAsync(bonusTutorial);
+             */
+           
+            FindObjectOfType<Tutorial>().welcomeTutorial = snapshot.Child("welcomeTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().villageTutorial = snapshot.Child("villageTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().farmTutorial = snapshot.Child("farmTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().barracksTutorial = snapshot.Child("barracksTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().blacksmithTutorial = snapshot.Child("blacksmithTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().guildTutorial = snapshot.Child("guildTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().mineTutorial = snapshot.Child("mineTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().bonusTutorial = snapshot.Child("bonusTutorial").Value.ToString() == "False" ? false : true;
+
         }
+
+        dataLoaded = true;
     }
+
+    public IEnumerator LoadUserTutorial(){
+        dataLoaded = false;
+        //Get the currently logged in user data
+        var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else if (DBTask.Result.Value == null)
+        {
+            //No data exists yet
+        }
+        else
+        {
+            //Data has been retrieved
+            DataSnapshot snapshot = DBTask.Result;
+
+
+
+            /*
+                     var DBTask = DBreference.Child("users").Child(User.UserId).Child("welcomeTutorial").SetValueAsync(welcomeTutorial);
+            var DBTask1 = DBreference.Child("users").Child(User.UserId).Child("villageTutorial").SetValueAsync(villageTutorial);
+            var DBTask2 = DBreference.Child("users").Child(User.UserId).Child("farmTutorial").SetValueAsync(farmTutorial);
+            var DBTask3 = DBreference.Child("users").Child(User.UserId).Child("barracksTutorial").SetValueAsync(barracksTutorial);
+            var DBTask4 = DBreference.Child("users").Child(User.UserId).Child("blacksmithTutorial").SetValueAsync(blacksmithTutorial);
+            var DBTask5 = DBreference.Child("users").Child(User.UserId).Child("guildTutorial").SetValueAsync(guildTutorial);
+            var DBTask6 = DBreference.Child("users").Child(User.UserId).Child("mineTutorial").SetValueAsync(mineTutorial);
+            var DBTask7 = DBreference.Child("users").Child(User.UserId).Child("bonusTutorial").SetValueAsync(bonusTutorial);
+             */
+
+            FindObjectOfType<Tutorial>().welcomeTutorial = snapshot.Child("welcomeTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().villageTutorial = snapshot.Child("villageTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().farmTutorial = snapshot.Child("farmTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().barracksTutorial = snapshot.Child("barracksTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().blacksmithTutorial = snapshot.Child("blacksmithTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().guildTutorial = snapshot.Child("guildTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().mineTutorial = snapshot.Child("mineTutorial").Value.ToString() == "False" ? false : true;
+            FindObjectOfType<Tutorial>().bonusTutorial = snapshot.Child("bonusTutorial").Value.ToString() == "False" ? false : true;
+
+        }
+        dataLoaded = true;
+    }
+
 
     private IEnumerator LoadScoreboardData()
     {

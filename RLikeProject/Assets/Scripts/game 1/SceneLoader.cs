@@ -42,7 +42,6 @@ public class SceneLoader : MonoBehaviour
             loadingPanel.SetActive(true);
             StartCoroutine(LoadingScreenFadeOut(0.8f));
         }
-        Debug.LogError("rest");
     }
 
     /*

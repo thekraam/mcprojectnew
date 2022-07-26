@@ -52,15 +52,36 @@ public class Tutorial : MonoBehaviour
     ///////////////////////// TUTORIAL BENVENUTO //////////////////////////////////////
     void Start()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        StartCoroutine(fixWelcome());
+    }
+
+    public IEnumerator fixWelcome()
+    {
+        yield return new WaitForSeconds(2f);
+        bgPanel.gameObject.SetActive(false);
+        parentContinueButton.gameObject.SetActive(false);
+        welcomePanel1.SetActive(false);
+        if (!FindObjectOfType<FirebaseManager>().isSignedIn())
+        {
+            FindObjectOfType<FirebaseManager>().dataLoaded = true;
+        }
+        
+
+        yield return new WaitUntil(() => FindObjectOfType<FirebaseManager>().dataLoaded == true);
+        FindObjectOfType<FirebaseManager>().dataLoaded = false;
+
+        if (welcomeTutorial)
         {
             welcomeTutorial = false;
 
             bgPanel.gameObject.SetActive(true);
+            bool porco_dio = true;
+            Debug.LogError("porco dio vale " + porco_dio);
             parentContinueButton.gameObject.SetActive(true);
             welcomePanel1.SetActive(true);
             continueButton.onClick.AddListener(WelcomePanel1Disabler); // aggiungi funzionalit? bottone
         }
+        yield return null;
     }
 
     private void WelcomePanel1Disabler()
@@ -68,10 +89,12 @@ public class Tutorial : MonoBehaviour
         // disabilita primo panel
         welcomePanel1.SetActive(false);
         continueButton.onClick.RemoveAllListeners();
+        parentContinueButton.gameObject.SetActive(false);
+        bgPanel.gameObject.SetActive(false);
 
         // abilita secondo panel
-        welcomePanel2.SetActive(true);
-        continueButton.onClick.AddListener(WelcomePanel2Disabler);
+        //welcomePanel2.SetActive(true);
+        //continueButton.onClick.AddListener(WelcomePanel2Disabler);
     }
     private void WelcomePanel2Disabler()
     {
@@ -85,7 +108,7 @@ public class Tutorial : MonoBehaviour
     ///////////////////////// TUTORIAL GILDA //////////////////////////////////////
     public void OnFirstTapGuild()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        if (guildTutorial)
         {
             guildTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -115,7 +138,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapBonusButton()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        if (bonusTutorial)
         {
             bonusTutorial = false;
             parentContinueButton.gameObject.SetActive(true);
@@ -134,7 +157,7 @@ public class Tutorial : MonoBehaviour
     ///////////////////////// TUTORIAL VILLAGGIO //////////////////////////////////////
     public void OnFirstTapVillage()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        if (villageTutorial)
         {
             villageTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -165,7 +188,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapBarracks()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        if (barracksTutorial)
         {
             barracksTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -196,7 +219,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapFarm()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        if (farmTutorial)
         {
             farmTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -218,7 +241,7 @@ public class Tutorial : MonoBehaviour
     
     public void OnFirstTapMine()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        if (mineTutorial)
         {
             mineTutorial = false;
             bgPanel.gameObject.SetActive(true);
@@ -236,11 +259,11 @@ public class Tutorial : MonoBehaviour
         bgPanel.gameObject.SetActive(false);
     }
 
-    ///////////////////////// TUTORIAL MINE //////////////////////////////////////
-    ///
+    ///////////////////////// TUTORIAL BLACKSMITH //////////////////////////////////////
+    
     public void OnFirstTapBlacksmith()
     {
-        if (!(File.Exists(Application.persistentDataPath + "/game.fun")))
+        if (blacksmithTutorial)
         {
             blacksmithTutorial = false;
             bgPanel.gameObject.SetActive(true);

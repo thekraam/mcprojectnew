@@ -229,11 +229,11 @@ public class Game : MonoBehaviour
 
     public void Start()
     {
-
         // musica on
         //FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
 
         // disattivo pannelli non di game, 'nse sa mai
+        LoadTutorial();
         mainMenuPanel.SetActive(true);
         skipTurnBlocker.SetActive(false);
         dialogueInterfaceBlocker.SetActive(false);
@@ -1109,6 +1109,22 @@ public class Game : MonoBehaviour
             );
     }
 
+    public void LoadTutorial()
+    {
+        GameData data = SaveSystem.LoadGame();
+
+        /*tutorial*/
+        FindObjectOfType<Tutorial>().welcomeTutorial = data.welcomeTutorial;
+        tutorialW = data.welcomeTutorial;
+        FindObjectOfType<Tutorial>().villageTutorial = data.villageTutorial;
+        FindObjectOfType<Tutorial>().farmTutorial = data.farmTutorial;
+        FindObjectOfType<Tutorial>().barracksTutorial = data.barracksTutorial;
+        FindObjectOfType<Tutorial>().blacksmithTutorial = data.blacksmithTutorial;
+        FindObjectOfType<Tutorial>().guildTutorial = data.guildTutorial;
+        FindObjectOfType<Tutorial>().mineTutorial = data.mineTutorial;
+        FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
+    }
+
     public void LoadGame()
     {
         GameData data = SaveSystem.LoadGame();
@@ -1134,16 +1150,16 @@ public class Game : MonoBehaviour
         player.lvlfield = data.lvlfield;
         player.soldiersaway = data.soldiersaway;
 
-        /*tutorial*/
-        FindObjectOfType<Tutorial>().welcomeTutorial = data.welcomeTutorial;
-        tutorialW = data.welcomeTutorial;
-        FindObjectOfType<Tutorial>().villageTutorial = data.villageTutorial;
-        FindObjectOfType<Tutorial>().farmTutorial = data.farmTutorial;
-        FindObjectOfType<Tutorial>().barracksTutorial = data.barracksTutorial;
-        FindObjectOfType<Tutorial>().blacksmithTutorial = data.blacksmithTutorial;
-        FindObjectOfType<Tutorial>().guildTutorial = data.guildTutorial;
-        FindObjectOfType<Tutorial>().mineTutorial = data.mineTutorial;
-        FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
+        ///*tutorial*/
+        //FindObjectOfType<Tutorial>().welcomeTutorial = data.welcomeTutorial;
+        //tutorialW = data.welcomeTutorial;
+        //FindObjectOfType<Tutorial>().villageTutorial = data.villageTutorial;
+        //FindObjectOfType<Tutorial>().farmTutorial = data.farmTutorial;
+        //FindObjectOfType<Tutorial>().barracksTutorial = data.barracksTutorial;
+        //FindObjectOfType<Tutorial>().blacksmithTutorial = data.blacksmithTutorial;
+        //FindObjectOfType<Tutorial>().guildTutorial = data.guildTutorial;
+        //FindObjectOfType<Tutorial>().mineTutorial = data.mineTutorial;
+        //FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
 
         /*events*/
         FindObjectOfType<Events>().aqueduct = data.aqueduct;

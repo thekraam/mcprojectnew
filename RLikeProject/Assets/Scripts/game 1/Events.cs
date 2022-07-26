@@ -58,7 +58,7 @@ public class Events : MonoBehaviour
     ////*            variabili eventi             */////
     //////////////////////////////////////////////////////
 
-    /////* variabili evento acquedotto */////
+    /////* variabili evento acquedotto *//////////////////
     public int aqueduct = 0;
     //------------ turni mancanti fine acquedotto e       ------------//
     //------------ turni mancanti fine malus acquedotto   ------------//
@@ -66,7 +66,9 @@ public class Events : MonoBehaviour
     public int aqueductMalusTurnsLeft = 999999;
 
     public bool aqueductEffectMalus = false;
-
+    //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
+    ///
     /////* variabili evento progetto di costruzione difesa per la citta' */////
     public int citydefenseproject = 0;
 
