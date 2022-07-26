@@ -317,7 +317,7 @@ public class Events : MonoBehaviour
                 makeEnemyForEvent(EventEswordsmen + EventEarchers + EventEriders, 1, EventEswordsmen, EventEarchers, EventEriders, 1); // creazione esercito nemico
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
-                yield return new WaitUntil(() => finishedBattle == true);
+                yield return new WaitUntil(() => finishedBattle == true); // finishedBattle = true va messo sul pulsante close della vittoria.
 
                 if(lastBattleInfo > 2) // vittoria di qualsiasi tipo
                 {
