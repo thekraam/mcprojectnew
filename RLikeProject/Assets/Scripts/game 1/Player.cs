@@ -111,7 +111,8 @@ public class Player : MonoBehaviour
 
     public void setRapidMoney(int modifier)
     {
-        player_money += modifier;
+        if ((player_money += modifier) < 0) player_money = 0;
+        else player_money += modifier;
     }
 
     public void setMoney()

@@ -43,7 +43,7 @@ public class GameData
     public int aqueductTurnsLeft;
     public int aqueductMalusTurnsLeft;
     public bool attendingSecondaryEvent;
-    public bool aqueductEffectMalus;
+    public bool aqueductMalus;
 
     /*farm*/
     public int farmLvl;
@@ -216,7 +216,7 @@ public class GameData
 
         /*tutorial*/
         welcomeTutorial = tutorial.welcomeTutorial;
-        Debug.LogError("welcomeTutorial " + tutorial.welcomeTutorial);
+        //Debug.LogError("welcomeTutorial " + tutorial.welcomeTutorial);
         villageTutorial = tutorial.villageTutorial;
         farmTutorial = tutorial.farmTutorial;
         barracksTutorial = tutorial.barracksTutorial;
@@ -233,7 +233,7 @@ public class GameData
         aqueductTurnsLeft = events.aqueductTurnsLeft;
         attendingSecondaryEvent = events.attendingSecondaryEvent;
         aqueductMalusTurnsLeft = events.aqueductMalusTurnsLeft;
-        aqueductEffectMalus = events.aqueductEffectMalus;
+        aqueductMalus = events.aqueductMalus;
 
         /*farm*/
         farmLvl = fattoria.getLvlFattoria();

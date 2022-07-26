@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Events : MonoBehaviour
 {
+    /* riferimenti a variabili game */
+    private Player player;
+    private Soldiers.Swordsmen swordsmen;
+    private Soldiers.Archers archers;
+    private Soldiers.Riders riders;
+    private Fattoria fattoria;
+    private Miniera miniera;
+    private Caserma caserma;
+    private Fabbro fabbro;
+    private Gilda gilda;
+
     /* variabile di controllo risposta avvenuta decisione giocatore, [0] contenente la risposta (0 o 1), [1] contenente l'avvenuto check (1 se si, 0 altrimenti) */
     public int[] response = new int[2];
 
@@ -28,6 +39,7 @@ public class Events : MonoBehaviour
     private int citizensMalus7 = 0;
     private int citizensMalus8 = 0;
     private int citizensMalus9 = 0;
+    private int citizensMalus10 = 0;
 
     /* variabili malus gold */
     private int goldMalus1 = 0;
@@ -39,13 +51,16 @@ public class Events : MonoBehaviour
     private int goldMalus7 = 0;
     private int goldMalus8 = 0;
     private int goldMalus9 = 0;
+    private int goldMalus10 = 0;
 
     /* last battle info */
     public int lastBattleInfo = 0;
     public bool finishedBattle = false;
 
-    /* variabile fedeAemis */
+    /* variabili Aemis */
     public int aemisFaith = 0;
+    public int aemisKnightsHostility = 0;
+    public int aemisRebel = 0;
 
     /* booleane eventi secondari */
     public bool attendingSecondaryEvent = false; // generico, stabilisce se si sta partecipando gia' ad un evento secondario
@@ -65,7 +80,7 @@ public class Events : MonoBehaviour
     public int aqueductTurnsLeft = 999999;
     public int aqueductMalusTurnsLeft = 999999;
 
-    public bool aqueductEffectMalus = false;
+    public bool aqueductMalus = false;
     //////////////////////////////////////////////////////
     //////////////////////////////////////////////////////
     ///
@@ -76,6 +91,10 @@ public class Events : MonoBehaviour
     public int woodsElves = 0;
     public int elfsEnemy = 0;
 
+    /////* variabili evento celestiale e cavalieri */////
+    public int theCelestialEvent = 0;
+    public int theCelestialEventMalus = 0;
+    public int theCelestialEventMalusTurnsLeft = 999999;
 
     //////////////////////////////////////////////////////
 
@@ -84,9 +103,16 @@ public class Events : MonoBehaviour
         FindObjectOfType<Game>().makeEnemy(totale, livello, swordsmen, archers, riders, lvlCapitano);
     }
 
+    public void onPressCloseVictoryDefeatPanel()
+    {
+        finishedBattle = true;
+    }
+
     // pulsante start battle di battle preparation
     public void onPressStartBattle()
     {
+        finishedBattle = false;
+
         FindObjectOfType<PrepBattaglia>().AssegnaSoldati(); // soldati selezionati con gli sliders = soldati assegnati ai moment
 
         lastBattleInfo = FindObjectOfType<Game>().newBattle(terri, bonusETerri, bonusEnemy);
@@ -99,16 +125,15 @@ public class Events : MonoBehaviour
     public void onPressContinue()
     {
         FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
-        finishedBattle = true;
     }
 
     /* controllore di response (decisione giocatore) sull'oggetto dialoguemanager */
-    IEnumerator ResponseUpdater()
+    IEnumerator ResponseUpdater(bool isSmallDialogue)
     {
         response[1] = 0; // check deve essere 0 prima di controllarlo
         while (response[1] == 0)
         {
-            response = FindObjectOfType<DialogueManager>().InvokedChecker();
+            response = isSmallDialogue ? FindObjectOfType<DialogueManagerMINI>().InvokedChecker() : FindObjectOfType<DialogueManager>().InvokedChecker();
             yield return new WaitForSeconds(0.5f);
         }
         yield return true;
@@ -120,44 +145,60 @@ public class Events : MonoBehaviour
         if (aqueductTurnsLeft > 0) aqueductTurnsLeft--;
     }
 
-    public void MaxCitizensEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void MaxCitizensEffects()
     {
 
     }
-    public int GoldMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public int GoldMalusEffects()
     {
-        return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9;
-    }
-    public int CitizensMalusEffects(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, Fattoria fattoria)
-    {
-        if (aqueductEffectMalus && aqueductTurnsLeft == 0)
+        goldMalus1 = 0; goldMalus2 = 0; goldMalus3 = 0; goldMalus4 = 0; goldMalus5 = 0; 
+        goldMalus6 = 0; goldMalus7 = 0; goldMalus8 = 0; goldMalus9 = 0; goldMalus10 = 0;
+
+        if (theCelestialEventMalusTurnsLeft > 0 && theCelestialEventMalus == 1)
         {
-            if (aqueductMalusTurnsLeft == 0)
-            {
-                citizensMalus1 = 0;
-                aqueductEffectMalus = false;
-                attendingSecondaryEvent = false;
-            }
-            else
-            {
-                citizensMalus1 = (int)(0.4 * (float)fattoria.getCrescitaAbitanti()); // -40% popolazione
-                aqueductMalusTurnsLeft--;
-            }
+            goldMalus1 = (int)(fattoria.getGoldFattoria() / 2);
+            goldMalus2 = (int)(miniera.getgoldMiniera() / 2);
+            theCelestialEventMalusTurnsLeft--;
         }
-        return citizensMalus1 + citizensMalus2 + citizensMalus3 + citizensMalus4 + citizensMalus5 + citizensMalus6 + citizensMalus7 + citizensMalus8 + citizensMalus9;
+
+        return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10;
+    }
+    public int CitizensMalusEffects()
+    {
+        citizensMalus1 = 0; citizensMalus2 = 0; citizensMalus3 = 0; citizensMalus4 = 0; citizensMalus5 = 0;
+        citizensMalus6 = 0; citizensMalus7 = 0; citizensMalus8 = 0; citizensMalus9 = 0; citizensMalus10 = 0;
+
+        if (aqueductMalus && aqueductTurnsLeft == 0 && aqueductMalusTurnsLeft > 0)
+        {
+            citizensMalus1 = (int)(0.4f * (float)fattoria.getCrescitaAbitanti()); // -40% popolazione
+            aqueductMalusTurnsLeft--;
+        }
+        //if (aqueductMalusTurnsLeft == 0)
+        //{
+        //    citizensMalus1 = 0;
+        //    aqueductEffectMalus = false;
+        //    attendingSecondaryEvent = false;
+        //}
+        //if (aqueductMalusTurnsLeft > 0)
+        //{
+        //    citizensMalus1 = (int)(0.4f * (float)fattoria.getCrescitaAbitanti()); // -40% popolazione
+        //    aqueductMalusTurnsLeft--;
+        //}
+
+        return citizensMalus1 + citizensMalus2 + citizensMalus3 + citizensMalus4 + citizensMalus5 + citizensMalus6 + citizensMalus7 + citizensMalus8 + citizensMalus9 + citizensMalus10;
     }
 
-    public void SecondaryEventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void SecondaryEventStarter()
     {
         if (aqueductSecondary == 1 && aqueductTurnsLeft == 0)
         {
-            aqueductEffectMalus = true;
+            aqueductMalus = true;
 
             aqueductSecondary = 0;
             attendingSecondaryEvent = false;
             aqueductMalusTurnsLeft = 3;
 
-            string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens each turn turn, for 3 turns]";
+            string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens each season, for 3 seasons]";
 
             string[] message = { eventString1 };
 
@@ -166,8 +207,18 @@ public class Events : MonoBehaviour
     }
 
     /* avviatore eventi, la funzione sceglie un evento casuale e non gia' avvenuto sulla base di alcuni criteri */
-    public void EventStarter(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void EventStarter(Player player, Fattoria fattoria, Miniera miniera, Caserma caserma, Fabbro fabbro, Gilda gilda, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
+        this.player = player;
+        this.fattoria = fattoria;
+        this.miniera = miniera;
+        this.caserma = caserma;
+        this.fabbro = fabbro;
+        this.gilda = gilda;
+        this.swordsmen = swordsmen;
+        this.archers = archers;
+        this.riders = riders;
+
         float eventChooser = 0;
         bool selected = false;
 
@@ -177,22 +228,32 @@ public class Events : MonoBehaviour
 
             eventChooser = 1.4f; // debug evento testbattaglia
 
-            if (eventChooser >= 0 && eventChooser < 1f)
+            if (eventChooser >= 0 && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
             {
                 if (aqueduct == 0 /*&& player.getMoney() >= 400*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
                 {
-                    StartCoroutine(TriggerAqueductEvent(player, swordsmen, archers, riders));
+                    StartCoroutine(TriggerAqueductEvent());
                     selected = true;
                 }
                 else if (citydefenseproject == 0 /*&& player.getMoney() >= 1000*/) // evento non avviabile qualora il giocatore non abbia i fondi necessari
                 {
-                    StartCoroutine(TriggerCityDefenseProjectEvent(player, swordsmen, archers, riders));
+                    StartCoroutine(TriggerCityDefenseProjectEvent());
                     selected = true;
                 }
             }
-            if(eventChooser >= 1f && eventChooser < 2f)
+            if (eventChooser >= 1f && eventChooser < 2f)
             {
-                StartCoroutine(TriggerBattleTestEvent(player, swordsmen, archers, riders));
+                StartCoroutine(TriggerBattleTestEvent());
+                selected = true;
+            }
+            if (eventChooser >= 2f && eventChooser < 3f)
+            {
+                StartCoroutine(TriggerWoodsElvesEvent());
+                selected = true;
+            }
+            if (eventChooser >= 3f && eventChooser < 4f && aemisFaith <= 4 && aemisKnightsHostility == 1)
+            {
+                StartCoroutine(TriggerTheCelestialEvent());
                 selected = true;
             }
         }
@@ -200,7 +261,7 @@ public class Events : MonoBehaviour
     }
 
     /* evento primario aquedotto */
-    IEnumerator TriggerAqueductEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    IEnumerator TriggerAqueductEvent()
     {
         aqueduct = 1;
         float aqueductValue = Random.Range(0f, 1f); // probabilita di verifica evento secondario
@@ -211,14 +272,14 @@ public class Events : MonoBehaviour
 
         string[] message = { eventString1, eventString2, eventString3 };
 
-        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+        dialogue.TriggerSmallInteractiveDialogue(message);
 
-        StartCoroutine(ResponseUpdater());
+        StartCoroutine(ResponseUpdater(true));
         yield return new WaitUntil(() => response[1] == 1);
 
 
-        Debug.LogError("il vero response è");
-        Debug.LogError(response[0]);
+        //Debug.LogError("il vero response è");
+        //Debug.LogError(response[0]);
         if (response[0] == 1)
         {
             player.setRapidMoney(-400);
@@ -236,7 +297,7 @@ public class Events : MonoBehaviour
     }
 
     /* evento primario aumento delle difese della citta' */
-    IEnumerator TriggerCityDefenseProjectEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    IEnumerator TriggerCityDefenseProjectEvent()
     {
         citydefenseproject = 1;
 
@@ -247,9 +308,9 @@ public class Events : MonoBehaviour
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
-        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+        dialogue.TriggerSmallInteractiveDialogue(message);
 
-        StartCoroutine(ResponseUpdater());
+        StartCoroutine(ResponseUpdater(true));
         yield return new WaitUntil(() => response[1] == 1);
 
         if (response[0] == 1)
@@ -260,15 +321,15 @@ public class Events : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
     }
 
-    IEnumerator TriggerBattleTestEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    IEnumerator TriggerBattleTestEvent()
     {    
         string eventString1 = "A cojo' voi combatte? o sei 'na pussy";
 
         string[] message = { eventString1 };
 
-        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+        dialogue.TriggerSmallInteractiveDialogue(message);
 
-        StartCoroutine(ResponseUpdater());
+        StartCoroutine(ResponseUpdater(true));
         yield return new WaitUntil(() => response[1] == 1);
 
         if(response[0] == 1) // risponde si
@@ -284,10 +345,10 @@ public class Events : MonoBehaviour
 
 
     // evento 14
-    IEnumerator TriggerWoodsElvesEvent(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    IEnumerator TriggerWoodsElvesEvent()
     {
         woodsElves = 1;
-        float woodsElvesValue = Random.Range(0f, 1f); // probabilita di verifica evento secondario
+        float woodsElvesValue = Random.Range(0f, 1f); // probabilita di verifica evento battaglia
         woodsElvesValue = 0.1f;
         string eventString1 = "A man visits your city and asks to be helped.";
         string eventString2 = "He claims he has been mugged by a group of Elves of the Woods and asks for help in the name of Aemis.";
@@ -296,14 +357,11 @@ public class Events : MonoBehaviour
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
-        dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+        dialogue.TriggerSmallInteractiveDialogue(message);
 
-        StartCoroutine(ResponseUpdater());
+        StartCoroutine(ResponseUpdater(true));
         yield return new WaitUntil(() => response[1] == 1);
 
-
-        Debug.LogError("il vero response è");
-        Debug.LogError(response[0]);
         if (response[0] == 1) // il giocatore risponde si
         {
             elfsEnemy = 1; // variabile 'nemicoElfi'
@@ -317,7 +375,7 @@ public class Events : MonoBehaviour
                 makeEnemyForEvent(EventEswordsmen + EventEarchers + EventEriders, 1, EventEswordsmen, EventEarchers, EventEriders, 1); // creazione esercito nemico
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
-                yield return new WaitUntil(() => finishedBattle == true); // finishedBattle = true va messo sul pulsante close della vittoria.
+                yield return new WaitUntil(() => finishedBattle == true); 
 
                 if(lastBattleInfo > 2) // vittoria di qualsiasi tipo
                 {
@@ -328,7 +386,7 @@ public class Events : MonoBehaviour
 
                     string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
 
-                    dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+                    dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
 
                     player.setRapidMoney(300);
                 }
@@ -337,11 +395,11 @@ public class Events : MonoBehaviour
                     string eventString5 = "Your expedition comes back.";
                     string eventString6 = "The Captain explains that the Elves were numerous and fought harder than expected.";
                     string eventString7 = "The expedition had to retire back to "+ FindObjectOfType<Game>().CityNameUI.text +" to reduce losses.";
-                    string eventString8 = "["+swordsmen.getMomentDeadSwordman() + " swordsmen, " + archers.getMomentDeadArcher() + " archers and " + riders.getMomentDeadRider() + " riders didn't came back]";
+                    //string eventString8 = "["+swordsmen.getMomentDeadSwordman() + " swordsmen, " + archers.getMomentDeadArcher() + " archers and " + riders.getMomentDeadRider() + " riders didn't came back]";
 
-                    string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
+                    string[] message2 = { eventString5, eventString6, eventString7};
 
-                    dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+                    dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
                 }
             }
             else
@@ -353,7 +411,7 @@ public class Events : MonoBehaviour
 
                 string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
 
-                dialogue.TriggerInteractiveDialogue(player, swordsmen, archers, riders, message);
+                dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
 
                 player.setRapidMoney(300);
             }
@@ -364,5 +422,79 @@ public class Events : MonoBehaviour
             aemisFaith--;
         }
         yield return new WaitForSeconds(1.5f);
+    }
+
+    IEnumerator TriggerTheCelestialEvent()
+    {
+        theCelestialEvent = 1;
+
+        string eventString1 = "A Celestial, along with a large group of knights, visits your city.";
+        string eventString2 = "The Celestial asks your defenses to lower their weapons and you to give them gifts and golds in the name of the Aemis' cult.";
+        string eventString3 = "They do not intend to accept a refusal.";
+        string eventString4 = "Are you willing proceed on behalf of the Aemis' cult?\n[You will give them half of your gold]";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        dialogue.TriggerSmallInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(true));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1) // risponde si
+        {
+            player.setRapidMoney(-(int)((player.getMoney()) / 2));
+            player.setPopulation((player.getPopulation()-40)<0 ? 0 : (player.getPopulation()-40));
+            aemisFaith = 0;
+
+            string eventString5 = "Whilist half of your possessions are being managed, a group of proud citizens rise up against the Celestial's army.";
+            string eventString6 = "Your reassuring words are ignored as all of them are being slaughtered by the army.";
+            string eventString7 = "Minutes later the Celestial and their army take leave.";
+            string eventString8 = "[You lost 40 citizens]";
+
+            string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
+
+            dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+        }
+        else
+        {
+            terri = 2;
+            makeEnemyForEvent(70, 2, 40, 20, 10, 4);
+            FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+            yield return new WaitUntil(() => finishedBattle == true);
+
+            if(lastBattleInfo > 2) // qualsiasi vittoria
+            {
+                aemisFaith -= 10;
+                aemisRebel = 1;
+
+                string eventString5 = "" + FindObjectOfType<Game>().capitanonameUI.text + " slays the Celestial as your victory quickly approaches.";
+                string eventString6 = "Shortly after a tree made of pure light rapidly grows in the point where the Celestial fell.";
+                string eventString7 = "[The knights' belongings, worth 5000 gold, are now yours]";
+
+                string[] message2 = { eventString5, eventString6, eventString7 };
+
+                dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+            }
+            else
+            {
+                player.setRapidMoney(-player.getMoney());
+                swordsmen.setRapidTotal(-swordsmen.getTotal());
+                archers.setRapidTotal(-archers.getTotal());
+                riders.setRapidTotal(-riders.getTotal());
+
+                theCelestialEventMalus = 1;
+                theCelestialEventMalusTurnsLeft = 3;
+
+                string eventString5 = "Shortly after your loss, the Celestial and their fellows raid the city.";
+                string eventString6 = "All of your possessions are lost and the remaining soldiers became slaves.";
+                string eventString7 = "[Your gold stock has been emptied, your entire army is lost and for three seasons the gold income from the Farm and the Mine is halved]";
+
+                string[] message2 = { eventString5, eventString6, eventString7 };
+
+                dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+            }
+        }
+        yield return null;
     }
 }

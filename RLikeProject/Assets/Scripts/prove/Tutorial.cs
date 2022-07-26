@@ -75,8 +75,6 @@ public class Tutorial : MonoBehaviour
             welcomeTutorial = false;
 
             bgPanel.gameObject.SetActive(true);
-            bool porco_dio = true;
-            Debug.LogError("porco dio vale " + porco_dio);
             parentContinueButton.gameObject.SetActive(true);
             welcomePanel1.SetActive(true);
             continueButton.onClick.AddListener(WelcomePanel1Disabler); // aggiungi funzionalit? bottone

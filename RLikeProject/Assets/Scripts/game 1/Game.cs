@@ -300,7 +300,7 @@ public class Game : MonoBehaviour
         RidersUI.text = "" + riders.getTotal();
         RidersNextUI.text = riders.getscrittarider();
         citizensUI.text = "" + player.getCitizens();
-        citizensNextUI.text = "(+" + (fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects(player, swordsmen, archers, riders, fattoria)) + ")";
+        citizensNextUI.text = "(+" + (fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects()) + ")";
         populationUI_1.text = "" + player.getPopulation();
         populationUI_2.text = "" + player.getCitizensMax();
         moneyfarmUI.text = "(+" + (fattoria.getGoldFattoria() + fabbro.getSoldiZappa()) + ")";
@@ -737,10 +737,10 @@ public class Game : MonoBehaviour
     
     public void onSkipTurn()
     {
-        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects(player, swordsmen, archers, riders));
+        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects());
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() +swordsmen.getTempTotal() + archers.getTempTotal()+ riders.getTempTotal()); // prima volta necessaria
-        player.setTempCitizens(fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects(player, swordsmen, archers, riders, fattoria));
+        player.setTempCitizens(fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects());
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
 
 
@@ -755,15 +755,14 @@ public class Game : MonoBehaviour
 
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal()); // ricalcolo popolazione attuale
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
-        Debug.LogError(player.getTurn());
 
         manager.riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
         manager.gildamexritorno(player, gilda);  //betatesting
         
 
         FindObjectOfType<Events>().eventTurnsDecreaser();
-        FindObjectOfType<Events>().SecondaryEventStarter(player, swordsmen, archers, riders); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
-        FindObjectOfType<Events>().EventStarter(player, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
+        FindObjectOfType<Events>().SecondaryEventStarter(); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
+        FindObjectOfType<Events>().EventStarter(player, fattoria, miniera, caserma, fabbro, gilda, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
         SaveGame();
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
@@ -1168,7 +1167,7 @@ public class Game : MonoBehaviour
         FindObjectOfType<Events>().aqueduct = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;
         FindObjectOfType<Events>().aqueductMalusTurnsLeft = data.aqueductMalusTurnsLeft;
-        FindObjectOfType<Events>().aqueductEffectMalus = data.aqueductEffectMalus;
+        FindObjectOfType<Events>().aqueductMalus = data.aqueductMalus;
         FindObjectOfType<Events>().citydefenseproject = data.citydefenseproject;
         FindObjectOfType<Events>().aqueductSecondary = data.aqueductSecondary;
         FindObjectOfType<Events>().aqueductTurnsLeft = data.aqueductTurnsLeft;

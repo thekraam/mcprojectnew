@@ -31,9 +31,9 @@ public class Dialogue : MonoBehaviour
 
 
     // funzione per far apparire il dialogue, va su un tasto o una situazione
-    public void TriggerGuildDialogue(string[] message)
+    public void TriggerSmallInteractiveDialogue(string[] message)
     {
-        FindObjectOfType<DialogueManagerMINI>().StartDialogue(false, "Guild Master", message);
+        FindObjectOfType<DialogueManagerMINI>().StartDialogue(true, "Guild Master", message);
     }
 
     // dialogo di popup in caso si tenti di fare due eventi gilda nello stesso turno

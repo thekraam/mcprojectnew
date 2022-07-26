@@ -55,7 +55,6 @@ public class DialogueManager : MonoBehaviour {
         if (DialogueIsResetting == 1)
 			DialogueIsResetting = 0;
 		continuePanel.SetActive(true);
-
 		isInteractiveDM = isInteractive;
 
 		FindObjectOfType<AudioManager>().RandomSoundEffect(OpenAndCloseSounds);
