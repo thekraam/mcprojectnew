@@ -1217,16 +1217,19 @@ public class Game : MonoBehaviour
         eswordsmen.atk_swordsmen = data.atk_swordsmenE;
         eswordsmen.def_swordsmen = data.def_swordsmenE;
         eswordsmen.bonus_swordsmen = data.bonus_swordsmenE;
+        eswordsmen.deadEswordman = data.deadEswordmanE;
 
         earchers.total_archers = data.total_archersE;
         earchers.atk_archers = data.atk_archersE;
         earchers.def_archers = data.def_archersE;
         earchers.bonus_archers = data.bonus_archersE;
+        earchers.deadEArchers = data.deadEArchersE;
 
         eriders.total_riders = data.total_ridersE;
         eriders.atk_riders = data.atk_ridersE;
         eriders.def_riders = data.def_ridersE;
         eriders.bonus_riders = data.bonus_ridersE;
+        eriders.deadERiders = data.deadERidersE;
 
         /*fabbro*/
         fabbro.lvl = data.fablvl;

@@ -105,15 +105,21 @@ public class GameData
     public int def_swordsmenE;
     public float bonus_swordsmenE;
 
+    public int deadEswordmanE;
+
     public int total_archersE;
     public int atk_archersE;
     public int def_archersE;
     public float bonus_archersE;
 
+    public int deadEArchersE;
+
     public int total_ridersE;
     public int atk_ridersE;
     public int def_ridersE;
     public float bonus_ridersE;
+
+    public int deadERidersE;
 
 
     /*fabbro*/
@@ -288,16 +294,19 @@ public class GameData
         atk_swordsmenE = eSwordsmen.getAtk();
         def_swordsmenE = eSwordsmen.getDef();
         bonus_swordsmenE = eSwordsmen.getBonus();
+        deadEswordmanE = eSwordsmen.getDeadESwordman();
 
         total_archersE = eArchers.getTotal();
         atk_archersE = eArchers.getAtk();
         def_archersE = eArchers.getDef();
         bonus_archersE = eArchers.getBonus();
+        deadEArchersE = eArchers.getDeadEArchers();
 
         total_ridersE = eRiders.getTotal();
         atk_ridersE = eRiders.getAtk();
         def_ridersE = eRiders.getDef();
         bonus_ridersE = eRiders.getBonus();
+        deadERidersE = eRiders.getDeadERiders();
 
         /*fabbro*/
         fablvl = fabbro.lvl;
