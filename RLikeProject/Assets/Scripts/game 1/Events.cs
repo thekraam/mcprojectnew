@@ -329,12 +329,8 @@ public class Events : MonoBehaviour
 
         dialogue.TriggerSmallInteractiveDialogue(message);
 
-        Debug.LogError("PRIMA DEL PUNTO DI NON RITORNO RESPONSE VALE " + response[1]);
-
         StartCoroutine(ResponseUpdater(true));
         yield return new WaitUntil(() => response[1] == 1);
-
-        Debug.LogError("punto di non ritorno response vale " + response[1]);
 
         if(response[0] == 1) // risponde si
         {

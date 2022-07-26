@@ -481,16 +481,7 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
-    /*
-             StartCoroutine(UpdateTutorials(FindObjectOfType<Tutorial>().welcomeTutorial, 
-                                       FindObjectOfType<Tutorial>().villageTutorial,
-                                       FindObjectOfType<Tutorial>().farmTutorial,
-                                       FindObjectOfType<Tutorial>().barracksTutorial,
-                                       FindObjectOfType<Tutorial>().blacksmithTutorial,
-                                       FindObjectOfType<Tutorial>().guildTutorial,
-                                       FindObjectOfType<Tutorial>().mineTutorial,
-                                       FindObjectOfType<Tutorial>().bonusTutorial));
-     */
+    
     private IEnumerator UpdateTutorials(bool welcomeTutorial, bool villageTutorial, bool farmTutorial, bool barracksTutorial, bool blacksmithTutorial, bool guildTutorial, bool mineTutorial, bool bonusTutorial)
     {
         //Set the currently logged in tutorials
@@ -550,17 +541,7 @@ public class FirebaseManager : MonoBehaviour
             goldField.text = snapshot.Child("gold").Value.ToString();
 
 
-            /*
-                     var DBTask = DBreference.Child("users").Child(User.UserId).Child("welcomeTutorial").SetValueAsync(welcomeTutorial);
-        var DBTask1 = DBreference.Child("users").Child(User.UserId).Child("villageTutorial").SetValueAsync(villageTutorial);
-        var DBTask2 = DBreference.Child("users").Child(User.UserId).Child("farmTutorial").SetValueAsync(farmTutorial);
-        var DBTask3 = DBreference.Child("users").Child(User.UserId).Child("barracksTutorial").SetValueAsync(barracksTutorial);
-        var DBTask4 = DBreference.Child("users").Child(User.UserId).Child("blacksmithTutorial").SetValueAsync(blacksmithTutorial);
-        var DBTask5 = DBreference.Child("users").Child(User.UserId).Child("guildTutorial").SetValueAsync(guildTutorial);
-        var DBTask6 = DBreference.Child("users").Child(User.UserId).Child("mineTutorial").SetValueAsync(mineTutorial);
-        var DBTask7 = DBreference.Child("users").Child(User.UserId).Child("bonusTutorial").SetValueAsync(bonusTutorial);
-             */
-           
+
             FindObjectOfType<Tutorial>().welcomeTutorial = snapshot.Child("welcomeTutorial").Value.ToString() == "False" ? false : true;
             FindObjectOfType<Tutorial>().villageTutorial = snapshot.Child("villageTutorial").Value.ToString() == "False" ? false : true;
             FindObjectOfType<Tutorial>().farmTutorial = snapshot.Child("farmTutorial").Value.ToString() == "False" ? false : true;
@@ -596,18 +577,6 @@ public class FirebaseManager : MonoBehaviour
             //Data has been retrieved
             DataSnapshot snapshot = DBTask.Result;
 
-
-
-            /*
-                     var DBTask = DBreference.Child("users").Child(User.UserId).Child("welcomeTutorial").SetValueAsync(welcomeTutorial);
-            var DBTask1 = DBreference.Child("users").Child(User.UserId).Child("villageTutorial").SetValueAsync(villageTutorial);
-            var DBTask2 = DBreference.Child("users").Child(User.UserId).Child("farmTutorial").SetValueAsync(farmTutorial);
-            var DBTask3 = DBreference.Child("users").Child(User.UserId).Child("barracksTutorial").SetValueAsync(barracksTutorial);
-            var DBTask4 = DBreference.Child("users").Child(User.UserId).Child("blacksmithTutorial").SetValueAsync(blacksmithTutorial);
-            var DBTask5 = DBreference.Child("users").Child(User.UserId).Child("guildTutorial").SetValueAsync(guildTutorial);
-            var DBTask6 = DBreference.Child("users").Child(User.UserId).Child("mineTutorial").SetValueAsync(mineTutorial);
-            var DBTask7 = DBreference.Child("users").Child(User.UserId).Child("bonusTutorial").SetValueAsync(bonusTutorial);
-             */
 
             FindObjectOfType<Tutorial>().welcomeTutorial = snapshot.Child("welcomeTutorial").Value.ToString() == "False" ? false : true;
             FindObjectOfType<Tutorial>().villageTutorial = snapshot.Child("villageTutorial").Value.ToString() == "False" ? false : true;
