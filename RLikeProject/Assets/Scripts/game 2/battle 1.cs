@@ -297,7 +297,7 @@ public class battle1 : MonoBehaviour
             {
 
                 randomstampa = (int)Random.Range(1f, 7f);
-                Debug.LogError("dentro il while");
+                //Debug.LogError("dentro il while");
                 if (randomstampa == 1 && cont1 == 0 && deadswordman > 0)
                 {
                     //Debug.LogError("contatore fittizio = " + contatorefittizio);

@@ -105,7 +105,7 @@ public class PrepBattaglia : MonoBehaviour
 
         preparazioneVittoriapan();
         resocontoBattagliaPanel.SetActive(true);
-        Debug.LogError("dopo l'attivazione del pannello");
+        //Debug.LogError("dopo l'attivazione del pannello");
         Game.manager.salvasoldati(swordmencorrenti, archercorrenti, ridercorrenti, FindObjectOfType<Events>().terri);
     }
 
@@ -303,7 +303,7 @@ public class PrepBattaglia : MonoBehaviour
  
     public void preparazioneVittoriapan()
     {
-        Debug.LogError("dentro prepVitpan");
+       // Debug.LogError("dentro prepVitpan");
         int controllo = FindObjectOfType<Events>().lastBattleInfo;
         if (controllo == 1)
         {
@@ -411,7 +411,7 @@ public class PrepBattaglia : MonoBehaviour
         soldatiEnemy.text = "" + esoldati1 + esoldati2 + esoldati3;
 
 
-        Debug.LogError("Finito prepVitpan");
+      //  Debug.LogError("Finito prepVitpan");
     }
 
 
