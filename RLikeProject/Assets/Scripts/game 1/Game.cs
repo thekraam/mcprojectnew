@@ -62,6 +62,7 @@ public class Game : MonoBehaviour
     [Header("Panel Blockers")]
     /* pannelli blocker */
     public GameObject skipTurnBlocker;
+    public Text messageSkipTurnBlocker;
     public GameObject dialogueInterfaceBlocker;
 
     [Header("UI Section")]
@@ -282,6 +283,8 @@ public class Game : MonoBehaviour
         }
 
         if (FindObjectOfType<DialogueManager>().animator.GetBool("IsOpen")) dialogueInterfaceBlocker.SetActive(true);
+        if(CityNameUI.text!="")
+            messageSkipTurnBlocker.text = "Surely, time flies, but not that fast. Try to do something more for " + CityNameUI.text + " with your time.";
     }
 
     private void UpdateVillageUI()
