@@ -208,7 +208,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
         calcNewUI(armyType[0], 0);
 
@@ -234,7 +234,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -261,7 +261,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -286,7 +286,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -312,7 +312,7 @@ public class KillList : MonoBehaviour
             if(!canvasFadeDone)  StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -339,7 +339,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -366,7 +366,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -394,7 +394,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -423,7 +423,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -453,7 +453,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -484,7 +484,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -516,7 +516,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -549,7 +549,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -584,7 +584,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -620,7 +620,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -658,7 +658,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -697,7 +697,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -737,7 +737,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -779,7 +779,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -821,7 +821,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -864,7 +864,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -908,7 +908,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -953,7 +953,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1000,7 +1000,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1047,7 +1047,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
         yield return new WaitForSeconds(Random.Range(1f, 3f));
 
@@ -1094,7 +1094,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1143,7 +1143,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1193,7 +1193,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
         yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1244,7 +1244,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
             yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -1296,7 +1296,7 @@ public class KillList : MonoBehaviour
             if (!canvasFadeDone) StartCoroutine(FadeIn(canvasContinue));
             ResetKillList();
             StopCoroutine(PushLines());
-            yield return null;
+            yield break;
         }
 
 
@@ -1306,7 +1306,7 @@ public class KillList : MonoBehaviour
 
         StopCoroutine(PushLines());
 
-        yield return null;
+        yield break;
 
 
 
