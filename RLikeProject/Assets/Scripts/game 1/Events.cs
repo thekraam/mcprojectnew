@@ -209,6 +209,8 @@ public class Events : MonoBehaviour
     /* avviatore eventi, la funzione sceglie un evento casuale e non gia' avvenuto sulla base di alcuni criteri */
     public void EventStarter(Player player, Fattoria fattoria, Miniera miniera, Caserma caserma, Fabbro fabbro, Gilda gilda, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
+        response[1] = 0;
+
         this.player = player;
         this.fattoria = fattoria;
         this.miniera = miniera;
@@ -278,8 +280,6 @@ public class Events : MonoBehaviour
         yield return new WaitUntil(() => response[1] == 1);
 
 
-        //Debug.LogError("il vero response è");
-        //Debug.LogError(response[0]);
         if (response[0] == 1)
         {
             player.setRapidMoney(-400);
@@ -329,8 +329,12 @@ public class Events : MonoBehaviour
 
         dialogue.TriggerSmallInteractiveDialogue(message);
 
+        Debug.LogError("PRIMA DEL PUNTO DI NON RITORNO RESPONSE VALE " + response[1]);
+
         StartCoroutine(ResponseUpdater(true));
         yield return new WaitUntil(() => response[1] == 1);
+
+        Debug.LogError("punto di non ritorno response vale " + response[1]);
 
         if(response[0] == 1) // risponde si
         {
@@ -340,7 +344,7 @@ public class Events : MonoBehaviour
 
             yield return new WaitUntil(() => finishedBattle == true);
         }
-        yield return null;
+        yield return new WaitForSeconds(1.5f);
     }
 
 

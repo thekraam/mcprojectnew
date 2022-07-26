@@ -54,7 +54,25 @@ public class DialogueManagerMINI : MonoBehaviour
 
 	public void StartDialogue(bool isInteractive, string name, string[] eventStrings)
 	{
-		StartCoroutine(WaitForPreviousDialogue(isInteractive, name, eventStrings));
+		//StartCoroutine(WaitForPreviousDialogue(isInteractive, name, eventStrings));
+		endingdialogue = 0;
+		responseToInteractiveDialogue = 0;
+		if (DialogueIsResetting == 1)
+			DialogueIsResetting = 0;
+		continuePanel.SetActive(true);
+		isInteractiveDM = isInteractive;
+
+		FindObjectOfType<AudioManager>().RandomSoundEffect(OpenAndCloseSounds);
+		animator.SetBool("IsOpen", true);
+
+		nameText.text = "" + name;
+
+		foreach (string sentence in eventStrings)
+		{
+			sentences.Enqueue(sentence);
+		}
+
+		DisplayNextSentence();
 	}
 
 	private IEnumerator WaitForPreviousDialogue(bool isInteractive, string name, string[] eventStrings)
@@ -129,7 +147,7 @@ public class DialogueManagerMINI : MonoBehaviour
 		FindObjectOfType<Game>().dialogueInterfaceBlocker.SetActive(false);
 		endingdialogue = 1;
 
-		completedFirstDialogueMINI = true;
+		//completedFirstDialogueMINI = true;
 	}
 
 	public int[] InvokedChecker()
