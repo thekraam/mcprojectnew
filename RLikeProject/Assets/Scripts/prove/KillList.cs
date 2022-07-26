@@ -114,7 +114,7 @@ public class KillList : MonoBehaviour
             Line[j].text = "";
             Line[j].alignment = TextAnchor.MiddleLeft;
             LineGroup[j].alpha = 0;
-            Line[j].rectTransform.localPosition = new Vector3(0, oldPos, (float)0);
+            Line[j].rectTransform.localPosition = new Vector3(0, (float)476.8, (float)0);
             deadSoldiersInTurn[j, 0] = 0;
             deadSoldiersInTurn[j, 1] = 0;
             atks[j] = 0;
