@@ -30,6 +30,9 @@ public class battle1 : MonoBehaviour
         swordman.setMomentDeadSwordman(-swordman.getMomentDeadSwordman());
         archer.setMomentDeadArcher(-archer.getMomentDeadArcher());
         rider.setMomentDeadRider(-rider.getMomentDeadRider());
+        eswordman.setDeadESwordman(-eswordman.getDeadESwordman());
+        earcher.setDeadEArchers(-earcher.getDeadEArchers());
+        erider.setDeadERiders(-erider.getDeadERiders());
         //swordman.setMomentSwordman(0);
         //archer.setMomentArcher(0);
         //rider.setMomentRider(0);
@@ -128,7 +131,7 @@ public class battle1 : MonoBehaviour
 
         //swordman.getMomentSwordman() + archer.getMomentArcher() + rider.getMomentRider()
 
-        Debug.LogError("Prima del while");
+       // Debug.LogError("Prima del while");
 
         while (turno < 6)
         {
@@ -237,7 +240,7 @@ public class battle1 : MonoBehaviour
             //Debug.LogError("deadEarcher -------------------------------------------------------------- " + deadearcher);
             deaderider = (int)((deadEsoldier / 100) * percErider);
             erider.setDeadERiders((int)deaderider);
-             // Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
+           // Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
 
             swordman.setMomentSwordman( swordman.getMomentSwordman() + (int)-deadswordman);
             if (swordman.getMomentSwordman() < 0)
@@ -357,11 +360,13 @@ public class battle1 : MonoBehaviour
                     //Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deadeswordman == 1)
                     {
+                       // Debug.LogError("DeadEswordman dentro il while : " + deadeswordman);
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadeswordman + " swordsman", 2);
                         FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadeswordman, eswordman.getAtk()* (int)deadeswordman , eswordman.getDef()* (int)deadeswordman );
                     }
                     else
                     {
+                        //Debug.LogError("DeadEswordman dentro il while : " + deadeswordman);
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadeswordman + " swordsmen", 2);
                         FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadeswordman, eswordman.getAtk() * (int)deadeswordman, eswordman.getDef() * (int)deadeswordman);
                     }
@@ -375,11 +380,13 @@ public class battle1 : MonoBehaviour
                     //Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deadearcher == 1)
                     {
+                        //Debug.LogError("DeadEarchers dentro il while : " + deadearcher);
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadearcher + " archer", 2);
                         FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadearcher, earcher.getAtk()* (int)deadearcher,earcher.getDef()* (int)deadearcher );
                     }
                     else
                     {
+                        //Debug.LogError("DeadEarchers dentro il while : " + deadearcher);
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deadearcher + " archers", 2);
                         FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deadearcher, earcher.getAtk() * (int)deadearcher, earcher.getDef() * (int)deadearcher);
                     }
@@ -393,11 +400,13 @@ public class battle1 : MonoBehaviour
                    // Debug.LogError("contatore fittizio = " + contatorefittizio);
                     if (deaderider == 1)
                     {
+                        //Debug.LogError("DeadEriders dentro il while : " + deaderider);
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deaderider + " rider", 2);
                         FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deaderider, erider.getAtk()* (int)deaderider , erider.getDef()* (int)deaderider );
                     }
                     else
                     {
+                        //Debug.LogError("DeadEriders dentro il while : " + deaderider);
                         FindObjectOfType<KillList>().insertNewLine("Enemy has lost " + deaderider + " riders", 2);
                         FindObjectOfType<KillList>().setFightingSoldiers(1, (int)deaderider, erider.getAtk() * (int)deaderider, erider.getDef() * (int)deaderider);
                     }
