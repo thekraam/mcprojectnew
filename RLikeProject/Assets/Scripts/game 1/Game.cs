@@ -47,6 +47,7 @@ public class Game : MonoBehaviour
     public AudioClip guild_expeditionCompleted;
     public AudioClip barracks_swordFight;
     public AudioClip mine_pickaxe;
+    public AudioClip guild_cameBack;
 
     [Header("Main Panels")]
     /* Dichiarazione object di controllo visibilita pannelli */

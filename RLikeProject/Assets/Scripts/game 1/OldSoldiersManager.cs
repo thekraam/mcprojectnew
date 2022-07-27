@@ -313,6 +313,7 @@ public class OldSoldiersManager : MonoBehaviour
             yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
             dialogo.TriggerDialogue(messaggi);
         }
+        FindObjectOfType<AudioManager>().PlayEffectFaded(FindObjectOfType<Game>().guild_cameBack);
         yield return null;
     }
 
