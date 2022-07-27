@@ -234,7 +234,8 @@ public class Game : MonoBehaviour
         //FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
 
         // disattivo pannelli non di game, 'nse sa mai
-        LoadTutorial();
+        if (File.Exists(Application.persistentDataPath + "/game.fun"))
+            LoadTutorial();
         mainMenuPanel.SetActive(true);
         skipTurnBlocker.SetActive(false);
         dialogueInterfaceBlocker.SetActive(false);

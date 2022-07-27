@@ -139,6 +139,7 @@ public class Tutorial : MonoBehaviour
         if (bonusTutorial)
         {
             bonusTutorial = false;
+            bgPanel.gameObject.SetActive(true);
             parentContinueButton.gameObject.SetActive(true);
             bonusPanel.SetActive(true);
             continueButton.onClick.AddListener(BonusPanelDisabler);
@@ -150,6 +151,7 @@ public class Tutorial : MonoBehaviour
         bonusPanel.SetActive(false);
         continueButton.onClick.RemoveAllListeners();
         parentContinueButton.gameObject.SetActive(false);
+        bgPanel.gameObject.SetActive(false);
     }
 
     ///////////////////////// TUTORIAL VILLAGGIO //////////////////////////////////////

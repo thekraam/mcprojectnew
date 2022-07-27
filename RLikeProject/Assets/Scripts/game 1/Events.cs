@@ -94,7 +94,7 @@ public class Events : MonoBehaviour
     /////* variabili evento celestiale e cavalieri */////
     public int theCelestialEvent = 0;
     public int theCelestialEventMalus = 0;
-    public int theCelestialEventMalusTurnsLeft = 999999;
+    public int theCelestialEventMalusTurnsLeft = 0;
 
     //////////////////////////////////////////////////////
 
@@ -156,8 +156,7 @@ public class Events : MonoBehaviour
 
         if (theCelestialEventMalusTurnsLeft > 0 && theCelestialEventMalus == 1)
         {
-            goldMalus1 = (int)(fattoria.getGoldFattoria() / 2);
-            goldMalus2 = (int)(miniera.getgoldMiniera() / 2);
+            goldMalus1 = (int)(fattoria.getGoldFattoria() / 2) + (int)(miniera.getgoldMiniera() / 2);
             theCelestialEventMalusTurnsLeft--;
         }
 
@@ -431,7 +430,7 @@ public class Events : MonoBehaviour
         string eventString1 = "A Celestial, along with a large group of knights, visits your city.";
         string eventString2 = "The Celestial asks your defenses to lower their weapons and you to give them gifts and golds in the name of the Aemis' cult.";
         string eventString3 = "They do not intend to accept a refusal.";
-        string eventString4 = "Are you willing proceed on behalf of the Aemis' cult?\n[You will give them half of your gold]";
+        string eventString4 = "Are you willing to proceed on behalf of the Aemis' cult?\n[You will give them half of your gold]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -444,6 +443,7 @@ public class Events : MonoBehaviour
         {
             player.setRapidMoney(-(int)((player.getMoney()) / 2));
             player.setPopulation((player.getPopulation()-40)<0 ? 0 : (player.getPopulation()-40));
+
             aemisFaith = 0;
 
             string eventString5 = "Whilist half of your possessions are being managed, a group of proud citizens rise up against the Celestial's army.";
@@ -457,7 +457,7 @@ public class Events : MonoBehaviour
         }
         else
         {
-            terri = 2;
+            terri = 1;
             makeEnemyForEvent(70, 2, 40, 20, 10, 4);
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
