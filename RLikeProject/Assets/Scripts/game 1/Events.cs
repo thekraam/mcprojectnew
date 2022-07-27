@@ -18,6 +18,8 @@ public class Events : MonoBehaviour
     /* variabile di controllo risposta avvenuta decisione giocatore, [0] contenente la risposta (0 o 1), [1] contenente l'avvenuto check (1 se si, 0 altrimenti) */
     public int[] response = new int[2];
 
+    /* variabile controllo fine evento */
+    public bool isEventDialogueClosed = true;
 
     Dialogue dialogue = new Dialogue();
 
@@ -53,9 +55,16 @@ public class Events : MonoBehaviour
     private int goldMalus9 = 0;
     private int goldMalus10 = 0;
 
-    /* last battle info */
+    /* informazioni ultima battaglia */
     public int lastBattleInfo = 0;
     public bool finishedBattle = false;
+
+    //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
+    ////*                 variabili               *///////
+    ////             per tutti gli eventi          ///////
+    //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
 
     /* variabili Aemis */
     public int aemisFaith = 0;
@@ -70,10 +79,14 @@ public class Events : MonoBehaviour
     public int aqueductSecondary = 0; // evento secondario acquedotto
 
     //////////////////////////////////////////////////////
-    ////*            variabili eventi             */////
+    //////////////////////////////////////////////////////
+    ////*                 variabili               *///////
+    ////              eventi verificati            ///////
+    //////////////////////////////////////////////////////
     //////////////////////////////////////////////////////
 
-    /////* variabili evento acquedotto *//////////////////
+    //////////* variabili evento acquedotto *//////////////////
+    ///////////////////////////////////////////////////////////
     public int aqueduct = 0;
     //------------ turni mancanti fine acquedotto e       ------------//
     //------------ turni mancanti fine malus acquedotto   ------------//
@@ -191,6 +204,7 @@ public class Events : MonoBehaviour
     {
         if (aqueductSecondary == 1 && aqueductTurnsLeft == 0)
         {
+            isEventDialogueClosed = false;
             aqueductMalus = true;
 
             aqueductSecondary = 0;
@@ -201,7 +215,8 @@ public class Events : MonoBehaviour
 
             string[] message = { eventString1 };
 
-            dialogue.TriggerDialogue(player, swordsmen, archers, riders, message);
+            dialogue.TriggerDialogue(message);
+            isEventDialogueClosed = true;
         }
     }
 
@@ -264,6 +279,7 @@ public class Events : MonoBehaviour
     /* evento primario aquedotto */
     IEnumerator TriggerAqueductEvent()
     {
+        isEventDialogueClosed = false;
         aqueduct = 1;
         float aqueductValue = Random.Range(0f, 1f); // probabilita di verifica evento secondario
         aqueductValue = 0.5f;
@@ -292,12 +308,14 @@ public class Events : MonoBehaviour
         }
         else
             aqueductSecondary = 0; // conferma logica dell'algoritmo, inutile
+        isEventDialogueClosed = true;
         yield return new WaitForSeconds(1.5f);
     }
 
     /* evento primario aumento delle difese della citta' */
     IEnumerator TriggerCityDefenseProjectEvent()
     {
+        isEventDialogueClosed = false;
         citydefenseproject = 1;
 
         string eventString1 = "A local artisan proposes a city reinforcement project.";
@@ -317,11 +335,13 @@ public class Events : MonoBehaviour
             player.setRapidMoney(-1000);
             player.bonusWall = 1;
         }
+        isEventDialogueClosed = true;
         yield return new WaitForSeconds(1.5f);
     }
 
     IEnumerator TriggerBattleTestEvent()
-    {    
+    {
+        isEventDialogueClosed = false;
         string eventString1 = "A cojo' voi combatte? o sei 'na pussy";
 
         string[] message = { eventString1 };
@@ -339,6 +359,7 @@ public class Events : MonoBehaviour
 
             yield return new WaitUntil(() => finishedBattle == true);
         }
+        isEventDialogueClosed = true;
         yield return new WaitForSeconds(1.5f);
     }
 
@@ -346,6 +367,7 @@ public class Events : MonoBehaviour
     // evento 14
     IEnumerator TriggerWoodsElvesEvent()
     {
+        isEventDialogueClosed = false;
         woodsElves = 1;
         float woodsElvesValue = Random.Range(0f, 1f); // probabilita di verifica evento battaglia
         woodsElvesValue = 0.1f;
@@ -385,7 +407,7 @@ public class Events : MonoBehaviour
 
                     string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
 
-                    dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+                    dialogue.TriggerDialogue(message2);
 
                     player.setRapidMoney(300);
                 }
@@ -398,7 +420,7 @@ public class Events : MonoBehaviour
 
                     string[] message2 = { eventString5, eventString6, eventString7};
 
-                    dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+                    dialogue.TriggerDialogue(message2);
                 }
             }
             else
@@ -410,7 +432,7 @@ public class Events : MonoBehaviour
 
                 string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
 
-                dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+                dialogue.TriggerDialogue(message2);
 
                 player.setRapidMoney(300);
             }
@@ -420,11 +442,13 @@ public class Events : MonoBehaviour
         {
             aemisFaith--;
         }
+        isEventDialogueClosed = true;
         yield return new WaitForSeconds(1.5f);
     }
 
     IEnumerator TriggerTheCelestialEvent()
     {
+        isEventDialogueClosed = false;
         theCelestialEvent = 1;
 
         string eventString1 = "A Celestial, along with a large group of knights, visits your city.";
@@ -453,7 +477,7 @@ public class Events : MonoBehaviour
 
             string[] message2 = { eventString5, eventString6, eventString7, eventString8 };
 
-            dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+            dialogue.TriggerDialogue(message2);
         }
         else
         {
@@ -474,7 +498,7 @@ public class Events : MonoBehaviour
 
                 string[] message2 = { eventString5, eventString6, eventString7 };
 
-                dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+                dialogue.TriggerDialogue(message2);
             }
             else
             {
@@ -492,9 +516,10 @@ public class Events : MonoBehaviour
 
                 string[] message2 = { eventString5, eventString6, eventString7 };
 
-                dialogue.TriggerDialogue(player, swordsmen, archers, riders, message2);
+                dialogue.TriggerDialogue(message2);
             }
         }
+        isEventDialogueClosed = true;
         yield return null;
     }
 }

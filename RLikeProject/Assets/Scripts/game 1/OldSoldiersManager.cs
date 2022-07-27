@@ -29,6 +29,7 @@ public class OldSoldiersManager : MonoBehaviour
     public int rid5 = 0;
     public int turn5 = 0;
 
+    Dialogue dialogo = new Dialogue();
 
     public void salvasoldati(Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, int terri)
     {
@@ -300,7 +301,20 @@ public class OldSoldiersManager : MonoBehaviour
 
 
 
-
+    private IEnumerator dialogoDiRitorno(bool isDialogoPiccolo, string[] messaggi)
+    {
+        if (isDialogoPiccolo)
+        {
+            yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
+            dialogo.TriggerSmallDialogue(messaggi);
+        }
+        else
+        {
+            yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
+            dialogo.TriggerDialogue(messaggi);
+        }
+        yield return null;
+    }
 
 
     public void gildamexritorno(Player player, Gilda gilda)
@@ -323,7 +337,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
-            //dialogo 1
+            //dialogo 1 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
             //        Debug.LogError("sped1 = " + gilda.getsped1());
@@ -335,7 +349,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
-            //dialogo 2
+            //dialogo 2 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
             //       Debug.LogError("caso 2 ");
 
@@ -348,7 +362,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
-            //dialogo 3
+            //dialogo 3 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             //        Debug.LogError("caso 3 ");
 
             //       Debug.LogError("sped1 = " + gilda.getsped1());
@@ -360,7 +374,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
-            //dialogo 4
+            //dialogo 4 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             //       Debug.LogError("caso 4 ");
 
             //      Debug.LogError("sped1 = " + gilda.getsped1());
@@ -373,7 +387,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(800);
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
-            //dialogo 5
+            //dialogo 5 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -385,7 +399,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(800);
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
-            //dialogo 6
+            //dialogo 6 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -397,7 +411,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(800);
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
-            //dialogo 7
+            //dialogo 7 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
         }
         if (((tipologia1 == 8) && turngilda1 == 0) || ((tipologia2 == 8) && turngilda2 == 0))
@@ -408,7 +422,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(800);
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
-            //dialogo 8
+            //dialogo 8 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
         }
         if ((tipologia1  == 9) && turngilda1 == 0 || (tipologia2 == 9) && turngilda2 == 0)
@@ -418,7 +432,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(1500);
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
-            //dialogo 9
+            //dialogo 9 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -429,7 +443,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(1500);
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
-            //dialogo 10
+            //dialogo 10 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -440,7 +454,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(1500);
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
-            //dialogo 11
+            //dialogo 11 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -451,7 +465,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(1500);
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
-            //dialogo 12
+            //dialogo 12 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -462,7 +476,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(2500);
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
-            //dialogo 13
+            //dialogo 13 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -473,7 +487,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(2500);
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
-            //dialogo 14
+            //dialogo 14 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -484,7 +498,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(2500);
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
-            //dialogo 15
+            //dialogo 15 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -495,7 +509,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(2500);
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
-            //dialogo 16
+            //dialogo 16 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -506,7 +520,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(4000);
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
-            //dialogo 17
+            //dialogo 17 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -517,7 +531,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(4000);
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
-            //dialogo 18
+            //dialogo 18 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -528,7 +542,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(4000);
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
-            //dialogo 1
+            //dialogo 19 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }
@@ -539,7 +553,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(4000);
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
-            //dialogo 20
+            //dialogo 20 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
 
 
         }

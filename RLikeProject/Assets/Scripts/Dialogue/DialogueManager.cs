@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour {
 	private bool isInteractiveDM = false;
 	private int responseToInteractiveDialogue = 0;
 	private int DialogueIsResetting = 0;
-	int endingdialogue = 0;
+	public int endingdialogue = 0;
 
 	// animazione apertura e chiusura
 	public Animator animator;

@@ -18,7 +18,13 @@ public class Dialogue : MonoBehaviour
     //////////////////////////////////////////////////////////////////////////////////////
 
     // funzione per far apparire il dialogue, va su un tasto o una situazione
-    public void TriggerDialogue(Player player, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, string [] message)
+    public void TriggerDialogue(string [] message)
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(false, a, message);
+    }
+
+    // funzione per far apparire il dialogue piccolo, va su un tasto o una situazione
+    public void TriggerSmallDialogue(string[] message)
     {
         FindObjectOfType<DialogueManager>().StartDialogue(false, a, message);
     }
