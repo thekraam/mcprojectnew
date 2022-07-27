@@ -738,8 +738,9 @@ public class Game : MonoBehaviour
     public void onSkipTurn()
     {
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects());
-        player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update   
-        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() +swordsmen.getTempTotal() + archers.getTempTotal()+ riders.getTempTotal()); // prima volta necessaria
+        player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
+        manager.riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
+        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() +swordsmen.getTempTotal() + archers.getTempTotal()+ riders.getTempTotal() + manager.getSoldatiSpediti()); // prima volta necessaria
         player.setTempCitizens(fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects());
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
 
@@ -756,7 +757,6 @@ public class Game : MonoBehaviour
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal()); // ricalcolo popolazione attuale
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
 
-        manager.riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
         manager.gildamexritorno(player, gilda);  //betatesting
         
 

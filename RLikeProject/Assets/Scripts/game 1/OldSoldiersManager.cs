@@ -171,6 +171,53 @@ public class OldSoldiersManager : MonoBehaviour
         }
     }
 
+
+
+
+
+    public int getSoldatiSpediti ()
+    {
+        int numerototale = 0;
+        if (sword1 != 0 || arc1 != 0 || rid1 != 0)
+        {
+            numerototale = numerototale + sword1 + arc1 + rid1;
+
+        }
+        if (sword2 != 0 || arc2 != 0 || rid2 != 0)
+        {
+            numerototale = numerototale + sword2 + arc2 + rid2;
+
+        }
+        if (sword3 != 0 || arc3 != 0 || rid3 != 0)
+        {
+            numerototale = numerototale + sword3 + arc3 + rid3;
+
+        }
+        if (sword4 != 0 || arc4 != 0 || rid4 != 0)
+        {
+            numerototale = numerototale + sword4 + arc4 + rid4;
+
+        }
+        return numerototale;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //--------------------------------variabili per la risposta di tutti i tipi di messaggi da parte della gilda-------------------------------------
 
     public int swordgilda1;
