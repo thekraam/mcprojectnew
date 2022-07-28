@@ -90,8 +90,10 @@ public class Events : MonoBehaviour
     public int aqueduct = 0;
     //------------ turni mancanti fine acquedotto e       ------------//
     //------------ turni mancanti fine malus acquedotto   ------------//
-    public int aqueductTurnsLeft = 999999;
-    public int aqueductMalusTurnsLeft = 999999;
+    public int aqueductTurnsLeft = 99;
+    public int aqueductMalusTurnsLeft = 99;
+
+    public int secondaryEventTurnsLeft = 99;
 
     public bool aqueductMalus = false;
     //////////////////////////////////////////////////////
@@ -156,6 +158,7 @@ public class Events : MonoBehaviour
     public void eventTurnsDecreaser()
     {
         if (aqueductTurnsLeft > 0) aqueductTurnsLeft--;
+        if (secondaryEventTurnsLeft > 0) secondaryEventTurnsLeft--;
     }
 
     public void MaxCitizensEffects()
@@ -172,6 +175,12 @@ public class Events : MonoBehaviour
             goldMalus1 = (int)(fattoria.getGoldFattoria() / 2) + (int)(miniera.getgoldMiniera() / 2);
             theCelestialEventMalusTurnsLeft--;
         }
+        if (bonusTurns > 0 )
+        {
+            goldMalus2 = -((int)(fattoria.getGoldFattoria() / 2) + (int)(miniera.getgoldMiniera() / 2));
+            bonusTurns--;
+        }
+
 
         return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10;
     }
@@ -202,7 +211,8 @@ public class Events : MonoBehaviour
 
     public void SecondaryEventStarter()
     {
-        if (aqueductSecondary == 1 && aqueductTurnsLeft == 0)
+        bool aa = false;
+        if (aqueductSecondary == 1 && aqueductTurnsLeft == 0 && !aa)
         {
             isEventDialogueClosed = false;
             aqueductMalus = true;
@@ -217,6 +227,15 @@ public class Events : MonoBehaviour
 
             dialogue.TriggerDialogue(message);
             isEventDialogueClosed = true;
+            aa=true;
+        }
+        Debug.Log("mancanoMalus "+ aqueductMalusTurnsLeft);
+        Debug.Log("mancano "+ secondaryEventTurnsLeft);
+        if (eventSecondary2 == 1 && secondaryEventTurnsLeft == 0 && !aa)
+        {
+
+            StartCoroutine(SecondaryEvent2());
+            aa=true;
         }
     }
 
@@ -272,10 +291,19 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerTheCelestialEvent());
                 selected = true;
             }
+            
+            if (eventChooser >= 4f && eventChooser < 5f)
+            {
+
+                StartCoroutine(TriggerEvent4());
+                selected = true;
+                
+            }
+            
         }
 
     }
-
+    
     /* evento primario aquedotto */
     IEnumerator TriggerAqueductEvent()
     {
@@ -521,5 +549,83 @@ public class Events : MonoBehaviour
         }
         isEventDialogueClosed = true;
         yield return null;
+    }
+
+
+    // evento 4
+    public int event4 = 0;
+    public int eventSecondary2 = 0;
+    public int bonusTurns = 0;
+    
+
+    IEnumerator TriggerEvent4()
+    {
+        isEventDialogueClosed = false;
+        event4 = 1;
+
+        string eventString1 = "a";
+        string eventString2 = "b";
+        string eventString3 = "c";
+        string eventString4 = "d";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        dialogue.TriggerInteractiveDialogue(message);
+        
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+        
+        if (response[0] == 1)
+        {
+            
+            player.setRapidMoney(-500);
+            bonusTurns = 5;
+            aemisFaith++;
+        }
+        else
+        {
+            if (Random.Range(0f, 1f) <= 0.2f)
+            { 
+                attendingSecondaryEvent = true;
+                aemisFaith--;
+                eventSecondary2 = 1;
+                secondaryEventTurnsLeft = 1;
+            }
+        }
+        isEventDialogueClosed = true;
+        yield return new WaitForSeconds(1.5f);
+    }
+
+    //eveto secondario 2
+    IEnumerator SecondaryEvent2()
+    {
+        
+        isEventDialogueClosed = false;
+        eventSecondary2 = 0;
+
+        string eventString1 = "a1";
+        string eventString2 = "a2";
+        string eventString3 = "a3";
+        string eventString4 = "a4";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+           aemisFaith++;
+        }
+        else
+        {
+            aemisFaith -= 3;
+        }
+
+        
+        isEventDialogueClosed = true;
+        
     }
 }
