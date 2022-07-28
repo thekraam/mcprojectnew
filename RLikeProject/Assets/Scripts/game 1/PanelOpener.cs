@@ -6,6 +6,19 @@ public class PanelOpener : MonoBehaviour
 {
     public GameObject panel;
 
+    public void OpenClosePanel()
+    {
+
+        if (panel != null && !panel.activeSelf)
+        {
+            panel.SetActive(true);
+        }
+        else if (panel != null && panel.activeSelf)
+        {
+            panel.SetActive(false);
+        }
+    }
+
     public void OpenPanel()
     {
 

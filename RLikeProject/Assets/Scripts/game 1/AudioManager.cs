@@ -10,7 +10,31 @@ public class AudioManager : MonoBehaviour
 	public AudioClip oldMusicClip;
 	public AudioClip oldEffectClip;
 
+	public GameObject MuteButton;
+
 	public static AudioManager Instance = null;
+	private bool muted = false;
+
+	public void Mute()
+    {
+		if (!muted)
+        {
+			MusicSource.Stop();
+			EffectsSource.Stop();
+			MusicSource.volume = 0;
+			EffectsSource.volume = 0;
+			muted = true;
+        }
+        else
+        {
+			MusicSource.Stop();
+			EffectsSource.Stop();
+			MusicSource.volume = 1;
+			EffectsSource.volume = 1;
+			muted = false;
+        }
+			
+    }
 
 	private void Awake()
 	{
@@ -23,19 +47,26 @@ public class AudioManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-		//DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(MuteButton);
 	}
 
 	public void ResetAudioEffects()
 	{
-		EffectsSource.Stop();
-		EffectsSource.volume = 1;
+		if (!muted)
+		{
+			EffectsSource.Stop();
+			EffectsSource.volume = 1;
+		}
 	}
 
 	public void ResetAudioMusic()
 	{
-		MusicSource.Stop();
-		MusicSource.volume = 1;
+		if (!muted)
+		{
+			MusicSource.Stop();
+			MusicSource.volume = 1;
+		}
 	}
 
 	public void PlayMusic(AudioClip clip)
@@ -53,26 +84,29 @@ public class AudioManager : MonoBehaviour
 	}
 	IEnumerator FadeOut(bool isMusic, AudioClip clip)
 	{
-		if (isMusic)
+		if (!muted)
 		{
-			while (MusicSource.volume > 0)
+			if (isMusic)
 			{
-				MusicSource.volume -= 0.005f;
-				yield return new WaitForSeconds(0.004f);
+				while (MusicSource.volume > 0)
+				{
+					MusicSource.volume -= 0.005f;
+					yield return new WaitForSeconds(0.004f);
+				}
+				MusicSource.Stop();
+				MusicSource.volume = 1;
 			}
-			MusicSource.Stop();
-			MusicSource.volume = 1;
-		}
-		else
-		{
-			while (EffectsSource.volume > 0)
+			else
 			{
-				EffectsSource.volume -= 0.005f;
-				yield return new WaitForSeconds(0.008f);
+				while (EffectsSource.volume > 0)
+				{
+					EffectsSource.volume -= 0.005f;
+					yield return new WaitForSeconds(0.008f);
+				}
+				EffectsSource.Stop();
 			}
-			EffectsSource.Stop();
+			EffectsSource.volume = 1;
 		}
-		EffectsSource.volume = 1;
 	}
 
 	public void PlayEffect(AudioClip clip)
@@ -111,17 +145,20 @@ public class AudioManager : MonoBehaviour
 	}
 	public void RandomMusic(params AudioClip[] clips)
 	{
-		if (!MusicSource.isPlaying)
+		if (!muted)
 		{
-			StopAllCoroutines();
-			MusicSource.volume = 0.1f;
-			int randomIndex = Random.Range(0, clips.Length);
-			MusicSource.clip = clips[randomIndex];
-			if (oldMusicClip == MusicSource.clip && randomIndex > 0) MusicSource.clip = clips[randomIndex - 1];
-			if (oldMusicClip == MusicSource.clip && randomIndex == 0) MusicSource.clip = clips[randomIndex + 1];
+			if (!MusicSource.isPlaying)
+			{
+				StopAllCoroutines();
+				MusicSource.volume = 0.1f;
+				int randomIndex = Random.Range(0, clips.Length);
+				MusicSource.clip = clips[randomIndex];
+				if (oldMusicClip == MusicSource.clip && randomIndex > 0) MusicSource.clip = clips[randomIndex - 1];
+				if (oldMusicClip == MusicSource.clip && randomIndex == 0) MusicSource.clip = clips[randomIndex + 1];
 
-			oldMusicClip = MusicSource.clip;
-			MusicSource.Play();
+				oldMusicClip = MusicSource.clip;
+				MusicSource.Play();
+			}
 		}
 	}
 }
