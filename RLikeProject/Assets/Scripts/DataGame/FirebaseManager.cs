@@ -194,6 +194,8 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
+ 
+
     //Function for the save button
     public void SaveDataButton()
     {
@@ -213,8 +215,6 @@ public class FirebaseManager : MonoBehaviour
                                        FindObjectOfType<Tutorial>().mineTutorial,
                                        FindObjectOfType<Tutorial>().bonusTutorial));
 
-
-        //StartCoroutine(UpdateDeaths(int.Parse(deathsField.text)));
     }
     public void SaveFireBase()
     {
@@ -236,7 +236,6 @@ public class FirebaseManager : MonoBehaviour
     public void ScoreboardButton()
     {
         StartCoroutine(LoadScoreboardData());
-        
     }
 
     private IEnumerator Login(string _email, string _password)
