@@ -323,7 +323,6 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent8());
                 selected = true;
             }
-
             else
             {
                 selected = true;
@@ -791,8 +790,9 @@ public class Events : MonoBehaviour
         
         if (response[0] == 1)
         {
+            int porc = 30 * (Random.Range(1, 5));
+            player.setPopulation((player.getPopulation()+porc) > player.getCitizensMax() ? player.getCitizensMax() : player.getPopulation() + porc); // +30 * random 1-4
 
-            player.setRapidCitizens(30 * (Random.Range(1, 5))); // +30 * random 1-4
 
             if (Random.Range(0f,1f)<= 0.2f)
             {
@@ -946,10 +946,8 @@ public class Events : MonoBehaviour
         string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
-        Debug.Log("response "+ response[0] + " resp " + response[1]);
         StartCoroutine(ResponseUpdater(false));
         yield return new WaitUntil(() => response[1] == 1);
-        Debug.Log("response "+ response[0] + " resp " + response[1]);
 
 
         if (response[0] == 1)
@@ -963,7 +961,6 @@ public class Events : MonoBehaviour
             makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
 
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
-            Debug.Log("risposta si alla battaglia");
             yield return new WaitUntil(() => finishedBattle  == true);
             
             if(lastBattleInfo > 2)
@@ -1046,7 +1043,7 @@ public class Events : MonoBehaviour
                     Dialogue.TriggerDialogue(message4);
 
                     player.setRapidMoney(-(int)(player.getMoney() * 0.9));
-                    player.setRapidCitizens(-(int)(player.getCitizens() / 2));
+                    player.setPopulation((player.getPopulation()-((int)(player.getCitizens() / 2))) < 0 ? 0 : player.getPopulation() - ((int)(player.getCitizens() / 2)));
 
                     secondaryEvent3MalusEffectGoldTurnsLeftMINE = 2;
                 }
