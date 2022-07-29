@@ -51,7 +51,7 @@ public class Miniera : MonoBehaviour
     {
         if (lvl < 5)
         {
-            return "" + lvl;
+            return "" + (lvl+1);
         }
         else
         {

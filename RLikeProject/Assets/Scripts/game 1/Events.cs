@@ -124,6 +124,7 @@ public class Events : MonoBehaviour
     {
         if (secondaryEvent1TurnsLeft > 0) secondaryEvent1TurnsLeft--;
         if (secondaryEvent2TurnsLeft > 0) secondaryEvent2TurnsLeft--;
+        if (secondaryEvent3TurnsLeft > 0) secondaryEvent3TurnsLeft--;
     }
 
     public void MaxCitizensEffects()
@@ -202,6 +203,8 @@ public class Events : MonoBehaviour
 
     public void SecondaryEventStarter()
     {
+
+        response[1] = 0;
         bool skippingEventForOverlap = false;
         if (secondaryEvent1 == 1 && secondaryEvent1TurnsLeft == 0 && !skippingEventForOverlap)
         {
@@ -225,12 +228,19 @@ public class Events : MonoBehaviour
             StartCoroutine(SecondaryEvent2());
             skippingEventForOverlap = true;
         }
-        if(secondaryEvent3 == 0 && secondaryEvent3TurnsLeft == 0 && !skippingEventForOverlap)
+        if(secondaryEvent3 == 1 && secondaryEvent3TurnsLeft == 0 && !skippingEventForOverlap)
         {
             StartCoroutine(SecondaryEvent3());
+            skippingEventForOverlap = true;
         }
     }
 
+    private bool hasEnoughSoldiers(int cap) // se il giocatore non ha abbastanza soldati a coppie di tipi, basato su un valore che va superato per ogni tipo
+    {
+        return ((swordsmen.getTotal() + archers.getTotal() >= cap)       // se cap = 10 ho bisogno di almeno 10 soldati tra swordsmen e archers
+                || (swordsmen.getTotal() + riders.getTotal() >= cap)
+                || (riders.getTotal() + archers.getTotal() >= cap));
+    }
     /* avviatore eventi, la funzione sceglie un evento casuale e non gia' avvenuto sulla base di alcuni criteri */
     public void EventStarter(Player player, Fattoria fattoria, Miniera miniera, Caserma caserma, Fabbro fabbro, Gilda gilda, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
@@ -248,12 +258,7 @@ public class Events : MonoBehaviour
         this.archers = archers;
         this.riders = riders;
 
-        bool hasEnoughSoldiers(int cap) // se il giocatore non ha abbastanza soldati a coppie di tipi, basato su un valore che va superato per ogni tipo
-        {
-            return (   (swordsmen.getTotal() + archers.getTotal() >= cap)       // se cap = 10 ho bisogno di almeno 10 soldati tra swordsmen e archers
-                    || (swordsmen.getTotal() + riders.getTotal() >= cap) 
-                    || (riders.getTotal() + archers.getTotal() >= cap)    );
-        }
+        
 
         float eventChooser = 0;
         bool selected = false;
@@ -261,9 +266,9 @@ public class Events : MonoBehaviour
         while (!selected && !attendingSecondaryEvent)
         {
             isEventDialogueClosed = false;
-            eventChooser = Random.Range(0f, 1f);
+            eventChooser = Random.Range(0f, 10f);
 
-            //eventChooser = 1.4f; // debug evento testbattaglia
+            //eventChooser = 8.4f; // debug evento testbattaglia
 
             if (eventChooser >= 0 && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
             {
@@ -283,37 +288,48 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerBattleTestEvent());
                 selected = true;
             }
-            if (eventChooser >= 2f && eventChooser < 3f && hasEnoughSoldiers(7)) // se non hai soldati...
+            if (eventChooser >= 2f && eventChooser < 3f && hasEnoughSoldiers(7) && event14 == 0) // se non hai soldati...
             {
                 StartCoroutine(TriggerEvent14());
                 selected = true;
             }
-            if (eventChooser >= 3f && eventChooser < 4f && aemisFaith <= 4 && aemisKnightsHostility == 1 && hasEnoughSoldiers(10)) // il giocatore deve affrontare una grande battaglia, deve avere una minima chance
+            if (eventChooser >= 3f && eventChooser < 4f && aemisFaith <= 4 && aemisKnightsHostility == 1 && hasEnoughSoldiers(10) && event12 == 0) // il giocatore deve affrontare una grande battaglia, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent12());
                 selected = true;
             }
-            if (eventChooser >= 4f && eventChooser < 5f && player.getMoney() >= 500) // almeno 500 gold per farlo
+            if (eventChooser >= 4f && eventChooser < 5f && player.getMoney() >= 500 && event4 == 0) // almeno 500 gold per farlo
             {
                 StartCoroutine(TriggerEvent4());
                 selected = true;
             }
-            if (eventChooser >= 5f && eventChooser < 6f && hasEnoughSoldiers(10)) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
+            if (eventChooser >= 5f && eventChooser < 6f && hasEnoughSoldiers(10) && event5 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent5());
                 selected = true;
             }
-            if (eventChooser >= 6f && eventChooser < 7f)
+            if (eventChooser >= 6f && eventChooser < 7f && event6 == 0)
             {
                 StartCoroutine(TriggerEvent6());
                 selected = true;
             }
-            if(eventChooser >= 7f && eventChooser < 8f && player.getMoney() >= 300)
+            if(eventChooser >= 7f && eventChooser < 8f && player.getMoney() >= 300 && event7 == 0)
             {
                 StartCoroutine(TriggerEvent7());
                 selected = true;
             }
-            
+            if (eventChooser >= 8f && eventChooser < 9f && hasEnoughSoldiers(15) && event8 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
+            {
+                StartCoroutine(TriggerEvent8());
+                selected = true;
+            }
+
+            else
+            {
+                selected = true;
+            }
+            //selected = true; //per la forzatura dell'evento
+
         }
 
     }
@@ -412,11 +428,11 @@ public class Events : MonoBehaviour
 
 
     // evento furto degli elfi dei boschi
-    public int woodsElves = 0;
+    public int event14 = 0;
 
     IEnumerator TriggerEvent14()
     {
-        woodsElves = 1;
+        event14 = 1;
         float woodsElvesValue = Random.Range(0f, 1f); // probabilita di verifica evento battaglia
         woodsElvesValue = 0.1f;
         string eventString1 = "A man visits your city and asks to be helped.";
@@ -824,7 +840,7 @@ public class Events : MonoBehaviour
 
             string[] message2 = { eventString3 };
 
-            Dialogue.TriggerInteractiveDialogue(message);
+            Dialogue.TriggerDialogue(message);
             event7MalusTurnsLeft = 3;
         }
 
@@ -868,7 +884,7 @@ public class Events : MonoBehaviour
 
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
-            yield return new WaitUntil(() => finishedBattle);
+            yield return new WaitUntil(() => finishedBattle  == true);
 
             if(lastBattleInfo > 3)
             {
@@ -930,9 +946,10 @@ public class Events : MonoBehaviour
         string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
-
-        StartCoroutine(ResponseUpdater(true));
+        Debug.Log("response "+ response[0] + " resp " + response[1]);
+        StartCoroutine(ResponseUpdater(false));
         yield return new WaitUntil(() => response[1] == 1);
+        Debug.Log("response "+ response[0] + " resp " + response[1]);
 
 
         if (response[0] == 1)
@@ -946,8 +963,8 @@ public class Events : MonoBehaviour
             makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
 
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
-
-            yield return new WaitUntil(() => finishedBattle);
+            Debug.Log("risposta si alla battaglia");
+            yield return new WaitUntil(() => finishedBattle  == true);
             
             if(lastBattleInfo > 2)
             {
@@ -989,6 +1006,14 @@ public class Events : MonoBehaviour
 
                 Dialogue.TriggerDialogue(message2);
 
+                int captainLVL = Random.Range(1, 5);
+                int swordsmen = 8 * Random.Range(1, 7);
+                int archers = 4 * Random.Range(1, 6);
+                int riders = 2 * Random.Range(1, 5);
+                terri = 2;
+
+                makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
+
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
                 yield return new WaitForSeconds(0.5f);
             }
@@ -1008,7 +1033,7 @@ public class Events : MonoBehaviour
                 terri = 1;
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
-                yield return new WaitUntil(() => finishedBattle);
+                yield return new WaitUntil(() => finishedBattle  == true);
 
                 if (lastBattleInfo < 3)
                 {
