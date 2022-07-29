@@ -338,8 +338,12 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
-            //dialogo 1 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In the woods they've found some elves's lost treasures";
+            string eventString3 = "(You obtain 200 gold)";
 
+            string[] message = { eventString1, eventString2, eventString3};
+            StartCoroutine(dialogoDiRitorno(true, message));
 
             //        Debug.LogError("sped1 = " + gilda.getsped1());
         }
@@ -347,10 +351,12 @@ public class OldSoldiersManager : MonoBehaviour
         {
             if (gilda.getcontrollosped1() == 1) { gilda.setcontrollosped1(0); }
             else if (gilda.getcontrollosped2() == 1) { gilda.setcontrollosped2(0); }
-            player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
-            //dialogo 2 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "During the search they were attacked by brigands and only a few managed to escape";
+            string[] message1 = { eventString1, eventString2,};
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
             //       Debug.LogError("caso 2 ");
 
@@ -363,6 +369,12 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "During the search they were attacked by brigands but your soldiers fought and chased them away";
+            string eventString3 = "You've lost some soldiers but at least they've found some treasures to bring back";
+            string eventString4 = "(You obtain 200 gold)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
             //dialogo 3 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             //        Debug.LogError("caso 3 ");
 
@@ -375,6 +387,11 @@ public class OldSoldiersManager : MonoBehaviour
             player.setRapidMoney(200);
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In the woods they've found some elves's lost treasures of great value";
+            string eventString3 = "(You obtain 900 gold)";
+            string[] message1 = { eventString1, eventString2, eventString3};
+            StartCoroutine(dialogoDiRitorno(true, message1));
             //dialogo 4 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             //       Debug.LogError("caso 4 ");
 
@@ -389,7 +406,11 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
             //dialogo 5 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "Inside a cave they found an ancient chest full of golden coins";
+            string eventString3 = "(You obtain 800 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3};
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if (((tipologia1 == 6) && turngilda1 == 0) || ((tipologia2 == 6) && turngilda2 == 0))
@@ -397,11 +418,13 @@ public class OldSoldiersManager : MonoBehaviour
             //       Debug.Log("Son dentro tipologia 6");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(800);
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
             //dialogo 6 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In a cave they've been attacked by a giant spider and your soldiers ran away";
+            string[] message1 = { eventString1, eventString2};
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if (((tipologia1 == 7) && turngilda1 == 0 )||( (tipologia2 == 7) && turngilda2 == 0))
@@ -413,18 +436,27 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
             //dialogo 7 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In a cave they've been attacked by a giant spider but your soldiers killed it";
+            string eventString3 = "Inside the cave they found an ancient chest full of gold coins";
+            string eventString4 = "(You obtain 800 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
         }
         if (((tipologia1 == 8) && turngilda1 == 0) || ((tipologia2 == 8) && turngilda2 == 0))
         {
             //       Debug.Log("Son dentro tipologia 8");
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(800);
+            player.setRapidMoney(1600);
             gilda.setsped2(1);
             player.setsoldiersaway(-20);
             //dialogo 8 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "Inside a cave they found an ancient chest full of golden coins";
+            string eventString3 = "(You obtain 1600 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3};
+            StartCoroutine(dialogoDiRitorno(true, message1));
         }
         if ((tipologia1  == 9) && turngilda1 == 0 || (tipologia2 == 9) && turngilda2 == 0)
         {
@@ -434,7 +466,11 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
             //dialogo 9 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In the ancient ruins they found the tomb of an ancient king with a jewel of great value";
+            string eventString3 = "(You obtain 1500 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3,};
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 10) && turngilda1 == 0 || (tipologia2 == 10) && turngilda2 == 0)
@@ -445,7 +481,11 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
             //dialogo 10 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In the ancient ruins they found the tomb of an ancient king";
+            string eventString3 = "Guardian spirits have appeared and attacked your men; some of them managed to escape";
+            string[] message1 = { eventString1, eventString2, eventString3};
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 11) && turngilda1 == 0 || (tipologia2 == 11) && turngilda2 == 0)
@@ -456,18 +496,29 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
             //dialogo 11 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In the ancient ruins they found the tomb of an ancient king";
+            string eventString3 = "Guardian spirits have appeared and attacked your men; some of them managed to escape";
+            string eventString4 = "one of them took a jewel of great value with him";
+            string eventString5 = "(You obtain 1500 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4,eventString5 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 12) && turngilda1 == 0 || (tipologia2 == 12) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(1500);
+            player.setRapidMoney(3000);
             gilda.setsped3(1);
             player.setsoldiersaway(-30);
             //dialogo 12 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "In the ancient ruins they found the tomb of an ancient king";
+            string eventString3 = "they found a golden sword of great value near the sarcophagus";
+            string eventString4 = "(you obtain 3000 golds";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 13) && turngilda1 == 0 || (tipologia2 == 13) && turngilda2 == 0)
@@ -478,7 +529,12 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
             //dialogo 13 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "Across the demonic lands near a dead log they found a skeletron";
+            string eventString3 = "Next to the skeletron there was a bag with a huge amount of jewels";
+            string eventString4 = "(You obtain 2500 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 14) && turngilda1 == 0 || (tipologia2 == 14) && turngilda2 == 0)
@@ -489,7 +545,11 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
             //dialogo 14 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "Across the demonic lands they have been attacked by a group of lesser demons";
+            string eventString3 = "After the fight they managed to escape before the enemy reinforcements arrives";
+            string[] message1 = { eventString1, eventString2, eventString3};
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 15) && turngilda1 == 0 || (tipologia2  == 15) && turngilda2 == 0)
@@ -500,18 +560,28 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
             //dialogo 15 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "Across the demonic lands they have been attacked by a group of lesser demons";
+            string eventString3 = "After the fight, they looted lots of inexpected treasures from their bodies";
+            string eventString4 = "(You obtain 2500 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 16) && turngilda1 == 0 || (tipologia2 == 16) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(2500);
+            player.setRapidMoney(5000);
             gilda.setsped4(1);
             player.setsoldiersaway(-40);
             //dialogo 16 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "Across the demonic lands they found an abandoned manor.";
+            string eventString3 = "Inside a treasure chest of very precious diamonds was hidden";
+            string eventString4 = "(You obtain 5000 golds";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 17) && turngilda1 == 0 || (tipologia2 == 17) && turngilda2 == 0)
@@ -522,18 +592,26 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
             //dialogo 17 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition to the Abyss.";
+            string eventString2 = "None of your men want to talk about what they saw there.";
+            string eventString3 = "Just one of them had a strange mistical jewel of great value";
+            string eventString4 = "(You obtain 4000 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 18) && turngilda1 == 0 || (tipologia2 == 18) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(4000);
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
             //dialogo 18 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition to the Abyss.";
+            string eventString2 = "None of your men want to talk about what they saw there.";
+            string eventString3 = "few men have returned compared to those who left";
+            string[] message1 = { eventString1, eventString2, eventString3, };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 19) && turngilda1 == 0 || (tipologia2 == 19) && turngilda2 == 0)
@@ -544,18 +622,29 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
             //dialogo 19 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "None of your men want to talk about what they saw there.";
+            string eventString3 = "few men have returned compared to those who left";
+            string eventString4 = "Just one of them had a strange mistical jewel of great value";
+            string eventString5 = "(You obtain 4000 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
         if ((tipologia1 == 20) && turngilda1 == 0 || (tipologia2 == 20) && turngilda2 == 0)
         {
             if (gilda.getcontrollosped1() == 1) gilda.setcontrollosped1(0);
             else if (gilda.getcontrollosped2() == 1) gilda.setcontrollosped2(0);
-            player.setRapidMoney(4000);
+            player.setRapidMoney(7500);
             gilda.setsped5(1);
             player.setsoldiersaway(-50);
             //dialogo 20 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
-
+            string eventString1 = "Your soldiers are back from the expedition.";
+            string eventString2 = "None of your men want to talk about what they saw there.";
+            string eventString3 = "one of them had with him a large silver hammer of great value";
+            string eventString4 = "(You obtain 7500 golds)";
+            string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
+            StartCoroutine(dialogoDiRitorno(true, message1));
 
         }
 
