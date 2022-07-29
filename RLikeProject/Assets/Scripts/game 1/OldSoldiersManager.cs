@@ -339,8 +339,8 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In the woods they've found some elves's lost treasures";
-            string eventString3 = "(You obtain 200 gold)";
+            string eventString2 = "In the woods they've found some elves' lost treasures";
+            string eventString3 = "[You obtain 200 gold]";
 
             string[] message = { eventString1, eventString2, eventString3};
             StartCoroutine(dialogoDiRitorno(true, message));
@@ -354,7 +354,7 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "During the search they were attacked by brigands and only a few managed to escape";
+            string eventString2 = "During the search they were attacked by brigands and only a few managed to escape.";
             string[] message1 = { eventString1, eventString2,};
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -370,9 +370,9 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "During the search they were attacked by brigands but your soldiers fought and chased them away";
-            string eventString3 = "You've lost some soldiers but at least they've found some treasures to bring back";
-            string eventString4 = "(You obtain 200 gold)";
+            string eventString2 = "During the search they were attacked by brigands but your soldiers fought and chased them away.";
+            string eventString3 = "You've lost some soldiers but at least they've found some treasures to bring back.";
+            string eventString4 = "[You obtain 200 gold]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
             //dialogo 3 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
@@ -388,8 +388,8 @@ public class OldSoldiersManager : MonoBehaviour
             gilda.setsped1(1);
             player.setsoldiersaway(-10);
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In the woods they've found some elves's lost treasures of great value";
-            string eventString3 = "(You obtain 900 gold)";
+            string eventString2 = "In the woods they've found some elves' lost treasures of great value";
+            string eventString3 = "[You obtain 900 gold]";
             string[] message1 = { eventString1, eventString2, eventString3};
             StartCoroutine(dialogoDiRitorno(true, message1));
             //dialogo 4 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
@@ -407,8 +407,8 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-20);
             //dialogo 5 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "Inside a cave they found an ancient chest full of golden coins";
-            string eventString3 = "(You obtain 800 golds)";
+            string eventString2 = "They've found an ancient chest full of golden coins inside a cave.";
+            string eventString3 = "[You obtain 800 golds]";
             string[] message1 = { eventString1, eventString2, eventString3};
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -422,7 +422,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-20);
             //dialogo 6 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In a cave they've been attacked by a giant spider and your soldiers ran away";
+            string eventString2 = "They've been attacked by a giant spider inside a cave and ran back to the city.";
             string[] message1 = { eventString1, eventString2};
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -437,9 +437,9 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-20);
             //dialogo 7 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In a cave they've been attacked by a giant spider but your soldiers killed it";
-            string eventString3 = "Inside the cave they found an ancient chest full of gold coins";
-            string eventString4 = "(You obtain 800 golds)";
+            string eventString2 = "They've been attacked by a giant spider inside a cave, but your soldiers killed it.";
+            string eventString3 = "They found an ancient chest full of golden coins there.";
+            string eventString4 = "[You obtain 800 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
         }
@@ -453,8 +453,8 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-20);
             //dialogo 8 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "Inside a cave they found an ancient chest full of golden coins";
-            string eventString3 = "(You obtain 1600 golds)";
+            string eventString2 = "They found an ancient chest full of golden coins inside a cave.";
+            string eventString3 = "[You obtain 1600 golds]";
             string[] message1 = { eventString1, eventString2, eventString3};
             StartCoroutine(dialogoDiRitorno(true, message1));
         }
@@ -467,8 +467,8 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-30);
             //dialogo 9 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In the ancient ruins they found the tomb of an ancient king with a jewel of great value";
-            string eventString3 = "(You obtain 1500 golds)";
+            string eventString2 = "During an exploration in the ancient ruins they found the tomb of a king with a jewel of great value on his neck.";
+            string eventString3 = "[You obtain 1500 golds]";
             string[] message1 = { eventString1, eventString2, eventString3,};
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -482,7 +482,7 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-30);
             //dialogo 10 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In the ancient ruins they found the tomb of an ancient king";
+            string eventString2 = "They found the tomb of an ancient king inside the ancient ruins.";
             string eventString3 = "Guardian spirits have appeared and attacked your men; some of them managed to escape";
             string[] message1 = { eventString1, eventString2, eventString3};
             StartCoroutine(dialogoDiRitorno(true, message1));
@@ -497,10 +497,10 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-30);
             //dialogo 11 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In the ancient ruins they found the tomb of an ancient king";
-            string eventString3 = "Guardian spirits have appeared and attacked your men; some of them managed to escape";
-            string eventString4 = "one of them took a jewel of great value with him";
-            string eventString5 = "(You obtain 1500 golds)";
+            string eventString2 = "They found the tomb of an ancient king in the ancient ruins.";
+            string eventString3 = "Guardian spirits have appeared and attacked your men; some of them managed to escape.";
+            string eventString4 = "One of them took a jewel of great value with him.";
+            string eventString5 = "[You obtain 1500 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4,eventString5 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -514,9 +514,9 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-30);
             //dialogo 12 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "In the ancient ruins they found the tomb of an ancient king";
-            string eventString3 = "they found a golden sword of great value near the sarcophagus";
-            string eventString4 = "(you obtain 3000 golds";
+            string eventString2 = "They found the tomb of an ancient king in the ancient ruins.";
+            string eventString3 = "They found a golden sword of great value near the sarcophagus.";
+            string eventString4 = "[you obtain 3000 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -530,9 +530,9 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-40);
             //dialogo 13 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "Across the demonic lands near a dead log they found a skeletron";
-            string eventString3 = "Next to the skeletron there was a bag with a huge amount of jewels";
-            string eventString4 = "(You obtain 2500 golds)";
+            string eventString2 = "During the exploration of the demonic lands they found a skeleton near a dead log.";
+            string eventString3 = "Next to him there was a bag with a huge amount of jewels.";
+            string eventString4 = "[You obtain 2500 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -546,8 +546,8 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-40);
             //dialogo 14 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "Across the demonic lands they have been attacked by a group of lesser demons";
-            string eventString3 = "After the fight they managed to escape before the enemy reinforcements arrives";
+            string eventString2 = "They've been attacked by a group of lesser demons while crossing the demonic lands.";
+            string eventString3 = "They managed to escape before the enemy reinforcements arrival.";
             string[] message1 = { eventString1, eventString2, eventString3};
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -561,9 +561,9 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-40);
             //dialogo 15 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "Across the demonic lands they have been attacked by a group of lesser demons";
-            string eventString3 = "After the fight, they looted lots of inexpected treasures from their bodies";
-            string eventString4 = "(You obtain 2500 golds)";
+            string eventString2 = "They've been attacked by a group of lesser demons while crossing the demonic lands.";
+            string eventString3 = "After the fight, they looted lots of inexpected treasures from their bodies.";
+            string eventString4 = "[You obtain 2500 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -577,9 +577,9 @@ public class OldSoldiersManager : MonoBehaviour
             player.setsoldiersaway(-40);
             //dialogo 16 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
-            string eventString2 = "Across the demonic lands they found an abandoned manor.";
-            string eventString3 = "Inside a treasure chest of very precious diamonds was hidden";
-            string eventString4 = "(You obtain 5000 golds";
+            string eventString2 = "They found an abandoned manor while crossing the demonic lands.";
+            string eventString3 = "Inside, a treasure chest of very precious diamonds was hidden.";
+            string eventString4 = "[You obtain 5000 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -594,8 +594,8 @@ public class OldSoldiersManager : MonoBehaviour
             //dialogo 17 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition to the Abyss.";
             string eventString2 = "None of your men want to talk about what they saw there.";
-            string eventString3 = "Just one of them had a strange mistical jewel of great value";
-            string eventString4 = "(You obtain 4000 golds)";
+            string eventString3 = "One of them had a strange mystical jewel of great value.";
+            string eventString4 = "[You obtain 4000 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -609,7 +609,7 @@ public class OldSoldiersManager : MonoBehaviour
             //dialogo 18 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition to the Abyss.";
             string eventString2 = "None of your men want to talk about what they saw there.";
-            string eventString3 = "few men have returned compared to those who left";
+            string eventString3 = "Only a few men have returned compared to those who left.";
             string[] message1 = { eventString1, eventString2, eventString3, };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -624,9 +624,9 @@ public class OldSoldiersManager : MonoBehaviour
             //dialogo 19 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
             string eventString2 = "None of your men want to talk about what they saw there.";
-            string eventString3 = "few men have returned compared to those who left";
-            string eventString4 = "Just one of them had a strange mistical jewel of great value";
-            string eventString5 = "(You obtain 4000 golds)";
+            string eventString3 = "Only a few men have returned compared to those who left.";
+            string eventString4 = "Just one of them had a strange mystical jewel of great value";
+            string eventString5 = "[You obtain 4000 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4, eventString5 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 
@@ -641,8 +641,8 @@ public class OldSoldiersManager : MonoBehaviour
             //dialogo 20 - la chiamata va fatta del tipo 'StartCoroutine(dialogoDiRitorno(true, messagge));'
             string eventString1 = "Your soldiers are back from the expedition.";
             string eventString2 = "None of your men want to talk about what they saw there.";
-            string eventString3 = "one of them had with him a large silver hammer of great value";
-            string eventString4 = "(You obtain 7500 golds)";
+            string eventString3 = "One of them brought back a large silver hammer of great value.";
+            string eventString4 = "[You obtain 7500 golds]";
             string[] message1 = { eventString1, eventString2, eventString3, eventString4 };
             StartCoroutine(dialogoDiRitorno(true, message1));
 

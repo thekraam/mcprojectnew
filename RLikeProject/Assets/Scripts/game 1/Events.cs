@@ -266,9 +266,10 @@ public class Events : MonoBehaviour
 
         while (!selected && !attendingSecondaryEvent)
         {
+            isEventDialogueClosed = false;
             eventChooser = Random.Range(0f, 1f);
 
-            eventChooser = 1.4f; // debug evento testbattaglia
+            //eventChooser = 1.4f; // debug evento testbattaglia
 
             if (eventChooser >= 0 && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
             {
@@ -328,7 +329,6 @@ public class Events : MonoBehaviour
     /* evento primario aquedotto */
     IEnumerator TriggerAqueductEvent()
     {
-        isEventDialogueClosed = false;
         aqueduct = 1;
         float aqueductValue = Random.Range(0f, 1f); // probabilita di verifica evento secondario
         aqueductValue = 0.5f;
@@ -390,7 +390,6 @@ public class Events : MonoBehaviour
 
     IEnumerator TriggerBattleTestEvent()
     {
-        isEventDialogueClosed = false;
         string eventString1 = "A cojo' voi combatte? o sei 'na pussy";
 
         string[] message = { eventString1 };
@@ -416,7 +415,6 @@ public class Events : MonoBehaviour
     // evento 14
     IEnumerator TriggerWoodsElvesEvent()
     {
-        isEventDialogueClosed = false;
         woodsElves = 1;
         float woodsElvesValue = Random.Range(0f, 1f); // probabilita di verifica evento battaglia
         woodsElvesValue = 0.1f;
@@ -497,7 +495,6 @@ public class Events : MonoBehaviour
 
     IEnumerator TriggerTheCelestialEvent()
     {
-        isEventDialogueClosed = false;
         theCelestialEvent = 1;
 
         string eventString1 = "A Celestial, along with a large group of knights, visits your city.";
@@ -581,7 +578,6 @@ public class Events : MonoBehaviour
 
     IEnumerator TriggerEvent4()
     {
-        isEventDialogueClosed = false;
         event4 = 1;
 
         string eventString1 = "a";
@@ -620,8 +616,6 @@ public class Events : MonoBehaviour
     //eveto secondario 2
     IEnumerator SecondaryEvent2()
     {
-        
-        isEventDialogueClosed = false;
         eventSecondary2 = 0;
 
         string eventString1 = "a1";
@@ -658,8 +652,6 @@ public class Events : MonoBehaviour
 
     IEnumerator TriggerBattleEvent5()
     {
-        
-        isEventDialogueClosed = false;
         event5 = 1;
 
         string eventString1 = "BattleEvent5";
@@ -732,7 +724,6 @@ public class Events : MonoBehaviour
 
     IEnumerator TriggerEvent6()
     {
-        isEventDialogueClosed = false;
         event6 = 1;
 
         string eventString1 = "TriggerEvent6";

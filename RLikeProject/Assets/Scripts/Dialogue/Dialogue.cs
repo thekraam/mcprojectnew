@@ -26,7 +26,7 @@ public class Dialogue : MonoBehaviour
     // funzione per far apparire il dialogue piccolo, va su un tasto o una situazione
     public void TriggerSmallDialogue(string[] message)
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(false, a, message);
+        FindObjectOfType<DialogueManagerMINI>().StartDialogue(false, a, message);
     }
 
     // funzione per far apparire un dialogue con scelta finale (si/no)

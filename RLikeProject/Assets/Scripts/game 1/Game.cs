@@ -224,7 +224,7 @@ public class Game : MonoBehaviour
     Caserma caserma = new Caserma();
     Fabbro fabbro = new Fabbro();
     Gilda gilda = new Gilda();
-    public static OldSoldiersManager manager = new OldSoldiersManager();
+    //public static OldSoldiersManager manager = new OldSoldiersManager();
 
 
     public List<Text> UIelements;
@@ -739,10 +739,10 @@ public class Game : MonoBehaviour
     
     public void onSkipTurn()
     {
-        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + 2 * player.getCitizens() + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects());
+        player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + (2 * player.getCitizens()) + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects());
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
-        manager.riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
-        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() +swordsmen.getTempTotal() + archers.getTempTotal()+ riders.getTempTotal() + manager.getSoldatiSpediti()); // prima volta necessaria
+        FindObjectOfType<OldSoldiersManager>().riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
+        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() +swordsmen.getTempTotal() + archers.getTempTotal()+ riders.getTempTotal() + FindObjectOfType<OldSoldiersManager>().getSoldatiSpediti()); // prima volta necessaria
         player.setTempCitizens(fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects());
         player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
 
@@ -759,12 +759,12 @@ public class Game : MonoBehaviour
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal()); // ricalcolo popolazione attuale
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
 
-        manager.gildamexritorno(player, gilda);  //betatesting
-        
+
 
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
         FindObjectOfType<Events>().EventStarter(player, fattoria, miniera, caserma, fabbro, gilda, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
+        FindObjectOfType<OldSoldiersManager>().gildamexritorno(player, gilda);  //betatesting
         SaveGame();
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
@@ -1019,12 +1019,12 @@ public class Game : MonoBehaviour
         if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 5 && archers.getTotal() >= 5)
         {
             Debug.LogError("La spedizione parte");
-            gilda.spedizione(player, swordsmen, archers, riders, 1, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 1, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped1(1);
         }
         else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 5 && archers.getTotal() >= 5)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 1, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 1, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped2(1);
         }
 
@@ -1034,12 +1034,12 @@ public class Game : MonoBehaviour
     {
         if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 2, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 2, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped1(1);
         }
         else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 2, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 2, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped2(1);
         }
 
@@ -1048,12 +1048,12 @@ public class Game : MonoBehaviour
     {
         if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10 && riders.getTotal() >= 10 )
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 3, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 3, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped1(1);
         }
         else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 10 && archers.getTotal() >= 10 && riders.getTotal() >= 10)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 3, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 3, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped2(1);
         }
 
@@ -1062,12 +1062,12 @@ public class Game : MonoBehaviour
     {
         if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 15 && archers.getTotal() >= 15 && riders.getTotal() >= 10)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 4, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 4, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped1(1);
         }
         else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 15 && archers.getTotal() >= 15 && riders.getTotal() >= 10)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 4, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 4, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped2(1);
         }
 
@@ -1077,12 +1077,12 @@ public class Game : MonoBehaviour
     {
         if (gilda.getcontrollosped1() == 0 && swordsmen.getTotal() >= 20 && archers.getTotal() >= 20 && riders.getTotal() >= 10)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 5, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 5, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped1(1);
         }
         else if (gilda.getcontrollosped2() == 0 && swordsmen.getTotal() >= 20 && archers.getTotal() >= 20 && riders.getTotal() >= 10)
         {
-            gilda.spedizione(player, swordsmen, archers, riders, 5, manager);
+            gilda.spedizione(player, swordsmen, archers, riders, 5, FindObjectOfType<OldSoldiersManager>());
             gilda.setcontrollosped2(1);
         }
 
@@ -1105,7 +1105,7 @@ public class Game : MonoBehaviour
             FindObjectOfType<Events>(),fattoria,
             caserma,swordsmen,archers,riders,miniera,
             fabbro,gilda, FindObjectOfType<Tutorial>(),
-            manager,
+            FindObjectOfType<OldSoldiersManager>(),
             enemy,
             eswordsmen,
             earchers,
@@ -1273,44 +1273,44 @@ public class Game : MonoBehaviour
         gilda.controllosped2 = data.controllosped2;
 
         /*OldSoldiers*/
-        manager.sword1 = data.sword1;
-        manager.arc1 = data.arc1;
-        manager.rid1 = data.rid1;
-        manager.turn1 = data.turn1;
+        FindObjectOfType<OldSoldiersManager>().sword1 = data.sword1;
+        FindObjectOfType<OldSoldiersManager>().arc1 = data.arc1;
+        FindObjectOfType<OldSoldiersManager>().rid1 = data.rid1;
+        FindObjectOfType<OldSoldiersManager>().turn1 = data.turn1;
 
-        manager.sword2 = data.sword2;
-        manager.arc2 = data.arc2;
-        manager.rid2 = data.rid2;
-        manager.turn2 = data.turn2;
+        FindObjectOfType<OldSoldiersManager>().sword2 = data.sword2;
+        FindObjectOfType<OldSoldiersManager>().arc2 = data.arc2;
+        FindObjectOfType<OldSoldiersManager>().rid2 = data.rid2;
+        FindObjectOfType<OldSoldiersManager>().turn2 = data.turn2;
 
-        manager.sword3 = data.sword3;
-        manager.arc3 = data.arc3;
-        manager.rid3 = data.rid3;
-        manager.turn3 = data.turn3;
+        FindObjectOfType<OldSoldiersManager>().sword3 = data.sword3;
+        FindObjectOfType<OldSoldiersManager>().arc3 = data.arc3;
+        FindObjectOfType<OldSoldiersManager>().rid3 = data.rid3;
+        FindObjectOfType<OldSoldiersManager>().turn3 = data.turn3;
 
-        manager.sword4 = data.sword4;
-        manager.arc4 = data.arc4;
-        manager.rid4 = data.rid4;
-        manager.turn4 = data.turn4;
+        FindObjectOfType<OldSoldiersManager>().sword4 = data.sword4;
+        FindObjectOfType<OldSoldiersManager>().arc4 = data.arc4;
+        FindObjectOfType<OldSoldiersManager>().rid4 = data.rid4;
+        FindObjectOfType<OldSoldiersManager>().turn4 = data.turn4;
 
-        manager.sword5 = data.sword5;
-        manager.arc5 = data.arc5;
-        manager.rid5 = data.rid5;
-        manager.turn5 = data.turn5;
+        FindObjectOfType<OldSoldiersManager>().sword5 = data.sword5;
+        FindObjectOfType<OldSoldiersManager>().arc5 = data.arc5;
+        FindObjectOfType<OldSoldiersManager>().rid5 = data.rid5;
+        FindObjectOfType<OldSoldiersManager>().turn5 = data.turn5;
 
-        manager.swordgilda1 = data.swordgilda1;
-        manager.arcgilda1 = data.arcgilda1;
-        manager.ridgilda1 = data.ridgilda1;
-        manager.tipologia1 = data.tipologia1;
-        manager.moltiplicatore1 = data.moltiplicatore1;
-        manager.turngilda1 = data.turngilda1;
+        FindObjectOfType<OldSoldiersManager>().swordgilda1 = data.swordgilda1;
+        FindObjectOfType<OldSoldiersManager>().arcgilda1 = data.arcgilda1;
+        FindObjectOfType<OldSoldiersManager>().ridgilda1 = data.ridgilda1;
+        FindObjectOfType<OldSoldiersManager>().tipologia1 = data.tipologia1;
+        FindObjectOfType<OldSoldiersManager>().moltiplicatore1 = data.moltiplicatore1;
+        FindObjectOfType<OldSoldiersManager>().turngilda1 = data.turngilda1;
 
-        manager.swordgilda2 = data.swordgilda2;
-        manager.arcgilda2 = data.arcgilda2;
-        manager.ridgilda2 = data.ridgilda2;
-        manager.tipologia2 = data.tipologia2;
-        manager.moltiplicatore2 = data.moltiplicatore2;
-        manager.turngilda2 = data.turngilda2;
+        FindObjectOfType<OldSoldiersManager>().swordgilda2 = data.swordgilda2;
+        FindObjectOfType<OldSoldiersManager>().arcgilda2 = data.arcgilda2;
+        FindObjectOfType<OldSoldiersManager>().ridgilda2 = data.ridgilda2;
+        FindObjectOfType<OldSoldiersManager>().tipologia2 = data.tipologia2;
+        FindObjectOfType<OldSoldiersManager>().moltiplicatore2 = data.moltiplicatore2;
+        FindObjectOfType<OldSoldiersManager>().turngilda2 = data.turngilda2;
     }
 
 

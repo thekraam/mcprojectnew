@@ -106,7 +106,7 @@ public class PrepBattaglia : MonoBehaviour
         preparazioneVittoriapan();
         resocontoBattagliaPanel.SetActive(true);
         //Debug.LogError("dopo l'attivazione del pannello");
-        Game.manager.salvasoldati(swordmencorrenti, archercorrenti, ridercorrenti, FindObjectOfType<Events>().terri);
+        FindObjectOfType<OldSoldiersManager>().salvasoldati(swordmencorrenti, archercorrenti, ridercorrenti, FindObjectOfType<Events>().terri);
     }
 
     private IEnumerator AvvioEffettiBattaglia()
