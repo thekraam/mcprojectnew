@@ -775,7 +775,8 @@ public class Events : MonoBehaviour
         if (response[0] == 1)
         {
 
-            player.setTempCitizens(30 * (Random.Range(1, 5))); // +30 * random 1-4
+            player.setRapidCitizens(30 * (Random.Range(1, 5))); // +30 * random 1-4
+
             if (Random.Range(0f,1f)<= 0.2f)
             {
                 string eventString3 = "One of the refugees holds a great amount of possessions.";
