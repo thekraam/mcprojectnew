@@ -226,14 +226,15 @@ public class GameData
         bonusTutorial = tutorial.bonusTutorial;
 
         /*events*/
-        aqueduct = events.aqueduct;
-        response = events.response[0];
-        citydefenseproject = events.citydefenseproject;
-        aqueductSecondary = events.aqueductSecondary;
-        aqueductTurnsLeft = events.aqueductTurnsLeft;
         attendingSecondaryEvent = events.attendingSecondaryEvent;
-        aqueductMalusTurnsLeft = events.aqueductMalusTurnsLeft;
-        aqueductMalus = events.aqueductMalus;
+
+        aqueduct = events.event1;
+        response = events.response[0];
+        citydefenseproject = events.event3;
+        aqueductSecondary = events.secondaryEvent1;
+        aqueductTurnsLeft = events.secondaryEvent1TurnsLeft;
+        aqueductMalusTurnsLeft = events.secondaryEvent1MalusTurnsLeft;
+        aqueductMalus = events.secondaryEvent1Malus == 1 ? true : false;
 
         /*farm*/
         farmLvl = fattoria.getLvlFattoria();

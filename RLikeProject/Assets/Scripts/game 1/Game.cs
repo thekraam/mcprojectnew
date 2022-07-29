@@ -1166,13 +1166,13 @@ public class Game : MonoBehaviour
         //FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
 
         /*events*/
-        FindObjectOfType<Events>().aqueduct = data.aqueduct;
+        FindObjectOfType<Events>().event1 = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;
-        FindObjectOfType<Events>().aqueductMalusTurnsLeft = data.aqueductMalusTurnsLeft;
-        FindObjectOfType<Events>().aqueductMalus = data.aqueductMalus;
-        FindObjectOfType<Events>().citydefenseproject = data.citydefenseproject;
-        FindObjectOfType<Events>().aqueductSecondary = data.aqueductSecondary;
-        FindObjectOfType<Events>().aqueductTurnsLeft = data.aqueductTurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent1MalusTurnsLeft = data.aqueductMalusTurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent1Malus = data.aqueductMalus ? 1 : 0;
+        FindObjectOfType<Events>().event3 = data.citydefenseproject;
+        FindObjectOfType<Events>().secondaryEvent1 = data.aqueductSecondary;
+        FindObjectOfType<Events>().secondaryEvent1TurnsLeft = data.aqueductTurnsLeft;
         FindObjectOfType<Events>().attendingSecondaryEvent = data.attendingSecondaryEvent;
 
         /*farm*/

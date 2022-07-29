@@ -29,7 +29,7 @@ public class OldSoldiersManager : MonoBehaviour
     public int rid5 = 0;
     public int turn5 = 0;
 
-    Dialogue dialogo = new Dialogue();
+    //Dialogue dialogo = new Dialogue();
 
     public void salvasoldati(Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, int terri)
     {
@@ -306,12 +306,12 @@ public class OldSoldiersManager : MonoBehaviour
         if (isDialogoPiccolo)
         {
             yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
-            dialogo.TriggerSmallDialogue(messaggi);
+            Dialogue.TriggerSmallDialogue(messaggi);
         }
         else
         {
             yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
-            dialogo.TriggerDialogue(messaggi);
+            Dialogue.TriggerDialogue(messaggi);
         }
         FindObjectOfType<AudioManager>().PlayEffectFaded(FindObjectOfType<Game>().guild_cameBack);
         yield return null;
