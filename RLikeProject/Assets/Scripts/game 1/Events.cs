@@ -92,7 +92,6 @@ public class Events : MonoBehaviour
     // pulsante start battle di battle preparation
     public void onPressStartBattle()
     {
-        finishedBattle = false;
 
         FindObjectOfType<PrepBattaglia>().AssegnaSoldati(); // soldati selezionati con gli sliders = soldati assegnati ai moment
 
@@ -235,6 +234,8 @@ public class Events : MonoBehaviour
     /* avviatore eventi, la funzione sceglie un evento casuale e non gia' avvenuto sulla base di alcuni criteri */
     public void EventStarter(Player player, Fattoria fattoria, Miniera miniera, Caserma caserma, Fabbro fabbro, Gilda gilda, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
     {
+        finishedBattle = false;
+
         response[1] = 0;
 
         this.player = player;
