@@ -194,6 +194,13 @@ public class Events : MonoBehaviour
             citizensMalus1 = (int)(0.4f * (float)fattoria.getCrescitaAbitanti()); // -40% popolazione
             aqueductMalusTurnsLeft--;
         }
+
+        if (bonusCitizens)
+        {
+            player.setTempCitizens(30*(Random.Range(1,5))); // +30 cittadini * random(1-4)
+            
+            bonusCitizens = false;
+        }
         //if (aqueductMalusTurnsLeft == 0)
         //{
         //    citizensMalus1 = 0;
@@ -296,6 +303,20 @@ public class Events : MonoBehaviour
             {
 
                 StartCoroutine(TriggerEvent4());
+                selected = true;
+                
+            }
+            if (eventChooser >= 5f && eventChooser < 6f)
+            {
+
+                StartCoroutine(TriggerBattleEvent5());
+                selected = true;
+                
+            }
+            if (eventChooser >= 6f && eventChooser < 7f)
+            {
+
+                StartCoroutine(TriggerEvent6());
                 selected = true;
                 
             }
@@ -628,4 +649,118 @@ public class Events : MonoBehaviour
         isEventDialogueClosed = true;
         
     }
+
+
+    //evento5
+
+    public int event5 = 0;
+
+
+    IEnumerator TriggerBattleEvent5()
+    {
+        
+        isEventDialogueClosed = false;
+        event5 = 1;
+
+        string eventString1 = "BattleEvent5";
+        string eventString2 = "b";
+        string eventString3 = "c";
+        string eventString4 = "d";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        // riguardo la fine, : 1 sconfitta grave, 2 sconfitta, 3 vittoria, 4 vittoria decisiva
+
+        if (response[0] == 1) // risponde si
+        {
+            if(Random.Range(0f,1f)<= 0.7f) 
+            { 
+                terri = 3; // assegnazione territorio di battaglia 
+                makeEnemyForEvent(20, 1, 10, 3, 0, 1); // creazione esercito nemico
+                FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+                yield return new WaitUntil(() => finishedBattle == true);
+
+                if(lastBattleInfo > 2)
+                {
+                    aemisFaith += 2;
+                }
+                else
+                {
+                    aemisFaith++;
+                }
+            }
+            else
+            {
+                terri = 4; // assegnazione territorio di battaglia 
+                makeEnemyForEvent(20, 1, (5*(player.getTurn()/2)), (3*(player.getTurn()/2)), 0, 1); // creazione esercito nemico
+                FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+                yield return new WaitUntil(() => finishedBattle == true);
+
+                if(lastBattleInfo > 2)
+                {
+                    aemisFaith += 2;
+                }
+                else
+                {
+                    aemisFaith++;
+                }
+            }
+        }
+        else
+        {
+            aemisFaith --;
+        }
+        isEventDialogueClosed = true;
+        yield return new WaitForSeconds(1.5f);
+    }
+
+
+    // evento 6
+
+
+    public int event6 = 0;
+    public bool bonusCitizens = false;
+
+    
+
+    IEnumerator TriggerEvent6()
+    {
+        isEventDialogueClosed = false;
+        event6 = 1;
+
+        string eventString1 = "TriggerEvent6";
+        string eventString2 = "b";
+        string eventString3 = "c";
+        string eventString4 = "d";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        dialogue.TriggerInteractiveDialogue(message);
+        
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+        
+        if (response[0] == 1)
+        {
+            
+            bonusCitizens = true;
+            if(Random.Range(0f,1f)<= 0.2f)
+            {
+                player.setRapidMoney(+300);
+            }
+        }
+        
+        isEventDialogueClosed = true;
+        yield return new WaitForSeconds(1.5f);
+    }
+
+
+
 }
