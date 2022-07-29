@@ -146,6 +146,21 @@ public class Events : MonoBehaviour
             goldMalus2 = -((int)(fattoria.getGoldFattoria() / 2) + (int)(miniera.getgoldMiniera() / 2));
             event4BonusTurnsLeft--;
         }
+        if (event7MalusTurnsLeft > 0)
+        {
+            goldMalus3 = (int)(miniera.getgoldMiniera());
+            event4BonusTurnsLeft--;
+        }
+        if (secondaryEvent3MalusEffectGoldTurnsLeft > 0)
+        {
+            goldMalus4 = (int)(fattoria.getGoldFattoria());
+            secondaryEvent3MalusEffectGoldTurnsLeft--;
+        }
+        if (secondaryEvent3MalusEffectGoldTurnsLeftMINE > 0)
+        {
+            goldMalus5 = (int)(miniera.getgoldMiniera());
+            secondaryEvent3MalusEffectGoldTurnsLeftMINE--;
+        }
 
 
         return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10;
@@ -155,16 +170,20 @@ public class Events : MonoBehaviour
         citizensMalus1 = 0; citizensMalus2 = 0; citizensMalus3 = 0; citizensMalus4 = 0; citizensMalus5 = 0;
         citizensMalus6 = 0; citizensMalus7 = 0; citizensMalus8 = 0; citizensMalus9 = 0; citizensMalus10 = 0;
 
-        if (secondaryEvent1TurnsLeft > 0 && secondaryEvent1Malus == 1)
+        if (secondaryEvent1MalusTurnsLeft > 0 && secondaryEvent1Malus == 1)
         {
             citizensMalus1 = (int)(0.4f * (float)fattoria.getCrescitaAbitanti()); // -40% popolazione
-            secondaryEvent1TurnsLeft--;
+            secondaryEvent1MalusTurnsLeft--;
         }
-
+        if (secondaryEvent3MalusEffectCitizensTurnsLeft > 0)
+        {
+            citizensMalus2 = fattoria.getCrescitaAbitanti();
+            secondaryEvent3MalusEffectCitizensTurnsLeft--;
+        }
         //if (bonusCitizens)
         //{
         //    player.setTempCitizens(30*(Random.Range(1,5))); // +30 cittadini * random(1-4)
-            
+
         //    bonusCitizens = false;
         //}
         //if (aqueductMalusTurnsLeft == 0)
@@ -206,6 +225,10 @@ public class Events : MonoBehaviour
         {
             StartCoroutine(SecondaryEvent2());
             skippingEventForOverlap = true;
+        }
+        if(secondaryEvent3 == 0 && secondaryEvent3TurnsLeft == 0 && !skippingEventForOverlap)
+        {
+            StartCoroutine(SecondaryEvent3());
         }
     }
 
@@ -284,6 +307,11 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent6());
                 selected = true;
             }
+            if(eventChooser >= 7f && eventChooser < 8f && player.getMoney() >= 300)
+            {
+                StartCoroutine(TriggerEvent7());
+                selected = true;
+            }
             
         }
 
@@ -319,7 +347,7 @@ public class Events : MonoBehaviour
         {
             player.setRapidMoney(-400);
         }
-        else if (secondaryEventProbability >= 0.5f)
+        else if (secondaryEventProbability > 0.5f)
         {
             attendingSecondaryEvent = true;
             secondaryEvent1 = 1;
@@ -406,7 +434,7 @@ public class Events : MonoBehaviour
         {
             elfsEnemy = 1; // variabile 'nemicoElfi'
             aemisFaith++;
-            if (woodsElvesValue <= 0.9f) // 90% di possibilita che si verifichi evento battaglia
+            if (woodsElvesValue < 0.9f) // 90% di possibilita che si verifichi evento battaglia
             {
                 terri = 3; // assegnazione territorio di battaglia 
                 int EventEswordsmen = 5 * Random.Range(1, 4);
@@ -756,7 +784,7 @@ public class Events : MonoBehaviour
                 string[] message2 = { eventString3, eventString4 };
 
                 Dialogue.TriggerDialogue(message2);
-                player.setRapidMoney(+300);
+                player.setRapidMoney(300);
             }
         }
 
@@ -764,6 +792,241 @@ public class Events : MonoBehaviour
         isEventDialogueClosed = true;
     }
 
+    // evento 7 - una frana blocca il passaggio alla miniera se non paghi per 3 turni non ricevi gold dalla miniera
 
 
+    public int event7 = 0;
+    public int event7MalusTurnsLeft = 0;
+
+    IEnumerator TriggerEvent7()
+    {
+        event7 = 1;
+
+        string eventString1 = "A landslide caused the inaccessibility to the mine and requires immediate attention.";
+        string eventString2 = "Are you willing to act in this regard?\n[You will spend 300 Gold]";
+
+        string[] message = { eventString1, eventString2 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-300);
+        }
+        else
+        {
+            string eventString3 = "The landslide interrupts the miners' job for three seasons.";
+
+            string[] message2 = { eventString3 };
+
+            Dialogue.TriggerInteractiveDialogue(message);
+            event7MalusTurnsLeft = 3;
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    // evento 8 - dei banditi si sono impossessati di una rotta commerciale, intervieni o no?
+
+
+    public int event8 = 0;
+    public int secondaryEvent3 = 0;
+    public int secondaryEvent3TurnsLeft = 99;
+
+    IEnumerator TriggerEvent8()
+    {
+        event8 = 1;
+
+        float secondaryEventProbability = Random.Range(0f, 1f);
+        float floatingProbability = 0.6f;
+
+        string eventString1 = "Some bandits have taken possess of one of your trade routes and threaten raids towards your city.";
+        string eventString2 = "Are you willing to act in this regard and send an expedition to punish them?\n[The expedition has no cost]";
+
+        string[] message = { eventString1, eventString2 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            int captainLVL = Random.Range(1, 5);
+            int swordsmen = 5 * Random.Range(1, 7);
+            int archers = 2 * Random.Range(1, 6);
+            int riders = 1 * Random.Range(1, 5);
+            terri = 3;
+            makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
+
+            FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+            yield return new WaitUntil(() => finishedBattle);
+
+            if(lastBattleInfo > 3)
+            {
+                string eventString3 = "The expedition returns victorious and the roads are now free to use.";
+                string eventString4 = "Your soldiers claim that the bandits fled as were leaving behind most of their possessions.[You obtain 3000 Gold worth of possessions]";
+
+                string[] message2 = { eventString3, eventString4 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                player.setRapidMoney(3000);
+            }
+            else if (lastBattleInfo == 3)
+            {
+                string eventString3 = "The expedition returns victorious and the roads are now free to use.";
+                string eventString4 = "Your soldiers claim that the bandits fled as were leaving behind some of their provisions.[You obtain 1000 Gold worth of provisions]";
+
+                string[] message2 = { eventString3, eventString4 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                player.setRapidMoney(1000);
+            }
+            else if (lastBattleInfo == 2)
+            {
+                floatingProbability = 0.1f;
+            }
+            else if (lastBattleInfo == 1)
+            {
+                floatingProbability = 0.9f;
+            }
+        }
+        if ((secondaryEventProbability < floatingProbability && response[0] == 0) || (secondaryEventProbability < floatingProbability && (floatingProbability==0.1f || floatingProbability==0.9f)))
+        {
+            secondaryEvent3 = 1;
+            secondaryEvent3TurnsLeft = 2;
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* evento secondario 3 - i banditi ignorati si mettono a distruggere e saccheggiare le campagne attorno alla città, il giocatore deve prendere varie decisioni sulla situazione */
+
+    public int secondaryEvent3MalusEffectGoldTurnsLeft = 0;
+    public int secondaryEvent3MalusEffectCitizensTurnsLeft = 0;
+    public int secondaryEvent3MalusEffectGoldTurnsLeftMINE = 0;
+
+    IEnumerator SecondaryEvent3()
+    {
+        secondaryEvent3 = 0;
+        isEventDialogueClosed = false;
+        bool youHaveBeenDestroyed = false;
+
+        string eventString1 = "A group of bandits is assaulting and raiding properties outside the city.";
+        string eventString2 = "Your military advisor suggests to fight them and protect your citizens.";
+        string eventString3 = "Are you following his advice?";
+
+        string[] message = { eventString1, eventString2, eventString3 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(true));
+        yield return new WaitUntil(() => response[1] == 1);
+
+
+        if (response[0] == 1)
+        {
+            int captainLVL = Random.Range(1, 5);
+            int swordsmen = 8 * Random.Range(1, 7);
+            int archers = 4 * Random.Range(1, 6);
+            int riders = 2 * Random.Range(1, 5);
+            terri = 2;
+
+            makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
+
+            FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+            yield return new WaitUntil(() => finishedBattle);
+            
+            if(lastBattleInfo > 2)
+            {
+                string eventString4 = "Your soldiers return victorious and the roads are now free to use.";
+                string eventString5 = "They soldiers claim that the bandits fled as were leaving behind some of their provisions.[You obtain 1000 Gold worth of provisions]";
+
+                string[] message2 = { eventString4, eventString5 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                player.setRapidMoney(1000);
+            }
+            else if (lastBattleInfo <= 2)
+            {
+                string eventString4 = "Your army retires as you witness the destruction of all the fields around the city.";
+                string eventString5 = "You understand that your city will need time to recover.[Gold income and Population growth from the Farm are momentarily reduced to zero]";
+
+                string[] message2 = { eventString4, eventString5 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                secondaryEvent3MalusEffectGoldTurnsLeft = 2;
+                secondaryEvent3MalusEffectCitizensTurnsLeft = 2;
+
+                if (lastBattleInfo == 1) youHaveBeenDestroyed = true; 
+            }
+        }
+        if (response[0]==0 || youHaveBeenDestroyed)
+        {
+            if (response[0] == 0)
+            {
+                secondaryEvent3MalusEffectGoldTurnsLeft = 2;
+                secondaryEvent3MalusEffectCitizensTurnsLeft = 2;
+
+                string eventString4 = "Your army retires back to the city as you witness the destruction of all the fields around the city.";
+                string eventString5 = "You understand that your city will need time to recover.[Gold income and Population growth from the Farm are momentarily reduced to zero]";
+
+                string[] message2 = { eventString4, eventString5 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
+                yield return new WaitForSeconds(0.5f);
+            }
+
+            if (Random.Range(0f, 1f) < 0.5)
+            {
+                string eventString6 = "The Bandits started an assault towards the city.";
+                string eventString7 = "You have to fight for the sake of your city.";
+
+                string[] message3 = { eventString6, eventString7 };
+
+                Dialogue.TriggerDialogue(message3);
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
+
+
+                yield return new WaitForSeconds(0.5f);
+                terri = 1;
+                FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+                yield return new WaitUntil(() => finishedBattle);
+
+                if (lastBattleInfo < 3)
+                {
+                    string eventString8 = "The city is being devastated as most of your citizens are being killed and houses burned down or destroyed.";
+                    string eventString9 = "The treasury has been emptied along with most of the houses.";
+                    string eventString10 = "[You lost " + (int)(player.getMoney() * 0.9) + " Gold and the population has been halved. The population growth and your Mine income are momentarily nullified]";
+
+                    string[] message4 = { eventString8, eventString9, eventString10 };
+
+                    Dialogue.TriggerDialogue(message4);
+
+                    player.setRapidMoney(-(int)(player.getMoney() * 0.9));
+                    player.setRapidCitizens(-(int)(player.getCitizens() / 2));
+
+                    secondaryEvent3MalusEffectGoldTurnsLeftMINE = 2;
+                }
+            }
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
 }

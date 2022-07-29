@@ -78,6 +78,11 @@ public class Player : MonoBehaviour
         temp_player_citizens = 0;
     }
 
+    public void setRapidCitizens(int modifier)
+    {
+        player_citizens += modifier;
+    }
+
     public int getTempCitizens()
     {
         return temp_player_citizens;
