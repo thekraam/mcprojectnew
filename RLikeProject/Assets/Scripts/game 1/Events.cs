@@ -79,6 +79,9 @@ public class Events : MonoBehaviour
     public int elfsEnemy = 0;
     public int forestDiplomacy = 0;
 
+    public int ancientGreenJewel = 0;
+    public int blackCrystal = 0;
+
 
     public void makeEnemyForEvent(int livello, int swordsmen, string swordsmenAlias, string swordsmenAliasSingular, int archers, string archersAlias, string archersAliasSingular, int riders, string ridersAlias, string ridersAliasSingular, int lvlCapitano)
     {
@@ -204,6 +207,11 @@ public class Events : MonoBehaviour
         {
             citizensMalus3 = (int)(0.5f * (float)fattoria.getCrescitaAbitanti()); // -50% crescita abitanti
             event17MalusTurnsLeft--;
+        }
+        if (event21MalusTurnsLeft > 0)
+        {
+            citizensMalus4 = fattoria.getCrescitaAbitanti(); // -100% crescita abitanti
+            event21MalusTurnsLeft--;
         }
         //if (bonusCitizens)
         //{
@@ -388,6 +396,32 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent2());
                 selected = true;
             }
+            if (eventChooser >= 16f && eventChooser < 17f && event9 == 0)
+            {
+                StartCoroutine(TriggerEvent9());
+                selected = true;
+            }
+            if (eventChooser >= 17f && eventChooser < 18f && event10 == 0)
+            {
+                StartCoroutine(TriggerEvent10());
+                selected = true;
+            }
+            if (eventChooser >= 18f && eventChooser < 19f && event19 == 0)
+            {
+                StartCoroutine(TriggerEvent19());
+                selected = true;
+            }
+            if(eventChooser >= 19f && eventChooser < 20f && aemisFaith < 6 && event20 == 0)
+            {
+                StartCoroutine(TriggerEvent20());
+                selected = true;
+            }
+            if (eventChooser >= 20f && eventChooser < 21f && player.getMoney() >= 400 && event1 == 0 && event21 == 0)
+            {
+                StartCoroutine(TriggerEvent21());
+                selected = true;
+            }
+
             else
             {
                 selected = true;
@@ -1148,11 +1182,9 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
-            //DA CAPIRE COME AGGIUNGERE GOLD PER TURNO +100
+            
             event9BonusTurnsLeft = 99;
             forestDiplomacy = 1;
-
-            // E SE ESISTE LA VARIABILE diplomaziaForesta = 1
             aemisFaith--;
         }
 
@@ -1190,7 +1222,7 @@ public class Events : MonoBehaviour
         }
         else //altrimenti tieni la pietra
         {
-            // VARIABILE cristalloNero =1
+            blackCrystal = 1;
         }
 
         yield return new WaitForSeconds(1f);
@@ -1648,6 +1680,250 @@ public class Events : MonoBehaviour
             event2MalusTurnsLeft = 4;
         }
 
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 19 - un uomo misterioso appare in città
+
+    // DA FINIRE!!
+
+    public int event19 = 0;
+
+    IEnumerator TriggerEvent19()
+    {
+        event19 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+        string eventString5 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1) //accoglienza
+        {
+            aemisFaith -= 2;
+
+            string eventString6 = "";
+            string eventString7 = "";
+            string eventString8 = "";
+            string eventString9 = "";
+
+            string[] message3 = { eventString6, eventString7, eventString8, eventString9 };
+
+            Dialogue.TriggerInteractiveDialogue(message3);
+
+            StartCoroutine(ResponseUpdater(false));
+            yield return new WaitUntil(() => response[1] == 1);
+
+            if (response[0] == 1)
+            {
+                string eventString10 = "";
+                string eventString11 = "";
+                string eventString12 = "";
+                string eventString13 = "";
+
+                string[] message2 = { eventString10, eventString11, eventString12, eventString13 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                ancientGreenJewel = 1;
+
+            }
+            else
+            {
+                string eventString14 = "";
+                string eventString15 = "";
+
+                string[] message2 = { eventString14, eventString15 };
+
+                Dialogue.TriggerDialogue(message2);
+            }
+
+        }
+        else //condanna
+        {
+            string eventString6 = "";
+            string eventString7 = "";
+
+            string[] message2 = { eventString6, eventString7 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            aemisFaith += 2;
+            
+        }
+
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * ----------------------------- SOLO SE aemisFaith < 6 ---------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 20 ---- SOLO SE aemisFaith < 6 --- una risa tra i fedeli di Aemis e un gruppo non fedele ha provocato gravi disagi
+
+    // DA FINIRE!!
+
+    public int event20 = 0;
+
+    IEnumerator TriggerEvent20()
+    {
+        event20 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+        string eventString5 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            aemisFaith -= 10;
+            aemisRebel = 1;
+        }
+        else
+        {
+            aemisFaith += 1;
+
+            string eventString7 = "";
+            string eventString8 = "";
+
+            string[] message2 = { eventString7, eventString8 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            player.setRapidMoney(-300);
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * ----------------------------- SOLO SE event1 == 0 ---------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 21 ---- SOLO SE event1 == 0 --- le acque della città son diventate torbide dopo una tempesta
+
+    // DA FINIRE!!
+
+    public int event21 = 0;
+    public int event21MalusTurnsLeft = 0;
+
+    IEnumerator TriggerEvent21()
+    {
+        event21 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+        string eventString5 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-400);
+        }
+        else
+        {
+            string eventString7 = "";
+            string eventString8 = "";
+
+            string[] message2 = { eventString7, eventString8 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            event21MalusTurnsLeft = 3;
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * ----------------------------- SOLO SE blackCrystal == 1 ---------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 22 ---- SOLO SE blackCrystal == 1 --- un strano rumore durante la notte
+
+    // DA FINIRE!!
+
+    public int event22 = 0;
+    
+
+    IEnumerator TriggerEvent22()
+    {
+        event22 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+        string eventString5 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)   //indagare
+        {
+            string eventString6 = "";
+            string eventString7 = "";
+
+            string[] message2 = { eventString6, eventString7 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            // DA AGGIUNGERE
+            // atk capitano +10
+            // def capitano +10
+
+
+        }
+        else //liberartene
+        {
+            string eventString7 = "";
+            string eventString8 = "";
+
+            string[] message2 = { eventString7, eventString8 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            player.setRapidMoney(500);
+        }
 
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
