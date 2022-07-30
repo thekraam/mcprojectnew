@@ -15,6 +15,9 @@ public class Events : MonoBehaviour
     private Fabbro fabbro;
     private Gilda gilda;
 
+    /* oggetto per sostiuzione immagine */
+    LoadImage LoadImage = new LoadImage();
+
     /* variabile di controllo risposta avvenuta decisione giocatore, [0] contenente la risposta (0 o 1), [1] contenente l'avvenuto check (1 se si, 0 altrimenti) */
     public int[] response = new int[2];
 

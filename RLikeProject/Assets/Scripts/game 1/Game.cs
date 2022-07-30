@@ -231,6 +231,7 @@ public class Game : MonoBehaviour
 
     public void Start()
     {
+
         // musica on
         //FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
 
