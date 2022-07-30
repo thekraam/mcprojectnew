@@ -125,6 +125,7 @@ public class Events : MonoBehaviour
         if (secondaryEvent1TurnsLeft > 0) secondaryEvent1TurnsLeft--;
         if (secondaryEvent2TurnsLeft > 0) secondaryEvent2TurnsLeft--;
         if (secondaryEvent3TurnsLeft > 0) secondaryEvent3TurnsLeft--;
+        if (secondaryEvent4TurnsLeft > 0) secondaryEvent4TurnsLeft--;
     }
 
     public void MaxCitizensEffects()
@@ -149,7 +150,7 @@ public class Events : MonoBehaviour
         if (event7MalusTurnsLeft > 0)
         {
             goldMalus3 = (int)(miniera.getgoldMiniera());
-            event4BonusTurnsLeft--;
+            event7MalusTurnsLeft--;
         }
         if (secondaryEvent3MalusEffectGoldTurnsLeft > 0)
         {
@@ -161,7 +162,11 @@ public class Events : MonoBehaviour
             goldMalus5 = (int)(miniera.getgoldMiniera());
             secondaryEvent3MalusEffectGoldTurnsLeftMINE--;
         }
-
+        if (event15MalusTurnsLeft > 0)
+        {
+            goldMalus6 = (int)(0.3f * (float)miniera.getgoldMiniera());
+            event15MalusTurnsLeft--;
+        }
 
         return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10;
     }
@@ -179,6 +184,11 @@ public class Events : MonoBehaviour
         {
             citizensMalus2 = fattoria.getCrescitaAbitanti();
             secondaryEvent3MalusEffectCitizensTurnsLeft--;
+        }
+        if (event17MalusTurnsLeft > 0 )
+        {
+            citizensMalus3 = (int)(0.5f * (float)fattoria.getCrescitaAbitanti()); // -50% crescita abitanti
+            event17MalusTurnsLeft--;
         }
         //if (bonusCitizens)
         //{
@@ -231,6 +241,11 @@ public class Events : MonoBehaviour
         if(secondaryEvent3 == 1 && secondaryEvent3TurnsLeft == 0 && !skippingEventForOverlap)
         {
             StartCoroutine(SecondaryEvent3());
+            skippingEventForOverlap = true;
+        }
+        if(secondaryEvent4 == 1 && secondaryEvent4TurnsLeft == 0 && !skippingEventForOverlap)
+        {
+            StartCoroutine(SecondaryEvent4());
             skippingEventForOverlap = true;
         }
     }
@@ -321,6 +336,36 @@ public class Events : MonoBehaviour
             if (eventChooser >= 8f && eventChooser < 9f && hasEnoughSoldiers(15) && event8 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent8());
+                selected = true;
+            }
+            if (eventChooser >= 9f && eventChooser < 10f && player.getMoney() >= 100 && event11 == 0) 
+            {
+                StartCoroutine(TriggerEvent11());
+                selected = true;
+            }
+            if (eventChooser >= 10f && eventChooser < 11f && player.getMoney() >= 1000 && event13 == 0) 
+            {
+                StartCoroutine(TriggerEvent13());
+                selected = true;
+            }
+            if (eventChooser >= 11f && eventChooser < 12f && aemisFaith <= 2 && player.getMoney() >= 400 && event15 == 0) 
+            {
+                StartCoroutine(TriggerEvent15());
+                selected = true;
+            }
+            if (eventChooser >= 12f && eventChooser < 13f && event16 == 0) 
+            {
+                StartCoroutine(TriggerEvent16());
+                selected = true;
+            }
+            if (eventChooser >= 13f && eventChooser < 14f && player.bonusWall == 0 && player.getMoney() >= 500 && event17 == 0) 
+            {
+                StartCoroutine(TriggerEvent17());
+                selected = true;
+            }
+            if (eventChooser >= 14f && eventChooser < 15f && player.getMoney() >= 1000 && event18 == 0) 
+            {
+                StartCoroutine(TriggerEvent18());
                 selected = true;
             }
             else
@@ -566,6 +611,8 @@ public class Events : MonoBehaviour
                 string[] message2 = { eventString5, eventString6, eventString7 };
 
                 Dialogue.TriggerDialogue(message2);
+
+                player.setRapidMoney(5000);
             }
             else
             {
@@ -840,7 +887,7 @@ public class Events : MonoBehaviour
 
             string[] message2 = { eventString3 };
 
-            Dialogue.TriggerDialogue(message);
+            Dialogue.TriggerDialogue(message2);
             event7MalusTurnsLeft = 3;
         }
 
@@ -1053,4 +1100,446 @@ public class Events : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
     }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 9 - richiesta di commercio dall'ambasciatore delle creature della foresta
+    
+    // DA FINIRE!!
+
+    public int event9 = 0;
+
+    IEnumerator TriggerEvent9()
+    {
+        event9 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+
+        string[] message = { eventString1, eventString2 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            //DA CAPIRE COME AGGIUNGERE GOLD PER TURNO +100
+
+            // E SE ESISTE LA VARIABILE diplomaziaForesta = 1
+            aemisFaith--;
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 10 - nella miniera sono state trovate delle pietre preziose
+    
+    // DA FINIRE!!
+
+    public int event10 = 0;
+
+    IEnumerator TriggerEvent10()
+    {
+        event10 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+
+        string[] message = { eventString1, eventString2 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(1500);
+        }
+        else //altrimenti tieni la pietra
+        {
+            // VARIABILE cristalloNero =1
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 11 - un gruppo di cavalieri di Aemis si presenta in città
+    
+    // DA FINIRE!!
+
+    public int event11 = 0;
+
+    IEnumerator TriggerEvent11()
+    {
+        event11 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-100);
+            aemisFaith += 2;
+        }
+        else 
+        {
+            string eventString5 = "";
+            string eventString6 = "";
+            
+
+            string[] message1 = { eventString5, eventString6 };
+
+            Dialogue.TriggerInteractiveDialogue(message1);
+
+            StartCoroutine(ResponseUpdater(false));
+            yield return new WaitUntil(() => response[1] == 1);
+                
+            if (response[0] == 1)
+            {
+                player.setRapidMoney(-100);
+            }
+            else
+            {
+                string eventString7 = "";
+                string eventString8 = "";
+
+                string[] message2 = { eventString7, eventString8 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                aemisFaith += 3;
+
+                aemisKnightsHostility = 1;
+            }
+
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 13 - i cittadini chiedono più finanziamenti per proteggere i campi
+    
+    // DA FINIRE!!
+
+    public int event13 = 0;
+
+    IEnumerator TriggerEvent13()
+    {
+        event13 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-1000);
+            player.bonusCity += 0.3f;  // bonusCity + 30%
+        }
+        
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * ----------------------------- SOLO SE aemisFaith <= 2 --------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 15 ---- SOLO SE aemisFaith <= 2 --- un sacerdote chiede di offrire una parte del raccolto dei prossimi anni
+    
+    // DA FINIRE!!
+
+    public int event15 = 0;
+
+    public int event15MalusTurnsLeft = 0;
+
+    IEnumerator TriggerEvent15()
+    {
+        event15 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-400);
+            
+            event15MalusTurnsLeft = 3;                    //-30% guadagno gold della fattoria per 3 turni
+            aemisFaith += 2;
+        }
+        else
+        {
+            aemisFaith--;
+        }
+        
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+    
+    // evento secondario 4 -  il ricercatore ritorna dicendo di aver trovato i resti di un tempio
+    
+    // DA FINIRE!!
+
+    public int secondaryEvent4 = 0;
+    public int secondaryEvent4TurnsLeft = 99;
+
+    IEnumerator SecondaryEvent4()
+    {
+        secondaryEvent4 = 0;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 0)
+        {
+            string eventString5 = "";
+            string eventString6 = "";
+
+            string[] message2 = { eventString5, eventString6 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            aemisFaith -= 2;
+            player.setRapidMoney(3000);
+
+        }
+        else
+        {
+            aemisFaith++;
+        }
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 16 -  un ricercatore ha trovato in un bosco uno strano altare 
+    
+    // DA FINIRE!!
+
+    public int event16 = 0;
+
+    IEnumerator TriggerEvent16()
+    {
+        event16 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            string eventString5 = "";
+            string eventString6 = "";
+
+            string[] message1 = { eventString5, eventString6 };
+
+            Dialogue.TriggerInteractiveDialogue(message1);
+
+            StartCoroutine(ResponseUpdater(false));
+            yield return new WaitUntil(() => response[1] == 1);
+
+            if(response[0] == 0) //se rifiuta
+            {
+                aemisFaith--;
+                secondaryEvent4 = 1;
+                secondaryEvent4TurnsLeft = 2;
+            }
+        }
+        else
+        {
+            aemisFaith++;
+        }
+        
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * ----------------------------- SOLO SE bonusWall == 0 ---------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 17 ---- SOLO SE bonusWall == 0 --- il guildmaster è preocupato per le difese delle mura
+    
+    // DA FINIRE!!
+
+    public int event17 = 0;
+
+    public int event17MalusTurnsLeft = 0;
+
+    IEnumerator TriggerEvent17()
+    {
+        event17 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-500);
+            
+            player.bonusWall += 0.2f;   //+20% bonusWall
+        }
+        else
+        {
+            string eventString5 = "";
+            string eventString6 = "";
+
+            string[] message2 = { eventString5, eventString6 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            event17MalusTurnsLeft = 4;             //-50% crescita abitanti per 4 turni
+        }
+        
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 18 - il guildmaster è preocupato per le difese delle mura
+    
+    // DA FINIRE!!
+
+    public int event18 = 0;
+
+    IEnumerator TriggerEvent18()
+    {
+        event18 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            string eventString5 = "";
+            string eventString6 = "";
+
+            string[] message2 = { eventString5, eventString6 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            aemisFaith += 3;
+            player.setRapidMoney(-1000);
+        }
+        else
+        {
+            string eventString7 = "";
+            string eventString8 = "";
+            string eventString9 = "";
+
+            string[] message3 = { eventString7, eventString8, eventString9};
+
+            Dialogue.TriggerInteractiveDialogue(message3);
+
+            StartCoroutine(ResponseUpdater(false));
+            yield return new WaitUntil(() => response[1] == 1);
+
+            if (response[0] == 1)
+            {
+                player.setRapidMoney(-1000);
+                player.player_citizensMAX += 100;   // da rivedere
+                player.setPopulation((player.getPopulation()+30) > player.getCitizensMax() ? player.getCitizensMax() : player.getPopulation() + 30); // +30
+                swordsmen.setRapidTotal(10); // +10 swordman   da rivedere
+
+            }
+        }
+        
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+
 }
