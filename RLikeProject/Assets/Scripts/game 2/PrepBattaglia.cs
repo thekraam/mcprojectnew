@@ -349,28 +349,28 @@ public class PrepBattaglia : MonoBehaviour
         string soldati3 = "";
 
 
-        if (s == 0 || s == 1)
+        if (s == 1)
         {
             soldati1 = "" + s + " swordsman\n";
         }
-        if (s > 0)
+        if (s == 0 || s > 1)
         {
             soldati1 = "" + s + " swordsmen\n";
         }
-        if (a == 0 || a == 1)
+        if (a == 1)
         {
             soldati2 = "" + a + " archer\n";
         }
-        if (a > 0)
+        if (a == 0 || a > 1)
         {
             soldati2 = "" + a + " archers\n";
         }
 
-        if (r == 0 || r == 1)
+        if (r == 1)
         {
             soldati3 = "" + r + " rider";
         }
-        if (r > 0)
+        if (r == 0 || r > 1)
         {
             soldati3 = "" + r + " riders";
         }
@@ -381,31 +381,31 @@ public class PrepBattaglia : MonoBehaviour
         string esoldati2 = "";
         string esoldati3 = "";
 
-        if (es == 0 || es == 1)
+        if ((es == 1) && FindObjectOfType<Game>().eswordsmen.aliasSingular != "nul")
         {
-            esoldati1 = "" + es + " swordsman\n";
+            esoldati1 = "" + es +" " + FindObjectOfType<Game>().eswordsmen.aliasSingular + "\n";
         }
-        if (es > 0)
+        if ((es > 1 || es == 0) && FindObjectOfType<Game>().eswordsmen.aliasSingular != "nul")
         {
-            esoldati1 = "" + es + " swordsmen\n";
-        }
-
-        if (ea == 0 || ea == 1)
-        {
-            esoldati2 = "" + ea + " archer\n";
-        }
-        if (ea > 0)
-        {
-            esoldati2 = "" + ea + " archers\n";
+            esoldati1 = "" + es + " " + FindObjectOfType<Game>().eswordsmen.alias + "\n";
         }
 
-        if (er == 0 || er == 1)
+        if (( ea == 1) && FindObjectOfType<Game>().earchers.aliasSingular != "nul")
         {
-            esoldati3 = "" + er + " rider";
+            esoldati2 = "" + ea + " " + FindObjectOfType<Game>().earchers.aliasSingular + "\n";
         }
-        if (er > 0)
+        if ((ea > 1 || ea == 0) && FindObjectOfType<Game>().earchers.aliasSingular != "nul")
         {
-            esoldati3 = "" + er + " riders";
+            esoldati2 = "" + ea + " " + FindObjectOfType<Game>().earchers.alias + "\n";
+        }
+
+        if ((er == 1) && FindObjectOfType<Game>().eriders.aliasSingular != "nul")
+        {
+            esoldati3 = "" + er + " " + FindObjectOfType<Game>().eriders.aliasSingular;
+        }
+        if ((er == 0 || er > 1) && FindObjectOfType<Game>().eriders.aliasSingular != "nul")
+        {
+            esoldati3 = "" + er + " " + FindObjectOfType<Game>().eriders.alias;
         }
 
         soldatiEnemy.text = "" + esoldati1 + esoldati2 + esoldati3;

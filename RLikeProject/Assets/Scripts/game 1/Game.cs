@@ -1330,9 +1330,9 @@ public class Game : MonoBehaviour
     public Enemy.ERiders eriders = new Enemy.ERiders();
 
     
-    public void makeEnemy(int totale, int livello, int swordmen, int archers, int riders, int lvlcapitano)
+    public void makeEnemy(int livello, int swordmen, string swordmenAlias, string swordsmenAliasSingular, int archers, string archersAlias, string archersAliasSingular, int riders, string ridersAlias, string ridersAliasSingular, int lvlCapitano)
     {
-        enemy.creazione(totale, livello, swordmen, archers, riders, lvlcapitano, enemyCapitano, eswordsmen, earchers, eriders);
+        enemy.creazione(livello, swordmen, archers, riders, swordmenAlias, swordsmenAliasSingular, archersAlias, archersAliasSingular, ridersAlias, ridersAliasSingular, lvlCapitano, enemyCapitano, eswordsmen, earchers, eriders);
     }
     public void makeCaptain(int lvl)
     {

@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
 
     public class ESwordsmen
     {
+        public string alias = "swordsmen";
+        public string aliasSingular = "swordsman";
+
         public int total_swordsmen = 0;
         public int atk_swordsmen = 5;
         public int def_swordsmen = 8;
@@ -87,6 +90,9 @@ public class Enemy : MonoBehaviour
     }
     public class EArchers
     {
+        public string alias = "archers";
+        public string aliasSingular = "archer";
+
         public int total_archers = 0;
         public int atk_archers = 9;
         public int def_archers = 3;
@@ -164,6 +170,9 @@ public class Enemy : MonoBehaviour
 
     public class ERiders
     {
+        public string alias = "riders";
+        public string aliasSingular = "rider";
+
         public int total_riders = 0;
         public int atk_riders = 8;
         public int def_riders = 5;
@@ -248,9 +257,19 @@ public class Enemy : MonoBehaviour
 
 
     //------------------------------------------------------creazione-----------------------------------------------------------------
-    public void creazione(int totale, int livello, int swordmen, int archers, int riders, int lvlcapitano, Captain2 enemyCapitano, ESwordsmen swordman, EArchers archer, ERiders rider)
+    public void creazione(int livello, int swordmen, int archers, int riders, string swordmenAlias, string swordmenAliasSingular, string archersAlias, string archersAliasSingular, string ridersAlias, string ridersAliasSingular, int lvlcapitano, Captain2 enemyCapitano, ESwordsmen swordman, EArchers archer, ERiders rider)
     {
-        totalSoldier = totale;
+        swordman.alias = swordmenAlias;
+        swordman.aliasSingular = swordmenAliasSingular;
+
+        archer.alias = archersAlias;
+        archer.aliasSingular = archersAliasSingular;
+
+        rider.alias = ridersAlias;
+        rider.aliasSingular = ridersAliasSingular;
+
+
+        totalSoldier = swordmen + archers + riders;
         lvl = livello;
         swordman.reset();
         archer.reset();

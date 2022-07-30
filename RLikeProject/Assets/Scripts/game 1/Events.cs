@@ -77,11 +77,17 @@ public class Events : MonoBehaviour
 
     /* variabili generali */
     public int elfsEnemy = 0;
+    public int forestDiplomacy = 0;
 
 
-    public void makeEnemyForEvent(int totale, int livello, int swordsmen, int archers, int riders, int lvlCapitano)
+    public void makeEnemyForEvent(int livello, int swordsmen, string swordsmenAlias, string swordsmenAliasSingular, int archers, string archersAlias, string archersAliasSingular, int riders, string ridersAlias, string ridersAliasSingular, int lvlCapitano)
     {
-        FindObjectOfType<Game>().makeEnemy(totale, livello, swordsmen, archers, riders, lvlCapitano);
+        FindObjectOfType<Game>().makeEnemy(livello, swordsmen, swordsmenAlias, swordsmenAliasSingular, archers, archersAlias, archersAliasSingular, riders, ridersAlias, ridersAliasSingular, lvlCapitano);
+    }
+
+    public void makeEnemyForEvent(int livello, int swordsmen, int archers, int riders, int lvlCapitano)
+    {
+        FindObjectOfType<Game>().makeEnemy(livello, swordsmen, "swordsmen", "swordsman", archers, "archers", "archer", riders, "riders", "rider", lvlCapitano);
     }
 
     public void onPressCloseVictoryDefeatPanel()
@@ -166,6 +172,15 @@ public class Events : MonoBehaviour
         {
             goldMalus6 = (int)(0.3f * (float)miniera.getgoldMiniera());
             event15MalusTurnsLeft--;
+        }
+        if (event9BonusTurnsLeft > 0)
+        {
+            goldMalus7 = -100;
+        }
+        if (event2MalusTurnsLeft > 0)
+        {
+            goldMalus8 = fattoria.getGoldFattoria();
+            event2MalusTurnsLeft--;
         }
 
         return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10;
@@ -368,6 +383,11 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent18());
                 selected = true;
             }
+            if (eventChooser >= 15f && eventChooser < 16f && event2 == 0)
+            {
+                StartCoroutine(TriggerEvent2());
+                selected = true;
+            }
             else
             {
                 selected = true;
@@ -461,7 +481,7 @@ public class Events : MonoBehaviour
         if(response[0] == 1) // risponde si
         {
             terri = 2; // assegnazione territorio di battaglia 
-            makeEnemyForEvent(20, 1, 5, 5, 10, 1); // creazione esercito nemico
+            makeEnemyForEvent(1, 5, 5, 10, 1); // creazione esercito nemico
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
             yield return new WaitUntil(() => finishedBattle == true);
@@ -501,7 +521,7 @@ public class Events : MonoBehaviour
                 int EventEswordsmen = 5 * Random.Range(1, 4);
                 int EventEarchers = 3 * Random.Range(1, 3);
                 int EventEriders = 0;
-                makeEnemyForEvent(EventEswordsmen + EventEarchers + EventEriders, 1, EventEswordsmen, EventEarchers, EventEriders, 1); // creazione esercito nemico
+                makeEnemyForEvent(1, EventEswordsmen, EventEarchers, EventEriders, 1); // creazione esercito nemico
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
                 yield return new WaitUntil(() => finishedBattle == true); 
@@ -578,7 +598,7 @@ public class Events : MonoBehaviour
         if (response[0] == 1) // risponde si
         {
             player.setRapidMoney(-(int)((player.getMoney()) / 2));
-            player.setPopulation((player.getPopulation()-40)<0 ? 0 : (player.getPopulation()-40));
+            player.setRapidCitizens(-40);
 
             aemisFaith = 0;
 
@@ -594,7 +614,7 @@ public class Events : MonoBehaviour
         else
         {
             terri = 1;
-            makeEnemyForEvent(70, 2, 40, 20, 10, 4);
+            makeEnemyForEvent(2, 40, 20, 10, 4);
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
             yield return new WaitUntil(() => finishedBattle == true);
@@ -737,7 +757,7 @@ public class Events : MonoBehaviour
             if(Random.Range(0f,1f)<= 0.7f) 
             { 
                 terri = 3; // assegnazione territorio di battaglia 
-                makeEnemyForEvent(13, 1, 10, 3, 0, 1); // creazione esercito nemico
+                makeEnemyForEvent(1, 10, 3, 0, 1); // creazione esercito nemico
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
                 yield return new WaitUntil(() => finishedBattle == true);
@@ -769,7 +789,7 @@ public class Events : MonoBehaviour
             else
             {
                 terri = 4; // assegnazione territorio di battaglia 
-                makeEnemyForEvent((5 * (player.getTurn() / 2)) + (3 * (player.getTurn() / 2)), 1, (5*(player.getTurn()/2)), (3*(player.getTurn()/2)), 0, 1); // creazione esercito nemico
+                makeEnemyForEvent(1, (5*(player.getTurn()/2)), (3*(player.getTurn()/2)), 0, 1); // creazione esercito nemico
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
                 yield return new WaitUntil(() => finishedBattle == true);
@@ -837,8 +857,8 @@ public class Events : MonoBehaviour
         
         if (response[0] == 1)
         {
-            int porc = 30 * (Random.Range(1, 5));
-            player.setPopulation((player.getPopulation()+porc) > player.getCitizensMax() ? player.getCitizensMax() : player.getPopulation() + porc); // +30 * random 1-4
+            int porc = 15 * (Random.Range(1, 5));
+            player.setRapidCitizens(porc); // + 30 per random 1-4
 
 
             if (Random.Range(0f,1f)<= 0.2f)
@@ -927,7 +947,7 @@ public class Events : MonoBehaviour
             int archers = 2 * Random.Range(1, 6);
             int riders = 1 * Random.Range(1, 5);
             terri = 3;
-            makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
+            makeEnemyForEvent(2, swordsmen, archers, riders, captainLVL);
 
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
@@ -1005,7 +1025,7 @@ public class Events : MonoBehaviour
             int riders = 2 * Random.Range(1, 5);
             terri = 2;
 
-            makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
+            makeEnemyForEvent(2, swordsmen, archers, riders, captainLVL);
 
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
             yield return new WaitUntil(() => finishedBattle  == true);
@@ -1056,7 +1076,7 @@ public class Events : MonoBehaviour
                 int riders = 2 * Random.Range(1, 5);
                 terri = 2;
 
-                makeEnemyForEvent(swordsmen+archers+riders, 2, swordsmen, archers, riders, captainLVL);
+                makeEnemyForEvent(2, swordsmen, archers, riders, captainLVL);
 
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
                 yield return new WaitForSeconds(0.5f);
@@ -1083,14 +1103,14 @@ public class Events : MonoBehaviour
                 {
                     string eventString8 = "The city is being devastated as most of your citizens are being killed and houses burned down or destroyed.";
                     string eventString9 = "The treasury has been emptied along with most of the houses.";
-                    string eventString10 = "[You lost " + (int)(player.getMoney() * 0.9) + " Gold and the population has been halved. The population growth and your Mine income are momentarily nullified]";
+                    string eventString10 = "[You lost " + (int)(player.getMoney() * 0.9) + " Gold and the Citizens has been halved. The population growth and your Mine income are momentarily nullified]";
 
                     string[] message4 = { eventString8, eventString9, eventString10 };
 
                     Dialogue.TriggerDialogue(message4);
 
                     player.setRapidMoney(-(int)(player.getMoney() * 0.9));
-                    player.setPopulation((player.getPopulation()-((int)(player.getCitizens() / 2))) < 0 ? 0 : player.getPopulation() - ((int)(player.getCitizens() / 2)));
+                    player.setRapidCitizens(-(int)(player.getCitizens() / 2));
 
                     secondaryEvent3MalusEffectGoldTurnsLeftMINE = 2;
                 }
@@ -1109,15 +1129,17 @@ public class Events : MonoBehaviour
     // DA FINIRE!!
 
     public int event9 = 0;
+    public int event9BonusTurnsLeft = 0;
 
     IEnumerator TriggerEvent9()
     {
         event9 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
+        string eventString1 = "An ambassador from the forests of the far lands arrives in the city.";
+        string eventString2 = "He claims that he wants to establish a common trade route between their people and you.";
+        string eventString3 = "Are you accepting this request?";
 
-        string[] message = { eventString1, eventString2 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1127,6 +1149,8 @@ public class Events : MonoBehaviour
         if (response[0] == 1)
         {
             //DA CAPIRE COME AGGIUNGERE GOLD PER TURNO +100
+            event9BonusTurnsLeft = 99;
+            forestDiplomacy = 1;
 
             // E SE ESISTE LA VARIABILE diplomaziaForesta = 1
             aemisFaith--;
@@ -1149,10 +1173,11 @@ public class Events : MonoBehaviour
     {
         event10 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
+        string eventString1 = "A set of stones of great rarity has been found in the mine.";
+        string eventString2 = "Their exact value is hard to tell, your specialists suggest you to sell them to the nanic merchants.";
+        string eventString3 = "Are you willing to do so?[Gold value can't be estimated]";
 
-        string[] message = { eventString1, eventString2 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1185,10 +1210,10 @@ public class Events : MonoBehaviour
     {
         event11 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "A group of knights of Aemis enters the city after a long journey.";
+        string eventString2 = "They ask you to give them provisions for them to continue their trip.";
+        string eventString3 = "A man from your army, however, tells you the might won't need them, since it appears they already own some.";
+        string eventString4 = "Are you willing to help the knights of Aemis?\n[Providing provisions has a cost of 100 Gold]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -1199,16 +1224,24 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
+            string eventString5 = "The knights of Aemis thank you for your help and leave the city.";
+
+
+            string[] message1 = { eventString5 };
+
+            Dialogue.TriggerDialogue(message1);
+
             player.setRapidMoney(-100);
             aemisFaith += 2;
         }
         else 
         {
-            string eventString5 = "";
-            string eventString6 = "";
-            
+            string eventString5 = "The knights of Aemis invoke the name of Aemis and their autority in this regard in order for them to get what they won't.";
+            string eventString6 = "They threaten violence on your people if you don't give them the provisions asked.";
+            string eventString7 = "Are you willing to help them this time?\n[Providing provisions has a cost of 100 Gold]";
 
-            string[] message1 = { eventString5, eventString6 };
+
+            string[] message1 = { eventString5, eventString6, eventString7 };
 
             Dialogue.TriggerInteractiveDialogue(message1);
 
@@ -1221,10 +1254,10 @@ public class Events : MonoBehaviour
             }
             else
             {
-                string eventString7 = "";
-                string eventString8 = "";
+                string eventString8 = "In the end, the knights leave the city without doing anything harmful.";
+                string eventString9 = "However they claim vengeance on you and your people.";
 
-                string[] message2 = { eventString7, eventString8 };
+                string[] message2 = { eventString8, eventString9 };
 
                 Dialogue.TriggerDialogue(message2);
 
@@ -1252,10 +1285,10 @@ public class Events : MonoBehaviour
     {
         event13 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "After a long discussion, your people have to tell you something.";
+        string eventString2 = "They ask you to provide them with more financing towards the protection of their fields from brigands and animals...";
+        string eventString3 = "... along with a better defense of the walls around the city.";
+        string eventString4 = "Are you offering this financing?\n[Financing this plan has a cost of 1000 Gold]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -1291,10 +1324,10 @@ public class Events : MonoBehaviour
     {
         event15 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "In order to restore the faith in Aemis, some priests presents themselves in front of you with a plan.";
+        string eventString2 = "They would like you to offer to the Aemis' cult your next years' crops.";
+        string eventString3 = "Also, they ask you to build a statue of Liam, commander of the Celestials.";
+        string eventString4 = "Are you accepting this request?\n[It will cost 400 Gold upfront, along with a reduction of income from the Farm for 3 seasons]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -1335,12 +1368,13 @@ public class Events : MonoBehaviour
     {
         secondaryEvent4 = 0;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "The researcher has returned with informations.";
+        string eventString2 = "He claims that he found ancient ruins of a Temple devoted to the Eternal of the Elfs of the woods.";
+        string eventString3 = "The news quickly spread in the city and people are starting to think that the old legends are actually true.";
+        string eventString4 = "The local priests of Aemis ask you to intervene and stop these rumors.";
+        string eventString5 = "Are you willing to do so?";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1349,10 +1383,10 @@ public class Events : MonoBehaviour
 
         if (response[0] == 0)
         {
-            string eventString5 = "";
-            string eventString6 = "";
+            string eventString6 = "A group of Elfs are interested in this regard and would like to buy the research.";
+            string eventString7 = "You sell them the research because you feel it's the right choice.\n[You gain 3000 Gold]";
 
-            string[] message2 = { eventString5, eventString6 };
+            string[] message2 = { eventString6, eventString7 };
 
             Dialogue.TriggerDialogue(message2);
 
@@ -1381,12 +1415,14 @@ public class Events : MonoBehaviour
     {
         event16 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "A local researcher presents themselves in front of you claiming that he found a weird altar in the woods.";
+        string eventString2 = "Incomprehensible and indecipherable writtens have been found on it, but he's sure they are from ancient times.";
+        string eventString3 = "He also tells you that, along with those inscriptions, a strange, pulsating green light was present.";
+        string eventString4 = "The researcher suspects that it might represent an ancient Eternal of a race that no longer exists.";
+        string eventString5 = "In the end, he asks for financing in order for him to research more about this matter.";
+        string eventString6 = "Are you willing to finance this research?\n[The research has 1000 Gold cost]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5, eventString6 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1395,22 +1431,25 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
-            string eventString5 = "";
-            string eventString6 = "";
+            string eventString7 = "The local priests of Aemis ask you to stop this madness.";
+            string eventString8 = "Are you stopping the research?\n[300 Gold will be refunded]";
 
-            string[] message1 = { eventString5, eventString6 };
+            string[] message1 = { eventString7, eventString8 };
 
             Dialogue.TriggerInteractiveDialogue(message1);
+
+            player.setRapidMoney(-1000);
 
             StartCoroutine(ResponseUpdater(false));
             yield return new WaitUntil(() => response[1] == 1);
 
-            if(response[0] == 0) //se rifiuta
+            if (response[0] == 0) //se rifiuta
             {
                 aemisFaith--;
                 secondaryEvent4 = 1;
                 secondaryEvent4TurnsLeft = 2;
             }
+            else player.setRapidMoney(300); // rimborso spese
         }
         else
         {
@@ -1439,12 +1478,11 @@ public class Events : MonoBehaviour
     {
         event17 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "The Guild Master is worried about the walls' defense.";
+        string eventString2 = "He suggests a project of renewal that would provide new palisades.";
+        string eventString3 = "Are you financing this idea?\n[It has a cost of 500 Gold but you gain a .2% of wall bonus]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1459,8 +1497,8 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString5 = "";
-            string eventString6 = "";
+            string eventString5 = "The citizens are starting to feel less and less protected in your city.";
+            string eventString6 = "A great discontent spreads around the city, causing a reduction in growth.\n[Citizens growth is reduced for some seasons]";
 
             string[] message2 = { eventString5, eventString6 };
 
@@ -1488,10 +1526,10 @@ public class Events : MonoBehaviour
     {
         event18 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "A forest in the distance burns up and the nearest villages are being quickly abandoned.";
+        string eventString2 = "Lots of refugees of these villages come to your city and ask for shelter.";
+        string eventString3 = "Local priests suggest to do so and more in the name of the Aemis' cult.";
+        string eventString4 = "Are you willing to help them in the name of Aemis?\n[Shelter, food and provisions have a cost of 1000 Gold]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -1502,8 +1540,8 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
-            string eventString5 = "";
-            string eventString6 = "";
+            string eventString5 = "The refugees are being welcomed by the Aemis' cult.";
+            string eventString6 = "Their presence caused a growth of Aemis' followers.";
 
             string[] message2 = { eventString5, eventString6 };
 
@@ -1514,9 +1552,9 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString7 = "";
-            string eventString8 = "";
-            string eventString9 = "";
+            string eventString7 = "It is now your own Captain that suggests to help them, but this time in the name of your own city.";
+            string eventString8 = "It asks you to do so so that the city gains influence and power.";
+            string eventString9 = "Are you willing to help the refugees in the name of " + FindObjectOfType<Game>().CityNameUI.text + "?\n[Shelter, food and provisions have a cost of 1000 Gold]";
 
             string[] message3 = { eventString7, eventString8, eventString9};
 
@@ -1529,7 +1567,7 @@ public class Events : MonoBehaviour
             {
                 player.setRapidMoney(-1000);
                 player.player_citizensMAX += 100;   // da rivedere
-                player.setPopulation((player.getPopulation()+30) > player.getCitizensMax() ? player.getCitizensMax() : player.getPopulation() + 30); // +30
+                player.setRapidCitizens(30); // +30
                 swordsmen.setRapidTotal(10); // +10 swordman   da rivedere
 
             }
@@ -1540,6 +1578,79 @@ public class Events : MonoBehaviour
         isEventDialogueClosed = true;
     }
 
+    /* --------------------------------------------------------------------------------- *
+ * --------------------------------------------------------------------------------- */
 
+    // evento 2 - dei lupi rompono il cazzo 
+
+    public int event2 = 0;
+    public int event2MalusTurnsLeft = 0;
+
+
+    IEnumerator TriggerEvent2()
+    {
+        event2 = 1;
+
+        string eventString1 = "A group of wolves has been seen wandering around the city.";
+        string eventString2 = "During the night people complain the howls and the farmers about their sheeps disappearing.";
+        string eventString3 = "Your men suggests you to take care of the situation by sending an expedition outside the city.";
+        string eventString4 = "Are you willing to do so?[The expedition has no cost]";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            terri = 2;
+            makeEnemyForEvent(1, 0, "nul", "nul", (4 * player.getTurn()), "wolves", "wolf", 0, "nul", "nul", 2);
+
+            FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+            yield return new WaitUntil(() => finishedBattle == true);
+
+            if (lastBattleInfo > 2)
+            {
+                string eventString5 = "The expedition comes back with good news.";
+                string eventString6 = "Your soldiers took down the wolves and came back with their cloth.";
+                string eventString7 = "The cloth is worth 800 Gold.\n[You obtain 800 Gold]";
+
+                string[] message2 = { eventString5, eventString6, eventString7 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                player.setRapidMoney(800);
+            }
+            else if (lastBattleInfo == 2)
+            {
+                string eventString5 = "The expedition comes back with good news.";
+                string eventString6 = "Your soldiers fought against the wolves as long as they could, but they didn't took down all of them.";
+                string eventString7 = "They reassure you that they won't come back soon.";
+
+                string[] message2 = { eventString5, eventString6, eventString7 };
+
+                Dialogue.TriggerDialogue(message2);
+            }
+
+        }
+        else
+        {
+            string eventString7 = "The wolves destroy the local fields around the Farm.";
+            string eventString8 = "Your Farm won't be usable for a while.\n[Gold income from the Farm is reduced to zero for 4 seasons]";
+
+            string[] message3 = { eventString7, eventString8 };
+
+            Dialogue.TriggerDialogue(message3);
+
+            event2MalusTurnsLeft = 4;
+        }
+
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
 
 }

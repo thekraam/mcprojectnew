@@ -63,24 +63,25 @@ public class Player : MonoBehaviour
        // Debug.Log("cittadini massimi è uguale a = " + player_citizensMAX);
        // Debug.Log("popolazione è uguale a = " + player_population);
        // Debug.Log("soldiersaway è uguale a = " + soldiersaway);
-        int x = player_citizensMAX-player_population-soldiersaway;
+        int remainingSlots = player_citizensMAX - player_population - soldiersaway;
        // Debug.Log("x è uguale a = " + x);
-        if (temp_player_citizens>x)
+        if (temp_player_citizens > remainingSlots)
         {
             //Debug.Log("entro dentro l'if");
-            temp_player_citizens = x;
-            if (x < 0)
+            temp_player_citizens = remainingSlots;
+            if (remainingSlots < 0)
             {
                 temp_player_citizens = 0;
             }
         }
-        player_citizens = (player_citizens + temp_player_citizens > player_citizensMAX) ? player_citizensMAX : player_citizens+temp_player_citizens;
+        player_citizens = player_citizens + temp_player_citizens;
         temp_player_citizens = 0;
     }
 
     public void setRapidCitizens(int modifier)
     {
-        player_citizens = (player_citizens + modifier < 0) ? 0 : player_citizens+modifier;
+        player_citizens = (player_citizens + modifier < 0) ? 0 : player_citizens + modifier;
+        setPopulation((player_citizens + getPopulation() > getCitizensMax()) ? getCitizensMax() : (player_citizens + getPopulation()));
     }
 
     public int getTempCitizens()
