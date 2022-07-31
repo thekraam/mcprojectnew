@@ -79,7 +79,9 @@ public class Events : MonoBehaviour
     public bool attendingMainEvent = true;
 
     /* variabili generali */
-    public int elfsEnemy = 0;
+    public int aqueduct = 0;
+
+    public int elvesEnemy = 0;
     public int forestDiplomacy = 0;
 
     public int ancientGreenJewel = 0;
@@ -429,7 +431,7 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent20());
                 selected = true;
             }
-            if (eventChooser >= 20f && eventChooser < 21f && player.getMoney() >= 400 && event1 == 0 && event21 == 0)
+            if (eventChooser >= 20f && eventChooser < 21f && player.getMoney() >= 400 && event1 == 1 && event21 == 0 && aqueduct == 0)
             {
                 StartCoroutine(TriggerEvent21());
                 selected = true;
@@ -447,6 +449,11 @@ public class Events : MonoBehaviour
             if (eventChooser >= 23f && eventChooser < 24f && event30 == 0)
             {
                 StartCoroutine(TriggerEvent30());
+                selected = true;
+            }
+            if (eventChooser >= 24f && eventChooser < 25f && event22 == 0 && blackCrystal == 1)
+            {
+                StartCoroutine(TriggerEvent22());
                 selected = true;
             }
 
@@ -489,6 +496,7 @@ public class Events : MonoBehaviour
         if (response[0] == 1)
         {
             player.setRapidMoney(-400);
+            aqueduct = 1;
         }
         else if (secondaryEventProbability > 0.5f)
         {
@@ -575,7 +583,7 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1) // il giocatore risponde si
         {
-            elfsEnemy = 1; // variabile 'nemicoElfi'
+            elvesEnemy = 1; // variabile 'nemicoElfi'
             aemisFaith++;
             if (woodsElvesValue < 0.9f) // 90% di possibilita che si verifichi evento battaglia
             {
@@ -1018,7 +1026,7 @@ public class Events : MonoBehaviour
             if(lastBattleInfo > 3)
             {
                 string eventString3 = "The expedition returns victorious and the roads are now free to use.";
-                string eventString4 = "Your soldiers claim that the bandits fled as were leaving behind most of their possessions.[You obtain 3000 Gold worth of possessions]";
+                string eventString4 = "Your soldiers claim that the bandits fled as were leaving behind most of their possessions.\n[You obtain 3000 Gold worth of possessions]";
 
                 string[] message2 = { eventString3, eventString4 };
 
@@ -1029,7 +1037,7 @@ public class Events : MonoBehaviour
             else if (lastBattleInfo == 3)
             {
                 string eventString3 = "The expedition returns victorious and the roads are now free to use.";
-                string eventString4 = "Your soldiers claim that the bandits fled as were leaving behind some of their provisions.[You obtain 1000 Gold worth of provisions]";
+                string eventString4 = "Your soldiers claim that the bandits fled as were leaving behind some of their provisions.\n[You obtain 1000 Gold worth of provisions]";
 
                 string[] message2 = { eventString3, eventString4 };
 
@@ -1095,7 +1103,7 @@ public class Events : MonoBehaviour
             if(lastBattleInfo > 2)
             {
                 string eventString4 = "Your soldiers return victorious and the roads are now free to use.";
-                string eventString5 = "They soldiers claim that the bandits fled as were leaving behind some of their provisions.[You obtain 1000 Gold worth of provisions]";
+                string eventString5 = "They soldiers claim that the bandits fled as were leaving behind some of their provisions.\n[You obtain 1000 Gold worth of provisions]";
 
                 string[] message2 = { eventString4, eventString5 };
 
@@ -1106,7 +1114,7 @@ public class Events : MonoBehaviour
             else if (lastBattleInfo <= 2)
             {
                 string eventString4 = "Your army retires as you witness the destruction of all the fields around the city.";
-                string eventString5 = "You understand that your city will need time to recover.[Gold income and Population growth from the Farm are momentarily reduced to zero]";
+                string eventString5 = "You understand that your city will need time to recover.\n[Gold income and Population growth from the Farm are momentarily reduced to zero]";
 
                 string[] message2 = { eventString4, eventString5 };
 
@@ -1126,7 +1134,7 @@ public class Events : MonoBehaviour
                 secondaryEvent3MalusEffectCitizensTurnsLeft = 2;
 
                 string eventString4 = "Your army retires back to the city as you witness the destruction of all the fields around the city.";
-                string eventString5 = "You understand that your city will need time to recover.[Gold income and Population growth from the Farm are momentarily reduced to zero]";
+                string eventString5 = "You understand that your city will need time to recover.\n[Gold income and Population growth from the Farm are momentarily reduced to zero]";
 
                 string[] message2 = { eventString4, eventString5 };
 
@@ -1235,7 +1243,7 @@ public class Events : MonoBehaviour
 
         string eventString1 = "A set of stones of great rarity has been found in the mine.";
         string eventString2 = "Their exact value is hard to tell, your specialists suggest you to sell them to the nanic merchants.";
-        string eventString3 = "Are you willing to do so?[Gold value can't be estimated]";
+        string eventString3 = "Are you willing to do so?\n[Gold value can't be estimated]";
 
         string[] message = { eventString1, eventString2, eventString3 };
 
@@ -1429,7 +1437,7 @@ public class Events : MonoBehaviour
         secondaryEvent4 = 0;
 
         string eventString1 = "The researcher has returned with informations.";
-        string eventString2 = "He claims that he found ancient ruins of a Temple devoted to the Eternal of the Elfs of the woods.";
+        string eventString2 = "He claims that he found ancient ruins of a Temple devoted to the Eternal of the Elves of the woods.";
         string eventString3 = "The news quickly spread in the city and people are starting to think that the old legends are actually true.";
         string eventString4 = "The local priests of Aemis ask you to intervene and stop these rumors.";
         string eventString5 = "Are you willing to do so?";
@@ -1443,7 +1451,7 @@ public class Events : MonoBehaviour
 
         if (response[0] == 0)
         {
-            string eventString6 = "A group of Elfs are interested in this regard and would like to buy the research.";
+            string eventString6 = "A group of Elves are interested in this regard and would like to buy the research.";
             string eventString7 = "You sell them the research because you feel it's the right choice.\n[You gain 3000 Gold]";
 
             string[] message2 = { eventString6, eventString7 };
@@ -1654,7 +1662,7 @@ public class Events : MonoBehaviour
         string eventString1 = "A group of wolves has been seen wandering around the city.";
         string eventString2 = "During the night people complain the howls and the farmers about their sheeps disappearing.";
         string eventString3 = "Your men suggests you to take care of the situation by sending an expedition outside the city.";
-        string eventString4 = "Are you willing to do so?[The expedition has no cost]";
+        string eventString4 = "Are you willing to do so?\n[The expedition has no cost]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -1727,11 +1735,11 @@ public class Events : MonoBehaviour
     {
         event19 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
-        string eventString5 = "";
+        string eventString1 = "A mysterious man enters the city.";
+        string eventString2 = "He claims to be a ghost from the past, a soldier who died in battle centuries ago.";
+        string eventString3 = "He also claims to have seen numerous battles being fought around these lands, but none of those were different in any way from that in which he died.";
+        string eventString4 = "His presence alerts the local priests of Aemis and condamn the entity. They ask you to take action against it.";
+        string eventString5 = "Are you willing to proceed on behalf of the Aemis' cult?";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
 
@@ -1740,16 +1748,18 @@ public class Events : MonoBehaviour
         StartCoroutine(ResponseUpdater(false));
         yield return new WaitUntil(() => response[1] == 1);
 
-        if (response[0] == 1) //accoglienza
+        if (response[0] == 0) //accoglienza
         {
             aemisFaith -= 2;
 
-            string eventString6 = "";
-            string eventString7 = "";
-            string eventString8 = "";
-            string eventString9 = "";
+            string eventString6 = "You invite the ghost to your presence and ask him to continue his story.";
+            string eventString7 = "The ghost goes on and tells about a demoniac army that fought his comrades and lost.";
+            string eventString8 = "But with that victory came a great loss: his own life. He died while taking down the Great Demon at the command of the demoniac army.";
+            string eventString9 = "It is in the exact place of the Great Demon's death that a black tree has grown. Noone, to this day, has never even thought of getting close to it.";
+            string eventString10 = "The ghost stops his tale as he asks you to destroy that tree. This way, his soul will be set free. Slowly after his presence fades away.";
+            string eventString11 = "Are you willing to accept this task?\n[Sending the expedition has no cost]";
 
-            string[] message3 = { eventString6, eventString7, eventString8, eventString9 };
+            string[] message3 = { eventString6, eventString7, eventString8, eventString9, eventString10, eventString11 };
 
             Dialogue.TriggerInteractiveDialogue(message3);
 
@@ -1758,12 +1768,13 @@ public class Events : MonoBehaviour
 
             if (response[0] == 1)
             {
-                string eventString10 = "";
-                string eventString11 = "";
-                string eventString12 = "";
-                string eventString13 = "";
+                string eventString12 = "Your men are sent for an expedition to find that tree and take it down.";
+                string eventString13 = "They are soon back with good news, it looks like the tree was very close to the city.";
+                string eventString14 = "Taking the tree down was no easy task, but they managed to do it.";
+                string eventString15 = "Your soldiers hand you a green jewel as they claim it has been found right under the tree's roots.";
+                string eventString16 = "The ghost appears again and thanks you. He then vanishes, leaving no trace behind.";
 
-                string[] message2 = { eventString10, eventString11, eventString12, eventString13 };
+                string[] message2 = { eventString12, eventString13, eventString14, eventString15, eventString16 };
 
                 Dialogue.TriggerDialogue(message2);
 
@@ -1772,8 +1783,8 @@ public class Events : MonoBehaviour
             }
             else
             {
-                string eventString14 = "";
-                string eventString15 = "";
+                string eventString14 = "The ghost says that his destiny will be shared by your soldiers.";
+                string eventString15 = "He then leaves the city as he enters a thick fog.";
 
                 string[] message2 = { eventString14, eventString15 };
 
@@ -1783,8 +1794,8 @@ public class Events : MonoBehaviour
         }
         else //condanna
         {
-            string eventString6 = "";
-            string eventString7 = "";
+            string eventString6 = "You follow the Aemis' cult suggestion and you exile the ghost out of the city.";
+            string eventString7 = "The ghost disappears as he enters a thick fog.";
 
             string[] message2 = { eventString6, eventString7 };
 
@@ -1813,11 +1824,11 @@ public class Events : MonoBehaviour
     {
         event20 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
-        string eventString5 = "";
+        string eventString1 = "A brawl happened between a group of faithful and non-faithful of the Aemis' cult, spreading discomfort around the city.";
+        string eventString2 = "The local Aemis' priests pretend a refund for the damages caused, while your men tell you that the Aemis' followers are responsible.";
+        string eventString3 = "The Guild Master confirms your men's version and other farmers claim that those unfaithul are the real culprit.";
+        string eventString4 = "There are no compromises possible, you have to take a decision.";
+        string eventString5 = "Are you willing to exile out of the city the local priests and his followers of Aemis?";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
 
@@ -1828,6 +1839,12 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
+            string eventString6 = "The followers of Aemis' and the priests damn your city as they leave.";
+
+            string[] message2 = { eventString6 };
+
+            Dialogue.TriggerSmallDialogue(message2);
+
             aemisFaith -= 10;
             aemisRebel = 1;
         }
@@ -1835,8 +1852,8 @@ public class Events : MonoBehaviour
         {
             aemisFaith += 1;
 
-            string eventString7 = "";
-            string eventString8 = "";
+            string eventString7 = "Since you took the decision of leaving the priests and the followers of Aemis' in their place, you have to pay for the damages.";
+            string eventString8 = "[You pay 300 Gold for the damages caused by the situation]";
 
             string[] message2 = { eventString7, eventString8 };
 
@@ -1865,13 +1882,11 @@ public class Events : MonoBehaviour
     {
         event21 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
-        string eventString5 = "";
+        string eventString1 = "The city's waters became murky after a great storm and your citizens complain about the lack of drinkable water.";
+        string eventString2 = "Your men suggest the construction of new wells around the city.";
+        string eventString3 = "Are you willing to do so?\n[Building the necessary wells has a cost of 400 Gold]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1884,8 +1899,8 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString7 = "";
-            string eventString8 = "";
+            string eventString7 = "The city take a downturn due to the lack of water.";
+            string eventString8 = "[The lack of water causes a reduction of Citizens growth per season to zero]";
 
             string[] message2 = { eventString7, eventString8 };
 
@@ -1913,13 +1928,16 @@ public class Events : MonoBehaviour
     {
         event22 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
+        string eventString1 = "During the night, a man heard noises from the room where the black crystal has been stored.";
+        string eventString2 = "Some men ask you to keep it away from the city, fearing it could cause trouble or worse.";
         string eventString3 = "";
-        string eventString4 = "";
-        string eventString5 = "";
+        if (event16 == 1)
+            eventString3 = "The same researcher of the ancient ruins tells you that the Crystal might actually be worth keeping and that he could eventually control its powers.";
+        else
+            eventString3 = "A researcher tells you that the Crystal might actually be worth keeping and that he could eventually control its powers.";
+        string eventString4 = "Are you willing to investigate the powers of the black Crystal?\n[If you don't, the Crystal will be sold]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1928,29 +1946,31 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)   //indagare
         {
-            string eventString6 = "";
-            string eventString7 = "";
+            string eventString6 = "The researcher unleashes the powers of the black Crystal and uses it to enchant a great sword.";
+            string eventString7 = "This sword has been gifted to your Captain.\n[" + FindObjectOfType<Game>().getCapitano().name + "'s attack and defenses have increased]";
 
             string[] message2 = { eventString6, eventString7 };
 
             Dialogue.TriggerDialogue(message2);
 
-            // DA AGGIUNGERE
-            // atk capitano +10
-            // def capitano +10
+
+            FindObjectOfType<Game>().getCapitano().aumentaAtk(10);// atk capitano +10
+            FindObjectOfType<Game>().getCapitano().aumentaDef(10);// def capitano +10
 
 
         }
         else //liberartene
         {
-            string eventString7 = "";
-            string eventString8 = "";
+            string eventString7 = "You decide to sell the Crystal for as low as possible to keep it away from the city.";
+            string eventString8 = "A merchant decides to buy it for as low as 500 Gold.\n[You gain 500 Gold]";
 
             string[] message2 = { eventString7, eventString8 };
 
             Dialogue.TriggerDialogue(message2);
 
             player.setRapidMoney(500);
+
+            blackCrystal = 0;
         }
 
         yield return new WaitForSeconds(1f);
@@ -1970,13 +1990,12 @@ public class Events : MonoBehaviour
     {
         event23 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
-        string eventString5 = "";
+        string eventString1 = "Some children have been seen playing around with a scroll on which a Demonic figure is drawn.";
+        string eventString2 = "As soon as they saw it the scroll has been confiscated and presented to you.";
+        string eventString3 = "Local priests of Aemis ask you the possibility to investigate further on their own. According to them there may be a traitor of Aemis.";
+        string eventString4 = "Are you proceeding this way?\n[Investigation has no cost]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -1987,12 +2006,10 @@ public class Events : MonoBehaviour
         {
             aemisFaith++;
 
-            string eventString6 = "";
-            string eventString7 = "";
-            string eventString8 = "";
-            string eventString9 = "";
+            string eventString6 = "The priests find a man guilty of spreading false rumors about the Aemis' cult and ask you for its exile.";
+            string eventString7 = "Are you willing to exile this man?";
 
-            string[] message3 = { eventString6, eventString7, eventString8, eventString9 };
+            string[] message3 = { eventString6, eventString7 };
 
             Dialogue.TriggerInteractiveDialogue(message3);
 
@@ -2002,21 +2019,18 @@ public class Events : MonoBehaviour
             if (response[0] == 1)
             {
                 aemisFaith++;
-                string eventString10 = "";
-                string eventString11 = "";
+                string eventString10 = "The man is exiled as the local priests thank you for the cooperation.";
 
-                string[] message2 = { eventString10, eventString11 };
+                string[] message2 = { eventString10 };
 
                 Dialogue.TriggerDialogue(message2);
             }
             else
             {
-                string eventString12 = "";
-                string eventString13 = "";
-                string eventString14 = "";
-                string eventString15 = "";
+                string eventString12 = "The man accuses the Aemis' cult of threats and violence against him.";
+                string eventString13 = "The man then flees from the city as he claims to do so to keep himself alive.";
 
-                string[] message2 = { eventString12, eventString13, eventString14, eventString15 };
+                string[] message2 = { eventString12, eventString13 };
 
                 Dialogue.TriggerDialogue(message2);
             }
@@ -2025,12 +2039,11 @@ public class Events : MonoBehaviour
         {
             aemisFaith--;
 
-            string eventString6 = "";
-            string eventString7 = "";
-            string eventString8 = "";
-            string eventString9 = "";
+            string eventString6 = "Days later, as you walk around the city with your guards, a man desperately approaches you.";
+            string eventString7 = "He claims to be persecuted by the Aemis' cult, but as followers of the cult are getting closer, he flees.";
+            string eventString8 = "Later that day you hear that the man has fled out of the city.";
 
-            string[] message2 = { eventString6, eventString7, eventString8, eventString9 };
+            string[] message2 = { eventString6, eventString7, eventString8 };
 
             Dialogue.TriggerDialogue(message2);
         }
@@ -2053,12 +2066,11 @@ public class Events : MonoBehaviour
     {
         event27 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "You hear that a group of elven merchants has entered the city.";
+        string eventString2 = "They brought a great variety of plants and fruits from the far lands.";
+        string eventString3 = "Local farmers reunited to ask you to buy them so that the city gain more the next year.\n[The affair has a cost of 1000 Gold]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -2067,6 +2079,12 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
+            string eventString4 = "The fruits and plants brought a great increase of income for the next seasons.";
+
+            string[] message2 = { eventString4 };
+
+            Dialogue.TriggerSmallDialogue(message2);
+
             player.setRapidMoney(-1000);
             event27MalusTurnsLeft = 10; //goldFattoria * 4 per 10 turni
         }
@@ -2090,11 +2108,11 @@ public class Events : MonoBehaviour
     {
         event30 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
-        string eventString5 = "";
+        string eventString1 = "A big wild boar has been seen wandering around the city. Hunters tried to capture him but didn't succeed.";
+        string eventString2 = "Local guards also tried to handle the situation but nothing has changed, the boar always manages to escape.";
+        string eventString3 = "Shortly after you hear voices about the boar being a magical creature e lots of citizens ask to leave him alone.";
+        string eventString4 = "Other hunters, however, still want help to hunt the boar down once and for all.";
+        string eventString5 = "Are you willing to help the hunters and do something about the boar?\n[Helping the hunters has no cost]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
 
@@ -2105,10 +2123,10 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
-            string eventString6 = "";
-            string eventString7 = "";
-            string eventString8 = "";
-            string eventString9 = "";
+            string eventString6 = "You decide to help the hunters by asking your own army to help them.";
+            string eventString7 = "Soon you hear how the situation evolved: the boar has been quickly cornered by your army, however something weird happened.";
+            string eventString8 = "The wild boar started talking human language. It claimed to be an ancient creature and that instead of fighting him, humans should be fighting time.";
+            string eventString9 = "The speechless army decided to leave the boar alone, thinking that with its death damnation and misfortune would've affected the city.";
 
             string[] message2 = { eventString6, eventString7, eventString8, eventString9 };
 
@@ -2118,10 +2136,9 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString10 = "";
-            string eventString11 = "";
+            string eventString10 = "Soon after you hear the wild boar disappeared after some days without leaving trace.";
 
-            string[] message2 = { eventString10, eventString11 };
+            string[] message2 = { eventString10 };
 
             Dialogue.TriggerDialogue(message2);
         }

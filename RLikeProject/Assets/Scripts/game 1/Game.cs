@@ -1122,6 +1122,7 @@ public class Game : MonoBehaviour
 
     //------------------------------------------ sistema di battaglia (beta testing)-----------------------
     Captain1 capitano = new Captain1();
+    public Captain1 getCapitano(){ return this.capitano; }
     Captain2 enemyCapitano = new Captain2();
     Enemy enemy = new Enemy();
     battle1 battle = new battle1();
