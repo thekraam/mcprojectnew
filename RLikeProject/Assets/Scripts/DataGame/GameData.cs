@@ -45,6 +45,74 @@ public class GameData
     public bool attendingSecondaryEvent;
     public bool aqueductMalus;
 
+    //DA AGGIUNGERE
+    public int terri;
+    public int bonusETerri;
+    public int bonusEnemy;
+
+    public int aemisFaith;
+    public int aemisKnightsHostility;
+    public int aemisRebel;
+
+    public int elfsEnemy;
+    public int forestDiplomacy;
+
+    public int ancientGreenJewel;
+    public int blackCrystal;
+
+
+    public int event2;
+    public int event2MalusTurnsLeft;
+    public int event4;
+    public int event4BonusTurnsLeft;
+    public int secondaryEvent2;
+    public int secondaryEvent2TurnsLeft;
+    public int event5;
+    public int event6;
+    public int event7;
+    public int event7MalusTurnsLeft;
+    public int event8;
+    public int secondaryEvent3;
+    public int secondaryEvent3TurnsLeft;
+    public int secondaryEvent3MalusEffectGoldTurnsLeft;
+    public int secondaryEvent3MalusEffectCitizensTurnsLeft;
+    public int secondaryEvent3MalusEffectGoldTurnsLeftMINE;
+    public int event9;
+    public int event9BonusTurnsLeft;
+    public int event10;
+    public int event11;
+    public int event12;
+    public int event12Malus;
+    public int event12MalusTurnsLeft;
+    public int event13;
+    public int event14;
+    public int event15;
+    public int event15MalusTurnsLeft;
+    public int event16;
+    public int secondaryEvent4;
+    public int secondaryEvent4TurnsLeft;
+    public int event17;
+    public int event17MalusTurnsLeft;
+    public int event18;
+    public int event19;
+    public int event20;
+    public int event21;
+    public int event21MalusTurnsLeft;
+    public int event22;
+    public int event23;
+    public int event24;
+    public int event25;
+    public int event26;
+    public int event27;
+    public int event27MalusTurnsLeft;
+    public int event28;
+    public int event29;
+    public int event30;
+    public int event30MalusTurnsLeft;
+
+
+
+
     /*farm*/
     public int farmLvl;
     public int abitantiMax;
@@ -235,6 +303,76 @@ public class GameData
         aqueductTurnsLeft = events.secondaryEvent1TurnsLeft;
         aqueductMalusTurnsLeft = events.secondaryEvent1MalusTurnsLeft;
         aqueductMalus = events.secondaryEvent1Malus == 1 ? true : false;
+
+
+
+        terri = events.terri;
+        bonusETerri = events.bonusETerri;
+        bonusEnemy = events.bonusEnemy;
+
+        aemisFaith = events.aemisFaith;
+        aemisKnightsHostility = events.aemisKnightsHostility;
+        aemisRebel = events.aemisRebel;
+
+        elfsEnemy = events.elfsEnemy;
+        forestDiplomacy = events.forestDiplomacy;
+
+        ancientGreenJewel = events.ancientGreenJewel;
+        blackCrystal = events.blackCrystal;
+
+
+        event2 = events.event2;
+        event2MalusTurnsLeft = events.event2MalusTurnsLeft;
+        event4 = events.event4;
+        event4BonusTurnsLeft = events.event4BonusTurnsLeft;
+        secondaryEvent2 = events.secondaryEvent2;
+        secondaryEvent2TurnsLeft = events.secondaryEvent2TurnsLeft;
+        event5 = events.event5;
+        event6 = events.event6;
+        event7 = events.event7;
+        event7MalusTurnsLeft = events.event7MalusTurnsLeft;
+        event8 = events.event8;
+        secondaryEvent3 = events.secondaryEvent3;
+        secondaryEvent3TurnsLeft = events.secondaryEvent3TurnsLeft;
+        secondaryEvent3MalusEffectGoldTurnsLeft = events.secondaryEvent3MalusEffectGoldTurnsLeft;
+        secondaryEvent3MalusEffectCitizensTurnsLeft = events.secondaryEvent3MalusEffectCitizensTurnsLeft;
+        secondaryEvent3MalusEffectGoldTurnsLeftMINE = events.secondaryEvent3MalusEffectGoldTurnsLeftMINE;
+        event9 = events.event9;
+        event9BonusTurnsLeft = events.event9BonusTurnsLeft;
+        event10 = events.event10;
+        event11 = events.event11;
+        event12 = events.event12;
+        event12Malus = events.event12Malus;
+        event12MalusTurnsLeft = events.event12MalusTurnsLeft;
+        event13 = events.event13;
+        event14 = events.event14;
+        event15 = events.event15;
+        event15MalusTurnsLeft = events.event15MalusTurnsLeft;
+        event16 = events.event16;
+        secondaryEvent4 = events.secondaryEvent4;
+        secondaryEvent4TurnsLeft = events.secondaryEvent4TurnsLeft;
+        event17 = events.event17;
+        event17MalusTurnsLeft = events.event17MalusTurnsLeft;
+        event18 = events.event18;
+        event19 = events.event19;
+        event20 = events.event20;
+        event21 = events.event21;
+        event21MalusTurnsLeft = events.event21MalusTurnsLeft;
+        event22 = events.event22;
+        event23 = events.event23;
+        //event24 = events.e24;
+        //event25 = events.e25;
+        //event26 = events.e26;
+        event27 = events.event27;
+        event27MalusTurnsLeft = events.event27MalusTurnsLeft;
+        //event28 = events.e28;
+        //event29 = events.e29;
+        event30 = events.event30;
+        event30MalusTurnsLeft = events.event30MalusTurnsLeft;
+
+
+
+
 
         /*farm*/
         farmLvl = fattoria.getLvlFattoria();

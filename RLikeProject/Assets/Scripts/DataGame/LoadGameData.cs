@@ -66,6 +66,74 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<Events>().secondaryEvent1TurnsLeft = data.aqueductTurnsLeft;
         FindObjectOfType<Events>().attendingSecondaryEvent = data.attendingSecondaryEvent;
 
+
+        FindObjectOfType<Events>().terri = data.terri;
+        FindObjectOfType<Events>().bonusETerri = data.bonusETerri;
+        FindObjectOfType<Events>().bonusEnemy = data.bonusEnemy;
+
+        FindObjectOfType<Events>().aemisFaith = data.aemisFaith;
+        FindObjectOfType<Events>().aemisKnightsHostility = data.aemisKnightsHostility;
+        FindObjectOfType<Events>().aemisRebel = data.aemisRebel;
+
+        FindObjectOfType<Events>().elfsEnemy = data.elfsEnemy;
+        FindObjectOfType<Events>().forestDiplomacy = data.forestDiplomacy;
+
+        FindObjectOfType<Events>().ancientGreenJewel = data.ancientGreenJewel;
+        FindObjectOfType<Events>().blackCrystal = data.blackCrystal;
+
+
+        FindObjectOfType<Events>().event2 = data.event2;
+        FindObjectOfType<Events>().event2MalusTurnsLeft = data.event2MalusTurnsLeft;
+        FindObjectOfType<Events>().event4 = data.event4;
+        FindObjectOfType<Events>().event4BonusTurnsLeft = data.event4BonusTurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent2 = data.secondaryEvent2;
+        FindObjectOfType<Events>().secondaryEvent2TurnsLeft = data.secondaryEvent2TurnsLeft;
+        FindObjectOfType<Events>().event5 = data.event5;
+        FindObjectOfType<Events>().event6 = data.event6;
+        FindObjectOfType<Events>().event7 = data.event7;
+        FindObjectOfType<Events>().event7MalusTurnsLeft = data.event7MalusTurnsLeft;
+        FindObjectOfType<Events>().event8 = data.event8;
+        FindObjectOfType<Events>().secondaryEvent3 = data.secondaryEvent3;
+        FindObjectOfType<Events>().secondaryEvent3TurnsLeft = data.secondaryEvent3TurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent3MalusEffectGoldTurnsLeft = data.secondaryEvent3MalusEffectGoldTurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent3MalusEffectCitizensTurnsLeft = data.secondaryEvent3MalusEffectCitizensTurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent3MalusEffectGoldTurnsLeftMINE = data.secondaryEvent3MalusEffectGoldTurnsLeftMINE;
+        FindObjectOfType<Events>().event9 = data.event9;
+        FindObjectOfType<Events>().event9BonusTurnsLeft = data.event9BonusTurnsLeft;
+        FindObjectOfType<Events>().event10 = data.event10;
+        FindObjectOfType<Events>().event11 = data.event11;
+        FindObjectOfType<Events>().event12 = data.event12;
+        FindObjectOfType<Events>().event12Malus = data.event12Malus;
+        FindObjectOfType<Events>().event12MalusTurnsLeft = data.event12MalusTurnsLeft;
+        FindObjectOfType<Events>().event13 = data.event13;
+        FindObjectOfType<Events>().event14 = data.event14;
+        FindObjectOfType<Events>().event15 = data.event15;
+        FindObjectOfType<Events>().event15MalusTurnsLeft = data.event15MalusTurnsLeft;
+        FindObjectOfType<Events>().event16 = data.event16;
+        FindObjectOfType<Events>().secondaryEvent4 = data.secondaryEvent4;
+        FindObjectOfType<Events>().secondaryEvent4TurnsLeft = data.secondaryEvent4TurnsLeft;
+        FindObjectOfType<Events>().event17 = data.event17;
+        FindObjectOfType<Events>().event17MalusTurnsLeft = data.event17MalusTurnsLeft;
+        FindObjectOfType<Events>().event18 = data.event18;
+        FindObjectOfType<Events>().event19 = data.event19;
+        FindObjectOfType<Events>().event20 = data.event20;
+        FindObjectOfType<Events>().event21 = data.event21;
+        FindObjectOfType<Events>().event21MalusTurnsLeft = data.event21MalusTurnsLeft;
+        FindObjectOfType<Events>().event22 = data.event22;
+        FindObjectOfType<Events>().event23 = data.event23;
+        //FindObjectOfType<Events>().event24 = events.e24;
+        //FindObjectOfType<Events>().event25 = events.e25;
+        //FindObjectOfType<Events>().event26 = events.e26;
+        FindObjectOfType<Events>().event27 = data.event27;
+        FindObjectOfType<Events>().event27MalusTurnsLeft = data.event27MalusTurnsLeft;
+        //FindObjectOfType<Events>().event28 = events.e28;
+        //FindObjectOfType<Events>().event29 = events.e29;
+        FindObjectOfType<Events>().event30 = data.event30;
+        FindObjectOfType<Events>().event30MalusTurnsLeft = data.event30MalusTurnsLeft;
+
+
+
+
         /*farm*/
         fattoria.setLvlFattoria(data.farmLvl);
         fattoria.setAbitantiMax(data.abitantiMax);
