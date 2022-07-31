@@ -54,7 +54,7 @@ public class GameData
     public int aemisKnightsHostility;
     public int aemisRebel;
 
-    public int elfsEnemy;
+    public int elvesEnemy;
     public int forestDiplomacy;
 
     public int ancientGreenJewel;
@@ -314,7 +314,7 @@ public class GameData
         aemisKnightsHostility = events.aemisKnightsHostility;
         aemisRebel = events.aemisRebel;
 
-        elfsEnemy = events.elfsEnemy;
+        elvesEnemy = events.elvesEnemy;
         forestDiplomacy = events.forestDiplomacy;
 
         ancientGreenJewel = events.ancientGreenJewel;

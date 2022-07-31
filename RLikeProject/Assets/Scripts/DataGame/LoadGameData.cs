@@ -75,7 +75,7 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<Events>().aemisKnightsHostility = data.aemisKnightsHostility;
         FindObjectOfType<Events>().aemisRebel = data.aemisRebel;
 
-        FindObjectOfType<Events>().elfsEnemy = data.elfsEnemy;
+        FindObjectOfType<Events>().elvesEnemy = data.elvesEnemy;
         FindObjectOfType<Events>().forestDiplomacy = data.forestDiplomacy;
 
         FindObjectOfType<Events>().ancientGreenJewel = data.ancientGreenJewel;
