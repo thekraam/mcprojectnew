@@ -22,23 +22,57 @@ public class SceneLoader : MonoBehaviour
         FindObjectOfType<AudioManager>().PlayMusic(MainMenuMusic);
     }
 
-    public void onQuitPressed()
+    public void onResume()
     {
-        SceneManager.UnloadSceneAsync(0);
-        SceneManager.UnloadSceneAsync(1);
+        if(FindObjectOfType<Game>().isSameGameSession() == true)
+        {
+            Debug.Log("sono dentro");
+            FindObjectOfType<Game>().mainMenuPanel.SetActive(false);
+        }
+        else
+        {
+            FindObjectOfType<Game>().loadData();
+            FindObjectOfType<FirebaseManager>().LoadDataButton(false);
+        }
+        onNextTurn();
+    }
+
+
+    public void onNextTurn()
+    {
+        loadingPanel.SetActive(true);
+        StartCoroutine(LoadingScreenFadeOut(0.8f));
     }
 
 
     public void onPressButton(bool NewGame)
     {
-        if (NewGame)
+        FindObjectOfType<FirebaseManager>().LoadDataButton(true);
+
+        if (NewGame && FindObjectOfType<Game>().isSameGameSession() == false)
         {
+            FindObjectOfType<Game>().SaveGame();
             FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
             IntroExecutionPanel.SetActive(true);
             FindObjectOfType<IntroExecution>().StartExecution();
         }
+        else if (NewGame && FindObjectOfType<Game>().isSameGameSession() == true)
+        {
+            //FindObjectOfType<Game>().
+            FindObjectOfType<Game>().getLgData().loadnullgame(FindObjectOfType<Game>().getPlayer(), FindObjectOfType<Game>().getFattoria(), FindObjectOfType<Game>().getMiniera(), FindObjectOfType<Game>().getCaserma(), FindObjectOfType<Game>().getEnemy(), FindObjectOfType<Game>().getFabbro(), FindObjectOfType<Game>().getGilda());
+            FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
+            IntroExecutionPanel.SetActive(true);
+            FindObjectOfType<IntroExecution>().StartExecution();
+        }
+        else if (!NewGame && FindObjectOfType<Game>().isSameGameSession() == true)
+        {
+            FindObjectOfType<Game>().getLgData().loadnullgame(FindObjectOfType<Game>().getPlayer(), FindObjectOfType<Game>().getFattoria(), FindObjectOfType<Game>().getMiniera(), FindObjectOfType<Game>().getCaserma(), FindObjectOfType<Game>().getEnemy(), FindObjectOfType<Game>().getFabbro(), FindObjectOfType<Game>().getGilda());
+            loadingPanel.SetActive(true);
+            StartCoroutine(LoadingScreenFadeOut(0.8f));
+        }
         else
         {
+            FindObjectOfType<Game>().SaveGame();
             loadingPanel.SetActive(true);
             StartCoroutine(LoadingScreenFadeOut(0.8f));
         }

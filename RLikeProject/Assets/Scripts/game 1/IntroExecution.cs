@@ -114,6 +114,8 @@ public class IntroExecution : MonoBehaviour
     }
     public void EndOfSequenceCityText(Text City)
     {
+        confirmSelection.gameObject.GetComponentInChildren<Button>().interactable = true;
+
         MainMenu.SetActive(false);
 
         if (City.text != "")
@@ -138,18 +140,20 @@ public class IntroExecution : MonoBehaviour
             yield return new WaitForSeconds(0.001f);
         }
         confirmSelection.SetActive(false);
-        IntroSequence.gameObject.SetActive(false);
+        
         FindObjectOfType<FontDecreaser>().introClosed = true;
 
         if (FindObjectOfType<FirebaseManager>().isSignedIn())
         {
-            StartCoroutine(FindObjectOfType<FirebaseManager>().LoadUserData());
+            StartCoroutine(FindObjectOfType<FirebaseManager>().LoadUserTutorial());
 
             yield return new WaitUntil(() => FindObjectOfType<FirebaseManager>().dataLoaded == true);
             FindObjectOfType<FirebaseManager>().dataLoaded = false;
 
             FindObjectOfType<FirebaseManager>().SaveDataButton();
         }
+
+        IntroSequence.gameObject.SetActive(false);
     }
 
     public void StartExecution()
@@ -165,6 +169,10 @@ public class IntroExecution : MonoBehaviour
     IEnumerator FadeSequence()
     {
         /* fadeIn ad IntroSequence gameobject */
+        skipButton.gameObject.SetActive(true);
+        skipButton.alpha = 1;
+        skipButtonObject.SetActive(true);
+        skipButtonObject.GetComponentInChildren<Button>().interactable = true;
 
         float timePassed0 = 0f;
         while (timePassed0 < 0.8f)
@@ -459,6 +467,11 @@ public class IntroExecution : MonoBehaviour
         }
 
         skipButtonObject.SetActive(false);
+        skipButtonObject.GetComponentInChildren<Button>().interactable = false;
+
+        confirmSelection.gameObject.SetActive(true);
+        confirmSelection.gameObject.GetComponentInChildren<Button>().interactable = true;
+
         yield return new WaitForSeconds(0.8f);
 
         float choiceTime = 0f;

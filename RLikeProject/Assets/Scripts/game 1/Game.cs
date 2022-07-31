@@ -31,6 +31,9 @@ public class Game : MonoBehaviour
 
     [Header("Game Status")]
     public GameObject resumeGameText;
+    private bool sameGameSession = false;
+    public void setSameGameSession() { sameGameSession = true; }
+    public bool isSameGameSession() { return sameGameSession; }
 
     [Header("LogStatus")]
     public GameObject logStatus;
@@ -39,6 +42,7 @@ public class Game : MonoBehaviour
     [Header("Music")]
     /* Dichiarazione Musica di gioco */
     public AudioClip[] GameMusic;
+    public AudioClip epic_entrance;
     public AudioClip newTurnSound;
     public AudioClip village_mapUnfold;
     public AudioClip farm_cowbells;
@@ -213,6 +217,8 @@ public class Game : MonoBehaviour
     public Color32 yellowgood = new Color32(149, 74, 8, 255);
 
     Player player = new Player(); // oggetto player partita - non contiene soldati
+    public Player getPlayer() { return this.player; }
+
 
     /* classi di tipo soldato.classesoldato */
     public Soldiers.Swordsmen swordsmen = new Soldiers.Swordsmen();
@@ -224,9 +230,17 @@ public class Game : MonoBehaviour
     Caserma caserma = new Caserma();
     Fabbro fabbro = new Fabbro();
     Gilda gilda = new Gilda();
+
+    public Fattoria getFattoria() { return this.fattoria; }
+    public Miniera getMiniera() { return this.miniera; }
+    public Caserma getCaserma() { return this.caserma; }
+    public Fabbro getFabbro() { return this.fabbro; }
+    public Gilda getGilda() { return this.gilda; }
+
     //public static OldSoldiersManager manager = new OldSoldiersManager();
 
     LoadGameData lgData = new LoadGameData(); 
+    public LoadGameData getLgData() { return lgData; }
 
     public List<Text> UIelements;
 
@@ -258,8 +272,16 @@ public class Game : MonoBehaviour
 
     public void onQuitGame()
     {
-        SceneManager.UnloadSceneAsync(0);
-        SceneManager.LoadScene(0);
+        mainMenuPanel.SetActive(true);
+        FindObjectOfType<AudioManager>().Mute();
+        FindObjectOfType<AudioManager>().Mute();
+
+        FindObjectOfType<AudioManager>().PlayMusic(epic_entrance);
+        setSameGameSession();
+
+        Debug.Log("gamesession corrente e " + sameGameSession);
+        //SceneManager.UnloadSceneAsync(0);
+        //SceneManager.LoadScene(0);
     }
 
     // ---------------------------- aggiornamento in real time texts ----------------------------
@@ -1125,6 +1147,7 @@ public class Game : MonoBehaviour
     public Captain1 getCapitano(){ return this.capitano; }
     Captain2 enemyCapitano = new Captain2();
     Enemy enemy = new Enemy();
+    public Enemy getEnemy() { return this.enemy; }
     battle1 battle = new battle1();
     public Enemy.ESwordsmen eswordsmen = new Enemy.ESwordsmen();
     public Enemy.EArchers earchers = new Enemy.EArchers();

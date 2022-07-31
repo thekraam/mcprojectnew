@@ -494,7 +494,7 @@ public class Captain1 : MonoBehaviour
             {
                 finalcomment = "'Ah s**t, here we go again...'";
             }
-            if (x == 8 && name == "Jack")
+            if (x == 8 && FindObjectOfType<Game>().getCapitano().name == "Jack")
             {
                 finalcomment = "'The wind... is troubled today'";
             }

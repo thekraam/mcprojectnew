@@ -30,19 +30,41 @@ public static class SaveSystem
 
         )
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/game.fun";
-        isDataPresent = path;
-        FileStream stream = new FileStream(path, FileMode.Create);
+        if (File.Exists(Application.persistentDataPath + "/game.fun"))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/game.fun";
+            isDataPresent = path;
+            FileStream stream = new FileStream(path, FileMode.Create);
 
-        GameData data = new GameData(cityname ,player , events , fattoria , caserma , 
-                                    swordsmen , archers , riders , miniera, 
-                                    fabbro, gilda , tutorial, oldSoldiers, enemy,
-                                    eSwordsmen, eArchers, eRiders);
+            GameData data = new GameData(cityname, player, events, fattoria, caserma,
+                                        swordsmen, archers, riders, miniera,
+                                        fabbro, gilda, tutorial, oldSoldiers, enemy,
+                                        eSwordsmen, eArchers, eRiders);
 
-        formatter.Serialize(stream, data);
-        stream.Close();
+            formatter.Serialize(stream, data);
+            stream.Close();
+        }
+
+        if (!(File.Exists(Application.persistentDataPath + "/bak.fun")))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/bak.fun";
+
+            isDataPresent = path;
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            GameData data = new GameData(cityname, player, events, fattoria, caserma,
+                                        swordsmen, archers, riders, miniera,
+                                        fabbro, gilda, tutorial, oldSoldiers, enemy,
+                                        eSwordsmen, eArchers, eRiders);
+
+            formatter.Serialize(stream, data);
+            stream.Close();
+        }
     }
+
+
 
     public static GameData LoadGame ()
     {
@@ -64,4 +86,23 @@ public static class SaveSystem
         }
     }
 
+    public static GameData LoadNullData()
+    {
+        string path = Application.persistentDataPath + "/bak.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            GameData data = formatter.Deserialize(stream) as GameData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Save file not found in" + path);
+            return null;
+        }
+    }
 }

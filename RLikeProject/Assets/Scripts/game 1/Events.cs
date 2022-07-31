@@ -15,6 +15,18 @@ public class Events : MonoBehaviour
     private Fabbro fabbro;
     private Gilda gilda;
 
+    public void setPlayer(Player player) { this.player = player; }
+    public void setSwordsmen(Soldiers.Swordsmen swordsmen) { this.swordsmen = swordsmen; }
+    public void setArchers (Soldiers.Archers archers) { this.archers = archers; }
+    public void setRiders(Soldiers.Riders riders) { this.riders = riders; }
+    public void setFattoria(Fattoria fattoria) { this.fattoria = fattoria; }
+    public void setMiniera(Miniera miniera) { this.miniera = miniera; }
+    public void setCaserma(Caserma caserma) { this.caserma = caserma; }
+    public void setFabbro(Fabbro fabbro) { this.fabbro = fabbro; }
+    public void setGilda(Gilda gilda) { this.gilda = gilda; }
+
+
+
     /* oggetto per sostiuzione immagine */
     LoadImage LoadImage = new LoadImage();
 
