@@ -188,6 +188,16 @@ public class Events : MonoBehaviour
             goldMalus8 = fattoria.getGoldFattoria();
             event2MalusTurnsLeft--;
         }
+        if (event27MalusTurnsLeft > 0)
+        {
+            goldMalus9 = -(fattoria.getGoldFattoria() * 4);
+            event27MalusTurnsLeft--;
+        }
+        if (event30MalusTurnsLeft > 0)
+        {
+            goldMalus10 = -(int)(0.4f * (float)fattoria.getGoldFattoria());
+            event30MalusTurnsLeft--;
+        }
 
         return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10;
     }
@@ -422,6 +432,21 @@ public class Events : MonoBehaviour
             if (eventChooser >= 20f && eventChooser < 21f && player.getMoney() >= 400 && event1 == 0 && event21 == 0)
             {
                 StartCoroutine(TriggerEvent21());
+                selected = true;
+            }
+            if (eventChooser >= 21f && eventChooser < 22f && event23 == 0)
+            {
+                StartCoroutine(TriggerEvent23());
+                selected = true;
+            }
+            if (eventChooser >= 22f && eventChooser < 23f && player.getMoney() >= 1000 && event27 == 0)
+            {
+                StartCoroutine(TriggerEvent27());
+                selected = true;
+            }
+            if (eventChooser >= 23f && eventChooser < 24f && event30 == 0)
+            {
+                StartCoroutine(TriggerEvent30());
                 selected = true;
             }
 
@@ -1926,6 +1951,179 @@ public class Events : MonoBehaviour
             Dialogue.TriggerDialogue(message2);
 
             player.setRapidMoney(500);
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 23 - un gruppo di bambini ha trovato vicino alle miniere una strana pergamena
+
+    // DA FINIRE!!
+
+    public int event23 = 0;
+
+    IEnumerator TriggerEvent23()
+    {
+        event23 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+        string eventString5 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            aemisFaith++;
+
+            string eventString6 = "";
+            string eventString7 = "";
+            string eventString8 = "";
+            string eventString9 = "";
+
+            string[] message3 = { eventString6, eventString7, eventString8, eventString9 };
+
+            Dialogue.TriggerInteractiveDialogue(message3);
+
+            StartCoroutine(ResponseUpdater(false));
+            yield return new WaitUntil(() => response[1] == 1);
+
+            if (response[0] == 1)
+            {
+                aemisFaith++;
+                string eventString10 = "";
+                string eventString11 = "";
+
+                string[] message2 = { eventString10, eventString11 };
+
+                Dialogue.TriggerDialogue(message2);
+            }
+            else
+            {
+                string eventString12 = "";
+                string eventString13 = "";
+                string eventString14 = "";
+                string eventString15 = "";
+
+                string[] message2 = { eventString12, eventString13, eventString14, eventString15 };
+
+                Dialogue.TriggerDialogue(message2);
+            }
+        }
+        else
+        {
+            aemisFaith--;
+
+            string eventString6 = "";
+            string eventString7 = "";
+            string eventString8 = "";
+            string eventString9 = "";
+
+            string[] message2 = { eventString6, eventString7, eventString8, eventString9 };
+
+            Dialogue.TriggerDialogue(message2);
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 27 - 
+
+    // DA FINIRE!!
+
+    public int event27 = 0;
+    public int event27MalusTurnsLeft = 0;
+
+    IEnumerator TriggerEvent27()
+    {
+        event27 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-1000);
+            event27MalusTurnsLeft = 10; //goldFattoria * 4 per 10 turni
+        }
+
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 30 - un grande cinghiale è stato avvistato intorno alla città
+
+    // DA FINIRE!!
+
+    public int event30 = 0;
+    public int event30MalusTurnsLeft = 0;
+
+    IEnumerator TriggerEvent30()
+    {
+        event30 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+        string eventString5 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            string eventString6 = "";
+            string eventString7 = "";
+            string eventString8 = "";
+            string eventString9 = "";
+
+            string[] message2 = { eventString6, eventString7, eventString8, eventString9 };
+
+            Dialogue.TriggerDialogue(message2);
+
+            event30MalusTurnsLeft = 3; // goldFattoria +40% per 3 turni
+        }
+        else
+        {
+            string eventString10 = "";
+            string eventString11 = "";
+
+            string[] message2 = { eventString10, eventString11 };
+
+            Dialogue.TriggerDialogue(message2);
         }
 
         yield return new WaitForSeconds(1f);
