@@ -36,16 +36,7 @@ public class GameData
     public bool bonusTutorial;
 
     /*events*/
-    public int aqueduct;
-    public int response;
-    public int citydefenseproject;
-    public int aqueductSecondary;
-    public int aqueductTurnsLeft;
-    public int aqueductMalusTurnsLeft;
-    public bool attendingSecondaryEvent;
-    public bool aqueductMalus;
-
-    //DA AGGIUNGERE
+    
     public int terri;
     public int bonusETerri;
     public int bonusEnemy;
@@ -59,6 +50,17 @@ public class GameData
 
     public int ancientGreenJewel;
     public int blackCrystal;
+
+
+    public int aqueduct;
+    public int response;
+    public int citydefenseproject;
+    public int aqueductSecondary;
+    public int aqueductTurnsLeft;
+    public int aqueductMalusTurnsLeft;
+    public bool attendingSecondaryEvent;
+    public bool aqueductMalus;
+
 
 
     public int event2;
@@ -110,9 +112,17 @@ public class GameData
     public int event30;
     public int event30MalusTurnsLeft;
 
-
-
-
+    /*
+    public Player player1;
+    public Soldiers.Swordsmen swordsmen1;
+    public Soldiers.Archers archers1;
+    public Soldiers.Riders riders1;
+    public Fattoria fattoria1;
+    public Miniera miniera1;
+    public Caserma caserma1;
+    public Fabbro fabbro1;
+    public Gilda gilda1;
+    */
     /*farm*/
     public int farmLvl;
     public int abitantiMax;
@@ -370,9 +380,17 @@ public class GameData
         event30 = events.event30;
         event30MalusTurnsLeft = events.event30MalusTurnsLeft;
 
-
-
-
+        /*
+        this.player1 = player;
+        this.swordsmen1 = swordsmen;
+        this.archers1 = archers;
+        this.riders1 = riders;
+        this.fattoria1 = fattoria;
+        this.miniera1 = miniera;
+        this.caserma1 = caserma;
+        this.fabbro1 = fabbro;
+        this.gilda1 = gilda;
+        */
 
         /*farm*/
         farmLvl = fattoria.getLvlFattoria();

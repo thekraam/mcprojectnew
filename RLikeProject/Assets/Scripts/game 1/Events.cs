@@ -16,14 +16,23 @@ public class Events : MonoBehaviour
     private Gilda gilda;
 
     public void setPlayer(Player player) { this.player = player; }
+    public Player getPlayer() { return this.player;  }
     public void setSwordsmen(Soldiers.Swordsmen swordsmen) { this.swordsmen = swordsmen; }
+    public Soldiers.Swordsmen getSwordsmen() { return this.swordsmen; }
     public void setArchers (Soldiers.Archers archers) { this.archers = archers; }
+    public Soldiers.Archers getArchers() { return this.archers; }
     public void setRiders(Soldiers.Riders riders) { this.riders = riders; }
+    public Soldiers.Riders getRiders() { return this.riders; }
     public void setFattoria(Fattoria fattoria) { this.fattoria = fattoria; }
+    public Fattoria getFattoria() { return this.fattoria; }
     public void setMiniera(Miniera miniera) { this.miniera = miniera; }
+    public Miniera getMiniera() { return this.miniera; }
     public void setCaserma(Caserma caserma) { this.caserma = caserma; }
+    public Caserma getCaserma() { return this.caserma; }
     public void setFabbro(Fabbro fabbro) { this.fabbro = fabbro; }
+    public Fabbro getFabbro() { return this.fabbro; }
     public void setGilda(Gilda gilda) { this.gilda = gilda; }
+    public Gilda getGilda() { return this.gilda; }
 
 
 
@@ -132,6 +141,20 @@ public class Events : MonoBehaviour
     {
         FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
     }
+
+    public void InitializeEvents()
+    {
+        this.player = FindObjectOfType<Game>().getPlayer();
+        this.fattoria = FindObjectOfType<Game>().getFattoria();
+        this.miniera = FindObjectOfType<Game>().getMiniera();
+        this.caserma = FindObjectOfType<Game>().getCaserma();
+        this.fabbro = FindObjectOfType<Game>().getFabbro();
+        this.gilda = FindObjectOfType<Game>().getGilda();
+        this.swordsmen = FindObjectOfType<Game>().swordsmen;
+        this.archers = FindObjectOfType<Game>().archers;
+        this.riders = FindObjectOfType<Game>().riders;
+    }
+
 
     /* controllore di response (decisione giocatore) sull'oggetto dialoguemanager */
     IEnumerator ResponseUpdater(bool isSmallDialogue)
@@ -307,23 +330,12 @@ public class Events : MonoBehaviour
                 || (riders.getTotal() + archers.getTotal() >= cap));
     }
     /* avviatore eventi, la funzione sceglie un evento casuale e non gia' avvenuto sulla base di alcuni criteri */
-    public void EventStarter(Player player, Fattoria fattoria, Miniera miniera, Caserma caserma, Fabbro fabbro, Gilda gilda, Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders)
+    public void EventStarter()
     {
         finishedBattle = false;
 
         response[1] = 0;
 
-        this.player = player;
-        this.fattoria = fattoria;
-        this.miniera = miniera;
-        this.caserma = caserma;
-        this.fabbro = fabbro;
-        this.gilda = gilda;
-        this.swordsmen = swordsmen;
-        this.archers = archers;
-        this.riders = riders;
-
-        
 
         float eventChooser = 0;
         bool selected = false;
@@ -333,7 +345,7 @@ public class Events : MonoBehaviour
             isEventDialogueClosed = false;
             eventChooser = Random.Range(0f, 10f);
 
-            //eventChooser = 8.4f; // debug evento testbattaglia
+            eventChooser = 4.4f; // debug evento testbattaglia
 
             if (eventChooser >= 0 && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
             {

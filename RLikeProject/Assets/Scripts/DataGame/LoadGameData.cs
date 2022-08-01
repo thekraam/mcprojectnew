@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LoadGameData : MonoBehaviour
@@ -131,8 +129,17 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<Events>().event30 = data.event30;
         FindObjectOfType<Events>().event30MalusTurnsLeft = data.event30MalusTurnsLeft;
 
-
-
+        /*
+        FindObjectOfType<Events>().setPlayer(data.player1);
+        FindObjectOfType<Events>().setSwordsmen(data.swordsmen1);
+        FindObjectOfType<Events>().setArchers(data.archers1);
+        FindObjectOfType<Events>().setRiders(data.riders1);
+        FindObjectOfType<Events>().setFattoria(data.fattoria1);
+        FindObjectOfType<Events>().setMiniera(data.miniera1);
+        FindObjectOfType<Events>().setCaserma(data.caserma1);
+        FindObjectOfType<Events>().setFabbro(data.fabbro1);
+        FindObjectOfType<Events>().setGilda(data.gilda1);
+        */
 
         /*farm*/
         fattoria.setLvlFattoria(data.farmLvl);
@@ -383,8 +390,17 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<Events>().event30 = data.event30;
         FindObjectOfType<Events>().event30MalusTurnsLeft = data.event30MalusTurnsLeft;
 
-
-
+        /*
+        FindObjectOfType<Events>().setPlayer(data.player1);
+        FindObjectOfType<Events>().setSwordsmen(data.swordsmen1);
+        FindObjectOfType<Events>().setArchers(data.archers1);
+        FindObjectOfType<Events>().setRiders(data.riders1);
+        FindObjectOfType<Events>().setFattoria(data.fattoria1);
+        FindObjectOfType<Events>().setMiniera(data.miniera1);
+        FindObjectOfType<Events>().setCaserma(data.caserma1);
+        FindObjectOfType<Events>().setFabbro(data.fabbro1);
+        FindObjectOfType<Events>().setGilda(data.gilda1);
+        */
 
         /*farm*/
         fattoria.setLvlFattoria(data.farmLvl);

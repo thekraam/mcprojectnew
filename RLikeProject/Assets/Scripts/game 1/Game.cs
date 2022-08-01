@@ -263,6 +263,7 @@ public class Game : MonoBehaviour
         guildPanel.SetActive(false);
         casermaPanel.SetActive(false);
         capitano.resetCaptain();
+        FindObjectOfType<Events>().InitializeEvents();
     }
 
     public void SAVEDELETETEST()
@@ -787,7 +788,7 @@ public class Game : MonoBehaviour
 
         FindObjectOfType<Events>().eventTurnsDecreaser();
         FindObjectOfType<Events>().SecondaryEventStarter(); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
-        FindObjectOfType<Events>().EventStarter(player, fattoria, miniera, caserma, fabbro, gilda, swordsmen, archers, riders); // avvio evento primario, non si avvia se e' in corso uno secondario
+        FindObjectOfType<Events>().EventStarter(); // avvio evento primario, non si avvia se e' in corso uno secondario
         FindObjectOfType<OldSoldiersManager>().gildamexritorno(player, gilda);  //betatesting
         SaveGame();
     }
