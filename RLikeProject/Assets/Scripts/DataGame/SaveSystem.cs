@@ -30,8 +30,6 @@ public static class SaveSystem
 
         )
     {
-        if (File.Exists(Application.persistentDataPath + "/game.fun"))
-        {
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Application.persistentDataPath + "/game.fun";
             isDataPresent = path;
@@ -44,23 +42,21 @@ public static class SaveSystem
 
             formatter.Serialize(stream, data);
             stream.Close();
-        }
 
         if (!(File.Exists(Application.persistentDataPath + "/bak.fun")))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/bak.fun";
+            BinaryFormatter formatter2 = new BinaryFormatter();
+            string path2 = Application.persistentDataPath + "/bak.fun";
 
-            isDataPresent = path;
-            FileStream stream = new FileStream(path, FileMode.Create);
+            FileStream stream2 = new FileStream(path2, FileMode.Create);
 
-            GameData data = new GameData(cityname, player, events, fattoria, caserma,
+            GameData data2 = new GameData(cityname, player, events, fattoria, caserma,
                                         swordsmen, archers, riders, miniera,
                                         fabbro, gilda, tutorial, oldSoldiers, enemy,
                                         eSwordsmen, eArchers, eRiders, capitano);
 
-            formatter.Serialize(stream, data);
-            stream.Close();
+            formatter2.Serialize(stream2, data2);
+            stream2.Close();
         }
     }
 

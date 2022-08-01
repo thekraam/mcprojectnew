@@ -127,6 +127,7 @@ public class Events : MonoBehaviour
     public void onPressCloseVictoryDefeatPanel()
     {
         finishedBattle = true;
+        FindObjectOfType<Game>().getCapitano().lvlup();
     }
 
     // pulsante start battle di battle preparation
@@ -2246,10 +2247,10 @@ public class Events : MonoBehaviour
     {
         event26 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "A man presents himself in front of the city walls.";
+        string eventString2 = "He proposes a challenge: the strongest soldier of your army shall duel him.";
+        string eventString3 = "It looks like, however, that no man wants to accept this foolish duel, with an exception: your captain " + FindObjectOfType<Game>().getCapitano().getName() + ".";
+        string eventString4 = "Are you allowing this duel?";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -2261,16 +2262,27 @@ public class Events : MonoBehaviour
         if (response[0] == 1)
         {
 
-            // MANCA IL DUELLO TRA I CAPITANI
+            Captain1 capitano = FindObjectOfType<Game>().getCapitano();
+            Captain2 nemico = new Captain2();
+            nemico.resetCaptain();
+            int turni = FindObjectOfType<Game>().getPlayer().getTurn();
+            int x = (Random.Range(1, 3) + (int)(turni / 10));
+            nemico.lvlUpRapid(x);
+            if ((capitano.getAtk() - nemico.getDef()) >= (nemico.getAtk() - capitano.getDef()))
+            {
+                lastBattleInfo = 1;
+            }
+            else
+            {
+                lastBattleInfo = 0;
+            }
 
-            
             if (lastBattleInfo > 0) //vittoria del capitano // VARIABILE NEL IF DA CAMBIARE
             {
-                string eventString5 = "";
-                string eventString6 = "";
-                string eventString7 = "";
+                string eventString5 = "Your captain won. The man flees from the city leaving his shield behind.";
+                string eventString6 = "You decide to gift this powerful shield to the captain.[Captain defenses increase]";
 
-                string[] message2 = { eventString5, eventString6, eventString7 };
+                string[] message2 = { eventString5, eventString6 };
 
                 Dialogue.TriggerDialogue(message2);
 
@@ -2280,9 +2292,9 @@ public class Events : MonoBehaviour
             }
             else //sconfitta del capitano
             {
-                string eventString6 = "";
-                string eventString7 = "";
-                string eventString8 = "";
+                string eventString6 = "Your captain has been defeated and the challenger has no mercy and hits him to death.";
+                string eventString7 = "Shortly after your men, moved by a sense of justice, kick the man out of the city.";
+                string eventString8 = "The following days " + FindObjectOfType<Game>().getCapitano().getName() + "'s funerals happen and a new captain is chosen.";
 
                 string[] message2 = { eventString6, eventString7, eventString8 };
 
@@ -2294,8 +2306,8 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString7 = "";
-            string eventString8 = "";
+            string eventString7 = "Your soldiers kick the man out of the city.";
+            string eventString8 = "The challenger offends your people calling them cowards and leaves.";
 
             string[] message3 = { eventString7, eventString8 };
 
@@ -2319,10 +2331,10 @@ public class Events : MonoBehaviour
     {
         event28 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "A small group of armed demons has been spotted towards the demoniac lands.";
+        string eventString2 = "Shortly after some army's messanger joins the city and asks help to defeat that group.";
+        string eventString3 = "They say it is their duty to defeat demons, so that no damages will be caused in the near future.";
+        string eventString4 = "Are you helping the messanger's army?\n[The expedition has no cost]";
 
         string[] message = { eventString1, eventString2, eventString3, eventString4 };
 
@@ -2342,11 +2354,10 @@ public class Events : MonoBehaviour
 
             if (lastBattleInfo > 0)
             {
-                string eventString5 = "";
-                string eventString6 = "";
-                string eventString7 = "";
+                string eventString5 = "The army is grateful for the given help.";
+                string eventString6 = "Their commander promises to be at your disposal when needed.";
 
-                string[] message2 = { eventString5, eventString6, eventString7 };
+                string[] message2 = { eventString5, eventString6 };
 
                 Dialogue.TriggerDialogue(message2);
 
@@ -2376,13 +2387,14 @@ public class Events : MonoBehaviour
     {
         event29 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
-        string eventString5 = "";
+        string eventString1 = "One of the local priests of the Aemis' cult has been assassinated.";
+        string eventString2 = "The knights of Aemis in the city decide to investigate on their own.";
+        string eventString3 = "Their investigation brings them to a woman. It appears that this woman has cheated the priest with an unfaithful.";
+        string eventString4 = "Shortly after the knights decide to execute the woman.";
+        string eventString5 = "Some of your men tell you that it's better for her to be judget in a more fair way.";
+        string eventString6 = "Are you interrupting the execution to give the woman a fair process?";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5, eventString6 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -2391,11 +2403,13 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
-            
-            string eventString6 = "";
-            string eventString7 = "";
+            aemisFaith--;
 
-            string[] message3 = { eventString6, eventString7 };
+            string eventString7 = "The knights of Aemis' succeeed in executing the woman anyway.";
+            string eventString8 = "Your soldiers didn't arrive in time but their presence bothered the knights of Aemis' that threaten them to never interrupt them again.";
+            string eventString9 = "Are you taking revenge for the unfairness of this execution?";
+
+            string[] message3 = { eventString7, eventString8, eventString9 };
 
             Dialogue.TriggerInteractiveDialogue(message3);
 
@@ -2404,6 +2418,7 @@ public class Events : MonoBehaviour
 
             if (response[0] == 1)
             {
+                aemisFaith--;
                 terri = 2;
                 makeEnemyForEvent(3, 0, 0, 25, 3); 
 
@@ -2416,10 +2431,9 @@ public class Events : MonoBehaviour
                 if (lastBattleInfo > 2)
                 {
                     
-                    string eventString8 = "";
-                    string eventString9 = "";
+                    string eventString10 = "From the knights corpses your men find a great sum of golds.\n[You obtain 4000 Gold]";
 
-                    string[] message2 = { eventString8, eventString9 };
+                    string[] message2 = { eventString10 };
 
                     Dialogue.TriggerDialogue(message2);
 
@@ -2428,20 +2442,18 @@ public class Events : MonoBehaviour
                 else 
                 {
                     
-                    string eventString8 = "";
-                    string eventString9 = "";
+                    string eventString11 = "After your loss the knights decide to leave this unfaithful city of yours.";
 
-                    string[] message2 = { eventString8, eventString9 };
+                    string[] message2 = { eventString11 };
 
                     Dialogue.TriggerDialogue(message2);
                 }
             }
             else
             {
-                string eventString8 = "";
-                string eventString9 = "";
+                string eventString12 = "The knights leave the city with no comment.";
 
-                string[] message2 = { eventString8, eventString9 };
+                string[] message2 = { eventString12 };
 
                 Dialogue.TriggerDialogue(message2);
             }
@@ -2450,9 +2462,8 @@ public class Events : MonoBehaviour
         {
             aemisFaith++;
 
-            string eventString6 = "";
-            string eventString7 = "";
-            string eventString8 = "";
+            string eventString7 = "The knights execute the woman as predicted, whilist they sing the praises of the Aemis' cult.";
+            string eventString8 = "Their words are spoken more as a threat than an advice.";
 
             string[] message2 = { eventString6, eventString7, eventString8 };
 
@@ -2478,12 +2489,11 @@ public class Events : MonoBehaviour
     {
         event24 = 1;
 
-        string eventString1 = "a";
-        string eventString2 = "s";
-        string eventString3 = "d";
-        string eventString4 = "no";
+        string eventString1 = "An army of dwarfs is passing by the city and asks provisions.";
+        string eventString2 = "They claim to be on a trip to a land not far from your city that will lead them to fight a group of demons.";
+        string eventString3 = "Are you willing to help them?\n[Providing provisions has a cost of 500 Gold]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -2492,18 +2502,24 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
+            string eventString5 = "The dwarfs thank you for your support.";
+
+            string[] message2 = { eventString5 };
+
+            Dialogue.TriggerDialogue(message2);
+
             player.setRapidMoney(-500);
         }
         else
         {
-            string eventString5 = "qw";
-            string eventString6 = "er";
-            string eventString7 = "ty";
+            string eventString5 = "The dwarfs leave the city with no comment.";
+            string eventString6 = "Days later you hear that a group of demons defeated an army of dwarfs towrads the far lands.";
+            string eventString7 = "Because of this situation discomfort begins to spread around the city.";
 
             string[] message2 = { eventString5, eventString6, eventString7 };
 
             Dialogue.TriggerDialogue(message2);
-            if (Random.Range(0f, 1f) < 0.5)
+            if (Random.Range(0.1f, 1f) <= 0.5)
             {
                 secondaryEvent5 = 1;
                 secondaryEvent5TurnsLeft = 2;
@@ -2529,13 +2545,11 @@ public class Events : MonoBehaviour
     {
         secondaryEvent5 = 0;
 
-        string eventString1 = "q";
-        string eventString2 = "w";
-        string eventString3 = "e";
-        string eventString4 = "r";
-        string eventString5 = "t";
+        string eventString1 = "A group of demons attack the fields around the city.";
+        string eventString2 = "You soldiers quickly moved in support of the citizens, that flee the damaged areas.";
+        string eventString3 = "They take action against the demons as soon as they arrive.";
 
-        string[] message2 = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+        string[] message2 = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerDialogue(message2);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
@@ -2550,10 +2564,9 @@ public class Events : MonoBehaviour
 
         if (lastBattleInfo > 2)
         {
-            string eventString6 = "hai vinto";
-            string eventString7 = " :P";
+            string eventString6 = "The demons are being pushed back but great damages to the field happened.\n[You suffer a reduction of Gold income from the Farm for 3 seasons]]";
 
-            string[] message3 = { eventString6, eventString7 };
+            string[] message3 = { eventString6 };
 
             Dialogue.TriggerDialogue(message3);
 
@@ -2562,8 +2575,8 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString6 = "hai perso";
-            string eventString7 = " :(";
+            string eventString6 = "The demons defeat your army and quickly finish to destroy the rest of the fields.";
+            string eventString7 = "They proceed to generate panic and destruction for another day and then leave.\n[You suffer reduction to zero of the Gold income from the Farm for 3 seasons]";
 
             string[] message3 = { eventString6, eventString7 };
 
@@ -2589,12 +2602,11 @@ public class Events : MonoBehaviour
     {
         event25 = 1;
 
-        string eventString1 = "";
-        string eventString2 = "";
-        string eventString3 = "";
-        string eventString4 = "";
+        string eventString1 = "A diplomatic from a city towards the far lands enters the city and asks to create a trading road to share.";
+        string eventString2 = "To do so, however, he asks a financing for the building of a new road where outposts need to be made.";
+        string eventString3 = "Are you willing to finance this project?\n[You will spend 2000 Gold]";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+        string[] message = { eventString1, eventString2, eventString3 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -2632,13 +2644,10 @@ public class Events : MonoBehaviour
     {
         secondaryEvent6 = 0;
 
-        string eventString1 = "q";
-        string eventString2 = "w";
-        string eventString3 = "e";
-        string eventString4 = "r";
-        string eventString5 = "t";
+        string eventString1 = "From the newly built trading route are coming gifts from merchants and artisans.";
+        string eventString2 = "Their intent is to let your people know their products in order for them to expand their market.\n[You obtain 500 Gold worth of goods]";
 
-        string[] message2 = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+        string[] message2 = { eventString1, eventString2 };
 
         Dialogue.TriggerDialogue(message2);
 

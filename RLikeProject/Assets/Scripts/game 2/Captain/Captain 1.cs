@@ -196,19 +196,19 @@ public class Captain1 : MonoBehaviour
 
                 if (x2 == 1)
                 {
-                    perk = "figher (+3 Atk, +3 Def)";
+                    perk = "fighter (+3 Atk, +3 Def)";
                     atk = atk + 3;
                     def = def + 3;
                 }
                 if (x2 == 2)
                 {
-                    perk = "figher lvl 2 (+3 Atk, +3 Def)";
+                    perk = "fighter lvl 2 (+3 Atk, +3 Def)";
                     atk = atk + 3;
                     def = def + 3;
                 }
                 if (x2 == 3)
                 {
-                    perk = "figher lvl 3 (+3 Atk, +3 Def)";
+                    perk = "fighter lvl 3 (+3 Atk, +3 Def)";
                     atk = atk + 3;
                     def = def + 3;
                 }
@@ -408,12 +408,12 @@ public class Captain1 : MonoBehaviour
         string comment = "error";
         if (xcont == 1)
         {
-            comment = "L'esperienza di cento battaglie aiuta sempre (Bonus di battaglia +2%) ";
+            comment = "'The experience of a hundred battles' (Battle Bonus +2%)";
             xcont = 0;
         }
         if (xcont == 2)
         {
-            comment = "Capacità di combattere e vincere contro l'avversario (+3 Atk, +3 Def)";
+            comment = "'Ability to fight and win' (+3 ATK, +3 DEF)";
             xcont = 0;
         }
         if (xcont == 3)
@@ -494,7 +494,7 @@ public class Captain1 : MonoBehaviour
             {
                 finalcomment = "'Ah s**t, here we go again...'";
             }
-            if (x == 8 && FindObjectOfType<Game>().getCapitano().name == "Jack")
+            if (x == 8 && this.getName() == "Jack")
             {
                 finalcomment = "'The wind... is troubled today'";
             }
@@ -617,7 +617,7 @@ public class Captain1 : MonoBehaviour
             }
             if (x == 15)
             {
-                nome = "C. Marcs";
+                nome = "C. Marx";
             }
             if (x == 16)
             {

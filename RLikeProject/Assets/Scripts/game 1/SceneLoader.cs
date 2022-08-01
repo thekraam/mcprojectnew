@@ -24,7 +24,9 @@ public class SceneLoader : MonoBehaviour
 
     public void onResume()
     {
-        if(FindObjectOfType<Game>().isSameGameSession() == true)
+        FindObjectOfType<AudioManager>().StopMusic(FindObjectOfType<Game>().epic_entrance);
+        FindObjectOfType<FontDecreaser>().introClosed = true;
+        if (FindObjectOfType<Game>().isSameGameSession() == true)
         {
             Debug.Log("sono dentro");
             FindObjectOfType<Game>().mainMenuPanel.SetActive(false);
@@ -48,6 +50,7 @@ public class SceneLoader : MonoBehaviour
     public void onPressButton(bool NewGame)
     {
         FindObjectOfType<FirebaseManager>().LoadDataButton(true);
+        FindObjectOfType<Game>().getCapitano().resetCaptain();
 
         if (NewGame && FindObjectOfType<Game>().isSameGameSession() == false)
         {
@@ -58,7 +61,6 @@ public class SceneLoader : MonoBehaviour
         }
         else if (NewGame && FindObjectOfType<Game>().isSameGameSession() == true)
         {
-            //FindObjectOfType<Game>().
             FindObjectOfType<Game>().getLgData().loadnullgame(FindObjectOfType<Game>().getPlayer(), FindObjectOfType<Game>().getFattoria(), FindObjectOfType<Game>().getMiniera(), FindObjectOfType<Game>().getCaserma(), FindObjectOfType<Game>().getEnemy(), FindObjectOfType<Game>().getFabbro(), FindObjectOfType<Game>().getGilda());
             FindObjectOfType<AudioManager>().StopMusic(MainMenuMusic);
             IntroExecutionPanel.SetActive(true);
