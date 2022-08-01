@@ -55,13 +55,7 @@ public class LoadGameData : MonoBehaviour
         //FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
 
         /*events*/
-        FindObjectOfType<Events>().event1 = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;
-        FindObjectOfType<Events>().secondaryEvent1MalusTurnsLeft = data.aqueductMalusTurnsLeft;
-        FindObjectOfType<Events>().secondaryEvent1Malus = data.aqueductMalus ? 1 : 0;
-        FindObjectOfType<Events>().event3 = data.citydefenseproject;
-        FindObjectOfType<Events>().secondaryEvent1 = data.aqueductSecondary;
-        FindObjectOfType<Events>().secondaryEvent1TurnsLeft = data.aqueductTurnsLeft;
         FindObjectOfType<Events>().attendingSecondaryEvent = data.attendingSecondaryEvent;
 
 
@@ -78,10 +72,16 @@ public class LoadGameData : MonoBehaviour
 
         FindObjectOfType<Events>().ancientGreenJewel = data.ancientGreenJewel;
         FindObjectOfType<Events>().blackCrystal = data.blackCrystal;
+        FindObjectOfType<Events>().aqueduct = data.aqueduct;
 
-
+        FindObjectOfType<Events>().event1 = data.event1;
+        FindObjectOfType<Events>().secondaryEvent1MalusTurnsLeft = data.secondaryEvent1MalusTurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent1Malus = data.secondaryEvent1Malus ? 1 : 0;
+        FindObjectOfType<Events>().secondaryEvent1 = data.secondaryEvent1;
+        FindObjectOfType<Events>().secondaryEvent1TurnsLeft = data.secondaryEvent1TurnsLeft;
         FindObjectOfType<Events>().event2 = data.event2;
         FindObjectOfType<Events>().event2MalusTurnsLeft = data.event2MalusTurnsLeft;
+        FindObjectOfType<Events>().event3 = data.event3;
         FindObjectOfType<Events>().event4 = data.event4;
         FindObjectOfType<Events>().event4BonusTurnsLeft = data.event4BonusTurnsLeft;
         FindObjectOfType<Events>().secondaryEvent2 = data.secondaryEvent2;
@@ -316,13 +316,7 @@ public class LoadGameData : MonoBehaviour
         //FindObjectOfType<Tutorial>().bonusTutorial = data.bonusTutorial;
 
         /*events*/
-        FindObjectOfType<Events>().event1 = data.aqueduct;
         FindObjectOfType<Events>().response[0] = data.response;
-        FindObjectOfType<Events>().secondaryEvent1MalusTurnsLeft = data.aqueductMalusTurnsLeft;
-        FindObjectOfType<Events>().secondaryEvent1Malus = data.aqueductMalus ? 1 : 0;
-        FindObjectOfType<Events>().event3 = data.citydefenseproject;
-        FindObjectOfType<Events>().secondaryEvent1 = data.aqueductSecondary;
-        FindObjectOfType<Events>().secondaryEvent1TurnsLeft = data.aqueductTurnsLeft;
         FindObjectOfType<Events>().attendingSecondaryEvent = data.attendingSecondaryEvent;
 
 
@@ -339,10 +333,16 @@ public class LoadGameData : MonoBehaviour
 
         FindObjectOfType<Events>().ancientGreenJewel = data.ancientGreenJewel;
         FindObjectOfType<Events>().blackCrystal = data.blackCrystal;
+        FindObjectOfType<Events>().aqueduct = data.aqueduct;
 
-
+        FindObjectOfType<Events>().event1 = data.event1;
+        FindObjectOfType<Events>().secondaryEvent1MalusTurnsLeft = data.secondaryEvent1MalusTurnsLeft;
+        FindObjectOfType<Events>().secondaryEvent1Malus = data.secondaryEvent1Malus ? 1 : 0;
+        FindObjectOfType<Events>().secondaryEvent1 = data.secondaryEvent1;
+        FindObjectOfType<Events>().secondaryEvent1TurnsLeft = data.secondaryEvent1TurnsLeft;
         FindObjectOfType<Events>().event2 = data.event2;
         FindObjectOfType<Events>().event2MalusTurnsLeft = data.event2MalusTurnsLeft;
+        FindObjectOfType<Events>().event3 = data.event3;
         FindObjectOfType<Events>().event4 = data.event4;
         FindObjectOfType<Events>().event4BonusTurnsLeft = data.event4BonusTurnsLeft;
         FindObjectOfType<Events>().secondaryEvent2 = data.secondaryEvent2;

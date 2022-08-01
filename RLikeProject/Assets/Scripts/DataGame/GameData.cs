@@ -50,21 +50,21 @@ public class GameData
 
     public int ancientGreenJewel;
     public int blackCrystal;
-
-
     public int aqueduct;
+
     public int response;
-    public int citydefenseproject;
-    public int aqueductSecondary;
-    public int aqueductTurnsLeft;
-    public int aqueductMalusTurnsLeft;
+
+
     public bool attendingSecondaryEvent;
-    public bool aqueductMalus;
 
-
-
+    public int event1;
+    public int secondaryEvent1;
+    public int secondaryEvent1TurnsLeft;
+    public int secondaryEvent1MalusTurnsLeft;
+    public bool secondaryEvent1Malus;
     public int event2;
     public int event2MalusTurnsLeft;
+    public int event3;
     public int event4;
     public int event4BonusTurnsLeft;
     public int secondaryEvent2;
@@ -306,15 +306,7 @@ public class GameData
         /*events*/
         attendingSecondaryEvent = events.attendingSecondaryEvent;
 
-        aqueduct = events.event1;
         response = events.response[0];
-        citydefenseproject = events.event3;
-        aqueductSecondary = events.secondaryEvent1;
-        aqueductTurnsLeft = events.secondaryEvent1TurnsLeft;
-        aqueductMalusTurnsLeft = events.secondaryEvent1MalusTurnsLeft;
-        aqueductMalus = events.secondaryEvent1Malus == 1 ? true : false;
-
-
 
         terri = events.terri;
         bonusETerri = events.bonusETerri;
@@ -329,10 +321,16 @@ public class GameData
 
         ancientGreenJewel = events.ancientGreenJewel;
         blackCrystal = events.blackCrystal;
+        aqueduct = events.aqueduct;
 
-
+        event1 = events.event1;
+        secondaryEvent1 = events.secondaryEvent1;
+        secondaryEvent1TurnsLeft = events.secondaryEvent1TurnsLeft;
+        secondaryEvent1MalusTurnsLeft = events.secondaryEvent1MalusTurnsLeft;
+        secondaryEvent1Malus = events.secondaryEvent1Malus == 1 ? true : false;
         event2 = events.event2;
         event2MalusTurnsLeft = events.event2MalusTurnsLeft;
+        event3 = events.event3;
         event4 = events.event4;
         event4BonusTurnsLeft = events.event4BonusTurnsLeft;
         secondaryEvent2 = events.secondaryEvent2;

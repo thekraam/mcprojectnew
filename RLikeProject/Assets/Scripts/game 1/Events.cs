@@ -345,7 +345,7 @@ public class Events : MonoBehaviour
             isEventDialogueClosed = false;
             eventChooser = Random.Range(0f, 10f);
 
-            eventChooser = 4.4f; // debug evento testbattaglia
+            //eventChooser = 0.4f; // debug evento testbattaglia
 
             if (eventChooser >= 0 && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
             {
