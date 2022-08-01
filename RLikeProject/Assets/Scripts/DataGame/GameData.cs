@@ -51,6 +51,7 @@ public class GameData
     public int ancientGreenJewel;
     public int blackCrystal;
     public int aqueduct;
+    public int uominiErranti;
 
     public int response;
 
@@ -103,7 +104,14 @@ public class GameData
     public int event22;
     public int event23;
     public int event24;
+    public int secondaryEvent5;
+    public int secondaryEvent5TurnsLeft;
+    public int secondaryEvent5Malus40;
+    public int secondaryEvent5Malus100;
     public int event25;
+    public int event25BonusTurnsLeft;
+    public int secondaryEvent6;
+    public int secondaryEvent6TurnsLeft;
     public int event26;
     public int event27;
     public int event27MalusTurnsLeft;
@@ -366,6 +374,7 @@ public class GameData
         ancientGreenJewel = events.ancientGreenJewel;
         blackCrystal = events.blackCrystal;
         aqueduct = events.aqueduct;
+        uominiErranti = events.uominiErranti;
 
         event1 = events.event1;
         secondaryEvent1 = events.secondaryEvent1;
@@ -412,13 +421,20 @@ public class GameData
         event21MalusTurnsLeft = events.event21MalusTurnsLeft;
         event22 = events.event22;
         event23 = events.event23;
-        //event24 = events.e24;
-        //event25 = events.e25;
-        //event26 = events.e26;
+        event24 = events.event24;
+        secondaryEvent5 = events.secondaryEvent5;
+        secondaryEvent5TurnsLeft = events.secondaryEvent5TurnsLeft;
+        secondaryEvent5Malus40 = events.secondaryEvent5Malus40;
+        secondaryEvent5Malus100 = events.secondaryEvent5Malus100;
+        event25 = events.event25;
+        event25BonusTurnsLeft = events.event25BonusTurnsLeft;
+        secondaryEvent6 = events.secondaryEvent6;
+        secondaryEvent6TurnsLeft = events.secondaryEvent6TurnsLeft;
+        event26 = events.event26;
         event27 = events.event27;
         event27MalusTurnsLeft = events.event27MalusTurnsLeft;
-        //event28 = events.e28;
-        //event29 = events.e29;
+        event28 = events.event28;
+        event29 = events.event28;
         event30 = events.event30;
         event30MalusTurnsLeft = events.event30MalusTurnsLeft;
 
