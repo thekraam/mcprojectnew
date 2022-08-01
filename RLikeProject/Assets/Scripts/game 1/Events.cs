@@ -108,6 +108,8 @@ public class Events : MonoBehaviour
     public int ancientGreenJewel = 0;
     public int blackCrystal = 0;
 
+    public int uominiErranti = 0;
+
 
     public void makeEnemyForEvent(int livello, int swordsmen, string swordsmenAlias, string swordsmenAliasSingular, int archers, string archersAlias, string archersAliasSingular, int riders, string ridersAlias, string ridersAliasSingular, int lvlCapitano)
     {
@@ -1674,7 +1676,7 @@ public class Events : MonoBehaviour
     }
 
     /* --------------------------------------------------------------------------------- *
- * --------------------------------------------------------------------------------- */
+     * --------------------------------------------------------------------------------- */
 
     // evento 2 - dei lupi rompono il cazzo 
 
@@ -2166,6 +2168,235 @@ public class Events : MonoBehaviour
             string eventString10 = "Soon after you hear the wild boar disappeared after some days without leaving trace.";
 
             string[] message2 = { eventString10 };
+
+            Dialogue.TriggerDialogue(message2);
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 26 - 
+
+    public int event26 = 0;
+
+    IEnumerator TriggerEvent26()
+    {
+        event26 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            
+            if (lastBattleInfo > 0) //vittoria del capitano // VARIABILE NEL IF DA CAMBIARE
+            {
+                string eventString5 = "";
+                string eventString6 = "";
+                string eventString7 = "";
+
+                string[] message2 = { eventString5, eventString6, eventString7 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                FindObjectOfType<Game>().getCapitano().aumentaDef(6);// def capitano +10
+
+
+            }
+            else //sconfitta del capitano
+            {
+                string eventString6 = "";
+                string eventString7 = "";
+                string eventString8 = "";
+
+                string[] message2 = { eventString6, eventString7, eventString8 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                FindObjectOfType<Game>().getCapitano().resetCaptain();// reset capitano
+            }
+
+        }
+        else
+        {
+            string eventString7 = "";
+            string eventString8 = "";
+
+            string[] message3 = { eventString7, eventString8 };
+
+            Dialogue.TriggerDialogue(message3);
+
+        }
+
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+ * --------------------------------------------------------------------------------- */
+
+    // evento 28 - dei lupi rompono il cazzo 
+
+    public int event28 = 0;
+    
+
+
+    IEnumerator TriggerEvent28()
+    {
+        event28 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            terri = 2;
+            makeEnemyForEvent(2, 1, 1, 1, 1); //DA CAMBIARE 
+
+            FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+            yield return new WaitUntil(() => finishedBattle == true);
+
+            if (lastBattleInfo > 0)
+            {
+                string eventString5 = "The expedition comes back with good news.";
+                string eventString6 = "Your soldiers took down the wolves and came back with their cloth.";
+                string eventString7 = "The cloth is worth 800 Gold.\n[You obtain 800 Gold]";
+
+                string[] message2 = { eventString5, eventString6, eventString7 };
+
+                Dialogue.TriggerDialogue(message2);
+
+                uominiErranti = 1;
+            }
+            
+
+        }
+        
+
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 29 - 
+
+    // DA FINIRE!!
+
+    public int event29 = 0;
+
+    IEnumerator TriggerEvent29()
+    {
+        event29 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+        string eventString5 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            
+            string eventString6 = "";
+            string eventString7 = "";
+
+            string[] message3 = { eventString6, eventString7 };
+
+            Dialogue.TriggerInteractiveDialogue(message3);
+
+            StartCoroutine(ResponseUpdater(false));
+            yield return new WaitUntil(() => response[1] == 1);
+
+            if (response[0] == 1)
+            {
+                terri = 2;
+                makeEnemyForEvent(2, 1, 1, 1, 1); //DA CAMBIARE 
+
+                FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+                yield return new WaitUntil(() => finishedBattle == true);
+
+                aemisKnightsHostility = 1;
+                
+                if (lastBattleInfo > 2)
+                {
+                    
+                    string eventString8 = "";
+                    string eventString9 = "";
+
+                    string[] message2 = { eventString8, eventString9 };
+
+                    Dialogue.TriggerDialogue(message2);
+
+                    player.setRapidMoney(4000);
+                }
+                else 
+                {
+                    
+                    string eventString8 = "";
+                    string eventString9 = "";
+
+                    string[] message2 = { eventString8, eventString9 };
+
+                    Dialogue.TriggerDialogue(message2);
+                }
+            }
+            else
+            {
+                string eventString8 = "";
+                string eventString9 = "";
+
+                string[] message2 = { eventString8, eventString9 };
+
+                Dialogue.TriggerDialogue(message2);
+            }
+        }
+        else
+        {
+            aemisFaith++;
+
+            string eventString6 = "";
+            string eventString7 = "";
+            string eventString8 = "";
+
+            string[] message2 = { eventString6, eventString7, eventString8 };
 
             Dialogue.TriggerDialogue(message2);
         }
