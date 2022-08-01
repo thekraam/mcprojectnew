@@ -78,6 +78,9 @@ public class Events : MonoBehaviour
     private int goldMalus8 = 0;
     private int goldMalus9 = 0;
     private int goldMalus10 = 0;
+    private int goldMalus11 = 0;
+    private int goldMalus12 = 0;
+    private int goldMalus13 = 0;
 
     /* informazioni ultima battaglia */
     public int lastBattleInfo = 0;
@@ -177,6 +180,8 @@ public class Events : MonoBehaviour
         if (secondaryEvent2TurnsLeft > 0) secondaryEvent2TurnsLeft--;
         if (secondaryEvent3TurnsLeft > 0) secondaryEvent3TurnsLeft--;
         if (secondaryEvent4TurnsLeft > 0) secondaryEvent4TurnsLeft--;
+        if (secondaryEvent5TurnsLeft > 0) secondaryEvent5TurnsLeft--;
+        if (secondaryEvent6TurnsLeft > 0) secondaryEvent6TurnsLeft--;
     }
 
     public void MaxCitizensEffects()
@@ -187,6 +192,7 @@ public class Events : MonoBehaviour
     {
         goldMalus1 = 0; goldMalus2 = 0; goldMalus3 = 0; goldMalus4 = 0; goldMalus5 = 0; 
         goldMalus6 = 0; goldMalus7 = 0; goldMalus8 = 0; goldMalus9 = 0; goldMalus10 = 0;
+        goldMalus11 = 0; goldMalus12 = 0; goldMalus13 = 0;
 
         if (event12MalusTurnsLeft > 0 && event12Malus == 1)
         {
@@ -237,8 +243,22 @@ public class Events : MonoBehaviour
             goldMalus10 = -(int)(0.4f * (float)fattoria.getGoldFattoria());
             event30MalusTurnsLeft--;
         }
+        if (secondaryEvent5Malus40 > 0)
+        {
+            goldMalus11 = (int)(0.4f * (float)fattoria.getGoldFattoria());
+            secondaryEvent5Malus40--;
+        }
+        if (secondaryEvent5Malus100 > 0)
+        {
+            goldMalus12 = fattoria.getGoldFattoria();
+            secondaryEvent5Malus100--;
+        }
+        if (event25BonusTurnsLeft > 0)
+        {
+            goldMalus13 = -250;
+        }
 
-        return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10;
+        return goldMalus1 + goldMalus2 + goldMalus3 + goldMalus4 + goldMalus5 + goldMalus6 + goldMalus7 + goldMalus8 + goldMalus9 + goldMalus10 + goldMalus11 + goldMalus12 + goldMalus13;
     }
     public int CitizensMalusEffects()
     {
@@ -323,6 +343,16 @@ public class Events : MonoBehaviour
             StartCoroutine(SecondaryEvent4());
             skippingEventForOverlap = true;
         }
+        if (secondaryEvent5 == 1 && secondaryEvent5TurnsLeft == 0 && !skippingEventForOverlap)
+        {
+            StartCoroutine(SecondaryEvent5());
+            skippingEventForOverlap = true;
+        }
+        if (secondaryEvent6 == 1 && secondaryEvent6TurnsLeft == 0 && !skippingEventForOverlap)
+        {
+            StartCoroutine(SecondaryEvent6());
+            skippingEventForOverlap = true;
+        }
     }
 
     private bool hasEnoughSoldiers(int cap) // se il giocatore non ha abbastanza soldati a coppie di tipi, basato su un valore che va superato per ogni tipo
@@ -347,8 +377,8 @@ public class Events : MonoBehaviour
             isEventDialogueClosed = false;
             eventChooser = Random.Range(0f, 10f);
 
-            eventChooser = 24f;
-            blackCrystal = 1;
+            
+            
 
             //eventChooser = 0.4f; // debug evento testbattaglia
 
@@ -483,6 +513,31 @@ public class Events : MonoBehaviour
             if (eventChooser >= 24f && eventChooser < 25f && event22 == 0 && blackCrystal == 1)
             {
                 StartCoroutine(TriggerEvent22());
+                selected = true;
+            }
+            if (eventChooser >= 25f && eventChooser < 26f && event24 == 0 && player.getMoney() >= 500)
+            {
+                StartCoroutine(TriggerEvent24());
+                selected = true;
+            }
+            if (eventChooser >= 26f && eventChooser < 27f && event25 == 0 && player.getMoney() >= 2000)
+            {
+                StartCoroutine(TriggerEvent25());
+                selected = true;
+            }
+            if (eventChooser >= 27f && eventChooser < 28f && event26 == 0 )
+            {
+                StartCoroutine(TriggerEvent26());
+                selected = true;
+            }
+            if (eventChooser >= 28f && eventChooser < 29f && hasEnoughSoldiers(15) && event28 == 0)
+            {
+                StartCoroutine(TriggerEvent28());
+                selected = true;
+            }
+            if (eventChooser >= 29f && eventChooser < 30f && hasEnoughSoldiers(10) && event29 == 0)
+            {
+                StartCoroutine(TriggerEvent29());
                 selected = true;
             }
 
@@ -2183,6 +2238,8 @@ public class Events : MonoBehaviour
 
     // evento 26 - 
 
+    // DA FINIRE
+
     public int event26 = 0;
 
     IEnumerator TriggerEvent26()
@@ -2203,6 +2260,9 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
+
+            // MANCA IL DUELLO TRA I CAPITANI
+
             
             if (lastBattleInfo > 0) //vittoria del capitano // VARIABILE NEL IF DA CAMBIARE
             {
@@ -2249,14 +2309,12 @@ public class Events : MonoBehaviour
     }
 
     /* --------------------------------------------------------------------------------- *
- * --------------------------------------------------------------------------------- */
+     * --------------------------------------------------------------------------------- */
 
-    // evento 28 - dei lupi rompono il cazzo 
+    // evento 28 - 
 
     public int event28 = 0;
     
-
-
     IEnumerator TriggerEvent28()
     {
         event28 = 1;
@@ -2276,7 +2334,7 @@ public class Events : MonoBehaviour
         if (response[0] == 1)
         {
             terri = 2;
-            makeEnemyForEvent(2, 1, 1, 1, 1); //DA CAMBIARE 
+            makeEnemyForEvent(1, 40, 20, 0, 1); 
 
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
@@ -2284,9 +2342,9 @@ public class Events : MonoBehaviour
 
             if (lastBattleInfo > 0)
             {
-                string eventString5 = "The expedition comes back with good news.";
-                string eventString6 = "Your soldiers took down the wolves and came back with their cloth.";
-                string eventString7 = "The cloth is worth 800 Gold.\n[You obtain 800 Gold]";
+                string eventString5 = "";
+                string eventString6 = "";
+                string eventString7 = "";
 
                 string[] message2 = { eventString5, eventString6, eventString7 };
 
@@ -2347,7 +2405,7 @@ public class Events : MonoBehaviour
             if (response[0] == 1)
             {
                 terri = 2;
-                makeEnemyForEvent(2, 1, 1, 1, 1); //DA CAMBIARE 
+                makeEnemyForEvent(3, 0, 0, 25, 3); 
 
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
@@ -2401,6 +2459,192 @@ public class Events : MonoBehaviour
             Dialogue.TriggerDialogue(message2);
         }
 
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 24 - 
+
+    public int event24 = 0;
+
+    public int secondaryEvent5 = 0;
+    public int secondaryEvent5TurnsLeft = 99;
+
+    IEnumerator TriggerEvent24()
+    {
+        event24 = 1;
+
+        string eventString1 = "a";
+        string eventString2 = "s";
+        string eventString3 = "d";
+        string eventString4 = "no";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            player.setRapidMoney(-500);
+        }
+        else
+        {
+            string eventString5 = "qw";
+            string eventString6 = "er";
+            string eventString7 = "ty";
+
+            string[] message2 = { eventString5, eventString6, eventString7 };
+
+            Dialogue.TriggerDialogue(message2);
+            if (Random.Range(0f, 1f) < 0.5)
+            {
+                secondaryEvent5 = 1;
+                secondaryEvent5TurnsLeft = 2;
+            }
+
+
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento secondario 5 - 
+
+    // DA FINIRE!!
+    public int secondaryEvent5Malus40 = 0;
+    public int secondaryEvent5Malus100 = 0;
+
+    IEnumerator SecondaryEvent5()
+    {
+        secondaryEvent5 = 0;
+
+        string eventString1 = "q";
+        string eventString2 = "w";
+        string eventString3 = "e";
+        string eventString4 = "r";
+        string eventString5 = "t";
+
+        string[] message2 = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerDialogue(message2);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
+
+        terri = 2;
+        makeEnemyForEvent(1, 10* Random.Range(1, 5), 10 * Random.Range(1, 4), 10 * Random.Range(1, 3), 2);
+
+        FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+        yield return new WaitUntil(() => finishedBattle == true);
+
+
+        if (lastBattleInfo > 2)
+        {
+            string eventString6 = "hai vinto";
+            string eventString7 = " :P";
+
+            string[] message3 = { eventString6, eventString7 };
+
+            Dialogue.TriggerDialogue(message3);
+
+            secondaryEvent5Malus40 = 3;   // -40% guadagno da fattoria per 3 turni
+
+        }
+        else
+        {
+            string eventString6 = "hai perso";
+            string eventString7 = " :(";
+
+            string[] message3 = { eventString6, eventString7 };
+
+            Dialogue.TriggerDialogue(message3);
+
+            secondaryEvent5Malus100 = 3;    // -100% guadagno da fattoria per 3 turni
+        }
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento 25 - 
+
+    public int event25 = 0;
+    public int event25BonusTurnsLeft = 0;
+    public int secondaryEvent6 = 0;
+    public int secondaryEvent6TurnsLeft = 99;
+
+    IEnumerator TriggerEvent25()
+    {
+        event25 = 1;
+
+        string eventString1 = "";
+        string eventString2 = "";
+        string eventString3 = "";
+        string eventString4 = "";
+
+        string[] message = { eventString1, eventString2, eventString3, eventString4 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+
+            player.setRapidMoney(-2000);
+
+            event25BonusTurnsLeft = 99;
+
+            if (Random.Range(0f, 1f) < 0.4)
+            {
+                secondaryEvent6 = 1;
+                secondaryEvent6TurnsLeft = 5;
+            }
+
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento secondario 5 - 
+
+    // DA FINIRE!!
+    
+
+    IEnumerator SecondaryEvent6()
+    {
+        secondaryEvent6 = 0;
+
+        string eventString1 = "q";
+        string eventString2 = "w";
+        string eventString3 = "e";
+        string eventString4 = "r";
+        string eventString5 = "t";
+
+        string[] message2 = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+
+        Dialogue.TriggerDialogue(message2);
+
+        player.setRapidMoney(500);
+
+        
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
     }
