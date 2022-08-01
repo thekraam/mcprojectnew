@@ -19,16 +19,16 @@ public class AudioManager : MonoBehaviour
     {
 		if (!muted)
         {
-			MusicSource.Stop();
-			EffectsSource.Stop();
+			//MusicSource.Stop();
+			//EffectsSource.Stop();
 			MusicSource.volume = 0;
 			EffectsSource.volume = 0;
 			muted = true;
         }
         else
         {
-			MusicSource.Stop();
-			EffectsSource.Stop();
+			//MusicSource.Stop();
+			//EffectsSource.Stop();
 			MusicSource.volume = 1;
 			EffectsSource.volume = 1;
 			muted = false;
