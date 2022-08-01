@@ -373,17 +373,38 @@ public class Events : MonoBehaviour
         float eventChooser = 0;
         bool selected = false;
 
-        while (!selected && !attendingSecondaryEvent)
+        int forceEventSelection = 0;
+
+        while (!selected && !attendingSecondaryEvent && forceEventSelection<15)
         {
             isEventDialogueClosed = false;
-            eventChooser = Random.Range(0f, 10f);
 
+            float finalEventProbabilityIncreaser = 0;
+
+            eventChooser = Random.Range(0f, 30f);
             
-            
+
+
+
 
             //eventChooser = 0.4f; // debug evento testbattaglia
 
-            if (eventChooser >= 0 && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
+            if (player.getTurn() == (25 + Random.Range(1, 3)) && prologueFinalEvent == 0)
+            {
+                StartCoroutine(TriggerPrologueFinalEvent());
+                selected = true;
+            }
+            if (player.getTurn() >= 28 && Random.Range(0.1f, 1f) <= (0.4f + finalEventProbabilityIncreaser))
+            {
+                StartCoroutine(TriggerFinalEvent());
+                selected = true;
+            }
+            if (player.getTurn() >= 28)
+            {
+                finalEventProbabilityIncreaser+= 0.1f;
+            }
+
+            if (eventChooser >= 0f && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
             {
                 if (event1 == 0 && player.getMoney() >= 400) // evento non avviabile qualora il giocatore non abbia i fondi necessari
                 {
@@ -396,11 +417,11 @@ public class Events : MonoBehaviour
                     selected = true;
                 }
             }
-            if (eventChooser >= 1f && eventChooser < 2f)
-            {
-                StartCoroutine(TriggerBattleTestEvent());
-                selected = true;
-            }
+            //if (eventChooser >= 1f && eventChooser < 2f)
+            //{
+            //    StartCoroutine(TriggerBattleTestEvent());
+            //    selected = true;
+            //}
             if (eventChooser >= 2f && eventChooser < 3f && hasEnoughSoldiers(7) && event14 == 0) // se non hai soldati...
             {
                 StartCoroutine(TriggerEvent14());
@@ -486,7 +507,7 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent19());
                 selected = true;
             }
-            if(eventChooser >= 19f && eventChooser < 20f && aemisFaith < 6 && event20 == 0)
+            if (eventChooser >= 19f && eventChooser < 20f && aemisFaith < 6 && event20 == 0)
             {
                 StartCoroutine(TriggerEvent20());
                 selected = true;
@@ -542,12 +563,8 @@ public class Events : MonoBehaviour
                 selected = true;
             }
 
-            else
-            {
-                selected = true;
-            }
             //selected = true; //per la forzatura dell'evento
-
+            forceEventSelection++;
         }
 
     }
@@ -2658,4 +2675,248 @@ public class Events : MonoBehaviour
         isEventDialogueClosed = true;
     }
 
+    public int prologueFinalEvent = 0;
+
+    IEnumerator TriggerPrologueFinalEvent()
+    {
+        prologueFinalEvent = 1;
+
+        string eventString10 = "avvistano l'esercito demoniaco";
+        string eventString11 = "";
+        string eventString12 = "";
+
+        string[] message4 = { eventString10, eventString11, eventString12 };
+
+        Dialogue.TriggerDialogue(message4);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+        yield break;
+    }
+
+    IEnumerator TriggerFinalEvent()
+    {
+        string eventString1 = "avvistano esercito demoniac";
+        string eventString2 = "";
+        string eventString3 = "";
+
+        string[] message = { eventString1, eventString2, eventString3 };
+
+        Dialogue.TriggerInteractiveDialogue(message);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (response[0] == 1)
+        {
+            string eventString7 = "momento commovente con le famiglie ma ho risposto si";
+            string eventString8 = "";
+            string eventString9 = "";
+
+            string[] message3 = { eventString7, eventString8, eventString9 };
+
+            Dialogue.TriggerDialogue(message3);
+            yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+
+            if(aemisFaith > 6)
+            {
+                string eventString10 = "er celestiale con l'armata de cristo aiuta";
+                string eventString11 = "";
+                string eventString12 = "";
+
+                string[] message4 = { eventString10, eventString11, eventString12 };
+
+                Dialogue.TriggerDialogue(message4);
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+
+                swordsmen.setRapidTotal(50);
+                archers.setRapidTotal(50);
+                riders.setRapidTotal(50);
+            }
+
+            terri = 4;
+            int orcs = Random.Range(100, 201);
+            int goblins = Random.Range(100, 201);
+            int lesser_demons = Random.Range(100, 201);
+            makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
+            FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+            yield return new WaitUntil(() => finishedBattle == true);
+
+            if(lastBattleInfo > 2)
+            {
+                //COROUTINE OUTRO
+                yield break;
+            }
+            else
+            {
+                StartCoroutine(battleByTheWalls(true));
+                yield break;
+            }
+        }
+        else
+        {
+            string eventString4 = "si avvicina l'esercito alle terre lontane, intercetti?";
+            string eventString5 = "";
+            string eventString6 = "";
+
+            string[] message2 = { eventString4, eventString5, eventString6 };
+
+            Dialogue.TriggerInteractiveDialogue(message2);
+
+            StartCoroutine(ResponseUpdater(false));
+            yield return new WaitUntil(() => response[1] == 1);
+
+            if(response[0] == 1)
+            {
+                string eventString7 = "momento commovente con le famiglie";
+                string eventString8 = "";
+                string eventString9 = "";
+
+                string[] message3 = { eventString7, eventString8, eventString9 };
+
+                Dialogue.TriggerDialogue(message3);
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+
+                if (uominiErranti == 1)
+                {
+                    string eventString10 = "gli uomini erranti ti aiutano";
+                    string eventString11 = "";
+                    string eventString12 = "";
+
+                    string[] message4 = { eventString10, eventString11, eventString12 };
+
+                    Dialogue.TriggerDialogue(message4);
+                    yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+
+                    swordsmen.setRapidTotal(40);
+                    archers.setRapidTotal(40);
+                }
+
+                int orcs = Random.Range(100, 201);
+                int goblins = Random.Range(100, 201);
+                int lesser_demons = Random.Range(100, 201);
+                terri = 3;
+                makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
+                FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+                yield return new WaitUntil(() => finishedBattle == true);
+
+                if(lastBattleInfo > 2)
+                {
+                    // COROUTINE OUTRO
+                    yield break;
+                }
+                else
+                {
+                    StartCoroutine(battleByTheWalls(true));
+                }
+            }
+            else
+            {
+                string eventString7 = "combatti nei campi schierando soldati?";
+                string eventString8 = "";
+                string eventString9 = "";
+
+                string[] message3 = { eventString7, eventString8, eventString9 };
+
+                Dialogue.TriggerInteractiveDialogue(message3);
+
+                StartCoroutine(ResponseUpdater(false));
+                yield return new WaitUntil(() => response[1] == 1);
+
+                if(response[0] == 1)
+                {
+                    string eventString13 = "canti per il dio aemis per infondere coraggio e bla bla";
+                    string eventString14 = "";
+                    string eventString15 = "";
+
+                    string[] message5 = { eventString13, eventString14, eventString15 };
+
+                    Dialogue.TriggerDialogue(message5);
+                    yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+
+                    terri = 2;
+                    int orcs = Random.Range(100, 201);
+                    int goblins = Random.Range(100, 201);
+                    int lesser_demons = Random.Range(100, 201);
+                    makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
+
+                    FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+                    yield return new WaitUntil(() => finishedBattle == true);
+
+                    if(lastBattleInfo > 2)
+                    {
+                        //COROUTINE OUTRO
+                        yield break;
+                    }
+                    else
+                    {
+                        StartCoroutine(battleByTheWalls(true));
+                    }
+                }
+                else
+                {
+                    StartCoroutine(battleByTheWalls(false));
+                    yield break;
+                }
+            }
+        }
+
+        yield return new WaitForSeconds(1f);
+        isEventDialogueClosed = true;
+    }
+
+
+    IEnumerator battleByTheWalls(bool isPreviousEnemyArmy)
+    {
+        string eventString13 = "i sopravvissuti combattono sulle mura";
+        string eventString14 = "";
+        string eventString15 = "";
+
+        string[] message5 = { eventString13, eventString14, eventString15 };
+
+        Dialogue.TriggerDialogue(message5);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+
+        string eventString10 = "l'esercito nemico si schiera davanti alle mura";
+        string eventString11 = "";
+        string eventString12 = "";
+
+        string[] message4 = { eventString10, eventString11, eventString12 };
+
+        Dialogue.TriggerInteractiveDialogue(message4);
+
+        StartCoroutine(ResponseUpdater(false));
+        yield return new WaitUntil(() => response[1] == 1);
+
+        if (ancientGreenJewel == 1)
+        {
+            player.bonusWall += 50f;
+
+            string eventString16 = "er gioiello brilla er comandate dice daje";
+            string eventString17 = "";
+            string eventString18 = "";
+
+            string[] message6 = { eventString16, eventString17, eventString18 };
+
+            Dialogue.TriggerSmallDialogue(message6);
+
+            yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+        }
+
+        terri = 1;
+        if (!isPreviousEnemyArmy)
+        {
+            int orcs = Random.Range(100, 201);
+            int goblins = Random.Range(100, 201);
+            int lesser_demons = Random.Range(100, 201);
+            makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
+        }
+
+        FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
+        yield return new WaitUntil(() => finishedBattle == true);
+        //COROUTINE OUTRO
+        yield break;
+    }
 }
