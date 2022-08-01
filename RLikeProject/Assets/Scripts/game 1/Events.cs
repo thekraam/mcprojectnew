@@ -374,18 +374,13 @@ public class Events : MonoBehaviour
         bool selected = false;
 
         int forceEventSelection = 0;
+        float finalEventProbabilityIncreaser = 0;
 
         while (!selected && !attendingSecondaryEvent && forceEventSelection<15)
         {
             isEventDialogueClosed = false;
 
-            float finalEventProbabilityIncreaser = 0;
-
             eventChooser = Random.Range(0f, 30f);
-            
-
-
-
 
             //eventChooser = 0.4f; // debug evento testbattaglia
 
