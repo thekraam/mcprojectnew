@@ -1131,7 +1131,8 @@ public class Game : MonoBehaviour
             enemy,
             eswordsmen,
             earchers,
-            eriders
+            eriders,
+            capitano
             );
     }
 

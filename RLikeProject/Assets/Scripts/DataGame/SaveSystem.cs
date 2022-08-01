@@ -26,7 +26,7 @@ public static class SaveSystem
                 Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders,
                   Miniera miniera, Fabbro fabbro, Gilda gilda, Tutorial tutorial,
                   OldSoldiersManager oldSoldiers, Enemy enemy, Enemy.ESwordsmen eSwordsmen,
-                  Enemy.EArchers eArchers, Enemy.ERiders eRiders
+                  Enemy.EArchers eArchers, Enemy.ERiders eRiders, Captain1 capitano
 
         )
     {
@@ -40,7 +40,7 @@ public static class SaveSystem
             GameData data = new GameData(cityname, player, events, fattoria, caserma,
                                         swordsmen, archers, riders, miniera,
                                         fabbro, gilda, tutorial, oldSoldiers, enemy,
-                                        eSwordsmen, eArchers, eRiders);
+                                        eSwordsmen, eArchers, eRiders, capitano);
 
             formatter.Serialize(stream, data);
             stream.Close();
@@ -57,7 +57,7 @@ public static class SaveSystem
             GameData data = new GameData(cityname, player, events, fattoria, caserma,
                                         swordsmen, archers, riders, miniera,
                                         fabbro, gilda, tutorial, oldSoldiers, enemy,
-                                        eSwordsmen, eArchers, eRiders);
+                                        eSwordsmen, eArchers, eRiders, capitano);
 
             formatter.Serialize(stream, data);
             stream.Close();

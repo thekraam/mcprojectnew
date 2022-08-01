@@ -261,6 +261,50 @@ public class GameData
     public int moltiplicatore2;
     public int turngilda2;
 
+    //Capitano 1
+
+    public bool creatoC;
+
+    public int lvlC;
+    public int atkC;
+    public int defC;
+
+    public float bonusBattleC;
+
+    public float bonusWallC;
+    public float bonusCityC;
+    public float bonusFarC;
+    public float bonusDemoniacC;
+
+    public string nomeC;
+
+    //lista perk
+    public int xcont;
+    public int x1;
+    public int x2;
+    public int x3;
+    public int x4;
+    public int x5;
+    public int x6;
+    public int x7;
+    public int x8;
+    public int x9;
+    public int x10;
+
+    //--------------------------------perks-----------------------------------
+    public string perk1;
+    public string perk1comment;
+
+    public string perk2;
+    public string perk2comment;
+
+    public string perk3;
+    public string perk3comment;
+    //-------------------------------------------------------------------------
+
+    public string finalcomment;
+    public int boolfinalcomment;
+
 
 
 
@@ -269,7 +313,7 @@ public class GameData
         Soldiers.Swordsmen swordsmen, Soldiers.Archers archers, Soldiers.Riders riders, 
         Miniera miniera, Fabbro fabbro, Gilda gilda, Tutorial tutorial,
         OldSoldiersManager oldSoldiers, Enemy enemy,
-        Enemy.ESwordsmen eSwordsmen, Enemy.EArchers eArchers, Enemy.ERiders eRiders
+        Enemy.ESwordsmen eSwordsmen, Enemy.EArchers eArchers, Enemy.ERiders eRiders, Captain1 capitano
         )
     {
 
@@ -524,6 +568,50 @@ public class GameData
         moltiplicatore2 = oldSoldiers.moltiplicatore2;
         turngilda2 = oldSoldiers.turngilda2;
 
-    }
+        //Capitano 1
+
+        creatoC = capitano.creato;
+
+        lvlC = capitano.lvl;
+        atkC = capitano.atk;
+        defC = capitano.def;
+
+        bonusBattleC = capitano.bonusBattle;
+
+        bonusWallC = capitano.bonusWall;
+        bonusCityC = capitano.bonusCity;
+        bonusFarC = capitano.bonusFar;
+        bonusDemoniacC = capitano.bonusDemoniac;
+
+        nomeC = capitano.nome;
+
+        //lista perk
+        xcont = capitano.xcont;
+        x1 = capitano.x1;
+        x2 = capitano.x2;
+        x3 = capitano.x3;
+        x4 = capitano.x4;
+        x5 = capitano.x5;
+        x6 = capitano.x6;
+        x7 = capitano.x7;
+        x8 = capitano.x8;
+        x9 = capitano.x9;
+        x10 = capitano.x10;
+
+        //--------------------------------perks-----------------------------------
+        perk1 = capitano.perk1;
+        perk1comment = capitano.perk1comment;
+
+        perk2 = capitano.perk2;
+        perk2comment = capitano.perk2comment;
+
+        perk3 = capitano.perk3;
+        perk3comment = capitano.perk3comment;
+    //-------------------------------------------------------------------------
+
+        finalcomment = capitano.finalcomment;
+        boolfinalcomment = capitano.boolfinalcomment;
+
+}
 
 }

@@ -277,6 +277,50 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<OldSoldiersManager>().tipologia2 = data.tipologia2;
         FindObjectOfType<OldSoldiersManager>().moltiplicatore2 = data.moltiplicatore2;
         FindObjectOfType<OldSoldiersManager>().turngilda2 = data.turngilda2;
+
+        //Capitano 1
+
+        FindObjectOfType<Game>().getCapitano().creato = data.creatoC;
+
+        FindObjectOfType<Game>().getCapitano().lvl = data.lvlC;
+        FindObjectOfType<Game>().getCapitano().atk = data.atkC;
+        FindObjectOfType<Game>().getCapitano().def = data.defC;
+
+        FindObjectOfType<Game>().getCapitano().bonusBattle = data.bonusBattleC;
+
+        FindObjectOfType<Game>().getCapitano().bonusWall = data.bonusWallC;
+        FindObjectOfType<Game>().getCapitano().bonusCity = data.bonusCityC;
+        FindObjectOfType<Game>().getCapitano().bonusFar = data.bonusFarC;
+        FindObjectOfType<Game>().getCapitano().bonusDemoniac = data.bonusDemoniacC;
+
+        FindObjectOfType<Game>().getCapitano().nome = data.nomeC;
+
+        //lista perk
+        FindObjectOfType<Game>().getCapitano().xcont = data.xcont;
+        FindObjectOfType<Game>().getCapitano().x1 = data.x1;
+        FindObjectOfType<Game>().getCapitano().x2 = data.x2;
+        FindObjectOfType<Game>().getCapitano().x3 = data.x3;
+        FindObjectOfType<Game>().getCapitano().x4 = data.x4;
+        FindObjectOfType<Game>().getCapitano().x5 = data.x5;
+        FindObjectOfType<Game>().getCapitano().x6 = data.x6;
+        FindObjectOfType<Game>().getCapitano().x7 = data.x7;
+        FindObjectOfType<Game>().getCapitano().x8 = data.x8;
+        FindObjectOfType<Game>().getCapitano().x9 = data.x9;
+        FindObjectOfType<Game>().getCapitano().x10 = data.x10;
+
+        //--------------------------------perks-----------------------------------
+        FindObjectOfType<Game>().getCapitano().perk1 = data.perk1;
+        FindObjectOfType<Game>().getCapitano().perk1comment = data.perk1comment;
+
+        FindObjectOfType<Game>().getCapitano().perk2 = data.perk2;
+        FindObjectOfType<Game>().getCapitano().perk2comment = data.perk2comment;
+
+        FindObjectOfType<Game>().getCapitano().perk3 = data.perk3;
+        FindObjectOfType<Game>().getCapitano().perk3comment = data.perk3comment;
+        //-------------------------------------------------------------------------
+
+        FindObjectOfType<Game>().getCapitano().finalcomment = data.finalcomment;
+        FindObjectOfType<Game>().getCapitano().boolfinalcomment = data.boolfinalcomment;
     }
 
     public void loadgame(Player player, Fattoria fattoria, Miniera miniera, Caserma caserma, Enemy enemy, Fabbro fabbro, Gilda gilda)
@@ -538,5 +582,50 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<OldSoldiersManager>().tipologia2 = data.tipologia2;
         FindObjectOfType<OldSoldiersManager>().moltiplicatore2 = data.moltiplicatore2;
         FindObjectOfType<OldSoldiersManager>().turngilda2 = data.turngilda2;
+
+
+        //Capitano 1
+
+        FindObjectOfType<Game>().getCapitano().creato = data.creatoC;
+
+        FindObjectOfType<Game>().getCapitano().lvl = data.lvlC;
+        FindObjectOfType<Game>().getCapitano().atk = data.atkC;
+        FindObjectOfType<Game>().getCapitano().def = data.defC;
+
+        FindObjectOfType<Game>().getCapitano().bonusBattle = data.bonusBattleC;
+
+        FindObjectOfType<Game>().getCapitano().bonusWall = data.bonusWallC;
+        FindObjectOfType<Game>().getCapitano().bonusCity = data.bonusCityC;
+        FindObjectOfType<Game>().getCapitano().bonusFar = data.bonusFarC;
+        FindObjectOfType<Game>().getCapitano().bonusDemoniac = data.bonusDemoniacC;
+
+        FindObjectOfType<Game>().getCapitano().nome = data.nomeC;
+
+        //lista perk
+        FindObjectOfType<Game>().getCapitano().xcont = data.xcont;
+        FindObjectOfType<Game>().getCapitano().x1 = data.x1;
+        FindObjectOfType<Game>().getCapitano().x2 = data.x2;
+        FindObjectOfType<Game>().getCapitano().x3 = data.x3;
+        FindObjectOfType<Game>().getCapitano().x4 = data.x4;
+        FindObjectOfType<Game>().getCapitano().x5 = data.x5;
+        FindObjectOfType<Game>().getCapitano().x6 = data.x6;
+        FindObjectOfType<Game>().getCapitano().x7 = data.x7;
+        FindObjectOfType<Game>().getCapitano().x8 = data.x8;
+        FindObjectOfType<Game>().getCapitano().x9 = data.x9;
+        FindObjectOfType<Game>().getCapitano().x10 = data.x10;
+
+        //--------------------------------perks-----------------------------------
+        FindObjectOfType<Game>().getCapitano().perk1 = data.perk1;
+        FindObjectOfType<Game>().getCapitano().perk1comment = data.perk1comment;
+
+        FindObjectOfType<Game>().getCapitano().perk2 = data.perk2;
+        FindObjectOfType<Game>().getCapitano().perk2comment = data.perk2comment;
+
+        FindObjectOfType<Game>().getCapitano().perk3 = data.perk3;
+        FindObjectOfType<Game>().getCapitano().perk3comment = data.perk3comment;
+        //-------------------------------------------------------------------------
+
+        FindObjectOfType<Game>().getCapitano().finalcomment = data.finalcomment;
+        FindObjectOfType<Game>().getCapitano().boolfinalcomment = data.boolfinalcomment;
     }
 }
