@@ -150,7 +150,7 @@ public class AudioManager : MonoBehaviour
 			if (!MusicSource.isPlaying)
 			{
 				StopAllCoroutines();
-				MusicSource.volume = 0.1f;
+				MusicSource.volume = 1f;
 				int randomIndex = Random.Range(0, clips.Length);
 				MusicSource.clip = clips[randomIndex];
 				if (oldMusicClip == MusicSource.clip && randomIndex > 0) MusicSource.clip = clips[randomIndex - 1];

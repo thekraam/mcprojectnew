@@ -156,7 +156,7 @@ public class KillList : MonoBehaviour
                 {
                     timePassed0 += Time.deltaTime;
                     currentLineGroup.alpha = Mathf.Lerp(0f, 1f, timePassed0 / 0.8f); // da 0f a 1f si accende, da 1f a 0f si spegne
-                    yield return new WaitForSeconds(0.002f);
+                    yield return new WaitForSeconds(0.001f);
                 }
             canvasFadeDone = true;
         }
@@ -172,7 +172,7 @@ public class KillList : MonoBehaviour
                 {
                     timePassed0 += Time.deltaTime;
                     currentLineGroup.alpha = Mathf.Lerp(0f, 1f, timePassed0 / 0.8f); // da 0f a 1f si accende, da 1f a 0f si spegne
-                    yield return new WaitForSeconds(0.002f);
+                    yield return new WaitForSeconds(0.001f);
                 }
         }
         yield return null;
@@ -224,7 +224,7 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[1], 1);
@@ -250,8 +250,8 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[2], 2);
@@ -274,9 +274,9 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[3], 3);
@@ -299,10 +299,10 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[4], 4);
@@ -325,11 +325,11 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[5], 5);
@@ -351,12 +351,12 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[6], 6);
@@ -378,13 +378,13 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[7], 7);
@@ -406,14 +406,14 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[8], 8);
@@ -435,15 +435,15 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[9], 9);
@@ -465,16 +465,16 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[10], 10);
@@ -496,17 +496,17 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[11], 11);
@@ -528,18 +528,18 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[12], 12);
@@ -562,19 +562,19 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[13], 13);
@@ -597,20 +597,20 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[14], 14);
@@ -634,21 +634,21 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[15], 15);
@@ -672,22 +672,22 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[16], 16);
@@ -711,23 +711,23 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[17], 17);
@@ -752,24 +752,24 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[18], 18);
@@ -793,25 +793,25 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[19], 19);
@@ -835,26 +835,26 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[20], 20);
@@ -878,27 +878,27 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[21], 21);
@@ -922,28 +922,28 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[22], 22);
@@ -968,29 +968,29 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[23], 23);
@@ -1014,30 +1014,30 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
-                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
+                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[24], 24);
@@ -1060,31 +1060,31 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
-                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 5, (float)0);
-                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
+                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 8, (float)0);
+                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[25], 25);
@@ -1108,32 +1108,32 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
-                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 5, (float)0);
-                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 5, (float)0);
-                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
+                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 8, (float)0);
+                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 8, (float)0);
+                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[26], 26);
@@ -1157,33 +1157,33 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
-                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 5, (float)0);
-                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 5, (float)0);
-                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 5, (float)0);
-                Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
+                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 8, (float)0);
+                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 8, (float)0);
+                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 8, (float)0);
+                Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[27], 27);
@@ -1207,34 +1207,34 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
-                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 5, (float)0);
-                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 5, (float)0);
-                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 5, (float)0);
-                Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 5, (float)0);
-                Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
+                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 8, (float)0);
+                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 8, (float)0);
+                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 8, (float)0);
+                Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 8, (float)0);
+                Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[28], 28);
@@ -1258,35 +1258,35 @@ public class KillList : MonoBehaviour
             newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
             while (Line[0].rectTransform.localPosition.y >= newPos)
             {
-                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
-                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 5, (float)0);
-                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 5, (float)0);
-                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 5, (float)0);
-                Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 5, (float)0);
-                Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 5, (float)0);
-                Line[28].rectTransform.localPosition = new Vector3(0, (float)Line[28].rectTransform.localPosition.y - 5, (float)0);
+                Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+                Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+                Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+                Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+                Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+                Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+                Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+                Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+                Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+                Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+                Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+                Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+                Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+                Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+                Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+                Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+                Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+                Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+                Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+                Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+                Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+                Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+                Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
+                Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 8, (float)0);
+                Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 8, (float)0);
+                Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 8, (float)0);
+                Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 8, (float)0);
+                Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 8, (float)0);
+                Line[28].rectTransform.localPosition = new Vector3(0, (float)Line[28].rectTransform.localPosition.y - 8, (float)0);
                 yield return null;
             }
             calcNewUI(armyType[29], 29);
@@ -1318,36 +1318,36 @@ public class KillList : MonoBehaviour
         //    newPos = Line[0].rectTransform.localPosition.y - (float)119.7;
         //    while (Line[0].rectTransform.localPosition.y >= newPos)
         //    {
-        //        Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[28].rectTransform.localPosition = new Vector3(0, (float)Line[28].rectTransform.localPosition.y - 5, (float)0);
-        //        Line[29].rectTransform.localPosition = new Vector3(0, (float)Line[29].rectTransform.localPosition.y - 5, (float)0);
+        //        Line[0].rectTransform.localPosition = new Vector3(0, (float)Line[0].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[1].rectTransform.localPosition = new Vector3(0, (float)Line[1].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[2].rectTransform.localPosition = new Vector3(0, (float)Line[2].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[3].rectTransform.localPosition = new Vector3(0, (float)Line[3].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[4].rectTransform.localPosition = new Vector3(0, (float)Line[4].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[5].rectTransform.localPosition = new Vector3(0, (float)Line[5].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[6].rectTransform.localPosition = new Vector3(0, (float)Line[6].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[7].rectTransform.localPosition = new Vector3(0, (float)Line[7].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[8].rectTransform.localPosition = new Vector3(0, (float)Line[8].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[9].rectTransform.localPosition = new Vector3(0, (float)Line[9].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[10].rectTransform.localPosition = new Vector3(0, (float)Line[10].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[11].rectTransform.localPosition = new Vector3(0, (float)Line[11].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[12].rectTransform.localPosition = new Vector3(0, (float)Line[12].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[13].rectTransform.localPosition = new Vector3(0, (float)Line[13].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[14].rectTransform.localPosition = new Vector3(0, (float)Line[14].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[15].rectTransform.localPosition = new Vector3(0, (float)Line[15].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[16].rectTransform.localPosition = new Vector3(0, (float)Line[16].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[17].rectTransform.localPosition = new Vector3(0, (float)Line[17].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[18].rectTransform.localPosition = new Vector3(0, (float)Line[18].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[19].rectTransform.localPosition = new Vector3(0, (float)Line[19].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[20].rectTransform.localPosition = new Vector3(0, (float)Line[20].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[21].rectTransform.localPosition = new Vector3(0, (float)Line[21].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[22].rectTransform.localPosition = new Vector3(0, (float)Line[22].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[23].rectTransform.localPosition = new Vector3(0, (float)Line[23].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[24].rectTransform.localPosition = new Vector3(0, (float)Line[24].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[25].rectTransform.localPosition = new Vector3(0, (float)Line[25].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[26].rectTransform.localPosition = new Vector3(0, (float)Line[26].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[27].rectTransform.localPosition = new Vector3(0, (float)Line[27].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[28].rectTransform.localPosition = new Vector3(0, (float)Line[28].rectTransform.localPosition.y - 8, (float)0);
+        //        Line[29].rectTransform.localPosition = new Vector3(0, (float)Line[29].rectTransform.localPosition.y - 8, (float)0);
         //        yield return null;
         //    }
         //    calcNewUI(armyType[30], 30);
@@ -1407,7 +1407,7 @@ public class KillList : MonoBehaviour
         float newPos = Line.rectTransform.localPosition.y - (float)119.7;
         while (Line.rectTransform.localPosition.y >= newPos)
         {
-            Line.rectTransform.localPosition = new Vector3(0, (float)Line.rectTransform.localPosition.y - 5, (float)0);
+            Line.rectTransform.localPosition = new Vector3(0, (float)Line.rectTransform.localPosition.y - 8, (float)0);
             yield return null;
         }
     }*/
