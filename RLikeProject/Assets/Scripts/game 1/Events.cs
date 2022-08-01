@@ -345,6 +345,9 @@ public class Events : MonoBehaviour
             isEventDialogueClosed = false;
             eventChooser = Random.Range(0f, 10f);
 
+            eventChooser = 24f;
+            blackCrystal = 1;
+
             //eventChooser = 0.4f; // debug evento testbattaglia
 
             if (eventChooser >= 0 && eventChooser < 1f) // classificazione eventi fondamentali o di poca importanza, per ordine di importanza
@@ -1971,7 +1974,7 @@ public class Events : MonoBehaviour
         if (response[0] == 1)   //indagare
         {
             string eventString6 = "The researcher unleashes the powers of the black Crystal and uses it to enchant a great sword.";
-            string eventString7 = "This sword has been gifted to your Captain.\n[" + FindObjectOfType<Game>().getCapitano().name + "'s attack and defenses have increased]";
+            string eventString7 = "This sword has been gifted to your Captain.\n[" + FindObjectOfType<Game>().getCapitano().getName() + "'s attack and defenses have increased]";
 
             string[] message2 = { eventString6, eventString7 };
 

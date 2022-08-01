@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Captain1 : MonoBehaviour
 {
-    bool creato = false;
+    public bool creato = false;
 
-    int lvl = 1;
-    int atk = 6;
-    int def = 6;
+    public int lvl = 1;
+    public int atk = 6;
+    public int def = 6;
 
-    float bonusBattle = 0;
+    public float bonusBattle = 0;
 
-    float bonusWall = 0;
-    float bonusCity = 0;
-    float bonusFar = 0;
-    float bonusDemoniac = 0;
+    public float bonusWall = 0;
+    public float bonusCity = 0;
+    public float bonusFar = 0;
+    public float bonusDemoniac = 0;
 
-    string nome = "error";
+    public string nome = "error";
 
     //lista perk
     public int xcont = 0;
@@ -33,18 +33,18 @@ public class Captain1 : MonoBehaviour
     public int x10 = 0;
 
     //--------------------------------perks-----------------------------------
-    string perk1 = "errorPerk1";
-    string perk1comment = "errorPerk1comment";
+    public string perk1 = "errorPerk1";
+    public string perk1comment = "errorPerk1comment";
 
-    string perk2 = "errorPerk2";
-    string perk2comment = "errorPerk2comment";
+    public string perk2 = "errorPerk2";
+    public string perk2comment = "errorPerk2comment";
 
-    string perk3 = "errorPerk3";
-    string perk3comment = "errorPerk3comment";
+    public string perk3 = "errorPerk3";
+    public string perk3comment = "errorPerk3comment";
     //-------------------------------------------------------------------------
 
-    string finalcomment = "errorfinalcomment";
-    int boolfinalcomment = 0;
+    public string finalcomment = "errorfinalcomment";
+    public int boolfinalcomment = 0;
 
     public void resetCaptain()
     {
