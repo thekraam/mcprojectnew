@@ -69,6 +69,18 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
+	public void ForcePlayMusic(AudioClip clip)
+    {
+		StartCoroutine(ForcePlayMusicExecuter(clip));
+    }
+
+	IEnumerator ForcePlayMusicExecuter(AudioClip clip)
+    {
+		yield return new WaitUntil(() => MusicSource.isPlaying == false);
+		MusicSource.clip = clip;
+		MusicSource.Play();
+    }
+
 	public void PlayMusic(AudioClip clip)
 	{
 		if (!MusicSource.isPlaying)
