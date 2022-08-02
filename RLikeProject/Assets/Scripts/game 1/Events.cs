@@ -2676,9 +2676,9 @@ public class Events : MonoBehaviour
     {
         prologueFinalEvent = 1;
 
-        string eventString10 = "avvistano l'esercito demoniaco";
-        string eventString11 = "";
-        string eventString12 = "";
+        string eventString10 = "A messanger arrives in the city.";
+        string eventString11 = "He claims to have seen an army of demons of great proportions coming this way.";
+        string eventString12 = "Your men suggest to prepare for the worst.";
 
         string[] message4 = { eventString10, eventString11, eventString12 };
 
@@ -2689,11 +2689,18 @@ public class Events : MonoBehaviour
 
     IEnumerator TriggerFinalEvent()
     {
-        string eventString1 = "avvistano esercito demoniac";
+        string eventString1 = "Some of your soldiers come back from the outpost right out of the city with the worst news.";
         string eventString2 = "";
-        string eventString3 = "";
+        if (prologueFinalEvent == 1) eventString2 = "The demoniac army previously sighted is moving towards the city and is dangerously close.";
+        else eventString2 = "A demoniac army is moving towards the city and is dangerously close.";
+        string eventString3 = "The news spread quite fast as your people begin to panic. You place the order of giving refuge to women and children.";
+        string eventString4 = "";
+        if (FindObjectOfType<Game>().getCapitano().getLvl() >= 3) eventString4 = "Even if your men's bravery is barely present, your Captain's arrival on the city's walls reassures their souls.";
+        else eventString4 = "It's the calm before the storm. Your men remain silent while waiting for their destiny to knock at their doors.";
+        string eventString5 = "Priests of Aemis' begin their singing to the god that once fought and won against the evil.";
+        string eventString6 = "";
 
-        string[] message = { eventString1, eventString2, eventString3 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -2738,7 +2745,7 @@ public class Events : MonoBehaviour
 
             if(lastBattleInfo > 2)
             {
-                //COROUTINE OUTRO
+                FindObjectOfType<OutroExecution>().StartExecution(true);
                 yield break;
             }
             else
@@ -2749,11 +2756,11 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString4 = "si avvicina l'esercito alle terre lontane, intercetti?";
-            string eventString5 = "";
-            string eventString6 = "";
+            string eventString20 = "si avvicina l'esercito alle terre lontane, intercetti?";
+            string eventString21 = "";
+            string eventString22 = "";
 
-            string[] message2 = { eventString4, eventString5, eventString6 };
+            string[] message2 = { eventString20, eventString21, eventString22 };
 
             Dialogue.TriggerInteractiveDialogue(message2);
 
@@ -2797,7 +2804,7 @@ public class Events : MonoBehaviour
 
                 if(lastBattleInfo > 2)
                 {
-                    // COROUTINE OUTRO
+                    FindObjectOfType<OutroExecution>().StartExecution(true);
                     yield break;
                 }
                 else
@@ -2841,7 +2848,7 @@ public class Events : MonoBehaviour
 
                     if(lastBattleInfo > 2)
                     {
-                        //COROUTINE OUTRO
+                        FindObjectOfType<OutroExecution>().StartExecution(true);
                         yield break;
                     }
                     else
@@ -2911,7 +2918,8 @@ public class Events : MonoBehaviour
         FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
         yield return new WaitUntil(() => finishedBattle == true);
-        //COROUTINE OUTRO
+        if(lastBattleInfo > 2) FindObjectOfType<OutroExecution>().StartExecution(true);
+        else FindObjectOfType<OutroExecution>().StartExecution(false);
         yield break;
     }
 }
