@@ -1357,6 +1357,7 @@ public class KillList : MonoBehaviour
         //    StartCoroutine(FadeIn(canvasContinue));
         //    StopCoroutine(PushLines());
         //}
+        //if (battagliaFinale) { StartCoroutine(FinalExecution()); }
     }
 
 
