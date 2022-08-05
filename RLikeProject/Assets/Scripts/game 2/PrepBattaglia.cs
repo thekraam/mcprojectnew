@@ -109,6 +109,20 @@ public class PrepBattaglia : MonoBehaviour
         FindObjectOfType<OldSoldiersManager>().salvasoldati(swordmencorrenti, archercorrenti, ridercorrenti, FindObjectOfType<Events>().terri);
     }
 
+    private IEnumerator AvvioEffettiTermineBattagliaFinale ()
+    {
+        battlePreparation.gameObject.SetActive(false);
+        StartCoroutine(effettoFadeOut(battleTransition));
+        StartCoroutine(effettoFadeOut(FindObjectOfType<KillList>().canvasContinue));
+        yield return new WaitForSeconds(0.8f);
+        FindObjectOfType<KillList>().battleConcluded = true;
+
+        preparazioneVittoriapan();
+        resocontoBattagliaPanel.SetActive(true);
+        //Debug.LogError("dopo l'attivazione del pannello");
+        FindObjectOfType<OldSoldiersManager>().salvasoldati(swordmencorrenti, archercorrenti, ridercorrenti, FindObjectOfType<Events>().terri);
+    }
+
     private IEnumerator AvvioEffettiBattaglia()
     {
         StartCoroutine(effettoFadeIn(battleTransition));

@@ -145,7 +145,13 @@ public class Events : MonoBehaviour
 
     public void onPressContinue()
     {
-        FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
+        if (lastBattleInfo > 2 && lastBattleIfWon == 1)
+        {
+            finishedBattle = true;
+        }
+        else if (lastBattleIfWon == 2) finishedBattle = true;
+        else
+            FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
     }
 
     public void InitializeEvents()
@@ -2687,6 +2693,8 @@ public class Events : MonoBehaviour
         yield break;
     }
 
+    public int lastBattleIfWon = 0;
+
     IEnumerator TriggerFinalEvent()
     {
         string eventString1 = "Some of your soldiers come back from the outpost right out of the city with the worst news.";
@@ -2698,9 +2706,11 @@ public class Events : MonoBehaviour
         if (FindObjectOfType<Game>().getCapitano().getLvl() >= 3) eventString4 = "Even if your men's bravery is barely present, your Captain's arrival on the city's walls reassures their souls.";
         else eventString4 = "It's the calm before the storm. Your men remain silent while waiting for their destiny to knock at their doors.";
         string eventString5 = "Priests of Aemis' begin their singing to the god that once fought and won against the evil.";
-        string eventString6 = "";
+        string eventString6 = "Your men inform you that there's the possibility to catch the enemy army off guard right in the demoniac territories.";
+        string eventString7 = "They remind you, however, that a lost fight could cause the city walls to be undefended right after.";
+        string eventString8 = "Are you willing to intercept your enemy in the demoniac territories?";
 
-        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5 };
+        string[] message = { eventString1, eventString2, eventString3, eventString4, eventString5, eventString6, eventString7, eventString8 };
 
         Dialogue.TriggerInteractiveDialogue(message);
 
@@ -2709,22 +2719,21 @@ public class Events : MonoBehaviour
 
         if (response[0] == 1)
         {
-            string eventString7 = "momento commovente con le famiglie ma ho risposto si";
-            string eventString8 = "";
-            string eventString9 = "";
+            string eventString9 = "You assist at the soldier's farewell to their families as they slowly march towards their fate along with your captain.";
+            string eventString10 = "A great battle waits ahead.";
 
-            string[] message3 = { eventString7, eventString8, eventString9 };
+            string[] message3 = { eventString9, eventString10 };
 
             Dialogue.TriggerDialogue(message3);
             yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
 
             if(aemisFaith > 6)
             {
-                string eventString10 = "er celestiale con l'armata de cristo aiuta";
-                string eventString11 = "";
-                string eventString12 = "";
+                string eventString12 = "As your soldiers are moving towards the enemy, a modest army of what appears to be knights of Aemis' quickly approaches yours.";
+                string eventString13 = "They claim to be your arm during this fight, in memory of the best of times.";
+                string eventString14 = "[A numeric boost has been applied to your army]";
 
-                string[] message4 = { eventString10, eventString11, eventString12 };
+                string[] message4 = { eventString12, eventString13, eventString14 };
 
                 Dialogue.TriggerDialogue(message4);
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
@@ -2739,6 +2748,9 @@ public class Events : MonoBehaviour
             int goblins = Random.Range(100, 201);
             int lesser_demons = Random.Range(100, 201);
             makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
+
+            lastBattleIfWon = 1;
+
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
             yield return new WaitUntil(() => finishedBattle == true);
@@ -2756,11 +2768,10 @@ public class Events : MonoBehaviour
         }
         else
         {
-            string eventString20 = "si avvicina l'esercito alle terre lontane, intercetti?";
-            string eventString21 = "";
-            string eventString22 = "";
+            string eventString20 = "As the enemy's army is getting closer and closer, your Captain suggests to ambush them towards the far lands.";
+            string eventString21 = "Are you willing to do so?";
 
-            string[] message2 = { eventString20, eventString21, eventString22 };
+            string[] message2 = { eventString20, eventString21 };
 
             Dialogue.TriggerInteractiveDialogue(message2);
 
@@ -2769,22 +2780,21 @@ public class Events : MonoBehaviour
 
             if(response[0] == 1)
             {
-                string eventString7 = "momento commovente con le famiglie";
-                string eventString8 = "";
-                string eventString9 = "";
+                string eventString13 = "You assist at the soldier's farewell to their families as they slowly march towards their fate along with your captain.";
+                string eventString14 = "Your captain guides their soldiers towards their fate.";
+                string eventString15 = "A great battle awaits.";
 
-                string[] message3 = { eventString7, eventString8, eventString9 };
+                string[] message3 = { eventString13, eventString14, eventString15 };
 
                 Dialogue.TriggerDialogue(message3);
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
 
                 if (uominiErranti == 1)
                 {
-                    string eventString10 = "gli uomini erranti ti aiutano";
-                    string eventString11 = "";
-                    string eventString12 = "";
+                    string eventString10 = "The wandering men you helped unexpectedly join the battle.";
+                    string eventString11 = "To thank you for your past support they'll help you with this matter.";
 
-                    string[] message4 = { eventString10, eventString11, eventString12 };
+                    string[] message4 = { eventString10, eventString11 };
 
                     Dialogue.TriggerDialogue(message4);
                     yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
@@ -2798,6 +2808,9 @@ public class Events : MonoBehaviour
                 int lesser_demons = Random.Range(100, 201);
                 terri = 3;
                 makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
+
+                lastBattleIfWon = 1;
+
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
                 yield return new WaitUntil(() => finishedBattle == true);
@@ -2814,11 +2827,11 @@ public class Events : MonoBehaviour
             }
             else
             {
-                string eventString7 = "combatti nei campi schierando soldati?";
-                string eventString8 = "";
-                string eventString9 = "";
+                string eventString17 = "The wind blows faster than ever as the sunlight is descending more and more behind some dark clouds.";
+                string eventString18 = "It is now possible, by the walls, to see some demons approaching.";
+                string eventString19 = "You understand the possibility to attack them now, right in the fields. Are you willing to do so?";
 
-                string[] message3 = { eventString7, eventString8, eventString9 };
+                string[] message3 = { eventString17, eventString18, eventString19 };
 
                 Dialogue.TriggerInteractiveDialogue(message3);
 
@@ -2827,11 +2840,10 @@ public class Events : MonoBehaviour
 
                 if(response[0] == 1)
                 {
-                    string eventString13 = "canti per il dio aemis per infondere coraggio e bla bla";
-                    string eventString14 = "";
-                    string eventString15 = "";
+                    string eventString13 = "Your men sing to Aemis' as they march towards the enemy once again.";
+                    string eventString14 = "However, as soon as they place their feet in the fields, they are being immediately targeted by the enemy's archers.";
 
-                    string[] message5 = { eventString13, eventString14, eventString15 };
+                    string[] message5 = { eventString13, eventString14 };
 
                     Dialogue.TriggerDialogue(message5);
                     yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
@@ -2842,7 +2854,10 @@ public class Events : MonoBehaviour
                     int lesser_demons = Random.Range(100, 201);
                     makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
 
+                    lastBattleIfWon = 1;
+
                     FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
+
 
                     yield return new WaitUntil(() => finishedBattle == true);
 
@@ -2868,23 +2883,18 @@ public class Events : MonoBehaviour
         isEventDialogueClosed = true;
     }
 
+    public int lastBattleIfWonButThisTimeForReal = 0;
 
     IEnumerator battleByTheWalls(bool isPreviousEnemyArmy)
     {
-        string eventString13 = "i sopravvissuti combattono sulle mura";
-        string eventString14 = "";
-        string eventString15 = "";
+        string eventString13 = "Your army retires back to the city walls, the enemy is too strong for your soldiers.";
+        string eventString14 = "Soon you witness the arrival of your enemy: a great army of demons, orcs and goblins is getting closer to your walls.";
+        string eventString15 = "The enemy Commander, a greater Demon, takes position in front of your walls as he swears and threats your population.";
+        string eventString10 = "As you prepare your last defense you see your Captain and men's expression, one that is decided to give everything it has, even its life.";
+        string eventString11 = "The shadow and darkness of a repeating past falls on your entire city.";
+        string eventString12 = "Soldiers and captain march one last time towards a mutual enemy.";
 
-        string[] message5 = { eventString13, eventString14, eventString15 };
-
-        Dialogue.TriggerDialogue(message5);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
-
-        string eventString10 = "l'esercito nemico si schiera davanti alle mura";
-        string eventString11 = "";
-        string eventString12 = "";
-
-        string[] message4 = { eventString10, eventString11, eventString12 };
+        string[] message4 = { eventString13, eventString14, eventString15, eventString10, eventString11, eventString12 };
 
         Dialogue.TriggerInteractiveDialogue(message4);
 
@@ -2895,9 +2905,9 @@ public class Events : MonoBehaviour
         {
             player.bonusWall += 50f;
 
-            string eventString16 = "er gioiello brilla er comandate dice daje";
-            string eventString17 = "";
-            string eventString18 = "";
+            string eventString16 = "As your men advance further your attention is caught by a beam of green light coming from the city.";
+            string eventString17 = "You realize, as soon as the light has been emitted, that the soldier's force looks to be increased. Your captain swiftly decides to lend the source of this power, the green jewel, and bring it in battle.";
+            string eventString18 = "[The green jewel has granted a Wall Bonus of 50%]";
 
             string[] message6 = { eventString16, eventString17, eventString18 };
 
@@ -2914,6 +2924,7 @@ public class Events : MonoBehaviour
             int lesser_demons = Random.Range(100, 201);
             makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
         }
+        lastBattleIfWon = 2;
 
         FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
