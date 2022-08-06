@@ -100,6 +100,8 @@ public class OutroExecution : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        //////////SPEGNIMENTO PANNELLO BATTAGLIA////////
+        FindObjectOfType<PrepBattaglia>().battlePreparation.gameObject.SetActive(false);
 
         ///////////FIRSTLINE///////////
         timePassed = 0f;
@@ -220,6 +222,8 @@ public class OutroExecution : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        //////////SPEGNIMENTO PANNELLO BATTAGLIA////////
+        FindObjectOfType<PrepBattaglia>().battlePreparation.gameObject.SetActive(false);
 
         ///////////FIRSTLINE///////////
         timePassed = 0f;
