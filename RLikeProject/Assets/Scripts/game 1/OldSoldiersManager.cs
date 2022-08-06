@@ -303,17 +303,20 @@ public class OldSoldiersManager : MonoBehaviour
 
     private IEnumerator dialogoDiRitorno(bool isDialogoPiccolo, string[] messaggi)
     {
-        if (isDialogoPiccolo)
+        if (FindObjectOfType<Events>().finalEvent == 0)
         {
-            yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
-            Dialogue.TriggerSmallDialogue(messaggi);
+            if (isDialogoPiccolo)
+            {
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
+                Dialogue.TriggerSmallDialogue(messaggi);
+            }
+            else
+            {
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
+                Dialogue.TriggerDialogue(messaggi);
+            }
+            FindObjectOfType<AudioManager>().PlayEffectFaded(FindObjectOfType<Game>().guild_cameBack);
         }
-        else
-        {
-            yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1 && FindObjectOfType<Events>().isEventDialogueClosed);
-            Dialogue.TriggerDialogue(messaggi);
-        }
-        FindObjectOfType<AudioManager>().PlayEffectFaded(FindObjectOfType<Game>().guild_cameBack);
         yield return null;
     }
 

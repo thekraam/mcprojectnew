@@ -35,6 +35,8 @@ public class Events : MonoBehaviour
     public Gilda getGilda() { return this.gilda; }
 
 
+    /* outro canvas e script */
+    public GameObject outro;
 
     /* oggetto per sostiuzione immagine */
     LoadImage LoadImage = new LoadImage();
@@ -2701,9 +2703,11 @@ public class Events : MonoBehaviour
     }
 
     public int lastBattleIfWon = 0;
-
+    public int finalEvent = 0;
     IEnumerator TriggerFinalEvent()
     {
+        finalEvent = 1;
+
         string eventString1 = "Some of your soldiers come back from the outpost right out of the city with the worst news.";
         string eventString2 = "";
         if (prologueFinalEvent == 1) eventString2 = "The demoniac army previously sighted is moving towards the city and is dangerously close.";
@@ -2764,6 +2768,7 @@ public class Events : MonoBehaviour
 
             if(lastBattleInfo > 2)
             {
+                outro.SetActive(true);
                 FindObjectOfType<OutroExecution>().StartExecution(true);
                 yield break;
             }
@@ -2794,7 +2799,7 @@ public class Events : MonoBehaviour
                 string[] message3 = { eventString13, eventString14, eventString15 };
 
                 Dialogue.TriggerDialogue(message3);
-                yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
                 if (uominiErranti == 1)
                 {
@@ -2804,7 +2809,7 @@ public class Events : MonoBehaviour
                     string[] message4 = { eventString10, eventString11 };
 
                     Dialogue.TriggerDialogue(message4);
-                    yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+                    yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
                     swordsmen.setRapidTotal(40);
                     archers.setRapidTotal(40);
@@ -2824,6 +2829,7 @@ public class Events : MonoBehaviour
 
                 if(lastBattleInfo > 2)
                 {
+                    outro.SetActive(true);
                     FindObjectOfType<OutroExecution>().StartExecution(true);
                     yield break;
                 }
@@ -2853,7 +2859,7 @@ public class Events : MonoBehaviour
                     string[] message5 = { eventString13, eventString14 };
 
                     Dialogue.TriggerDialogue(message5);
-                    yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+                    yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
                     terri = 2;
                     int orcs = Random.Range(100, 201);
@@ -2870,6 +2876,7 @@ public class Events : MonoBehaviour
 
                     if(lastBattleInfo > 2)
                     {
+                        outro.SetActive(true);
                         FindObjectOfType<OutroExecution>().StartExecution(true);
                         yield break;
                     }
@@ -2936,8 +2943,16 @@ public class Events : MonoBehaviour
         FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
         yield return new WaitUntil(() => finishedBattle == true);
-        if(lastBattleInfo > 2) FindObjectOfType<OutroExecution>().StartExecution(true);
-        else FindObjectOfType<OutroExecution>().StartExecution(false);
+        if (lastBattleInfo > 2)
+        {
+            outro.SetActive(true);
+            FindObjectOfType<OutroExecution>().StartExecution(true);
+        }
+        else
+        {
+            outro.SetActive(true);
+            FindObjectOfType<OutroExecution>().StartExecution(false);
+        }
         yield break;
     }
 }
