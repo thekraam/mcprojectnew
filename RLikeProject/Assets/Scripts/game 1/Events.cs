@@ -2707,7 +2707,7 @@ public class Events : MonoBehaviour
 
         FindObjectOfType<DialogueManager>().endingdialogue = 0;
         Dialogue.TriggerDialogue(message4);
-        yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
         yield break;
     }
 
@@ -2746,7 +2746,7 @@ public class Events : MonoBehaviour
 
             FindObjectOfType<DialogueManager>().endingdialogue = 0;
             Dialogue.TriggerDialogue(message3);
-            yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+            yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
             if(aemisFaith > 6)
             {
@@ -2758,7 +2758,7 @@ public class Events : MonoBehaviour
 
                 FindObjectOfType<DialogueManager>().endingdialogue = 0;
                 Dialogue.TriggerDialogue(message4);
-                yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+                yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
                 swordsmen.setRapidTotal(50);
                 archers.setRapidTotal(50);
