@@ -80,8 +80,22 @@ public class Player : MonoBehaviour
 
     public void setRapidCitizens(int modifier)
     {
-        player_citizens = (player_citizens + modifier < 0) ? 0 : player_citizens + modifier;
-        setPopulation((player_citizens + getPopulation() > getCitizensMax()) ? getCitizensMax() : (player_citizens + getPopulation()));
+        if (getPopulation() + modifier > getCitizensMax())
+        {
+            modifier = getCitizensMax() - getPopulation();
+            player_citizens = player_citizens + modifier;
+            setPopulation((modifier + getPopulation() > getCitizensMax()) ? getCitizensMax() : (modifier + getPopulation()));
+        }
+        if (modifier<0)
+        {
+            player_citizens = (player_citizens + modifier < 0) ? 0 : player_citizens + modifier;
+            setPopulation((modifier + getPopulation() > getCitizensMax()) ? getCitizensMax() : (modifier + getPopulation()));
+        }
+        else
+        {
+            player_citizens = player_citizens + modifier;
+            setPopulation((modifier + getPopulation() > getCitizensMax()) ? getCitizensMax() : (modifier + getPopulation()));
+        }
     }
 
     public int getTempCitizens()

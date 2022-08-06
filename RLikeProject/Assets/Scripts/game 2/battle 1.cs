@@ -224,21 +224,27 @@ public class battle1 : MonoBehaviour
             deadEsoldier = (int)((totalEsoldiers / 100) * z1);
            // Debug.LogError("deadEsoldier " + deadEsoldier);
             deadswordman = (int)((deadsoldier / 100) * percswordman);
+            if (deadswordman > swordman.getMomentSwordman()) { deadswordman = swordman.getMomentSwordman(); }
             //Debug.LogError("deadswordman " + deadswordman);
             swordman.setMomentDeadSwordman((int)deadswordman);
             deadarcher = (int)((deadsoldier / 100) * percarcher);
+            if (deadarcher > archer.getMomentArcher()) { deadarcher = archer.getMomentArcher(); }
             //Debug.LogError("deadarcher " + deadarcher);
             archer.setMomentDeadArcher((int)deadarcher);
             deadrider = (int)((deadsoldier / 100) * percrider);
+            if (deadrider> rider.getMomentRider()) { deadrider = rider.getMomentRider(); }
             //Debug.LogError("deadrider " + deadrider);
             rider.setMomentDeadRider((int)deadrider);
             deadeswordman = (int)((deadEsoldier / 100) * percEswordman);
+            if (deadeswordman > eswordman.getTotal()) { deadeswordman = eswordman.getTotal(); }
             eswordman.setDeadESwordman((int)deadeswordman);
             //Debug.LogError("deadEswordman -------------------------------------------------------------- " + deadeswordman);
             deadearcher = (int)((deadEsoldier / 100) * percEarcher);
+            if (deadearcher > earcher.getTotal()) { deadearcher = earcher.getTotal(); }
             earcher.setDeadEArchers((int)deadearcher);
             //Debug.LogError("deadEarcher -------------------------------------------------------------- " + deadearcher);
             deaderider = (int)((deadEsoldier / 100) * percErider);
+            if (deaderider > erider.getTotal()) { deaderider = erider.getTotal(); }
             erider.setDeadERiders((int)deaderider);
            // Debug.LogError("deadErider -------------------------------------------------------------- " + deaderider);
 
