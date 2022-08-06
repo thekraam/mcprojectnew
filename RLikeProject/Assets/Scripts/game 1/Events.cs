@@ -400,7 +400,8 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerPrologueFinalEvent());
                 selected = true;
             }
-            if (player.getTurn() >= 28 && Random.Range(0.1f, 1f) <= (0.4f + finalEventProbabilityIncreaser))
+             if (player.getTurn() >= 28 && Random.Range(0.1f, 1f) <= (0.4f + finalEventProbabilityIncreaser))
+           // if (player.getTurn() ==2)
             {
                 StartCoroutine(TriggerFinalEvent());
                 selected = true;
@@ -2941,7 +2942,7 @@ public class Events : MonoBehaviour
 
         if (ancientGreenJewel == 1)
         {
-            player.bonusWall += 50f;
+            player.setBonusWall(50);
 
             string eventString16 = "As your men advance further your attention is caught by a beam of green light coming from the city.";
             string eventString17 = "You realize, as soon as the light has been emitted, that the soldier's force looks to be increased. Your captain swiftly decides to lend the source of this power, the green jewel, and bring it in battle.";

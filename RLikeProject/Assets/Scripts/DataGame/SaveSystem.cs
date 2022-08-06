@@ -15,10 +15,13 @@ public static class SaveSystem
         float time = 0f;
         while (time < 3f)
         {
-            isDataPresent = Application.persistentDataPath + "/game.fun";
-            if (File.Exists(isDataPresent)) resumeGame.SetActive(true);
-            else resumeGame.SetActive(false);
-            time += Time.deltaTime;
+            if (time >= 2f)
+            {
+                isDataPresent = Application.persistentDataPath + "/game.fun";
+                if (File.Exists(isDataPresent)) resumeGame.SetActive(true);
+                else resumeGame.SetActive(false);
+            }
+                time += Time.deltaTime;
         }
     }
 

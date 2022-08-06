@@ -263,13 +263,13 @@ public class PrepBattaglia : MonoBehaviour
     {
         if (terri == 1)
         {
-            terriBonus = terriBonus + playercorrente.getBonusCity();
-            capBonus = capBonus + capitanocorrente.getBonusCity();
+            terriBonus = terriBonus + playercorrente.getBonusWall();
+            capBonus = capBonus + capitanocorrente.getBonusWall();
         }
         if (terri == 2)
         {
-            terriBonus = terriBonus + playercorrente.getBonusWall();
-            capBonus = capBonus + capitanocorrente.getBonusWall();
+            terriBonus = terriBonus + playercorrente.getBonusCity();
+            capBonus = capBonus + capitanocorrente.getBonusCity();
         }
         if (terri == 3)
         {
