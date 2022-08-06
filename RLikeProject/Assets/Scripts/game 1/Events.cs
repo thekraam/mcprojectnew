@@ -2885,10 +2885,10 @@ public class Events : MonoBehaviour
                     int orcs = Random.Range(100, 201);
                     int goblins = Random.Range(100, 201);
                     int lesser_demons = Random.Range(100, 201);
-                    makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);\
+                    makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
 
                     finishedBattle = false;
-
+                    
                     lastBattleIfWon = 1;
 
                     FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
