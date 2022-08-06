@@ -695,10 +695,8 @@ public class Game : MonoBehaviour
     }
 
 
-
-
     public void Update()
-    {      
+    {
         // ---------------------------   Controllo Presenza Salvataggio --------------------------
 
         SaveSystem.DataStatus(resumeGameText);
