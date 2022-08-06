@@ -899,6 +899,7 @@ public class Events : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
+        attendingSecondaryEvent = false;
     }
 
 
@@ -1571,6 +1572,7 @@ public class Events : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
+        attendingSecondaryEvent = false;
     }
 
     /* --------------------------------------------------------------------------------- *
@@ -1616,6 +1618,7 @@ public class Events : MonoBehaviour
 
             if (response[0] == 0) //se rifiuta
             {
+                attendingSecondaryEvent = true;
                 aemisFaith--;
                 secondaryEvent4 = 1;
                 secondaryEvent4TurnsLeft = 2;
@@ -2539,6 +2542,7 @@ public class Events : MonoBehaviour
             Dialogue.TriggerDialogue(message2);
             if (Random.Range(0.1f, 1f) <= 0.5)
             {
+                attendingSecondaryEvent = true;
                 secondaryEvent5 = 1;
                 secondaryEvent5TurnsLeft = 2;
             }
@@ -2604,6 +2608,7 @@ public class Events : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
+        attendingSecondaryEvent = false;
     }
 
     /* --------------------------------------------------------------------------------- *
@@ -2640,6 +2645,7 @@ public class Events : MonoBehaviour
 
             if (Random.Range(0f, 1f) < 0.4)
             {
+                attendingSecondaryEvent = true;
                 secondaryEvent6 = 1;
                 secondaryEvent6TurnsLeft = 5;
             }
@@ -2674,6 +2680,7 @@ public class Events : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
+        attendingSecondaryEvent = false;
     }
 
     public int prologueFinalEvent = 0;
