@@ -2584,6 +2584,8 @@ public class Events : MonoBehaviour
         terri = 2;
         makeEnemyForEvent(1, 10* Random.Range(1, 5), 10 * Random.Range(1, 4), 10 * Random.Range(1, 3), 2);
 
+        finishedBattle = false;
+
         FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
         yield return new WaitUntil(() => finishedBattle == true);
@@ -2766,6 +2768,8 @@ public class Events : MonoBehaviour
             int lesser_demons = Random.Range(100, 201);
             makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
 
+            finishedBattle = false;
+
             lastBattleIfWon = 1;
 
             FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
@@ -2829,6 +2833,8 @@ public class Events : MonoBehaviour
                 terri = 3;
                 makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
 
+                finishedBattle = false;
+
                 lastBattleIfWon = 1;
 
                 FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
@@ -2876,7 +2882,9 @@ public class Events : MonoBehaviour
                     int orcs = Random.Range(100, 201);
                     int goblins = Random.Range(100, 201);
                     int lesser_demons = Random.Range(100, 201);
-                    makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);
+                    makeEnemyForEvent(3, orcs, "orcs", "orc", goblins, "goblins", "goblin", lesser_demons, "lesser demons", "lesser demon", 3);\
+
+                    finishedBattle = false;
 
                     lastBattleIfWon = 1;
 
