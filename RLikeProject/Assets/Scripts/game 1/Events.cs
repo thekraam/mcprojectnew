@@ -2951,9 +2951,9 @@ public class Events : MonoBehaviour
 
             FindObjectOfType<DialogueManager>().endingdialogue = 0;
 
-            Dialogue.TriggerSmallDialogue(message6);
+            Dialogue.TriggerDialogue(message6);
 
-            yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
+            yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
         }
 
         finishedBattle = false;
