@@ -384,7 +384,10 @@ public class Events : MonoBehaviour
         int forceEventSelection = 0;
         float finalEventProbabilityIncreaser = 0;
 
-        while (!selected && !attendingSecondaryEvent && forceEventSelection < (15 + player.getTurn()))
+        while (   !selected
+               && !attendingSecondaryEvent
+               && secondaryEvent1TurnsLeft != 0 && secondaryEvent2TurnsLeft != 0 && secondaryEvent3TurnsLeft != 0 && secondaryEvent4TurnsLeft != 0 && secondaryEvent5TurnsLeft != 0 && secondaryEvent6TurnsLeft != 0
+               && forceEventSelection < (15 + player.getTurn()))
         {
             isEventDialogueClosed = false;
 
@@ -2490,7 +2493,7 @@ public class Events : MonoBehaviour
             string eventString7 = "The knights execute the woman as predicted, whilist they sing the praises of the Aemis' cult.";
             string eventString8 = "Their words are spoken more as a threat than an advice.";
 
-            string[] message2 = { eventString6, eventString7, eventString8 };
+            string[] message2 = { eventString7, eventString8 };
 
             Dialogue.TriggerDialogue(message2);
         }
