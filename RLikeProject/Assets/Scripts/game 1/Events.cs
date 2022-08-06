@@ -1254,6 +1254,7 @@ public class Events : MonoBehaviour
 
                 makeEnemyForEvent(2, swordsmen, archers, riders, captainLVL);
 
+                FindObjectOfType<DialogueManager>().endingdialogue = 0;
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
                 yield return new WaitForSeconds(0.5f);
             }
@@ -1265,6 +1266,7 @@ public class Events : MonoBehaviour
 
                 string[] message3 = { eventString6, eventString7 };
 
+                FindObjectOfType<DialogueManager>().endingdialogue = 0;
                 Dialogue.TriggerDialogue(message3);
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
@@ -2575,6 +2577,7 @@ public class Events : MonoBehaviour
 
         string[] message2 = { eventString1, eventString2, eventString3 };
 
+        FindObjectOfType<DialogueManager>().endingdialogue = 0;
         Dialogue.TriggerDialogue(message2);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
@@ -2697,6 +2700,7 @@ public class Events : MonoBehaviour
 
         string[] message4 = { eventString10, eventString11, eventString12 };
 
+        FindObjectOfType<DialogueManager>().endingdialogue = 0;
         Dialogue.TriggerDialogue(message4);
         yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
         yield break;
@@ -2735,6 +2739,7 @@ public class Events : MonoBehaviour
 
             string[] message3 = { eventString9, eventString10 };
 
+            FindObjectOfType<DialogueManager>().endingdialogue = 0;
             Dialogue.TriggerDialogue(message3);
             yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
 
@@ -2746,6 +2751,7 @@ public class Events : MonoBehaviour
 
                 string[] message4 = { eventString12, eventString13, eventString14 };
 
+                FindObjectOfType<DialogueManager>().endingdialogue = 0;
                 Dialogue.TriggerDialogue(message4);
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
 
@@ -2798,6 +2804,7 @@ public class Events : MonoBehaviour
 
                 string[] message3 = { eventString13, eventString14, eventString15 };
 
+                FindObjectOfType<DialogueManager>().endingdialogue = 0;
                 Dialogue.TriggerDialogue(message3);
                 yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
@@ -2808,6 +2815,7 @@ public class Events : MonoBehaviour
 
                     string[] message4 = { eventString10, eventString11 };
 
+                    FindObjectOfType<DialogueManager>().endingdialogue = 0;
                     Dialogue.TriggerDialogue(message4);
                     yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
@@ -2846,6 +2854,7 @@ public class Events : MonoBehaviour
 
                 string[] message3 = { eventString17, eventString18, eventString19 };
 
+
                 Dialogue.TriggerInteractiveDialogue(message3);
 
                 StartCoroutine(ResponseUpdater(false));
@@ -2857,6 +2866,8 @@ public class Events : MonoBehaviour
                     string eventString14 = "However, as soon as they place their feet in the fields, they are being immediately targeted by the enemy's archers.";
 
                     string[] message5 = { eventString13, eventString14 };
+
+                    FindObjectOfType<DialogueManager>().endingdialogue = 0;
 
                     Dialogue.TriggerDialogue(message5);
                     yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
@@ -2910,9 +2921,12 @@ public class Events : MonoBehaviour
 
         string[] message4 = { eventString13, eventString14, eventString15, eventString10, eventString11, eventString12 };
 
+        FindObjectOfType<DialogueManager>().endingdialogue = 0;
+
         Dialogue.TriggerDialogue(message4);
 
         yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
+
 
         if (ancientGreenJewel == 1)
         {
@@ -2924,11 +2938,14 @@ public class Events : MonoBehaviour
 
             string[] message6 = { eventString16, eventString17, eventString18 };
 
+            FindObjectOfType<DialogueManager>().endingdialogue = 0;
+
             Dialogue.TriggerSmallDialogue(message6);
 
             yield return new WaitUntil(() => FindObjectOfType<DialogueManagerMINI>().endingdialogue == 1);
         }
 
+        finishedBattle = false;
         terri = 1;
         if (!isPreviousEnemyArmy)
         {
@@ -2942,6 +2959,7 @@ public class Events : MonoBehaviour
         FindObjectOfType<PrepBattaglia>().AvvioPreparazione(terri);
 
         yield return new WaitUntil(() => finishedBattle == true);
+
         if (lastBattleInfo > 2)
         {
             outro.SetActive(true);
