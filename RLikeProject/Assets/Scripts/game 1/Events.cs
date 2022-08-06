@@ -35,6 +35,9 @@ public class Events : MonoBehaviour
     public Gilda getGilda() { return this.gilda; }
 
 
+    /* battlemusics */
+    public AudioClip[] battleMusics;
+
     /* outro canvas e script */
     public GameObject outro;
 
@@ -139,6 +142,12 @@ public class Events : MonoBehaviour
         FindObjectOfType<PrepBattaglia>().AssegnaSoldati(); // soldati selezionati con gli sliders = soldati assegnati ai moment
 
         lastBattleInfo = FindObjectOfType<Game>().newBattle(terri, bonusETerri, bonusEnemy);
+
+        if (lastBattleIfWon == 0)
+        {
+            FindObjectOfType<AudioManager>().StopMusic(FindObjectOfType<AudioManager>().MusicSource.clip);
+            FindObjectOfType<AudioManager>().ForcePlayMusic(FindObjectOfType<AudioManager>().SelectRandomClip(battleMusics));
+        }
 
         FindObjectOfType<PrepBattaglia>().AvvioBattaglia(); // avvio effetto per killist
 
@@ -2714,8 +2723,11 @@ public class Events : MonoBehaviour
 
     public int lastBattleIfWon = 0;
     public int finalEvent = 0;
+    public AudioClip finalBattleMusic;
     IEnumerator TriggerFinalEvent()
     {
+        FindObjectOfType<AudioManager>().StopMusic(FindObjectOfType<AudioManager>().MusicSource.clip);
+        FindObjectOfType<AudioManager>().ForcePlayMusic(finalBattleMusic);
         finalEvent = 1;
 
         string eventString1 = "Some of your soldiers come back from the outpost right out of the city with the worst news.";
@@ -2921,9 +2933,13 @@ public class Events : MonoBehaviour
     }
 
     public int lastBattleIfWonButThisTimeForReal = 0;
+    public AudioClip battleByTheWallsMusic;
 
     IEnumerator battleByTheWalls(bool isPreviousEnemyArmy)
     {
+        FindObjectOfType<AudioManager>().StopMusic(FindObjectOfType<AudioManager>().MusicSource.clip);
+        FindObjectOfType<AudioManager>().ForcePlayMusic(battleByTheWallsMusic);
+
         string eventString13 = "Your army retires back to the city walls, the enemy is too strong for your soldiers.";
         string eventString14 = "Soon you witness the arrival of your enemy: a great army of demons, orcs and goblins is getting closer to your walls.";
         string eventString15 = "The enemy Commander, a greater Demon, takes position in front of your walls as he swears and threats your population.";

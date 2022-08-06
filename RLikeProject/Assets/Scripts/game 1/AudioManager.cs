@@ -155,6 +155,19 @@ public class AudioManager : MonoBehaviour
 		oldEffectClip = EffectsSource.clip;
 		EffectsSource.Play();
 	}
+
+	public AudioClip SelectRandomClip(params AudioClip[] clips)
+    {
+		int randomIndex = Random.Range(0, clips.Length);
+		AudioClip randomClip;
+		randomClip = clips[randomIndex];
+		if (oldMusicClip == randomClip && randomIndex > 0) randomClip = clips[randomIndex - 1];
+		if (oldMusicClip == randomClip && randomIndex == 0) randomClip = clips[randomIndex + 1];
+		oldMusicClip = randomClip;
+
+		return randomClip;
+	}
+
 	public void RandomMusic(params AudioClip[] clips)
 	{
 		if (!muted)
