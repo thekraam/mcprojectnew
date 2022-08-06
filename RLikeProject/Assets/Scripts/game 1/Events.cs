@@ -384,7 +384,7 @@ public class Events : MonoBehaviour
         int forceEventSelection = 0;
         float finalEventProbabilityIncreaser = 0;
 
-        while (!selected && !attendingSecondaryEvent && forceEventSelection<15)
+        while (!selected && !attendingSecondaryEvent && forceEventSelection < (15 + player.getTurn()))
         {
             isEventDialogueClosed = false;
 
@@ -2910,10 +2910,9 @@ public class Events : MonoBehaviour
 
         string[] message4 = { eventString13, eventString14, eventString15, eventString10, eventString11, eventString12 };
 
-        Dialogue.TriggerInteractiveDialogue(message4);
+        Dialogue.TriggerDialogue(message4);
 
-        StartCoroutine(ResponseUpdater(false));
-        yield return new WaitUntil(() => response[1] == 1);
+        yield return new WaitUntil(() => FindObjectOfType<DialogueManager>().endingdialogue == 1);
 
         if (ancientGreenJewel == 1)
         {
