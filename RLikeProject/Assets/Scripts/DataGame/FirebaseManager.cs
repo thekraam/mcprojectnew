@@ -514,6 +514,7 @@ public class FirebaseManager : MonoBehaviour
     public bool dataLoaded = false;
     public IEnumerator LoadUserData()
     {
+        yield return new WaitForSeconds(2f);
         dataLoaded = false;
         //Get the currently logged in user data
         var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
@@ -562,6 +563,7 @@ public class FirebaseManager : MonoBehaviour
     }
 
     public IEnumerator LoadUserTutorial(){
+        yield return new WaitForSeconds(2f);
         dataLoaded = false;
         //Get the currently logged in user data
         var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();

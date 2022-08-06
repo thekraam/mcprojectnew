@@ -52,6 +52,7 @@ public class KillList : MonoBehaviour
 
     public void setKillList(int soldiers, int enemySoldiers, int ATKUI, int DEFUI, int eATKUI, int eDEFUI)
     {
+        enemySoldiers -= 1;
         this.soldiersValue = soldiers;
         this.enemySoldiersValue = enemySoldiers;
         this.ATKUIvalue = ATKUI;
