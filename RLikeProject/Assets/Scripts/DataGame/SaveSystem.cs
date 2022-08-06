@@ -12,17 +12,9 @@ public static class SaveSystem
 
     public static void DataStatus(GameObject resumeGame)
     {
-        float time = 0f;
-        while (time < 3f)
-        {
-            if (time >= 2f)
-            {
-                isDataPresent = Application.persistentDataPath + "/game.fun";
-                if (File.Exists(isDataPresent)) resumeGame.SetActive(true);
-                else resumeGame.SetActive(false);
-            }
-                time += Time.deltaTime;
-        }
+       isDataPresent = Application.persistentDataPath + "/game.fun";
+       if (File.Exists(isDataPresent)) resumeGame.SetActive(true);
+       else resumeGame.SetActive(false);
     }
 
     public static void DeleteSave()
