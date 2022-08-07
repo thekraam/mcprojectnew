@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
         {
 			//MusicSource.Stop();
 			//EffectsSource.Stop();
-			MusicSource.volume = 1;
+			MusicSource.volume = 0.4f;
 			EffectsSource.volume = 1;
 			muted = false;
         }
@@ -49,6 +49,7 @@ public class AudioManager : MonoBehaviour
 
 		DontDestroyOnLoad(gameObject);
 		DontDestroyOnLoad(MuteButton);
+		MusicSource.volume = 0.4f;
 	}
 
 	public void ResetAudioEffects()
@@ -65,7 +66,7 @@ public class AudioManager : MonoBehaviour
 		if (!muted)
 		{
 			MusicSource.Stop();
-			MusicSource.volume = 1;
+			MusicSource.volume = 0.4f;
 		}
 	}
 
@@ -106,7 +107,7 @@ public class AudioManager : MonoBehaviour
 					yield return new WaitForSeconds(0.004f);
 				}
 				MusicSource.Stop();
-				MusicSource.volume = 1;
+				MusicSource.volume = 0.4f;
 			}
 			else
 			{
@@ -175,7 +176,7 @@ public class AudioManager : MonoBehaviour
 			if (!MusicSource.isPlaying)
 			{
 				StopAllCoroutines();
-				MusicSource.volume = 1f;
+				MusicSource.volume = 0.4f;
 				int randomIndex = Random.Range(0, clips.Length);
 				MusicSource.clip = clips[randomIndex];
 				if (oldMusicClip == MusicSource.clip && randomIndex > 0) MusicSource.clip = clips[randomIndex - 1];

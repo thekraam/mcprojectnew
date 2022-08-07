@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "ZY323HZ2MM",
+    "m_SelectedDeviceId": "LGD855b7e25028",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "LGD855b7e25028",
+        "name": "com.arkgames.eternalsattack",
+        "processId": 32536,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -30,6 +30,30 @@
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
             "processId": 29328,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 11385,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 25222,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 28159,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 32536,
             "exited": false
         },
         {

@@ -31,6 +31,7 @@ public class Game : MonoBehaviour
 
     [Header("Game Status")]
     public GameObject resumeGameText;
+    public bool hasQuitToMenu = false;
     private bool sameGameSession = false;
     public void setSameGameSession() { sameGameSession = true; }
     public bool isSameGameSession() { return sameGameSession; }
@@ -246,6 +247,9 @@ public class Game : MonoBehaviour
 
     public void Start()
     {
+        // ---------------------------   Controllo Presenza Salvataggio --------------------------
+
+        SaveSystem.DataStatus(resumeGameText);
 
         // musica on
         //FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
@@ -273,14 +277,14 @@ public class Game : MonoBehaviour
 
     public void onQuitGame()
     {
+        hasQuitToMenu = true;
+        SaveSystem.DataStatus(resumeGameText);
         mainMenuPanel.SetActive(true);
-        FindObjectOfType<AudioManager>().Mute();
-        FindObjectOfType<AudioManager>().Mute();
 
-        FindObjectOfType<AudioManager>().PlayMusic(epic_entrance);
+        FindObjectOfType<AudioManager>().StopMusic(FindObjectOfType<AudioManager>().MusicSource.clip);
+        FindObjectOfType<AudioManager>().ForcePlayMusic(epic_entrance);
         setSameGameSession();
 
-        Debug.Log("gamesession corrente e " + sameGameSession);
         //SceneManager.UnloadSceneAsync(0);
         //SceneManager.LoadScene(0);
     }
@@ -697,16 +701,13 @@ public class Game : MonoBehaviour
 
     public void Update()
     {
-        // ---------------------------   Controllo Presenza Salvataggio --------------------------
-
-        SaveSystem.DataStatus(resumeGameText);
 
         //----------------------------  Controllo presenza Log ---------------------
         //FindObjectOfType<FirebaseManager>().LogStatus(logStatus, userPanel);
 
         // ---------------------------                 BG Music                ---------------------------
 
-        if (FindObjectOfType<FontDecreaser>().introClosed)
+        if (FindObjectOfType<FontDecreaser>().introClosed && !hasQuitToMenu)
             FindObjectOfType<AudioManager>().RandomMusic(GameMusic);
 
         // --------------------------- controller tempo per aggiornamento sync ---------------------------

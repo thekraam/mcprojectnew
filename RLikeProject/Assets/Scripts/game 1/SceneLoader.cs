@@ -24,6 +24,7 @@ public class SceneLoader : MonoBehaviour
 
     public void onResume()
     {
+        FindObjectOfType<Game>().hasQuitToMenu = false;
         FindObjectOfType<AudioManager>().StopMusic(FindObjectOfType<Game>().epic_entrance);
         FindObjectOfType<FontDecreaser>().introClosed = true;
         if (FindObjectOfType<Game>().isSameGameSession() == true)

@@ -162,7 +162,11 @@ public class Events : MonoBehaviour
         }
         else if (lastBattleIfWon == 2) finishedBattle = true;
         else
+        {
+            FindObjectOfType<AudioManager>().StopMusic(FindObjectOfType<AudioManager>().MusicSource.clip);
+            FindObjectOfType<AudioManager>().ForcePlayMusic(FindObjectOfType<AudioManager>().SelectRandomClip(FindObjectOfType<Game>().GameMusic));
             FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
+        }
     }
 
     public void InitializeEvents()
