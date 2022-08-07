@@ -326,15 +326,13 @@ public class Events : MonoBehaviour
 
     public void SecondaryEventStarter()
     {
-
+        attendingSecondaryEvent = false;
         response[1] = 0;
-        bool skippingEventForOverlap = false;
-        if (secondaryEvent1 == 1 && secondaryEvent1TurnsLeft == 0 && !skippingEventForOverlap)
+        if (secondaryEvent1 == 1 && secondaryEvent1TurnsLeft == 0)
         {
             secondaryEvent1Malus = 1;
-
             secondaryEvent1 = 0;
-            attendingSecondaryEvent = false;
+            attendingSecondaryEvent = true;
             secondaryEvent1MalusTurnsLeft = 3;
 
             string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens each season, for 3 seasons]";
@@ -342,34 +340,31 @@ public class Events : MonoBehaviour
             string[] message = { eventString1 };
 
             Dialogue.TriggerDialogue(message);
-
-
-            skippingEventForOverlap = true;
         }
-        if (secondaryEvent2 == 1 && secondaryEvent2TurnsLeft == 0 && !skippingEventForOverlap)
+        else if (secondaryEvent2 == 1 && secondaryEvent2TurnsLeft == 0)
         {
+            attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent2());
-            skippingEventForOverlap = true;
         }
-        if(secondaryEvent3 == 1 && secondaryEvent3TurnsLeft == 0 && !skippingEventForOverlap)
+        else if(secondaryEvent3 == 1 && secondaryEvent3TurnsLeft == 0)
         {
+            attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent3());
-            skippingEventForOverlap = true;
         }
-        if(secondaryEvent4 == 1 && secondaryEvent4TurnsLeft == 0 && !skippingEventForOverlap)
+        else if(secondaryEvent4 == 1 && secondaryEvent4TurnsLeft == 0)
         {
+            attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent4());
-            skippingEventForOverlap = true;
         }
-        if (secondaryEvent5 == 1 && secondaryEvent5TurnsLeft == 0 && !skippingEventForOverlap)
+        else if (secondaryEvent5 == 1 && secondaryEvent5TurnsLeft == 0)
         {
+            attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent5());
-            skippingEventForOverlap = true;
         }
-        if (secondaryEvent6 == 1 && secondaryEvent6TurnsLeft == 0 && !skippingEventForOverlap)
+        else if (secondaryEvent6 == 1 && secondaryEvent6TurnsLeft == 0)
         {
+            attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent6());
-            skippingEventForOverlap = true;
         }
     }
 
@@ -393,10 +388,7 @@ public class Events : MonoBehaviour
         int forceEventSelection = 0;
         float finalEventProbabilityIncreaser = 0;
 
-        while (   !selected
-               && !attendingSecondaryEvent
-               && secondaryEvent1TurnsLeft != 0 && secondaryEvent2TurnsLeft != 0 && secondaryEvent3TurnsLeft != 0 && secondaryEvent4TurnsLeft != 0 && secondaryEvent5TurnsLeft != 0 && secondaryEvent6TurnsLeft != 0
-               && forceEventSelection < (15 + player.getTurn()))
+        while ( !selected && !attendingSecondaryEvent && (forceEventSelection < (15 + player.getTurn())) )
         {
             isEventDialogueClosed = false;
 
@@ -443,7 +435,7 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent14());
                 selected = true;
             }
-            if (eventChooser >= 3f && eventChooser < 4f && aemisFaith <= 4 && aemisKnightsHostility == 1 && hasEnoughSoldiers(10) && event12 == 0) // il giocatore deve affrontare una grande battaglia, deve avere una minima chance
+            if (eventChooser >= 3f && eventChooser < 4f && aemisFaith <= 4 && aemisKnightsHostility == 1 /*&& hasEnoughSoldiers(10)*/ && event12 == 0) // il giocatore deve affrontare una grande battaglia, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent12());
                 selected = true;
@@ -453,7 +445,7 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent4());
                 selected = true;
             }
-            if (eventChooser >= 5f && eventChooser < 6f && hasEnoughSoldiers(10) && event5 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
+            if (eventChooser >= 5f && eventChooser < 6f /*&& hasEnoughSoldiers(10)*/ && event5 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent5());
                 selected = true;
@@ -468,7 +460,7 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent7());
                 selected = true;
             }
-            if (eventChooser >= 8f && eventChooser < 9f && hasEnoughSoldiers(15) && event8 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
+            if (eventChooser >= 8f && eventChooser < 9f /*&& hasEnoughSoldiers(15)*/ && event8 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent8());
                 selected = true;
@@ -568,12 +560,12 @@ public class Events : MonoBehaviour
                 StartCoroutine(TriggerEvent26());
                 selected = true;
             }
-            if (eventChooser >= 28f && eventChooser < 29f && hasEnoughSoldiers(15) && event28 == 0)
+            if (eventChooser >= 28f && eventChooser < 29f /*&& hasEnoughSoldiers(15)*/ && event28 == 0)
             {
                 StartCoroutine(TriggerEvent28());
                 selected = true;
             }
-            if (eventChooser >= 29f && eventChooser < 30f && hasEnoughSoldiers(10) && event29 == 0)
+            if (eventChooser >= 29f && eventChooser < 30f /*&& hasEnoughSoldiers(10)*/ && event29 == 0)
             {
                 StartCoroutine(TriggerEvent29());
                 selected = true;
@@ -618,7 +610,6 @@ public class Events : MonoBehaviour
         }
         else if (secondaryEventProbability > 0.5f)
         {
-            attendingSecondaryEvent = true;
             secondaryEvent1 = 1;
             secondaryEvent1TurnsLeft = 4;
             secondaryEvent1Malus = 1;
@@ -877,7 +868,6 @@ public class Events : MonoBehaviour
         {
             if (Random.Range(0f, 1f) <= 0.2f)
             { 
-                attendingSecondaryEvent = true;
                 aemisFaith--;
                 secondaryEvent2 = 1;
                 secondaryEvent2TurnsLeft = 1;
@@ -914,7 +904,6 @@ public class Events : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
-        attendingSecondaryEvent = false;
     }
 
 
@@ -1589,7 +1578,6 @@ public class Events : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
-        attendingSecondaryEvent = false;
     }
 
     /* --------------------------------------------------------------------------------- *
@@ -1635,7 +1623,6 @@ public class Events : MonoBehaviour
 
             if (response[0] == 0) //se rifiuta
             {
-                attendingSecondaryEvent = true;
                 aemisFaith--;
                 secondaryEvent4 = 1;
                 secondaryEvent4TurnsLeft = 2;
@@ -2559,7 +2546,6 @@ public class Events : MonoBehaviour
             Dialogue.TriggerDialogue(message2);
             if (Random.Range(0.1f, 1f) <= 0.5)
             {
-                attendingSecondaryEvent = true;
                 secondaryEvent5 = 1;
                 secondaryEvent5TurnsLeft = 2;
             }
@@ -2628,7 +2614,6 @@ public class Events : MonoBehaviour
         }
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
-        attendingSecondaryEvent = false;
     }
 
     /* --------------------------------------------------------------------------------- *
@@ -2665,7 +2650,6 @@ public class Events : MonoBehaviour
 
             if (Random.Range(0f, 1f) < 0.4)
             {
-                attendingSecondaryEvent = true;
                 secondaryEvent6 = 1;
                 secondaryEvent6TurnsLeft = 5;
             }
@@ -2700,7 +2684,6 @@ public class Events : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
-        attendingSecondaryEvent = false;
     }
 
     public int prologueFinalEvent = 0;
