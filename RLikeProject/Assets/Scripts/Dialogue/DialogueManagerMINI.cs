@@ -16,7 +16,7 @@ public class DialogueManagerMINI : MonoBehaviour
 	private int MINIDialogueCounter = 0;
 	private int responseToInteractiveDialogue = 0;
 	private int DialogueIsResetting = 0;
-	public int endingdialogue = 0;
+	public int endingdialogue = 1;
 
 	// animazione apertura e chiusura
 	public Animator animator;
