@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "LGD855b7e25028",
         "name": "com.arkgames.eternalsattack",
-        "processId": 6555,
+        "processId": 14177,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -60,6 +60,24 @@
             "deviceId": "LGD855b7e25028",
             "name": "com.arkgames.eternalsattack",
             "processId": 6555,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 10611,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 12005,
+            "exited": false
+        },
+        {
+            "deviceId": "LGD855b7e25028",
+            "name": "com.arkgames.eternalsattack",
+            "processId": 14177,
             "exited": false
         },
         {
