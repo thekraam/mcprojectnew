@@ -643,7 +643,7 @@ public class Events : MonoBehaviour
         if (response[0] == 1)
         {
             player.setRapidMoney(-1000);
-            player.bonusWall += 0.2f;
+            player.bonusWall += 20f;
         }
         
         yield return new WaitForSeconds(1f);

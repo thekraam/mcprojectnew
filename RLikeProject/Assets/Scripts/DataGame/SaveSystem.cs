@@ -8,10 +8,11 @@ public static class SaveSystem
 {
     public static string isDataPresent;
 
-    
+    private static GameObject currentResumeGameObject;
 
     public static void DataStatus(GameObject resumeGame)
     {
+       currentResumeGameObject = resumeGame;
        isDataPresent = Application.persistentDataPath + "/game.fun";
        if (File.Exists(isDataPresent)) resumeGame.SetActive(true);
        else resumeGame.SetActive(false);
@@ -20,6 +21,7 @@ public static class SaveSystem
     public static void DeleteSave()
     {
         if (File.Exists(isDataPresent)) File.Delete(isDataPresent);
+        currentResumeGameObject.SetActive(false);
     }
 
     public static void SaveGame(string cityname ,Player player , Events events , Fattoria fattoria , Caserma caserma ,
