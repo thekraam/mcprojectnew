@@ -50,8 +50,10 @@ public class SceneLoader : MonoBehaviour
 
     public void onPressButton(bool NewGame)
     {
+        FindObjectOfType<Game>().hasQuitToMenu = false;
         FindObjectOfType<FirebaseManager>().LoadDataButton(true);
         FindObjectOfType<Game>().getCapitano().resetCaptain();
+        FindObjectOfType<FontDecreaser>().introClosed = false;
 
         if (NewGame && FindObjectOfType<Game>().isSameGameSession() == false)
         {

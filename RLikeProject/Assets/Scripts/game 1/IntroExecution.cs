@@ -9,6 +9,7 @@ public class IntroExecution : MonoBehaviour
     public CanvasGroup skipButton;
     public GameObject skipButtonObject;
     public GameObject confirmSelection;
+    public Text InputTextToRead;
 
     public Button logo1;
     public Button logo2;
@@ -114,7 +115,7 @@ public class IntroExecution : MonoBehaviour
     }
     public void EndOfSequenceCityText(Text City)
     {
-        confirmSelection.gameObject.GetComponentInChildren<Button>().interactable = true;
+        confirmSelection.gameObject.GetComponentInChildren<Button>().interactable = false;
 
         MainMenu.SetActive(false);
 
@@ -168,6 +169,9 @@ public class IntroExecution : MonoBehaviour
 
     IEnumerator FadeSequence()
     {
+        /* azzeramento nome vecchio */
+        InputTextToRead.text = "";
+
         /* fadeIn ad IntroSequence gameobject */
         skipButton.gameObject.SetActive(true);
         skipButton.alpha = 1;

@@ -1658,6 +1658,7 @@ public class Events : MonoBehaviour
 
     IEnumerator TriggerEvent17()
     {
+        isEventDialogueClosed = false;
         event17 = 1;
 
         string eventString1 = "The Guild Master is worried about the walls' defense.";
