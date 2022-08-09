@@ -137,6 +137,8 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<Events>().event30 = data.event30;
         FindObjectOfType<Events>().event30MalusTurnsLeft = data.event30MalusTurnsLeft;
 
+        FindObjectOfType<Events>().prologueFinalEvent = data.prologueFinalEvent;
+
         /*
         FindObjectOfType<Events>().setPlayer(data.player1);
         FindObjectOfType<Events>().setSwordsmen(data.swordsmen1);
@@ -449,6 +451,8 @@ public class LoadGameData : MonoBehaviour
         FindObjectOfType<Events>().event29 = data.event29;
         FindObjectOfType<Events>().event30 = data.event30;
         FindObjectOfType<Events>().event30MalusTurnsLeft = data.event30MalusTurnsLeft;
+
+        FindObjectOfType<Events>().prologueFinalEvent = data.prologueFinalEvent;
 
         /*
         FindObjectOfType<Events>().setPlayer(data.player1);

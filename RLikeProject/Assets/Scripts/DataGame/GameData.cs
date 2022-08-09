@@ -120,6 +120,8 @@ public class GameData
     public int event30;
     public int event30MalusTurnsLeft;
 
+    public int prologueFinalEvent;
+
     /*
     public Player player1;
     public Soldiers.Swordsmen swordsmen1;
@@ -437,6 +439,8 @@ public class GameData
         event29 = events.event28;
         event30 = events.event30;
         event30MalusTurnsLeft = events.event30MalusTurnsLeft;
+
+        prologueFinalEvent = events.prologueFinalEvent;
 
         /*
         this.player1 = player;

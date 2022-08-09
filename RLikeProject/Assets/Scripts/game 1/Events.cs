@@ -1309,8 +1309,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 9 - richiesta di commercio dall'ambasciatore delle creature della foresta
-    
-    // DA FINIRE!!
 
     public int event9 = 0;
     public int event9BonusTurnsLeft = 0;
@@ -1346,8 +1344,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 10 - nella miniera sono state trovate delle pietre preziose
-    
-    // DA FINIRE!!
 
     public int event10 = 0;
 
@@ -1383,8 +1379,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 11 - un gruppo di cavalieri di Aemis si presenta in città
-    
-    // DA FINIRE!!
 
     public int event11 = 0;
 
@@ -1458,8 +1452,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 13 - i cittadini chiedono più finanziamenti per proteggere i campi
-    
-    // DA FINIRE!!
 
     public int event13 = 0;
 
@@ -1495,8 +1487,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 15 ---- SOLO SE aemisFaith <= 2 --- un sacerdote chiede di offrire una parte del raccolto dei prossimi anni
-    
-    // DA FINIRE!!
 
     public int event15 = 0;
 
@@ -1540,8 +1530,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
     
     // evento secondario 4 -  il ricercatore ritorna dicendo di aver trovato i resti di un tempio
-    
-    // DA FINIRE!!
 
     public int secondaryEvent4 = 0;
     public int secondaryEvent4TurnsLeft = 99;
@@ -1588,8 +1576,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 16 -  un ricercatore ha trovato in un bosco uno strano altare 
-    
-    // DA FINIRE!!
 
     public int event16 = 0;
 
@@ -1649,8 +1635,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 17 ---- SOLO SE bonusWall == 0 --- il guildmaster è preocupato per le difese delle mura
-    
-    // DA FINIRE!!
 
     public int event17 = 0;
 
@@ -1700,8 +1684,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 18 - il guildmaster è preocupato per le difese delle mura
-    
-    // DA FINIRE!!
 
     public int event18 = 0;
 
@@ -1842,8 +1824,6 @@ public class Events : MonoBehaviour
 
     // evento 19 - un uomo misterioso appare in città
 
-    // DA FINIRE!!
-
     public int event19 = 0;
 
     IEnumerator TriggerEvent19()
@@ -1931,8 +1911,6 @@ public class Events : MonoBehaviour
 
     // evento 20 ---- SOLO SE aemisFaith < 6 --- una risa tra i fedeli di Aemis e un gruppo non fedele ha provocato gravi disagi
 
-    // DA FINIRE!!
-
     public int event20 = 0;
 
     IEnumerator TriggerEvent20()
@@ -1988,8 +1966,6 @@ public class Events : MonoBehaviour
 
     // evento 21 ---- SOLO SE event1 == 0 --- le acque della città son diventate torbide dopo una tempesta
 
-    // DA FINIRE!!
-
     public int event21 = 0;
     public int event21MalusTurnsLeft = 0;
 
@@ -2033,8 +2009,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 22 ---- SOLO SE blackCrystal == 1 --- un strano rumore durante la notte
-
-    // DA FINIRE!!
 
     public int event22 = 0;
     
@@ -2096,8 +2070,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 23 - un gruppo di bambini ha trovato vicino alle miniere una strana pergamena
-
-    // DA FINIRE!!
 
     public int event23 = 0;
 
@@ -2172,8 +2144,6 @@ public class Events : MonoBehaviour
 
     // evento 27 - 
 
-    // DA FINIRE!!
-
     public int event27 = 0;
     public int event27MalusTurnsLeft = 0;
 
@@ -2213,8 +2183,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 30 - un grande cinghiale è stato avvistato intorno alla città
-
-    // DA FINIRE!!
 
     public int event30 = 0;
     public int event30MalusTurnsLeft = 0;
@@ -2268,8 +2236,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 26 - 
-
-    // DA FINIRE
 
     public int event26 = 0;
 
@@ -2408,8 +2374,6 @@ public class Events : MonoBehaviour
      * --------------------------------------------------------------------------------- */
 
     // evento 29 - 
-
-    // DA FINIRE!!
 
     public int event29 = 0;
 
@@ -2567,7 +2531,6 @@ public class Events : MonoBehaviour
 
     // evento secondario 5 - 
 
-    // DA FINIRE!!
     public int secondaryEvent5Malus40 = 0;
     public int secondaryEvent5Malus100 = 0;
 
@@ -2670,9 +2633,6 @@ public class Events : MonoBehaviour
 
     // evento secondario 5 - 
 
-    // DA FINIRE!!
-    
-
     IEnumerator SecondaryEvent6()
     {
         secondaryEvent6 = 0;
@@ -2690,6 +2650,12 @@ public class Events : MonoBehaviour
         yield return new WaitForSeconds(1f);
         isEventDialogueClosed = true;
     }
+
+
+    /* --------------------------------------------------------------------------------- *
+     * --------------------------------------------------------------------------------- */
+
+    // evento FINALE - 
 
     public int prologueFinalEvent = 0;
 
