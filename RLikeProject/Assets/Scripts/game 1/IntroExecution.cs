@@ -115,12 +115,11 @@ public class IntroExecution : MonoBehaviour
     }
     public void EndOfSequenceCityText(Text City)
     {
-        confirmSelection.gameObject.GetComponentInChildren<Button>().interactable = false;
-
         MainMenu.SetActive(false);
 
         if (City.text != "")
         {
+            confirmSelection.gameObject.GetComponentInChildren<Button>().interactable = false;
             FindObjectOfType<FontDecreaser>().Cityname.text = City.text;
             FindObjectOfType<FontDecreaser>().CityInputRequest = true;
             StartCoroutine(EndOfExecution());
