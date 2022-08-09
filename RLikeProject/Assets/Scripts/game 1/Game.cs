@@ -411,7 +411,7 @@ public class Game : MonoBehaviour
 
         if (fabbro.getArmi() == fabbro.getlvl() && fabbro.getlvl() != 5)
         {
-            fabbrocostoAtk.text = "Next lvl needed";
+            fabbrocostoAtk.text = "lvl up needed";
             fabbrocostoAtk.color = darkred;
         }
         else if (fabbro.getCostoNumPotenziamenti(1) > player.getMoney())
@@ -426,7 +426,7 @@ public class Game : MonoBehaviour
         }
         if (fabbro.getArmature() == fabbro.getlvl() && fabbro.getlvl() != 5)
         {
-            fabbrocostoDef.text = "Next lvl needed";
+            fabbrocostoDef.text = "lvl up needed";
             fabbrocostoDef.color = darkred;
         }
         else if (fabbro.getCostoNumPotenziamenti(2) > player.getMoney())
@@ -441,7 +441,7 @@ public class Game : MonoBehaviour
         }
         if (fabbro.getZappa() == fabbro.getlvl() && fabbro.getlvl() != 5)
         {
-            fabbrocostoZappa.text = "Next lvl needed";
+            fabbrocostoZappa.text = "lvl up needed";
             fabbrocostoZappa.color = darkred;
         }
         else if (fabbro.getCostoNumPotenziamenti(3) > player.getMoney())
@@ -456,7 +456,7 @@ public class Game : MonoBehaviour
         }
         if (fabbro.getPiccone() == fabbro.getlvl() && fabbro.getlvl() != 5)
         {
-            fabbrocostoPiccone.text = "Next lvl needed";
+            fabbrocostoPiccone.text = "lvl up needed";
             fabbrocostoPiccone.color = darkred;
         }
         else if (fabbro.getCostoNumPotenziamenti(4) > player.getMoney())
