@@ -91,6 +91,14 @@ public class Events : MonoBehaviour
     public int lastBattleInfo = 0;
     public bool finishedBattle = false;
 
+    /* ultimi eventi per ripresa partita */
+    private int lastPrimaryEvent = 0;
+    private int lastSecondaryEvent = 0;
+    public void setLastPrimaryEvent(int lastPrimaryEvent) { this.lastPrimaryEvent = lastPrimaryEvent; }
+    public void setLastSecondaryEvent(int lastSecondaryEvent) { this.lastSecondaryEvent = lastSecondaryEvent; }
+    public int getLastPrimaryEvent() { return this.lastPrimaryEvent; }
+    public int getLastSecondaryEvent() { return this.lastSecondaryEvent; }
+
     //////////////////////////////////////////////////////
     //////////////////////////////////////////////////////
     ////*                 variabili               *///////
@@ -167,6 +175,73 @@ public class Events : MonoBehaviour
             FindObjectOfType<AudioManager>().ForcePlayMusic(FindObjectOfType<AudioManager>().SelectRandomClip(FindObjectOfType<Game>().GameMusic));
             FindObjectOfType<PrepBattaglia>().TerminaBattaglia();
         }
+    }
+
+    public void ReloadEventsOnResume()
+    {
+        Debug.Log("nel reload");
+        if (lastPrimaryEvent == 0)
+        {
+            if (lastSecondaryEvent == 1)
+            {
+                secondaryEvent1Malus = 1;
+                secondaryEvent1 = 0;
+                attendingSecondaryEvent = true;
+                secondaryEvent1MalusTurnsLeft = 3;
+
+                string eventString1 = "The lack of drinking water caused a reduction of newborns.\n[-40% New Citizens each season, for 3 seasons]";
+
+                string[] message = { eventString1 };
+
+                Dialogue.TriggerDialogue(message);
+
+                lastSecondaryEvent = 1;
+            }
+            if (lastSecondaryEvent == 2) StartCoroutine(SecondaryEvent2());
+            if (lastSecondaryEvent == 3) StartCoroutine(SecondaryEvent3());
+            if (lastSecondaryEvent == 4) StartCoroutine(SecondaryEvent4());
+            if (lastSecondaryEvent == 5) StartCoroutine(SecondaryEvent5());
+            if (lastSecondaryEvent == 6) StartCoroutine(SecondaryEvent6());
+        }
+        else
+        {
+            if (lastPrimaryEvent == 1) StartCoroutine(TriggerEvent1());
+            if (lastPrimaryEvent == 2) StartCoroutine(TriggerEvent2());
+            if (lastPrimaryEvent == 3) StartCoroutine(TriggerEvent3());
+            if (lastPrimaryEvent == 4) {
+                Debug.Log("nel resume posto 4");
+                StartCoroutine(TriggerEvent4());
+                    }
+            if (lastPrimaryEvent == 5) StartCoroutine(TriggerEvent5());
+            if (lastPrimaryEvent == 6) StartCoroutine(TriggerEvent6());
+            if (lastPrimaryEvent == 7) StartCoroutine(TriggerEvent7());
+            if (lastPrimaryEvent == 8) StartCoroutine(TriggerEvent8());
+            if (lastPrimaryEvent == 9) StartCoroutine(TriggerEvent9());
+            if (lastPrimaryEvent == 10) StartCoroutine(TriggerEvent10());
+            if (lastPrimaryEvent == 11) StartCoroutine(TriggerEvent11());
+            if (lastPrimaryEvent == 12) StartCoroutine(TriggerEvent12());
+            if (lastPrimaryEvent == 13) StartCoroutine(TriggerEvent13());
+            if (lastPrimaryEvent == 14) StartCoroutine(TriggerEvent14());
+            if (lastPrimaryEvent == 15) StartCoroutine(TriggerEvent15());
+            if (lastPrimaryEvent == 16) StartCoroutine(TriggerEvent16());
+            if (lastPrimaryEvent == 17) StartCoroutine(TriggerEvent17());
+            if (lastPrimaryEvent == 18) StartCoroutine(TriggerEvent18());
+            if (lastPrimaryEvent == 19) StartCoroutine(TriggerEvent19());
+            if (lastPrimaryEvent == 20) StartCoroutine(TriggerEvent20());
+            if (lastPrimaryEvent == 21) StartCoroutine(TriggerEvent21());
+            if (lastPrimaryEvent == 22) StartCoroutine(TriggerEvent22());
+            if (lastPrimaryEvent == 23) StartCoroutine(TriggerEvent23());
+            if (lastPrimaryEvent == 24) StartCoroutine(TriggerEvent24());
+            if (lastPrimaryEvent == 25) StartCoroutine(TriggerEvent25());
+            if (lastPrimaryEvent == 26) StartCoroutine(TriggerEvent26());
+            if (lastPrimaryEvent == 27) StartCoroutine(TriggerEvent27());
+            if (lastPrimaryEvent == 28) StartCoroutine(TriggerEvent28());
+            if (lastPrimaryEvent == 29) StartCoroutine(TriggerEvent29());
+            if (lastPrimaryEvent == 30) StartCoroutine(TriggerEvent30());
+            if (lastPrimaryEvent == 31) StartCoroutine(TriggerPrologueFinalEvent());
+            if (lastPrimaryEvent == 32) StartCoroutine(TriggerFinalEvent());
+        }
+
     }
 
     public void InitializeEvents()
@@ -344,31 +419,38 @@ public class Events : MonoBehaviour
             string[] message = { eventString1 };
 
             Dialogue.TriggerDialogue(message);
+
+            lastSecondaryEvent = 1;
         }
         else if (secondaryEvent2 == 1 && secondaryEvent2TurnsLeft == 0)
         {
             attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent2());
+            lastSecondaryEvent = 2;
         }
         else if(secondaryEvent3 == 1 && secondaryEvent3TurnsLeft == 0)
         {
             attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent3());
+            lastSecondaryEvent = 3;
         }
         else if(secondaryEvent4 == 1 && secondaryEvent4TurnsLeft == 0)
         {
             attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent4());
+            lastSecondaryEvent = 4;
         }
         else if (secondaryEvent5 == 1 && secondaryEvent5TurnsLeft == 0)
         {
             attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent5());
+            lastSecondaryEvent = 5;
         }
         else if (secondaryEvent6 == 1 && secondaryEvent6TurnsLeft == 0)
         {
             attendingSecondaryEvent = true;
             StartCoroutine(SecondaryEvent6());
+            lastSecondaryEvent = 6;
         }
     }
 
@@ -404,12 +486,14 @@ public class Events : MonoBehaviour
             {
                 StartCoroutine(TriggerPrologueFinalEvent());
                 selected = true;
+                lastPrimaryEvent = 31;
             }
              if (player.getTurn() >= 28 && Random.Range(0.1f, 1f) <= (0.4f + finalEventProbabilityIncreaser))
            // if (player.getTurn() ==2)
             {
                 StartCoroutine(TriggerFinalEvent());
                 selected = true;
+                lastPrimaryEvent = 32;
             }
             if (player.getTurn() >= 28)
             {
@@ -422,11 +506,13 @@ public class Events : MonoBehaviour
                 {
                     StartCoroutine(TriggerEvent1());
                     selected = true;
+                    lastPrimaryEvent = 1;
                 }
                 else if (event3 == 0 && player.getMoney() >= 1000) // evento non avviabile qualora il giocatore non abbia i fondi necessari
                 {
                     StartCoroutine(TriggerEvent3());
                     selected = true;
+                    lastPrimaryEvent = 3;
                 }
             }
             //if (eventChooser >= 1f && eventChooser < 2f)
@@ -438,146 +524,175 @@ public class Events : MonoBehaviour
             {
                 StartCoroutine(TriggerEvent14());
                 selected = true;
+                lastPrimaryEvent = 14;
             }
             if (eventChooser >= 3f && eventChooser < 4f && aemisFaith <= 4 && aemisKnightsHostility == 1 /*&& hasEnoughSoldiers(10)*/ && event12 == 0) // il giocatore deve affrontare una grande battaglia, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent12());
                 selected = true;
+                lastPrimaryEvent = 12;
             }
             if (eventChooser >= 4f && eventChooser < 5f && player.getMoney() >= 500 && event4 == 0) // almeno 500 gold per farlo
             {
                 StartCoroutine(TriggerEvent4());
                 selected = true;
+                lastPrimaryEvent = 4;
             }
             if (eventChooser >= 5f && eventChooser < 6f /*&& hasEnoughSoldiers(10)*/ && event5 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent5());
                 selected = true;
+                lastPrimaryEvent = 5;
             }
             if (eventChooser >= 6f && eventChooser < 7f && event6 == 0)
             {
                 StartCoroutine(TriggerEvent6());
                 selected = true;
+                lastPrimaryEvent = 6;
             }
             if(eventChooser >= 7f && eventChooser < 8f && player.getMoney() >= 300 && event7 == 0)
             {
                 StartCoroutine(TriggerEvent7());
                 selected = true;
+                lastPrimaryEvent = 7;
             }
             if (eventChooser >= 8f && eventChooser < 9f /*&& hasEnoughSoldiers(15)*/ && event8 == 0) // una possibile grande battaglia attende il giocatore, deve avere una minima chance
             {
                 StartCoroutine(TriggerEvent8());
+                lastPrimaryEvent = 8;
                 selected = true;
             }
             if (eventChooser >= 9f && eventChooser < 10f && player.getMoney() >= 100 && event11 == 0) 
             {
                 StartCoroutine(TriggerEvent11());
                 selected = true;
+                lastPrimaryEvent = 11;
             }
             if (eventChooser >= 10f && eventChooser < 11f && player.getMoney() >= 1000 && event13 == 0) 
             {
                 StartCoroutine(TriggerEvent13());
                 selected = true;
+                lastPrimaryEvent = 13;
             }
             if (eventChooser >= 11f && eventChooser < 12f && aemisFaith <= 2 && player.getMoney() >= 400 && event15 == 0) 
             {
                 StartCoroutine(TriggerEvent15());
                 selected = true;
+                lastPrimaryEvent = 15;
             }
             if (eventChooser >= 12f && eventChooser < 13f && event16 == 0) 
             {
                 StartCoroutine(TriggerEvent16());
                 selected = true;
+                lastPrimaryEvent = 16;
             }
             if (eventChooser >= 13f && eventChooser < 14f && player.bonusWall == 0 && player.getMoney() >= 500 && event17 == 0) 
             {
                 StartCoroutine(TriggerEvent17());
                 selected = true;
+                lastPrimaryEvent = 17;
             }
             if (eventChooser >= 14f && eventChooser < 15f && player.getMoney() >= 1000 && event18 == 0) 
             {
                 StartCoroutine(TriggerEvent18());
                 selected = true;
+                lastPrimaryEvent = 18;
             }
             if (eventChooser >= 15f && eventChooser < 16f && event2 == 0)
             {
                 StartCoroutine(TriggerEvent2());
                 selected = true;
+                lastPrimaryEvent = 2;
             }
             if (eventChooser >= 16f && eventChooser < 17f && event9 == 0)
             {
                 StartCoroutine(TriggerEvent9());
                 selected = true;
+                lastPrimaryEvent = 9;
             }
             if (eventChooser >= 17f && eventChooser < 18f && event10 == 0)
             {
                 StartCoroutine(TriggerEvent10());
                 selected = true;
+                lastPrimaryEvent = 10;
             }
             if (eventChooser >= 18f && eventChooser < 19f && event19 == 0)
             {
                 StartCoroutine(TriggerEvent19());
                 selected = true;
+                lastPrimaryEvent = 19;
             }
             if (eventChooser >= 19f && eventChooser < 20f && aemisFaith < 6 && event20 == 0)
             {
                 StartCoroutine(TriggerEvent20());
                 selected = true;
+                lastPrimaryEvent = 20;
             }
             if (eventChooser >= 20f && eventChooser < 21f && player.getMoney() >= 400 && event1 == 1 && event21 == 0 && aqueduct == 0)
             {
                 StartCoroutine(TriggerEvent21());
                 selected = true;
+                lastPrimaryEvent = 21;
             }
             if (eventChooser >= 21f && eventChooser < 22f && event23 == 0)
             {
                 StartCoroutine(TriggerEvent23());
                 selected = true;
+                lastPrimaryEvent = 23;
             }
             if (eventChooser >= 22f && eventChooser < 23f && player.getMoney() >= 1000 && event27 == 0)
             {
                 StartCoroutine(TriggerEvent27());
                 selected = true;
+                lastPrimaryEvent = 27;
             }
             if (eventChooser >= 23f && eventChooser < 24f && event30 == 0)
             {
                 StartCoroutine(TriggerEvent30());
                 selected = true;
+                lastPrimaryEvent = 30;
             }
             if (eventChooser >= 24f && eventChooser < 25f && event22 == 0 && blackCrystal == 1)
             {
                 StartCoroutine(TriggerEvent22());
                 selected = true;
+                lastPrimaryEvent = 22;
             }
             if (eventChooser >= 25f && eventChooser < 26f && event24 == 0 && player.getMoney() >= 500)
             {
                 StartCoroutine(TriggerEvent24());
                 selected = true;
+                lastPrimaryEvent = 24;
             }
             if (eventChooser >= 26f && eventChooser < 27f && event25 == 0 && player.getMoney() >= 2000)
             {
                 StartCoroutine(TriggerEvent25());
                 selected = true;
+                lastPrimaryEvent = 25;
             }
             if (eventChooser >= 27f && eventChooser < 28f && event26 == 0 )
             {
                 StartCoroutine(TriggerEvent26());
                 selected = true;
+                lastPrimaryEvent = 26;
             }
             if (eventChooser >= 28f && eventChooser < 29f /*&& hasEnoughSoldiers(15)*/ && event28 == 0)
             {
                 StartCoroutine(TriggerEvent28());
                 selected = true;
+                lastPrimaryEvent = 28;
             }
             if (eventChooser >= 29f && eventChooser < 30f /*&& hasEnoughSoldiers(10)*/ && event29 == 0)
             {
                 StartCoroutine(TriggerEvent29());
                 selected = true;
+                lastPrimaryEvent = 29;
             }
 
             //selected = true; //per la forzatura dell'evento
             forceEventSelection++;
         }
+        if (selected == false) lastPrimaryEvent = 0;
 
     }
 

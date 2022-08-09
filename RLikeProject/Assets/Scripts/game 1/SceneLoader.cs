@@ -38,10 +38,11 @@ public class SceneLoader : MonoBehaviour
             FindObjectOfType<FirebaseManager>().LoadDataButton(false);
         }
         onNextTurn();
+        FindObjectOfType<Events>().ReloadEventsOnResume();
     }
 
 
-    public void onNextTurn()
+    public void onNextTurn() // sta su unity un'altra chiamata
     {
         loadingPanel.SetActive(true);
         StartCoroutine(LoadingScreenFadeOut(0.8f));
