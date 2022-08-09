@@ -122,6 +122,9 @@ public class GameData
 
     public int prologueFinalEvent;
 
+    public int lastPrimaryEvent;
+    public int lastSecondaryEvent;
+
     /*
     public Player player1;
     public Soldiers.Swordsmen swordsmen1;
@@ -441,6 +444,9 @@ public class GameData
         event30MalusTurnsLeft = events.event30MalusTurnsLeft;
 
         prologueFinalEvent = events.prologueFinalEvent;
+
+        lastPrimaryEvent = events.getLastPrimaryEvent();
+        lastSecondaryEvent = events.getLastSecondaryEvent();
 
         /*
         this.player1 = player;
