@@ -765,10 +765,14 @@ public class Game : MonoBehaviour
     {
         player.setSkipMoney(fattoria.getGoldFattoria() + miniera.getgoldMiniera() + (2 * player.getCitizens()) + fabbro.getSoldiPiccone() + fabbro.getSoldiZappa() - FindObjectOfType<Events>().GoldMalusEffects());
         player.setMoney(); // cambia definitivamente i soldi, al resto ci pensa Update
+        FindObjectOfType<Events>().eventTurnsDecreaser();
+        FindObjectOfType<Events>().SecondaryEventStarter(); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
+        FindObjectOfType<Events>().EventStarter(); // avvio evento primario, non si avvia se e' in corso uno secondario
+        FindObjectOfType<OldSoldiersManager>().gildamexritorno(player, gilda);  //betatesting
         FindObjectOfType<OldSoldiersManager>().riassegnaSoldati(player, swordsmen, archers, riders); // riassegna i soldati che tornano dalle battaglie (betatesting)
         player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() +swordsmen.getTempTotal() + archers.getTempTotal()+ riders.getTempTotal() + FindObjectOfType<OldSoldiersManager>().getSoldatiSpediti()); // prima volta necessaria
         player.setTempCitizens(fattoria.getCrescitaAbitanti() - FindObjectOfType<Events>().CitizensMalusEffects());
-        player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del numero di soldati riportato sotto
+        player.setCitizens(); // cambia il numero di cittadini liberi, al resto ci pensa Update in funzione del nusmero di soldati riportato sotto
 
 
         //player.setCitizensMax(fattoria.getAbitantiMax());
@@ -780,15 +784,12 @@ public class Game : MonoBehaviour
         archers.setTotal(); // ricalcolo tot arcieri
         riders.setTotal(); // ricalcolo tot cavalieri
 
-        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal()); // ricalcolo popolazione attuale
+        player.setPopulation(player.getCitizens() + swordsmen.getTotal() + archers.getTotal() + riders.getTotal() + FindObjectOfType<OldSoldiersManager>().getSoldatiSpediti()); // ricalcolo popolazione attuale
         player.nextTurn(); // cambia il numero del turno attuale, al resto ci pensa Update
 
 
 
-        FindObjectOfType<Events>().eventTurnsDecreaser();
-        FindObjectOfType<Events>().SecondaryEventStarter(); // avvio evento secondario, fa controlli sugli status attuali dell'oggetto events ed eventualmente inizializza un evento secondario
-        FindObjectOfType<Events>().EventStarter(); // avvio evento primario, non si avvia se e' in corso uno secondario
-        FindObjectOfType<OldSoldiersManager>().gildamexritorno(player, gilda);  //betatesting
+       
         SaveGame();
     }
     // ----------------------------metodi per nascondere o visualizzare i pannelli di gioco----------------------------
