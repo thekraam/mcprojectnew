@@ -314,12 +314,12 @@ public class FirebaseManager : MonoBehaviour
             warningRegisterText.color = new Color32(170, 0, 0, 255);
             warningRegisterText.text = "Password Does Not Match!";
         }
-        else if (!_email.Contains("@gmail") || !_email.Contains("@libero") || !_email.Contains("@hotmail") || !_email.Contains("@outlook") || !_email.Contains("@icloud") || !_email.Contains("@yahoo") || !_email.Contains("@tiscali") || !_email.Contains("@stud") || !_email.Contains("@protonmail"))
-        {
-            //If mail provider is not supported
-            warningRegisterText.color = new Color32(170, 0, 0, 255);
-            warningRegisterText.text = "This e-mail provider is not supported";
-        }
+        //else if (!_email.contains("@gmail") || !_email.contains("@libero") || !_email.contains("@hotmail") || !_email.contains("@outlook") || !_email.contains("@icloud") || !_email.contains("@yahoo") || !_email.contains("@tiscali") || !_email.contains("@stud") || !_email.contains("@protonmail"))
+        //{
+            ////if mail provider is not supported
+            //warningregistertext.color = new color32(170, 0, 0, 255);
+            //warningregistertext.text = "this e-mail provider is not supported";
+        //}
         else
         {
             //Call the Firebase auth signin function passing the email and password
